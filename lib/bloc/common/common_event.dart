@@ -1,4 +1,4 @@
-import 'package:flutter_new_architectua/base/bloc/base_bloc_event.dart';
+part of 'common_bloc.dart';
 
 abstract class CommonEvent extends BaseBlocEvent {
   const CommonEvent();

@@ -12,4 +12,11 @@ abstract class BaseBloc<E extends BaseBlocEvent, S extends BaseBlocState>
 abstract class BaseBlocDelegate<E extends BaseBlocEvent,
     S extends BaseBlocState> extends Bloc<E, S> {
   BaseBlocDelegate(super.initialState);
+
+  @override
+  void add(E event) {
+    if (!isClosed) {
+      super.add(event);
+    }
+  }
 }
