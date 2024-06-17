@@ -38,7 +38,7 @@ class _CountPageState extends State<CountPage> {
                     Text(
                       '${state.count}',
                       style: Theme.of(context).textTheme.headlineMedium,
-                    )
+                    ),
                   ]),
             );
           }),
