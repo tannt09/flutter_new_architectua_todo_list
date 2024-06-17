@@ -23,18 +23,11 @@ abstract class BasePageStateDelegate<T extends StatefulWidget,
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (_) => bloc),
-        BlocProvider(create: (_) => commonBloc)
       ],
       child: buildPageListeners(
           child: Stack(
         children: [
           buildPage(context),
-          BlocBuilder<CommonBloc, CommonState>(
-              buildWhen: (prev, current) => true,
-              builder: (context, state) => Text(
-                    'HIIIIII',
-                    style: Theme.of(context).textTheme.headlineMedium,
-                  ))
         ],
       )),
     );
