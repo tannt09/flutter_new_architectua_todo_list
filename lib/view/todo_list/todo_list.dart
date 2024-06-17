@@ -30,18 +30,41 @@ class _TodoListPageState extends State<TodoListPage> {
           ),
           body: BlocBuilder<TodoListBloc, TodoListState>(
               builder: (context, state) {
-            return ListView.builder(
-                itemCount: state.myList.length,
-                itemBuilder: (context, index) {
-                  final item = state.myList[index];
-                  return Center(
-                    child: Text(item.name)
-                  );
-                });
+            return Column(
+              children: [
+                Expanded(
+                  child: ListView.builder(
+                      itemCount: state.myList.length,
+                      itemBuilder: (context, index) {
+                        final item = state.myList[index];
+                        return Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                            child: Row(
+                              children: <Widget>[
+                                Text(item.name),
+                                const SizedBox(
+                                  width: 16.0,
+                                ),
+                                Text("${item.age}")
+                              ],
+                            ));
+                      }),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: ElevatedButton(
+                    onPressed: () => {
+                      bloc.add(
+                          AddTodoList(item: MyModel(name: "Test3", age: 20))),
+                    },
+                    child: Text('Add new item'),
+                  ),
+                ),
+              ],
+            );
           }),
           floatingActionButton: FloatingActionButton(
-            // onPressed: () => navigator.pushNamed(CountPage.route),
-            onPressed: () => bloc.add(const AddTodoList()),
+            onPressed: () => navigator.pushNamed(CountPage.route),
             tooltip: 'Goto Count',
             child: const Icon(Icons.adobe),
           ),

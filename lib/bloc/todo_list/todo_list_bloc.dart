@@ -17,7 +17,7 @@ class TodoListBloc extends BaseBloc<TodoListEvent, TodoListState> {
   }
 
   void _addElement(AddTodoList event, Emitter<TodoListState> emit) {
-    final newList = List<MyModel>.from(state.myList)..add(MyModel(name: "Test 1", age: 22));
+    final newList = List<MyModel>.from(state.myList)..add(MyModel(name: event.item.name, age: event.item.age));
     emit(state.copyWith(myList: newList));
   }
 }

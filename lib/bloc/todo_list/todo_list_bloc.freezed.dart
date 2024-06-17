@@ -15,13 +15,21 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$AddTodoList {}
+mixin _$AddTodoList {
+  MyModel get item => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $AddTodoListCopyWith<AddTodoList> get copyWith =>
+      throw _privateConstructorUsedError;
+}
 
 /// @nodoc
 abstract class $AddTodoListCopyWith<$Res> {
   factory $AddTodoListCopyWith(
           AddTodoList value, $Res Function(AddTodoList) then) =
       _$AddTodoListCopyWithImpl<$Res, AddTodoList>;
+  @useResult
+  $Res call({MyModel item});
 }
 
 /// @nodoc
@@ -33,13 +41,30 @@ class _$AddTodoListCopyWithImpl<$Res, $Val extends AddTodoList>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? item = null,
+  }) {
+    return _then(_value.copyWith(
+      item: null == item
+          ? _value.item
+          : item // ignore: cast_nullable_to_non_nullable
+              as MyModel,
+    ) as $Val);
+  }
 }
 
 /// @nodoc
-abstract class _$$AddTodoListImplCopyWith<$Res> {
+abstract class _$$AddTodoListImplCopyWith<$Res>
+    implements $AddTodoListCopyWith<$Res> {
   factory _$$AddTodoListImplCopyWith(
           _$AddTodoListImpl value, $Res Function(_$AddTodoListImpl) then) =
       __$$AddTodoListImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({MyModel item});
 }
 
 /// @nodoc
@@ -49,30 +74,61 @@ class __$$AddTodoListImplCopyWithImpl<$Res>
   __$$AddTodoListImplCopyWithImpl(
       _$AddTodoListImpl _value, $Res Function(_$AddTodoListImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? item = null,
+  }) {
+    return _then(_$AddTodoListImpl(
+      item: null == item
+          ? _value.item
+          : item // ignore: cast_nullable_to_non_nullable
+              as MyModel,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$AddTodoListImpl implements _AddTodoList {
-  const _$AddTodoListImpl();
+  const _$AddTodoListImpl({required this.item});
+
+  @override
+  final MyModel item;
 
   @override
   String toString() {
-    return 'AddTodoList()';
+    return 'AddTodoList(item: $item)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$AddTodoListImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$AddTodoListImpl &&
+            (identical(other.item, item) || other.item == item));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, item);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AddTodoListImplCopyWith<_$AddTodoListImpl> get copyWith =>
+      __$$AddTodoListImplCopyWithImpl<_$AddTodoListImpl>(this, _$identity);
 }
 
 abstract class _AddTodoList implements AddTodoList {
-  const factory _AddTodoList() = _$AddTodoListImpl;
+  const factory _AddTodoList({required final MyModel item}) = _$AddTodoListImpl;
+
+  @override
+  MyModel get item;
+  @override
+  @JsonKey(ignore: true)
+  _$$AddTodoListImplCopyWith<_$AddTodoListImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
