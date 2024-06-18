@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_new_architectua/bloc/todo_list/todo_list_bloc.dart';
-import 'package:flutter_new_architectua/navigation/app_navigator.dart';
-import 'package:flutter_new_architectua/view/count/count.dart';
 import 'package:get_it/get_it.dart';
+
+import '../../bloc/todo_list/todo_list_bloc.dart';
+import '../../navigation/app_navigator.dart';
+import '../../widget/custom_dialog.dart';
+import '../count/count.dart';
 
 class TodoListPage extends StatefulWidget {
   static const String route = 'TodoListPage';
@@ -38,7 +40,8 @@ class _TodoListPageState extends State<TodoListPage> {
                       itemBuilder: (context, index) {
                         final item = state.myList[index];
                         return Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 16, vertical: 8),
                             child: Row(
                               children: <Widget>[
                                 Text(item.name),
@@ -54,10 +57,9 @@ class _TodoListPageState extends State<TodoListPage> {
                   padding: const EdgeInsets.all(16.0),
                   child: ElevatedButton(
                     onPressed: () => {
-                      bloc.add(
-                          AddTodoList(item: MyModel(name: "Test3", age: 20))),
+                      CustomDialog.showAddItemDialog(context, bloc)
                     },
-                    child: Text('Add new item'),
+                    child: const Text('Add new item'),
                   ),
                 ),
               ],
