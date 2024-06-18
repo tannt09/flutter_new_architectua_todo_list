@@ -5,7 +5,7 @@ import '../bloc/todo_list/todo_list_bloc.dart';
 
 class CustomDialog {
   static Future<void> showAddItemDialog(
-      BuildContext context, TodoListBloc bloc) async {
+      BuildContext context, void Function(MyModel, [int?]) handleList, [int? index]) async {
     TextEditingController controllerName = TextEditingController();
     TextEditingController controllerAge = TextEditingController();
 
@@ -35,10 +35,7 @@ class CustomDialog {
             ElevatedButton(
               child: const Text('Save'),
               onPressed: () {
-                bloc.add(AddTodoList(
-                    item: MyModel(
-                        name: controllerName.text,
-                        age: int.parse(controllerAge.text))));
+                handleList(MyModel(name: controllerName.text, age: int.parse(controllerAge.text)), index);
                 Navigator.of(context).pop();
               },
             ),

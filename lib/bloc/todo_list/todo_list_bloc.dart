@@ -15,6 +15,7 @@ class TodoListBloc extends BaseBloc<TodoListEvent, TodoListState> {
   TodoListBloc() : super(const TodoListState()) {
     on<AddTodoList>(_addElement);
     on<DeleteTodoList>(_deleteElement);
+    on<EditTodoList>(_editElement);
   }
 
   void _addElement(AddTodoList event, Emitter<TodoListState> emit) {
@@ -25,6 +26,12 @@ class TodoListBloc extends BaseBloc<TodoListEvent, TodoListState> {
   void _deleteElement(DeleteTodoList event, Emitter<TodoListState> emit) {
     final newList = List<MyModel>.from(state.myList);
     newList.removeAt(event.index);
+    emit(state.copyWith(myList: newList));
+  }
+
+  void _editElement(EditTodoList event, Emitter<TodoListState> emit) {
+    final newList = List<MyModel>.from(state.myList);
+    newList[event.index] = event.item;
     emit(state.copyWith(myList: newList));
   }
 }

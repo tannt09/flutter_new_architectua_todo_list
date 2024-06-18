@@ -32,6 +32,16 @@ class _TodoListPageState extends State<TodoListPage> {
           ),
           body: BlocBuilder<TodoListBloc, TodoListState>(
               builder: (context, state) {
+            Future<void> addItemToList(MyModel newItem, [int? index]) async {
+              bloc.add(AddTodoList(item: newItem));
+            }
+
+            Future<void> editItemFromList(MyModel newItem, [int? index]) async {
+              if (index != null) {
+                bloc.add(EditTodoList(item: newItem, index: index));
+              }
+            }
+
             return Column(
               children: [
                 Expanded(
@@ -48,9 +58,16 @@ class _TodoListPageState extends State<TodoListPage> {
                                 Text(item.name),
                                 Text("${item.age}"),
                                 ElevatedButton(
-                                  onPressed: () => {bloc.add(DeleteTodoList(index: index))},
+                                  onPressed: () =>
+                                      {bloc.add(DeleteTodoList(index: index))},
                                   child: const Icon(Icons.delete),
                                 ),
+                                ElevatedButton(
+                                  onPressed: () => {
+                                    CustomDialog.showAddItemDialog(context, editItemFromList, index)
+                                  },
+                                  child: const Icon(Icons.edit),
+                                )
                               ],
                             ));
                       }),
@@ -58,8 +75,9 @@ class _TodoListPageState extends State<TodoListPage> {
                 Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: ElevatedButton(
-                    onPressed: () =>
-                        {CustomDialog.showAddItemDialog(context, bloc)},
+                    onPressed: () => {
+                      CustomDialog.showAddItemDialog(context, addItemToList)
+                    },
                     child: const Text('Add new item'),
                   ),
                 ),

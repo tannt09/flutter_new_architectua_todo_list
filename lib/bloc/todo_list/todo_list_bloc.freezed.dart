@@ -251,6 +251,141 @@ abstract class _DeleteTodoList implements DeleteTodoList {
 }
 
 /// @nodoc
+mixin _$EditTodoList {
+  MyModel get item => throw _privateConstructorUsedError;
+  int get index => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $EditTodoListCopyWith<EditTodoList> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $EditTodoListCopyWith<$Res> {
+  factory $EditTodoListCopyWith(
+          EditTodoList value, $Res Function(EditTodoList) then) =
+      _$EditTodoListCopyWithImpl<$Res, EditTodoList>;
+  @useResult
+  $Res call({MyModel item, int index});
+}
+
+/// @nodoc
+class _$EditTodoListCopyWithImpl<$Res, $Val extends EditTodoList>
+    implements $EditTodoListCopyWith<$Res> {
+  _$EditTodoListCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? item = null,
+    Object? index = null,
+  }) {
+    return _then(_value.copyWith(
+      item: null == item
+          ? _value.item
+          : item // ignore: cast_nullable_to_non_nullable
+              as MyModel,
+      index: null == index
+          ? _value.index
+          : index // ignore: cast_nullable_to_non_nullable
+              as int,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$EditTodoListImplCopyWith<$Res>
+    implements $EditTodoListCopyWith<$Res> {
+  factory _$$EditTodoListImplCopyWith(
+          _$EditTodoListImpl value, $Res Function(_$EditTodoListImpl) then) =
+      __$$EditTodoListImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({MyModel item, int index});
+}
+
+/// @nodoc
+class __$$EditTodoListImplCopyWithImpl<$Res>
+    extends _$EditTodoListCopyWithImpl<$Res, _$EditTodoListImpl>
+    implements _$$EditTodoListImplCopyWith<$Res> {
+  __$$EditTodoListImplCopyWithImpl(
+      _$EditTodoListImpl _value, $Res Function(_$EditTodoListImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? item = null,
+    Object? index = null,
+  }) {
+    return _then(_$EditTodoListImpl(
+      item: null == item
+          ? _value.item
+          : item // ignore: cast_nullable_to_non_nullable
+              as MyModel,
+      index: null == index
+          ? _value.index
+          : index // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$EditTodoListImpl implements _EditTodoList {
+  const _$EditTodoListImpl({required this.item, required this.index});
+
+  @override
+  final MyModel item;
+  @override
+  final int index;
+
+  @override
+  String toString() {
+    return 'EditTodoList(item: $item, index: $index)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$EditTodoListImpl &&
+            (identical(other.item, item) || other.item == item) &&
+            (identical(other.index, index) || other.index == index));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, item, index);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$EditTodoListImplCopyWith<_$EditTodoListImpl> get copyWith =>
+      __$$EditTodoListImplCopyWithImpl<_$EditTodoListImpl>(this, _$identity);
+}
+
+abstract class _EditTodoList implements EditTodoList {
+  const factory _EditTodoList(
+      {required final MyModel item,
+      required final int index}) = _$EditTodoListImpl;
+
+  @override
+  MyModel get item;
+  @override
+  int get index;
+  @override
+  @JsonKey(ignore: true)
+  _$$EditTodoListImplCopyWith<_$EditTodoListImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$TodoListState {
   List<MyModel> get myList => throw _privateConstructorUsedError;
 
