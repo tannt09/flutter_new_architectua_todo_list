@@ -43,12 +43,14 @@ class _TodoListPageState extends State<TodoListPage> {
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 16, vertical: 8),
                             child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: <Widget>[
                                 Text(item.name),
-                                const SizedBox(
-                                  width: 16.0,
+                                Text("${item.age}"),
+                                ElevatedButton(
+                                  onPressed: () => {bloc.add(DeleteTodoList(index: index))},
+                                  child: const Icon(Icons.delete),
                                 ),
-                                Text("${item.age}")
                               ],
                             ));
                       }),
@@ -56,9 +58,8 @@ class _TodoListPageState extends State<TodoListPage> {
                 Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: ElevatedButton(
-                    onPressed: () => {
-                      CustomDialog.showAddItemDialog(context, bloc)
-                    },
+                    onPressed: () =>
+                        {CustomDialog.showAddItemDialog(context, bloc)},
                     child: const Text('Add new item'),
                   ),
                 ),

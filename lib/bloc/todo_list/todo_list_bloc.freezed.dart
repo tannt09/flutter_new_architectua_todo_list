@@ -132,6 +132,125 @@ abstract class _AddTodoList implements AddTodoList {
 }
 
 /// @nodoc
+mixin _$DeleteTodoList {
+  int get index => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $DeleteTodoListCopyWith<DeleteTodoList> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $DeleteTodoListCopyWith<$Res> {
+  factory $DeleteTodoListCopyWith(
+          DeleteTodoList value, $Res Function(DeleteTodoList) then) =
+      _$DeleteTodoListCopyWithImpl<$Res, DeleteTodoList>;
+  @useResult
+  $Res call({int index});
+}
+
+/// @nodoc
+class _$DeleteTodoListCopyWithImpl<$Res, $Val extends DeleteTodoList>
+    implements $DeleteTodoListCopyWith<$Res> {
+  _$DeleteTodoListCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? index = null,
+  }) {
+    return _then(_value.copyWith(
+      index: null == index
+          ? _value.index
+          : index // ignore: cast_nullable_to_non_nullable
+              as int,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$DeleteTodoListImplCopyWith<$Res>
+    implements $DeleteTodoListCopyWith<$Res> {
+  factory _$$DeleteTodoListImplCopyWith(_$DeleteTodoListImpl value,
+          $Res Function(_$DeleteTodoListImpl) then) =
+      __$$DeleteTodoListImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({int index});
+}
+
+/// @nodoc
+class __$$DeleteTodoListImplCopyWithImpl<$Res>
+    extends _$DeleteTodoListCopyWithImpl<$Res, _$DeleteTodoListImpl>
+    implements _$$DeleteTodoListImplCopyWith<$Res> {
+  __$$DeleteTodoListImplCopyWithImpl(
+      _$DeleteTodoListImpl _value, $Res Function(_$DeleteTodoListImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? index = null,
+  }) {
+    return _then(_$DeleteTodoListImpl(
+      index: null == index
+          ? _value.index
+          : index // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$DeleteTodoListImpl implements _DeleteTodoList {
+  const _$DeleteTodoListImpl({required this.index});
+
+  @override
+  final int index;
+
+  @override
+  String toString() {
+    return 'DeleteTodoList(index: $index)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DeleteTodoListImpl &&
+            (identical(other.index, index) || other.index == index));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, index);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$DeleteTodoListImplCopyWith<_$DeleteTodoListImpl> get copyWith =>
+      __$$DeleteTodoListImplCopyWithImpl<_$DeleteTodoListImpl>(
+          this, _$identity);
+}
+
+abstract class _DeleteTodoList implements DeleteTodoList {
+  const factory _DeleteTodoList({required final int index}) =
+      _$DeleteTodoListImpl;
+
+  @override
+  int get index;
+  @override
+  @JsonKey(ignore: true)
+  _$$DeleteTodoListImplCopyWith<_$DeleteTodoListImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$TodoListState {
   List<MyModel> get myList => throw _privateConstructorUsedError;
 
