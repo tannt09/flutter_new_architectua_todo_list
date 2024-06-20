@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_new_architectua/test/sex.dart';
 import 'package:get_it/get_it.dart';
 
 import '../../bloc/todo_list/todo_list_bloc.dart';
@@ -20,6 +21,29 @@ class TodoListPage extends StatefulWidget {
 class _TodoListPageState extends State<TodoListPage> {
   late final AppNavigator navigator = GetIt.instance.get<AppNavigator>();
   late final TodoListBloc bloc = GetIt.instance.get<TodoListBloc>();
+
+  @override
+  void initState() {
+    super.initState();
+    // final child = SomeChild();
+    // child.doSomeWork();
+
+    // final dog = Dog();
+    // print(dog.isAlive);
+    // dog.eat();
+    // dog.move();
+    // dog.say();
+    // print(dog);
+
+    // final repository =  FakeWebServer();
+    // final temperature = repository.fetchTemperature('London');
+    // final temperature2 = repository.fetchTemperature2('London');
+    // print(temperature);
+    // print(temperature2);
+    
+    print(0.toSex());
+    print(Sex.other.getRawValue());
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -64,7 +88,8 @@ class _TodoListPageState extends State<TodoListPage> {
                                 ),
                                 ElevatedButton(
                                   onPressed: () => {
-                                    CustomDialog.showAddItemDialog(context, editItemFromList, index)
+                                    CustomDialog.showAddItemDialog(
+                                        context, editItemFromList, index)
                                   },
                                   child: const Icon(Icons.edit),
                                 )
