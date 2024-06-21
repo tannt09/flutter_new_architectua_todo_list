@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_new_architectua/test/sex.dart';
 import 'package:get_it/get_it.dart';
 
 import '../../bloc/todo_list/todo_list_bloc.dart';
 import '../../navigation/app_navigator.dart';
+import '../../test/dog.dart';
 import '../../widget/custom_dialog.dart';
 import '../count/count.dart';
 
@@ -41,8 +41,32 @@ class _TodoListPageState extends State<TodoListPage> {
     // print(temperature);
     // print(temperature2);
     
-    print(0.toSex());
-    print(Sex.other.getRawValue());
+    // print(0.toSex());
+    // print(Sex.other.getRawValue());
+
+    // insertData();
+    // updateData();
+    deleteData();
+  }
+
+  Future<void> insertData() async {
+    var fido = Dog(id: 2, name: "Chihuahua", age: 1);
+    await fido.insertDog(fido);
+  }
+
+  Future<void> updateData() async {
+    var fido = Dog(id: 1, name: "Wold2", age: 3);
+    await fido.updateDog(fido);
+  }
+
+  Future<void> deleteData() async {
+    var fido = Dog(id: 1, name: "Wold2", age: 3);
+    await fido.deleteDog(1);
+  }
+
+  Future<void> printDogList() async {
+    var fido = Dog(id: 0, name: "Husky", age: 2);
+    print(await fido.dogs());
   }
 
   @override
@@ -101,7 +125,8 @@ class _TodoListPageState extends State<TodoListPage> {
                   padding: const EdgeInsets.all(16.0),
                   child: ElevatedButton(
                     onPressed: () => {
-                      CustomDialog.showAddItemDialog(context, addItemToList)
+                      // CustomDialog.showAddItemDialog(context, addItemToList)
+                      printDogList()
                     },
                     child: const Text('Add new item'),
                   ),
