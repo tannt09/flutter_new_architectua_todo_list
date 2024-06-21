@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_new_architectua/test/dog.dart';
 import 'package:get_it/get_it.dart';
 
 import '../../bloc/todo_list/todo_list_bloc.dart';
 import '../../navigation/app_navigator.dart';
-import '../../test/dog.dart';
 import '../../widget/custom_dialog.dart';
 import '../count/count.dart';
 
@@ -44,29 +44,28 @@ class _TodoListPageState extends State<TodoListPage> {
     // print(0.toSex());
     // print(Sex.other.getRawValue());
 
-    // insertData();
+    insertData();
     // updateData();
-    deleteData();
+    // deleteData();
+
   }
 
   Future<void> insertData() async {
-    var fido = Dog(id: 2, name: "Chihuahua", age: 1);
-    await fido.insertDog(fido);
+    var fido = Dog(id: 1, name: "Wold", age: 2);
+    await Dog.insertDog(fido);
   }
 
   Future<void> updateData() async {
-    var fido = Dog(id: 1, name: "Wold2", age: 3);
-    await fido.updateDog(fido);
+    var fido = Dog(id: 1, name: "Chiba", age: 2);
+    await Dog.updateDog(fido);
   }
 
   Future<void> deleteData() async {
-    var fido = Dog(id: 1, name: "Wold2", age: 3);
-    await fido.deleteDog(1);
+    await Dog.deleteDog(1);
   }
 
   Future<void> printDogList() async {
-    var fido = Dog(id: 0, name: "Husky", age: 2);
-    print(await fido.dogs());
+    print(await Dog.dogs());
   }
 
   @override

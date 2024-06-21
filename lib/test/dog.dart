@@ -30,26 +30,26 @@ class Dog {
     return 'Dog{id: $id, name: $name, age: $age}';
   }
 
-  Future<void> insertDog(Dog dog) async {
+  static Future<void> insertDog(Dog dog) async {
     final db = await database;
 
     await db.insert('dogs', dog.toMap(),
         conflictAlgorithm: ConflictAlgorithm.replace);
   }
 
-  Future<void> updateDog(Dog dog) async {
+  static Future<void> updateDog(Dog dog) async {
     final db = await database;
 
     await db.update('dogs', dog.toMap(), where: 'id = ?', whereArgs: [dog.id]);
   }
 
-  Future<void> deleteDog(int id) async {
+  static Future<void> deleteDog(int id) async {
     final db = await database;
 
     await db.delete('dogs', where: 'id = ?', whereArgs: [id]);
   }
 
-  Future<List<Dog>> dogs() async {
+  static Future<List<Dog>> dogs() async {
     // Get a reference to the database.
     final db = await database;
 
