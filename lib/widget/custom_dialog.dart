@@ -7,7 +7,7 @@ import 'package:flutter_new_architectua/model/user.dart';
 
 class CustomDialog {
   static Future<void> showAddItemDialog(
-      BuildContext context, void Function(User, [int?]) handleList, [int? index]) async {
+      BuildContext context, void Function(User, [int?]) handleList, [int? id]) async {
     TextEditingController controllerName = TextEditingController();
     TextEditingController controllerAge = TextEditingController();
 
@@ -37,7 +37,11 @@ class CustomDialog {
             ElevatedButton(
               child: const Text('Save'),
               onPressed: () {
-                handleList(User(name: controllerName.text, age: int.parse(controllerAge.text), id: Random().nextInt(100)), index);
+                if (id != null) {
+                  handleList(User(name: controllerName.text, age: int.parse(controllerAge.text), id: id));
+                } else {
+                  handleList(User(name: controllerName.text, age: int.parse(controllerAge.text), id: Random().nextInt(100)));
+                }
                 Navigator.of(context).pop();
               },
             ),
@@ -52,7 +56,4 @@ class CustomDialog {
       },
     );
   }
-}
-
-class MyModel {
 }

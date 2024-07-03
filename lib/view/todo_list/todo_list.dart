@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_new_architectua/model/user.dart';
@@ -68,14 +66,12 @@ class _TodoListPageState extends State<TodoListPage> {
           ),
           body: BlocBuilder<TodoListBloc, TodoListState>(
               builder: (context, state) {
-            Future<void> addItemToList(User newItem, [int? index]) async {
+            Future<void> addItemToList(User newItem, [int? id]) async {
               bloc.add(AddTodoList(item: newItem));
             }
 
-            Future<void> editItemFromList(User newItem, [int? index]) async {
-              if (index != null) {
-                bloc.add(EditTodoList(item: newItem, index: index));
-              }
+            Future<void> editItemFromList(User newItem, [int? id]) async {
+              bloc.add(EditTodoList(item: newItem));
             }
 
             print('----2222 ${state.userList}');
@@ -97,13 +93,13 @@ class _TodoListPageState extends State<TodoListPage> {
                                 Expanded(child: Text("${item.age}")),
                                 ElevatedButton(
                                   onPressed: () =>
-                                      {bloc.add(DeleteTodoList(index: index))},
+                                      {bloc.add(DeleteTodoList(id: item.id))},
                                   child: const Icon(Icons.delete),
                                 ),
                                 ElevatedButton(
                                   onPressed: () => {
                                     CustomDialog.showAddItemDialog(
-                                        context, editItemFromList, index)
+                                        context, editItemFromList, item.id)
                                   },
                                   child: const Icon(Icons.edit),
                                 )

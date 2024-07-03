@@ -194,7 +194,7 @@ abstract class _AddTodoList implements AddTodoList {
 
 /// @nodoc
 mixin _$DeleteTodoList {
-  int get index => throw _privateConstructorUsedError;
+  int get id => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $DeleteTodoListCopyWith<DeleteTodoList> get copyWith =>
@@ -207,7 +207,7 @@ abstract class $DeleteTodoListCopyWith<$Res> {
           DeleteTodoList value, $Res Function(DeleteTodoList) then) =
       _$DeleteTodoListCopyWithImpl<$Res, DeleteTodoList>;
   @useResult
-  $Res call({int index});
+  $Res call({int id});
 }
 
 /// @nodoc
@@ -223,12 +223,12 @@ class _$DeleteTodoListCopyWithImpl<$Res, $Val extends DeleteTodoList>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? index = null,
+    Object? id = null,
   }) {
     return _then(_value.copyWith(
-      index: null == index
-          ? _value.index
-          : index // ignore: cast_nullable_to_non_nullable
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
               as int,
     ) as $Val);
   }
@@ -242,7 +242,7 @@ abstract class _$$DeleteTodoListImplCopyWith<$Res>
       __$$DeleteTodoListImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int index});
+  $Res call({int id});
 }
 
 /// @nodoc
@@ -256,12 +256,12 @@ class __$$DeleteTodoListImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? index = null,
+    Object? id = null,
   }) {
     return _then(_$DeleteTodoListImpl(
-      index: null == index
-          ? _value.index
-          : index // ignore: cast_nullable_to_non_nullable
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
               as int,
     ));
   }
@@ -270,14 +270,14 @@ class __$$DeleteTodoListImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$DeleteTodoListImpl implements _DeleteTodoList {
-  const _$DeleteTodoListImpl({required this.index});
+  const _$DeleteTodoListImpl({required this.id});
 
   @override
-  final int index;
+  final int id;
 
   @override
   String toString() {
-    return 'DeleteTodoList(index: $index)';
+    return 'DeleteTodoList(id: $id)';
   }
 
   @override
@@ -285,11 +285,11 @@ class _$DeleteTodoListImpl implements _DeleteTodoList {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DeleteTodoListImpl &&
-            (identical(other.index, index) || other.index == index));
+            (identical(other.id, id) || other.id == id));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, index);
+  int get hashCode => Object.hash(runtimeType, id);
 
   @JsonKey(ignore: true)
   @override
@@ -300,11 +300,10 @@ class _$DeleteTodoListImpl implements _DeleteTodoList {
 }
 
 abstract class _DeleteTodoList implements DeleteTodoList {
-  const factory _DeleteTodoList({required final int index}) =
-      _$DeleteTodoListImpl;
+  const factory _DeleteTodoList({required final int id}) = _$DeleteTodoListImpl;
 
   @override
-  int get index;
+  int get id;
   @override
   @JsonKey(ignore: true)
   _$$DeleteTodoListImplCopyWith<_$DeleteTodoListImpl> get copyWith =>
@@ -314,7 +313,6 @@ abstract class _DeleteTodoList implements DeleteTodoList {
 /// @nodoc
 mixin _$EditTodoList {
   User get item => throw _privateConstructorUsedError;
-  int get index => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $EditTodoListCopyWith<EditTodoList> get copyWith =>
@@ -327,7 +325,7 @@ abstract class $EditTodoListCopyWith<$Res> {
           EditTodoList value, $Res Function(EditTodoList) then) =
       _$EditTodoListCopyWithImpl<$Res, EditTodoList>;
   @useResult
-  $Res call({User item, int index});
+  $Res call({User item});
 }
 
 /// @nodoc
@@ -344,17 +342,12 @@ class _$EditTodoListCopyWithImpl<$Res, $Val extends EditTodoList>
   @override
   $Res call({
     Object? item = null,
-    Object? index = null,
   }) {
     return _then(_value.copyWith(
       item: null == item
           ? _value.item
           : item // ignore: cast_nullable_to_non_nullable
               as User,
-      index: null == index
-          ? _value.index
-          : index // ignore: cast_nullable_to_non_nullable
-              as int,
     ) as $Val);
   }
 }
@@ -367,7 +360,7 @@ abstract class _$$EditTodoListImplCopyWith<$Res>
       __$$EditTodoListImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({User item, int index});
+  $Res call({User item});
 }
 
 /// @nodoc
@@ -382,17 +375,12 @@ class __$$EditTodoListImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? item = null,
-    Object? index = null,
   }) {
     return _then(_$EditTodoListImpl(
       item: null == item
           ? _value.item
           : item // ignore: cast_nullable_to_non_nullable
               as User,
-      index: null == index
-          ? _value.index
-          : index // ignore: cast_nullable_to_non_nullable
-              as int,
     ));
   }
 }
@@ -400,16 +388,14 @@ class __$$EditTodoListImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$EditTodoListImpl implements _EditTodoList {
-  const _$EditTodoListImpl({required this.item, required this.index});
+  const _$EditTodoListImpl({required this.item});
 
   @override
   final User item;
-  @override
-  final int index;
 
   @override
   String toString() {
-    return 'EditTodoList(item: $item, index: $index)';
+    return 'EditTodoList(item: $item)';
   }
 
   @override
@@ -417,12 +403,11 @@ class _$EditTodoListImpl implements _EditTodoList {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$EditTodoListImpl &&
-            (identical(other.item, item) || other.item == item) &&
-            (identical(other.index, index) || other.index == index));
+            (identical(other.item, item) || other.item == item));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, item, index);
+  int get hashCode => Object.hash(runtimeType, item);
 
   @JsonKey(ignore: true)
   @override
@@ -432,14 +417,10 @@ class _$EditTodoListImpl implements _EditTodoList {
 }
 
 abstract class _EditTodoList implements EditTodoList {
-  const factory _EditTodoList(
-      {required final User item,
-      required final int index}) = _$EditTodoListImpl;
+  const factory _EditTodoList({required final User item}) = _$EditTodoListImpl;
 
   @override
   User get item;
-  @override
-  int get index;
   @override
   @JsonKey(ignore: true)
   _$$EditTodoListImplCopyWith<_$EditTodoListImpl> get copyWith =>

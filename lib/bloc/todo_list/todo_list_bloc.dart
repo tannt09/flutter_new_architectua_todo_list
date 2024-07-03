@@ -32,7 +32,7 @@ class TodoListBloc extends BaseBloc<TodoListEvent, TodoListState> {
   }
 
   Future<void> _addElement(AddTodoList event, Emitter<TodoListState> emit) async {
-    var fido = User(id: event.item.id, name: event.item.name, age: event.item.age);
+    var fido = event.item;
     await User.insertUser(fido);
 
     add(const UpdateTodoList());
@@ -41,15 +41,22 @@ class TodoListBloc extends BaseBloc<TodoListEvent, TodoListState> {
     // emit(state.copyWith(userList: newList));
   }
 
-  void _deleteElement(DeleteTodoList event, Emitter<TodoListState> emit) {
-    final newList = List<User>.from(state.userList);
-    newList.removeAt(event.index);
-    emit(state.copyWith(userList: newList));
+  Future<void> _deleteElement(DeleteTodoList event, Emitter<TodoListState> emit) async {
+    await User.deleteUser(event.id);
+
+    add(const UpdateTodoList());
+    // final newList = List<User>.from(state.userList);
+    // newList.removeAt(event.index);
+    // emit(state.copyWith(userList: newList));
   }
 
-  void _editElement(EditTodoList event, Emitter<TodoListState> emit) {
-    final newList = List<User>.from(state.userList);
-    newList[event.index] = event.item;
-    emit(state.copyWith(userList: newList));
+  Future<void> _editElement(EditTodoList event, Emitter<TodoListState> emit) async {
+    var fido = event.item;
+    await User.editUser(fido);
+
+    add(const UpdateTodoList());
+    // final newList = List<User>.from(state.userList);
+    // newList[event.index] = event.item;
+    // emit(state.copyWith(userList: newList));
   }
 }

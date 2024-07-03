@@ -16,10 +16,10 @@ class AddTodoList extends TodoListEvent with _$AddTodoList {
 
 @freezed
 class DeleteTodoList extends TodoListEvent with _$DeleteTodoList {
-  const factory DeleteTodoList({required int index}) = _DeleteTodoList;
+  const factory DeleteTodoList({required int id}) = _DeleteTodoList;
 }
 
 @freezed
 class EditTodoList extends TodoListEvent with _$EditTodoList {
-  const factory EditTodoList({required User item, required int index}) = _EditTodoList;
+  const factory EditTodoList({required User item}) = _EditTodoList;
 }

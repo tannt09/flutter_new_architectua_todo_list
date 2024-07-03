@@ -22,10 +22,22 @@ class User {
   }
 
   static Future<void> insertUser(User user) async {
-    final db = await database;
+    final db = database;
 
     await db.insert('users', user.toMap(),
         conflictAlgorithm: ConflictAlgorithm.replace);
+  }
+
+  static Future<void> deleteUser(int id) async {
+    final db = database;
+
+    await db.delete('users', where: 'id = ?', whereArgs: [id]);
+  }
+
+  static Future<void> editUser(User user) async {
+    final db = database;
+
+    await db.update('users', user.toMap(), where: 'id = ?', whereArgs: [user.id]);
   }
 
   static Future<List<User>> users() async {
