@@ -15,8 +15,69 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
+mixin _$UpdateTodoList {}
+
+/// @nodoc
+abstract class $UpdateTodoListCopyWith<$Res> {
+  factory $UpdateTodoListCopyWith(
+          UpdateTodoList value, $Res Function(UpdateTodoList) then) =
+      _$UpdateTodoListCopyWithImpl<$Res, UpdateTodoList>;
+}
+
+/// @nodoc
+class _$UpdateTodoListCopyWithImpl<$Res, $Val extends UpdateTodoList>
+    implements $UpdateTodoListCopyWith<$Res> {
+  _$UpdateTodoListCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+}
+
+/// @nodoc
+abstract class _$$UpdateTodoListImplCopyWith<$Res> {
+  factory _$$UpdateTodoListImplCopyWith(_$UpdateTodoListImpl value,
+          $Res Function(_$UpdateTodoListImpl) then) =
+      __$$UpdateTodoListImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$UpdateTodoListImplCopyWithImpl<$Res>
+    extends _$UpdateTodoListCopyWithImpl<$Res, _$UpdateTodoListImpl>
+    implements _$$UpdateTodoListImplCopyWith<$Res> {
+  __$$UpdateTodoListImplCopyWithImpl(
+      _$UpdateTodoListImpl _value, $Res Function(_$UpdateTodoListImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$UpdateTodoListImpl implements _UpdateTodoList {
+  const _$UpdateTodoListImpl();
+
+  @override
+  String toString() {
+    return 'UpdateTodoList()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$UpdateTodoListImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+}
+
+abstract class _UpdateTodoList implements UpdateTodoList {
+  const factory _UpdateTodoList() = _$UpdateTodoListImpl;
+}
+
+/// @nodoc
 mixin _$AddTodoList {
-  MyModel get item => throw _privateConstructorUsedError;
+  User get item => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AddTodoListCopyWith<AddTodoList> get copyWith =>
@@ -29,7 +90,7 @@ abstract class $AddTodoListCopyWith<$Res> {
           AddTodoList value, $Res Function(AddTodoList) then) =
       _$AddTodoListCopyWithImpl<$Res, AddTodoList>;
   @useResult
-  $Res call({MyModel item});
+  $Res call({User item});
 }
 
 /// @nodoc
@@ -51,7 +112,7 @@ class _$AddTodoListCopyWithImpl<$Res, $Val extends AddTodoList>
       item: null == item
           ? _value.item
           : item // ignore: cast_nullable_to_non_nullable
-              as MyModel,
+              as User,
     ) as $Val);
   }
 }
@@ -64,7 +125,7 @@ abstract class _$$AddTodoListImplCopyWith<$Res>
       __$$AddTodoListImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({MyModel item});
+  $Res call({User item});
 }
 
 /// @nodoc
@@ -84,7 +145,7 @@ class __$$AddTodoListImplCopyWithImpl<$Res>
       item: null == item
           ? _value.item
           : item // ignore: cast_nullable_to_non_nullable
-              as MyModel,
+              as User,
     ));
   }
 }
@@ -95,7 +156,7 @@ class _$AddTodoListImpl implements _AddTodoList {
   const _$AddTodoListImpl({required this.item});
 
   @override
-  final MyModel item;
+  final User item;
 
   @override
   String toString() {
@@ -121,10 +182,10 @@ class _$AddTodoListImpl implements _AddTodoList {
 }
 
 abstract class _AddTodoList implements AddTodoList {
-  const factory _AddTodoList({required final MyModel item}) = _$AddTodoListImpl;
+  const factory _AddTodoList({required final User item}) = _$AddTodoListImpl;
 
   @override
-  MyModel get item;
+  User get item;
   @override
   @JsonKey(ignore: true)
   _$$AddTodoListImplCopyWith<_$AddTodoListImpl> get copyWith =>
@@ -252,7 +313,7 @@ abstract class _DeleteTodoList implements DeleteTodoList {
 
 /// @nodoc
 mixin _$EditTodoList {
-  MyModel get item => throw _privateConstructorUsedError;
+  User get item => throw _privateConstructorUsedError;
   int get index => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -266,7 +327,7 @@ abstract class $EditTodoListCopyWith<$Res> {
           EditTodoList value, $Res Function(EditTodoList) then) =
       _$EditTodoListCopyWithImpl<$Res, EditTodoList>;
   @useResult
-  $Res call({MyModel item, int index});
+  $Res call({User item, int index});
 }
 
 /// @nodoc
@@ -289,7 +350,7 @@ class _$EditTodoListCopyWithImpl<$Res, $Val extends EditTodoList>
       item: null == item
           ? _value.item
           : item // ignore: cast_nullable_to_non_nullable
-              as MyModel,
+              as User,
       index: null == index
           ? _value.index
           : index // ignore: cast_nullable_to_non_nullable
@@ -306,7 +367,7 @@ abstract class _$$EditTodoListImplCopyWith<$Res>
       __$$EditTodoListImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({MyModel item, int index});
+  $Res call({User item, int index});
 }
 
 /// @nodoc
@@ -327,7 +388,7 @@ class __$$EditTodoListImplCopyWithImpl<$Res>
       item: null == item
           ? _value.item
           : item // ignore: cast_nullable_to_non_nullable
-              as MyModel,
+              as User,
       index: null == index
           ? _value.index
           : index // ignore: cast_nullable_to_non_nullable
@@ -342,7 +403,7 @@ class _$EditTodoListImpl implements _EditTodoList {
   const _$EditTodoListImpl({required this.item, required this.index});
 
   @override
-  final MyModel item;
+  final User item;
   @override
   final int index;
 
@@ -372,11 +433,11 @@ class _$EditTodoListImpl implements _EditTodoList {
 
 abstract class _EditTodoList implements EditTodoList {
   const factory _EditTodoList(
-      {required final MyModel item,
+      {required final User item,
       required final int index}) = _$EditTodoListImpl;
 
   @override
-  MyModel get item;
+  User get item;
   @override
   int get index;
   @override
@@ -387,7 +448,7 @@ abstract class _EditTodoList implements EditTodoList {
 
 /// @nodoc
 mixin _$TodoListState {
-  List<MyModel> get myList => throw _privateConstructorUsedError;
+  List<User> get userList => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $TodoListStateCopyWith<TodoListState> get copyWith =>
@@ -400,7 +461,7 @@ abstract class $TodoListStateCopyWith<$Res> {
           TodoListState value, $Res Function(TodoListState) then) =
       _$TodoListStateCopyWithImpl<$Res, TodoListState>;
   @useResult
-  $Res call({List<MyModel> myList});
+  $Res call({List<User> userList});
 }
 
 /// @nodoc
@@ -416,13 +477,13 @@ class _$TodoListStateCopyWithImpl<$Res, $Val extends TodoListState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? myList = null,
+    Object? userList = null,
   }) {
     return _then(_value.copyWith(
-      myList: null == myList
-          ? _value.myList
-          : myList // ignore: cast_nullable_to_non_nullable
-              as List<MyModel>,
+      userList: null == userList
+          ? _value.userList
+          : userList // ignore: cast_nullable_to_non_nullable
+              as List<User>,
     ) as $Val);
   }
 }
@@ -435,7 +496,7 @@ abstract class _$$TodoListStateImplCopyWith<$Res>
       __$$TodoListStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<MyModel> myList});
+  $Res call({List<User> userList});
 }
 
 /// @nodoc
@@ -449,13 +510,13 @@ class __$$TodoListStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? myList = null,
+    Object? userList = null,
   }) {
     return _then(_$TodoListStateImpl(
-      myList: null == myList
-          ? _value._myList
-          : myList // ignore: cast_nullable_to_non_nullable
-              as List<MyModel>,
+      userList: null == userList
+          ? _value._userList
+          : userList // ignore: cast_nullable_to_non_nullable
+              as List<User>,
     ));
   }
 }
@@ -463,21 +524,21 @@ class __$$TodoListStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$TodoListStateImpl implements _TodoListState {
-  const _$TodoListStateImpl({final List<MyModel> myList = const <MyModel>[]})
-      : _myList = myList;
+  const _$TodoListStateImpl({final List<User> userList = const <User>[]})
+      : _userList = userList;
 
-  final List<MyModel> _myList;
+  final List<User> _userList;
   @override
   @JsonKey()
-  List<MyModel> get myList {
-    if (_myList is EqualUnmodifiableListView) return _myList;
+  List<User> get userList {
+    if (_userList is EqualUnmodifiableListView) return _userList;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_myList);
+    return EqualUnmodifiableListView(_userList);
   }
 
   @override
   String toString() {
-    return 'TodoListState(myList: $myList)';
+    return 'TodoListState(userList: $userList)';
   }
 
   @override
@@ -485,12 +546,12 @@ class _$TodoListStateImpl implements _TodoListState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$TodoListStateImpl &&
-            const DeepCollectionEquality().equals(other._myList, _myList));
+            const DeepCollectionEquality().equals(other._userList, _userList));
   }
 
   @override
   int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_myList));
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_userList));
 
   @JsonKey(ignore: true)
   @override
@@ -500,11 +561,11 @@ class _$TodoListStateImpl implements _TodoListState {
 }
 
 abstract class _TodoListState implements TodoListState {
-  const factory _TodoListState({final List<MyModel> myList}) =
+  const factory _TodoListState({final List<User> userList}) =
       _$TodoListStateImpl;
 
   @override
-  List<MyModel> get myList;
+  List<User> get userList;
   @override
   @JsonKey(ignore: true)
   _$$TodoListStateImplCopyWith<_$TodoListStateImpl> get copyWith =>

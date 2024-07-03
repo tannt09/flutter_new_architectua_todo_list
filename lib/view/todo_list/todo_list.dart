@@ -1,5 +1,8 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_new_architectua/model/user.dart';
 import 'package:flutter_new_architectua/test/dog.dart';
 import 'package:get_it/get_it.dart';
 
@@ -40,32 +43,18 @@ class _TodoListPageState extends State<TodoListPage> {
     // final temperature2 = repository.fetchTemperature2('London');
     // print(temperature);
     // print(temperature2);
-    
+
     // print(0.toSex());
     // print(Sex.other.getRawValue());
-
-    insertData();
-    // updateData();
-    // deleteData();
-
   }
 
-  Future<void> insertData() async {
-    var fido = Dog(id: 1, name: "Wold", age: 2);
-    await Dog.insertDog(fido);
-  }
-
-  Future<void> updateData() async {
-    var fido = Dog(id: 1, name: "Chiba", age: 2);
-    await Dog.updateDog(fido);
-  }
+  // Future<void> updateData() async {
+  //   var fido = Dog(id: 1, name: "Chiba", age: 2);
+  //   await Dog.updateDog(fido);
+  // }
 
   Future<void> deleteData() async {
     await Dog.deleteDog(1);
-  }
-
-  Future<void> printDogList() async {
-    print(await Dog.dogs());
   }
 
   @override
@@ -79,31 +68,33 @@ class _TodoListPageState extends State<TodoListPage> {
           ),
           body: BlocBuilder<TodoListBloc, TodoListState>(
               builder: (context, state) {
-            Future<void> addItemToList(MyModel newItem, [int? index]) async {
+            Future<void> addItemToList(User newItem, [int? index]) async {
               bloc.add(AddTodoList(item: newItem));
             }
 
-            Future<void> editItemFromList(MyModel newItem, [int? index]) async {
+            Future<void> editItemFromList(User newItem, [int? index]) async {
               if (index != null) {
                 bloc.add(EditTodoList(item: newItem, index: index));
               }
             }
 
+            print('----2222 ${state.userList}');
+
             return Column(
               children: [
                 Expanded(
                   child: ListView.builder(
-                      itemCount: state.myList.length,
+                      itemCount: state.userList.length,
                       itemBuilder: (context, index) {
-                        final item = state.myList[index];
+                        final item = state.userList[index];
                         return Padding(
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 16, vertical: 8),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: <Widget>[
-                                Text(item.name),
-                                Text("${item.age}"),
+                                Expanded(child: Text(item.name)),
+                                Expanded(child: Text("${item.age}")),
                                 ElevatedButton(
                                   onPressed: () =>
                                       {bloc.add(DeleteTodoList(index: index))},
@@ -124,8 +115,7 @@ class _TodoListPageState extends State<TodoListPage> {
                   padding: const EdgeInsets.all(16.0),
                   child: ElevatedButton(
                     onPressed: () => {
-                      // CustomDialog.showAddItemDialog(context, addItemToList)
-                      printDogList()
+                      CustomDialog.showAddItemDialog(context, addItemToList)
                     },
                     child: const Text('Add new item'),
                   ),

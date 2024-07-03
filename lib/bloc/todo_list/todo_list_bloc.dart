@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_new_architectua/base/bloc/base_bloc_event.dart';
+import 'package:flutter_new_architectua/model/user.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
@@ -16,22 +17,39 @@ class TodoListBloc extends BaseBloc<TodoListEvent, TodoListState> {
     on<AddTodoList>(_addElement);
     on<DeleteTodoList>(_deleteElement);
     on<EditTodoList>(_editElement);
+    on<UpdateTodoList>(_updateTodoList);
+
+    _initializeState();
   }
 
-  void _addElement(AddTodoList event, Emitter<TodoListState> emit) {
-    final newList = List<MyModel>.from(state.myList)..add(MyModel(name: event.item.name, age: event.item.age));
-    emit(state.copyWith(myList: newList));
+  Future<void> _initializeState() async {
+    add(const UpdateTodoList());
+  }
+
+  Future<void> _updateTodoList(UpdateTodoList event, Emitter<TodoListState> emit) async {
+    final List<User> newList = await User.users();
+    emit(state.copyWith(userList: newList));
+  }
+
+  Future<void> _addElement(AddTodoList event, Emitter<TodoListState> emit) async {
+    var fido = User(id: event.item.id, name: event.item.name, age: event.item.age);
+    await User.insertUser(fido);
+
+    add(const UpdateTodoList());
+    // final newList = List<User>.from(state.userList)
+    // ..add(User(name: event.item.name, age: event.item.age, id: event.item.id));
+    // emit(state.copyWith(userList: newList));
   }
 
   void _deleteElement(DeleteTodoList event, Emitter<TodoListState> emit) {
-    final newList = List<MyModel>.from(state.myList);
+    final newList = List<User>.from(state.userList);
     newList.removeAt(event.index);
-    emit(state.copyWith(myList: newList));
+    emit(state.copyWith(userList: newList));
   }
 
   void _editElement(EditTodoList event, Emitter<TodoListState> emit) {
-    final newList = List<MyModel>.from(state.myList);
+    final newList = List<User>.from(state.userList);
     newList[event.index] = event.item;
-    emit(state.copyWith(myList: newList));
+    emit(state.copyWith(userList: newList));
   }
 }

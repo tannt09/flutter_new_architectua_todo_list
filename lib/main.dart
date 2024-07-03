@@ -9,10 +9,10 @@ late Database database;
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   database = await openDatabase(
-    join(await getDatabasesPath(), 'doggie_database.db'),
+    join(await getDatabasesPath(), 'users_database.db'),
     onCreate: (db, version) {
       return db.execute(
-        'CREATE TABLE dogs(id INTEGER PRIMARY KEY, name TEXT, age INTEGER)',
+        'CREATE TABLE users(id INTEGER PRIMARY KEY, name TEXT, age INTEGER)',
       );
     },
     version: 1

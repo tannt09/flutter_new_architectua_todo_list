@@ -5,8 +5,13 @@ abstract class TodoListEvent extends BaseBlocEvent {
 }
 
 @freezed
+class UpdateTodoList extends TodoListEvent with _$UpdateTodoList {
+  const factory UpdateTodoList() = _UpdateTodoList;
+}
+
+@freezed
 class AddTodoList extends TodoListEvent with _$AddTodoList {
-  const factory AddTodoList({required MyModel item}) = _AddTodoList;
+  const factory AddTodoList({required User item}) = _AddTodoList;
 }
 
 @freezed
@@ -16,5 +21,5 @@ class DeleteTodoList extends TodoListEvent with _$DeleteTodoList {
 
 @freezed
 class EditTodoList extends TodoListEvent with _$EditTodoList {
-  const factory EditTodoList({required MyModel item, required int index}) = _EditTodoList;
+  const factory EditTodoList({required User item, required int index}) = _EditTodoList;
 }

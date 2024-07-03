@@ -1,11 +1,13 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_new_architectua/model/user.dart';
 
-import '../bloc/todo_list/todo_list_bloc.dart';
 
 class CustomDialog {
   static Future<void> showAddItemDialog(
-      BuildContext context, void Function(MyModel, [int?]) handleList, [int? index]) async {
+      BuildContext context, void Function(User, [int?]) handleList, [int? index]) async {
     TextEditingController controllerName = TextEditingController();
     TextEditingController controllerAge = TextEditingController();
 
@@ -35,7 +37,7 @@ class CustomDialog {
             ElevatedButton(
               child: const Text('Save'),
               onPressed: () {
-                handleList(MyModel(name: controllerName.text, age: int.parse(controllerAge.text)), index);
+                handleList(User(name: controllerName.text, age: int.parse(controllerAge.text), id: Random().nextInt(100)), index);
                 Navigator.of(context).pop();
               },
             ),
@@ -50,4 +52,7 @@ class CustomDialog {
       },
     );
   }
+}
+
+class MyModel {
 }
