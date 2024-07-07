@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_new_architectua/navigation/setup_route.dart';
 import 'package:flutter_new_architectua/store/config_store.dart';
 import 'package:path/path.dart';
+import 'package:get_it/get_it.dart';
 import 'package:sqflite/sqflite.dart';
 
 late Database database;
@@ -18,13 +19,13 @@ Future<void> main() async {
     version: 1
   );
   configureInjection();
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
-final _router = SetupRoute();
-
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  MyApp({super.key});
+
+  final _router = GetIt.instance.get<AppRouter>();
 
   // This widget is the root of your application.
   @override
