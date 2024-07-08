@@ -1,24 +1,18 @@
-import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import 'package:auto_route/auto_route.dart';
+import 'package:flutter_new_architectua/navigation/app_router.dart';
 import 'package:injectable/injectable.dart';
 
-@injectable
+@LazySingleton()
 class AppNavigator {
-  static final GlobalKey<NavigatorState> navigatorKey =
-      GlobalKey<NavigatorState>();
+  const AppNavigator(this._appRouter);
 
-  const AppNavigator();
+  final AppRouter _appRouter;
 
-  Future<T?> pushNamed<T extends Object?>(
-    String name, {
-    Map<String, String> pathParameters = const <String, String>{},
-    Map<String, String> queryParameters = const <String, String>{},
-    T? extra,
-  }) =>
-      GoRouter.of(navigatorKey.currentContext!).pushNamed<T>(
-        name,
-        pathParameters: pathParameters,
-        queryParameters: queryParameters,
-        extra: extra,
-      );
+  Future<T?>? push<T extends Object?>(PageRouteInfo route) => _appRouter.push<T>(route);
+
+  Future<T?>? replace<T extends Object?>(PageRouteInfo route) => _appRouter.replace<T>(route);
+
+  /// Pop the top page off the Navigator's page stack by calling
+  /// [Navigator.pop].
+  void pop<T extends Object?>([T? result]) => _appRouter.maybePop(result);
 }

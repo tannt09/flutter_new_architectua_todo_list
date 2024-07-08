@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_new_architectua/navigation/setup_route.dart';
+import 'package:flutter_new_architectua/navigation/app_router.dart';
 import 'package:flutter_new_architectua/store/config_store.dart';
 import 'package:path/path.dart';
 import 'package:get_it/get_it.dart';
@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      routerConfig: _router.appRouter,
+      routerConfig: _router.config(),
       title: 'Flutter Demo',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),

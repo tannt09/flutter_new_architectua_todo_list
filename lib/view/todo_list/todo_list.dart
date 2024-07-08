@@ -1,19 +1,19 @@
+import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_new_architectua/model/user.dart';
+import 'package:flutter_new_architectua/navigation/app_router.gr.dart';
 import 'package:flutter_new_architectua/test/dog.dart';
 import 'package:get_it/get_it.dart';
 
 import '../../bloc/todo_list/todo_list_bloc.dart';
 import '../../navigation/app_navigator.dart';
 import '../../widget/custom_dialog.dart';
-import '../count/count.dart';
 
+@RoutePage()
 class TodoListPage extends StatefulWidget {
-  static const String route = 'TodoListPage';
-
   final String title;
-  const TodoListPage({super.key, required this.title});
+  const TodoListPage({super.key, this.title = "TodoList Screen"});
 
   @override
   State<TodoListPage> createState() => _TodoListPageState();
@@ -74,8 +74,6 @@ class _TodoListPageState extends State<TodoListPage> {
               bloc.add(EditTodoList(item: newItem));
             }
 
-            print('----2222 ${state.userList}');
-
             return Column(
               children: [
                 Expanded(
@@ -120,7 +118,8 @@ class _TodoListPageState extends State<TodoListPage> {
             );
           }),
           floatingActionButton: FloatingActionButton(
-            onPressed: () => navigator.pushNamed(CountPage.route),
+            onPressed: () =>
+                {navigator.push(CountRoute(title: "Count Screen"))},
             tooltip: 'Goto Count',
             child: const Icon(Icons.adobe),
           ),
