@@ -51,9 +51,9 @@ class _TodoListPageState extends State<TodoListPage> {
   //   await Dog.updateDog(fido);
   // }
 
-  Future<void> deleteData() async {
-    await Dog.deleteDog(1);
-  }
+  // Future<void> deleteData() async {
+  //   await Dog.deleteDog(1);
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -112,6 +112,14 @@ class _TodoListPageState extends State<TodoListPage> {
                       CustomDialog.showAddItemDialog(context, addItemToList)
                     },
                     child: const Text('Add new item'),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: ElevatedButton(
+                    onPressed: () =>
+                        {navigator.push(AdsRoute(title: "Ads Screen"))},
+                    child: const Text('Goto Ads'),
                   ),
                 ),
               ],

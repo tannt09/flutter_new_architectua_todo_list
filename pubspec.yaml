@@ -44,6 +44,7 @@ dependencies:
   path: ^1.8.3
   flutter_map: ^6.1.0
   auto_route: ^8.1.1
+  google_mobile_ads: ^5.1.0
 
 dev_dependencies:
   flutter_test:

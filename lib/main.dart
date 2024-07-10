@@ -4,11 +4,13 @@ import 'package:flutter_new_architectua/store/config_store.dart';
 import 'package:path/path.dart';
 import 'package:get_it/get_it.dart';
 import 'package:sqflite/sqflite.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 late Database database;
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  MobileAds.instance.initialize();
   database = await openDatabase(
     join(await getDatabasesPath(), 'users_database.db'),
     onCreate: (db, version) {
