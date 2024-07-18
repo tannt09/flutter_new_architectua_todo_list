@@ -45,7 +45,7 @@ dependencies:
   flutter_map: ^6.1.0
   auto_route: ^8.1.1
   google_mobile_ads: ^5.1.0
-  device_info_plus: ^10.1.0
+  android_id: ^0.4.0
 
 dev_dependencies:
   flutter_test:

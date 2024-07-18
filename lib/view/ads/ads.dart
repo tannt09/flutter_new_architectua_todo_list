@@ -1,10 +1,11 @@
 import 'dart:developer';
 import 'dart:io';
 
+import 'package:android_id/android_id.dart';
 import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
-import 'package:device_info_plus/device_info_plus.dart';
 
 const int maxFailedLoadAttempts = 3;
 
@@ -19,26 +20,25 @@ class AdsPage extends StatefulWidget {
 }
 
 class _AdsPageState extends State<AdsPage> {
+  static const _androidIdPlugin = AndroidId();
   Future<String?> _getDeviceId() async {
-    String? deviceId = '';
-    var deviceInfo = DeviceInfoPlugin();
-    if (Platform.isIOS) {
-      var iosDeviceInfo = await deviceInfo.iosInfo;
-      deviceId = iosDeviceInfo.identifierForVendor;
-    } else if (Platform.isAndroid) {
-      var androidDeviceInfo = await deviceInfo.androidInfo;
-      deviceId = androidDeviceInfo.id;
+    String androidId;
+
+    try {
+      androidId = await _androidIdPlugin.getId() ?? 'Unknown ID';
+    } on PlatformException {
+      androidId = 'Failed to get Android ID.';
     }
 
-    return deviceId;
+    return androidId;
   }
 
   void _setupAds() async {
     final String? deviceId = await _getDeviceId();
 
+    print('----1111 $deviceId');
     MobileAds.instance.updateRequestConfiguration(
-        // RequestConfiguration(testDeviceIds: [deviceId ?? '']));
-        RequestConfiguration(testDeviceIds: ["97151FFBA0004W"]));
+        RequestConfiguration(testDeviceIds: [deviceId ?? '']));
     _createInterstitialAd();
     _createRewardedAd();
     _createRewardedInterstitialAd();
