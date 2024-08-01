@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_new_architectua/model/user.dart';
 import 'package:flutter_new_architectua/navigation/app_router.gr.dart';
-import 'package:flutter_new_architectua/test/dog.dart';
 import 'package:get_it/get_it.dart';
 
 import '../../bloc/todo_list/todo_list_bloc.dart';
