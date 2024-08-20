@@ -11,7 +11,8 @@ class AppRouter extends $AppRouter {
 
   @override
   List<AutoRoute> get routes => [
-        AutoRoute(page: TodoListRoute.page, initial: true),
+        AutoRoute(page: Products.page, initial: true),
+        AutoRoute(page: TodoListRoute.page),
         AutoRoute(page: TodoListGraphQLRoute.page),
         AutoRoute(page: CountRoute.page),
         AutoRoute(page: AdsRoute.page),

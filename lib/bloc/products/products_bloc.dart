@@ -18,7 +18,7 @@ class ProductsBloc extends BaseBloc<ProductsEvent, ProductsState> {
 
   Future<void> _getAllProducts(
       GetAllProducts event, Emitter<ProductsState> emit) async {
-    final List<dynamic> newProducts = await fetchAllUser();
+    final List<dynamic> newProducts = await fetchAllProduct();
     emit(state.copyWith(products: newProducts));
   }
 }
