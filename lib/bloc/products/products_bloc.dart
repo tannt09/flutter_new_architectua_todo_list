@@ -14,6 +14,12 @@ part 'products_state.dart';
 class ProductsBloc extends BaseBloc<ProductsEvent, ProductsState> {
   ProductsBloc() : super(const ProductsState()) {
     on<GetAllProducts>(_getAllProducts);
+
+    _initializeState();
+  }
+
+  Future<void> _initializeState() async {
+    add(const GetAllProducts());
   }
 
   Future<void> _getAllProducts(
