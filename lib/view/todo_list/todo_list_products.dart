@@ -28,7 +28,34 @@ class _ProductsState extends State<Products> {
     return BlocProvider(
       create: (_) => bloc,
       child: Scaffold(
-        appBar: AppBar(),
+        appBar: AppBar(
+          backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+          title: Text(widget.title),
+        ),
+        body: BlocBuilder<ProductsBloc, ProductsState>(
+          builder: (context, state) {
+            if(!state.products.isNotEmpty) {
+              return const Text("Is empty");
+            }
+            return Column(
+              children: [
+                Expanded(child: ListView.builder(
+                  itemCount: state.products.length,
+                  itemBuilder: (context, index) {
+                    final item = state.products[index];
+                    return Padding(
+                      padding:
+                          const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                      child: Row(
+                        children: <Widget>[Expanded(child: Text(item.name))],
+                      ),
+                    );
+                  },
+                )),
+              ],
+            );
+          },
+        ),
       ),
     );
   }

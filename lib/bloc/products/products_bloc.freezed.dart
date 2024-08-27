@@ -77,7 +77,7 @@ abstract class _GetAllProducts implements GetAllProducts {
 
 /// @nodoc
 mixin _$ProductsState {
-  List<dynamic> get products => throw _privateConstructorUsedError;
+  List<Product> get products => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ProductsStateCopyWith<ProductsState> get copyWith =>
@@ -90,7 +90,7 @@ abstract class $ProductsStateCopyWith<$Res> {
           ProductsState value, $Res Function(ProductsState) then) =
       _$ProductsStateCopyWithImpl<$Res, ProductsState>;
   @useResult
-  $Res call({List<dynamic> products});
+  $Res call({List<Product> products});
 }
 
 /// @nodoc
@@ -112,7 +112,7 @@ class _$ProductsStateCopyWithImpl<$Res, $Val extends ProductsState>
       products: null == products
           ? _value.products
           : products // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
+              as List<Product>,
     ) as $Val);
   }
 }
@@ -125,7 +125,7 @@ abstract class _$$ProductsStateImplCopyWith<$Res>
       __$$ProductsStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<dynamic> products});
+  $Res call({List<Product> products});
 }
 
 /// @nodoc
@@ -145,7 +145,7 @@ class __$$ProductsStateImplCopyWithImpl<$Res>
       products: null == products
           ? _value._products
           : products // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
+              as List<Product>,
     ));
   }
 }
@@ -153,13 +153,13 @@ class __$$ProductsStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$ProductsStateImpl implements _ProductsState {
-  const _$ProductsStateImpl({final List<dynamic> products = const []})
+  const _$ProductsStateImpl({final List<Product> products = const []})
       : _products = products;
 
-  final List<dynamic> _products;
+  final List<Product> _products;
   @override
   @JsonKey()
-  List<dynamic> get products {
+  List<Product> get products {
     if (_products is EqualUnmodifiableListView) return _products;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_products);
@@ -190,11 +190,11 @@ class _$ProductsStateImpl implements _ProductsState {
 }
 
 abstract class _ProductsState implements ProductsState {
-  const factory _ProductsState({final List<dynamic> products}) =
+  const factory _ProductsState({final List<Product> products}) =
       _$ProductsStateImpl;
 
   @override
-  List<dynamic> get products;
+  List<Product> get products;
   @override
   @JsonKey(ignore: true)
   _$$ProductsStateImplCopyWith<_$ProductsStateImpl> get copyWith =>
