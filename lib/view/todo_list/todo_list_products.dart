@@ -47,7 +47,7 @@ class _ProductsState extends State<Products> {
                       padding:
                           const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                       child: Row(
-                        children: <Widget>[Expanded(child: Text(item.name))],
+                        children: <Widget>[Expanded(child: Text(item.title))],
                       ),
                     );
                   },
