@@ -34,24 +34,77 @@ class _ProductsState extends State<Products> {
         ),
         body: BlocBuilder<ProductsBloc, ProductsState>(
           builder: (context, state) {
-            if(!state.products.isNotEmpty) {
+            if (!state.products.isNotEmpty) {
               return const Text("Is empty");
             }
             return Column(
               children: [
-                Expanded(child: ListView.builder(
+                Expanded(
+                    child: ListView.builder(
                   itemCount: state.products.length,
                   itemBuilder: (context, index) {
                     final item = state.products[index];
                     return Padding(
-                      padding:
-                          const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                      child: Row(
-                        children: <Widget>[Expanded(child: Text(item.title))],
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 16, vertical: 8),
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 10, vertical: 10),
+                        decoration: BoxDecoration(
+                            border: Border.all(color: Colors.black, width: 2),
+                            borderRadius: BorderRadius.circular(10)),
+                        child: Row(
+                          children: <Widget>[
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(item.title),
+                                  Row(
+                                    children: [
+                                      Text(
+                                        "${item.discounted_price}",
+                                        style: const TextStyle(
+                                            color: Colors.grey,
+                                            decoration:
+                                                TextDecoration.lineThrough),
+                                      ),
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(left: 10),
+                                        child: Text(
+                                          "${item.discount_percentage}",
+                                          style: const TextStyle(
+                                              color: Colors.grey,
+                                              decoration:
+                                                  TextDecoration.lineThrough),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  Text("${item.original_price}"),
+                                ],
+                              ),
+                            ),
+                            ElevatedButton(
+                                onPressed: () => {},
+                                child: const Icon(Icons.delete)),
+                            ElevatedButton(
+                                onPressed: () => {},
+                                child: const Icon(Icons.edit)),
+                          ],
+                        ),
                       ),
                     );
                   },
                 )),
+                Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: ElevatedButton(
+                    onPressed: () => {},
+                    child: const Text("Add new product"),
+                  ),
+                ),
               ],
             );
           },
