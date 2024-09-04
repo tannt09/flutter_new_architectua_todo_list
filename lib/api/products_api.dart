@@ -27,10 +27,22 @@ Future<String> fetchEditProduct(String id) async {
       },
       body: jsonEncode(updatedData));
 
-  print('Code ${response.statusCode}');
+  print('Status code update ${response.statusCode}');
   if (response.statusCode == 200) {
     return 'Update Success';
   } else {
-    return 'Update Failủe';
+    return 'Update Failure';
+  }
+}
+
+Future<String> fetchDeleteProduct(String id) async {
+  final url = Uri.parse('http://192.168.1.12:3000/products/delete?id=$id');
+  final response = await http.delete(url);
+
+  print('Status code delete ${response.statusCode}');
+  if (response.statusCode == 200) {
+    return 'Delete Success';
+  } else {
+    return 'Delete Failure';
   }
 }
