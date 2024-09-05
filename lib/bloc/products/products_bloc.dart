@@ -15,6 +15,7 @@ part 'products_state.dart';
 class ProductsBloc extends BaseBloc<ProductsEvent, ProductsState> {
   ProductsBloc() : super(const ProductsState()) {
     on<GetAllProducts>(_getAllProducts);
+    on<EditProduct>(_editProduct);
 
     _initializeState();
   }
@@ -27,5 +28,11 @@ class ProductsBloc extends BaseBloc<ProductsEvent, ProductsState> {
       GetAllProducts event, Emitter<ProductsState> emit) async {
     final List<Product> newProducts = await fetchAllProduct();
     emit(state.copyWith(products: newProducts));
+  }
+
+  Future<void> _editProduct(
+      EditProduct event, Emitter<ProductsState> emit) async {
+    await fetchEditProduct(event.id);
+    add(const GetAllProducts());
   }
 }

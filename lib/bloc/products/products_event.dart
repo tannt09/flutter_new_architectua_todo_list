@@ -8,3 +8,8 @@ abstract class ProductsEvent extends BaseBlocEvent {
 class GetAllProducts extends ProductsEvent with _$GetAllProducts {
   const factory GetAllProducts() = _GetAllProducts;
 }
+
+@freezed
+class EditProduct extends ProductsEvent with _$EditProduct {
+  const factory EditProduct({required String id}) = _EditProduct;
+}

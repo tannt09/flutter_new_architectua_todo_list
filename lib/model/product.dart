@@ -1,5 +1,5 @@
 class Product {
-  final String id;
+  final String? id;
   final String title;
   final String description;
   final int discount_percentage;
@@ -7,7 +7,7 @@ class Product {
   final int discounted_price;
 
   const Product({
-    required this.id,
+    this.id,
     required this.title,
     required this.description,
     required this.discount_percentage,

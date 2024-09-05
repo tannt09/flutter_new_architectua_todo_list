@@ -76,6 +76,123 @@ abstract class _GetAllProducts implements GetAllProducts {
 }
 
 /// @nodoc
+mixin _$EditProduct {
+  String get id => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $EditProductCopyWith<EditProduct> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $EditProductCopyWith<$Res> {
+  factory $EditProductCopyWith(
+          EditProduct value, $Res Function(EditProduct) then) =
+      _$EditProductCopyWithImpl<$Res, EditProduct>;
+  @useResult
+  $Res call({String id});
+}
+
+/// @nodoc
+class _$EditProductCopyWithImpl<$Res, $Val extends EditProduct>
+    implements $EditProductCopyWith<$Res> {
+  _$EditProductCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+  }) {
+    return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$EditProductImplCopyWith<$Res>
+    implements $EditProductCopyWith<$Res> {
+  factory _$$EditProductImplCopyWith(
+          _$EditProductImpl value, $Res Function(_$EditProductImpl) then) =
+      __$$EditProductImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String id});
+}
+
+/// @nodoc
+class __$$EditProductImplCopyWithImpl<$Res>
+    extends _$EditProductCopyWithImpl<$Res, _$EditProductImpl>
+    implements _$$EditProductImplCopyWith<$Res> {
+  __$$EditProductImplCopyWithImpl(
+      _$EditProductImpl _value, $Res Function(_$EditProductImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+  }) {
+    return _then(_$EditProductImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$EditProductImpl implements _EditProduct {
+  const _$EditProductImpl({required this.id});
+
+  @override
+  final String id;
+
+  @override
+  String toString() {
+    return 'EditProduct(id: $id)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$EditProductImpl &&
+            (identical(other.id, id) || other.id == id));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, id);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$EditProductImplCopyWith<_$EditProductImpl> get copyWith =>
+      __$$EditProductImplCopyWithImpl<_$EditProductImpl>(this, _$identity);
+}
+
+abstract class _EditProduct implements EditProduct {
+  const factory _EditProduct({required final String id}) = _$EditProductImpl;
+
+  @override
+  String get id;
+  @override
+  @JsonKey(ignore: true)
+  _$$EditProductImplCopyWith<_$EditProductImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$ProductsState {
   List<Product> get products => throw _privateConstructorUsedError;
 

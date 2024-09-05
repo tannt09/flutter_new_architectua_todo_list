@@ -95,7 +95,7 @@ class _TodoListPageState extends State<TodoListPage> {
                                 ),
                                 ElevatedButton(
                                   onPressed: () => {
-                                    CustomDialog.showAddItemDialog(
+                                    CustomDialog.showAddUserDialog(
                                         context, editItemFromList, item.id)
                                   },
                                   child: const Icon(Icons.edit),
@@ -108,7 +108,7 @@ class _TodoListPageState extends State<TodoListPage> {
                   padding: const EdgeInsets.all(16.0),
                   child: ElevatedButton(
                     onPressed: () => {
-                      CustomDialog.showAddItemDialog(context, addItemToList)
+                      CustomDialog.showAddUserDialog(context, addItemToList)
                     },
                     child: const Text('Add new item'),
                   ),

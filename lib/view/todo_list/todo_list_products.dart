@@ -2,7 +2,9 @@ import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_new_architectua/bloc/products/products_bloc.dart';
+import 'package:flutter_new_architectua/model/product.dart';
 import 'package:flutter_new_architectua/navigation/app_navigator.dart';
+import 'package:flutter_new_architectua/widget/custom_dialog.dart';
 import 'package:get_it/get_it.dart';
 
 @RoutePage()
@@ -37,6 +39,14 @@ class _ProductsState extends State<Products> {
             if (!state.products.isNotEmpty) {
               return const Text("Is empty");
             }
+
+            Future<void> editProductFromList(Product newProduct) async {
+              final id = newProduct.id;
+              if (id != null) {
+                bloc.add(EditProduct(id: id));
+              }
+            }
+
             return Column(
               children: [
                 Expanded(
@@ -90,7 +100,10 @@ class _ProductsState extends State<Products> {
                                 onPressed: () => {},
                                 child: const Icon(Icons.delete)),
                             ElevatedButton(
-                                onPressed: () => {},
+                                onPressed: () => {
+                                      CustomDialog.showAddProductDialog(
+                                          context, editProductFromList, item.id)
+                                    },
                                 child: const Icon(Icons.edit)),
                           ],
                         ),
