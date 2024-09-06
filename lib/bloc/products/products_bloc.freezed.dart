@@ -77,7 +77,7 @@ abstract class _GetAllProducts implements GetAllProducts {
 
 /// @nodoc
 mixin _$EditProduct {
-  String get id => throw _privateConstructorUsedError;
+  Product get product => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $EditProductCopyWith<EditProduct> get copyWith =>
@@ -90,7 +90,7 @@ abstract class $EditProductCopyWith<$Res> {
           EditProduct value, $Res Function(EditProduct) then) =
       _$EditProductCopyWithImpl<$Res, EditProduct>;
   @useResult
-  $Res call({String id});
+  $Res call({Product product});
 }
 
 /// @nodoc
@@ -106,13 +106,13 @@ class _$EditProductCopyWithImpl<$Res, $Val extends EditProduct>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
+    Object? product = null,
   }) {
     return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
+      product: null == product
+          ? _value.product
+          : product // ignore: cast_nullable_to_non_nullable
+              as Product,
     ) as $Val);
   }
 }
@@ -125,7 +125,7 @@ abstract class _$$EditProductImplCopyWith<$Res>
       __$$EditProductImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String id});
+  $Res call({Product product});
 }
 
 /// @nodoc
@@ -139,13 +139,13 @@ class __$$EditProductImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
+    Object? product = null,
   }) {
     return _then(_$EditProductImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
+      product: null == product
+          ? _value.product
+          : product // ignore: cast_nullable_to_non_nullable
+              as Product,
     ));
   }
 }
@@ -153,14 +153,14 @@ class __$$EditProductImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$EditProductImpl implements _EditProduct {
-  const _$EditProductImpl({required this.id});
+  const _$EditProductImpl({required this.product});
 
   @override
-  final String id;
+  final Product product;
 
   @override
   String toString() {
-    return 'EditProduct(id: $id)';
+    return 'EditProduct(product: $product)';
   }
 
   @override
@@ -168,11 +168,11 @@ class _$EditProductImpl implements _EditProduct {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$EditProductImpl &&
-            (identical(other.id, id) || other.id == id));
+            (identical(other.product, product) || other.product == product));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id);
+  int get hashCode => Object.hash(runtimeType, product);
 
   @JsonKey(ignore: true)
   @override
@@ -182,10 +182,11 @@ class _$EditProductImpl implements _EditProduct {
 }
 
 abstract class _EditProduct implements EditProduct {
-  const factory _EditProduct({required final String id}) = _$EditProductImpl;
+  const factory _EditProduct({required final Product product}) =
+      _$EditProductImpl;
 
   @override
-  String get id;
+  Product get product;
   @override
   @JsonKey(ignore: true)
   _$$EditProductImplCopyWith<_$EditProductImpl> get copyWith =>

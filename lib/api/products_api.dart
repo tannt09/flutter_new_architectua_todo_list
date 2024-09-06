@@ -5,7 +5,7 @@ import 'package:http/http.dart' as http;
 
 Future<List<Product>> fetchAllProduct() async {
   final response =
-      await http.get(Uri.parse('http://192.168.1.12:3000/products/getAll'));
+      await http.get(Uri.parse('http://192.168.1.5:3000/products/getAll'));
 
   if (response.statusCode == 200) {
     final List<dynamic> parsed = json.decode(response.body);
@@ -18,9 +18,13 @@ Future<List<Product>> fetchAllProduct() async {
   }
 }
 
-Future<String> fetchEditProduct(String id) async {
-  final url = Uri.parse('http://192.168.1.12:3000/products/update?id=$id');
-  final Map<String, dynamic> updatedData = {'price': 7000};
+Future<String> fetchEditProduct(Product product) async {
+  final url =
+      Uri.parse('http://192.168.1.5:3000/products/update?id=${product.id}');
+  final Map<String, dynamic> updatedData = {
+    'original_price': product.original_price,
+    'title': product.title
+  };
   final response = await http.put(url,
       headers: {
         'Content-Type': 'application/json',
@@ -36,7 +40,7 @@ Future<String> fetchEditProduct(String id) async {
 }
 
 Future<String> fetchDeleteProduct(String id) async {
-  final url = Uri.parse('http://192.168.1.12:3000/products/delete?id=$id');
+  final url = Uri.parse('http://192.168.1.5:3000/products/delete?id=$id');
   final response = await http.delete(url);
 
   print('Status code delete ${response.statusCode}');

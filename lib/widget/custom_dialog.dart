@@ -68,7 +68,10 @@ class CustomDialog {
       BuildContext context, void Function(Product) handleList,
       [String? id]) async {
     TextEditingController controllerTitle = TextEditingController();
-    TextEditingController controllerPrice = TextEditingController();
+    TextEditingController controllerDescription = TextEditingController();
+    TextEditingController controllerOriginalPrice = TextEditingController();
+    TextEditingController controllerDiscountPercentage = TextEditingController();
+    TextEditingController controllerDiscountedPrice = TextEditingController();
 
     return showDialog(
       context: context,
@@ -83,13 +86,33 @@ class CustomDialog {
                 decoration: const InputDecoration(hintText: "New Title"),
               ),
               TextField(
-                controller: controllerPrice,
-                decoration: const InputDecoration(hintText: "New Price"),
+                controller: controllerDescription,
+                decoration: const InputDecoration(hintText: "New Description"),
+              ),
+              TextField(
+                controller: controllerOriginalPrice,
+                decoration: const InputDecoration(hintText: "New Original Price"),
                 keyboardType: TextInputType.number,
                 inputFormatters: <TextInputFormatter>[
                   FilteringTextInputFormatter.digitsOnly
                 ],
-              )
+              ),
+              TextField(
+                controller: controllerDiscountPercentage,
+                decoration: const InputDecoration(hintText: "New Discount Percentage"),
+                keyboardType: TextInputType.number,
+                inputFormatters: <TextInputFormatter>[
+                  FilteringTextInputFormatter.digitsOnly
+                ],
+              ),
+              TextField(
+                controller: controllerDiscountedPrice,
+                decoration: const InputDecoration(hintText: "New Discounted Price"),
+                keyboardType: TextInputType.number,
+                inputFormatters: <TextInputFormatter>[
+                  FilteringTextInputFormatter.digitsOnly
+                ],
+              ),
             ],
           ),
           actions: <Widget>[
@@ -98,11 +121,11 @@ class CustomDialog {
               onPressed: () {
                 handleList(Product(
                     title: controllerTitle.text,
-                    original_price: int.parse(controllerPrice.text),
+                    original_price: int.parse(controllerOriginalPrice.text),
                     id: id,
-                    description: '',
-                    discount_percentage: 0,
-                    discounted_price: 0));
+                    description: controllerDescription.text,
+                    discount_percentage: int.parse(controllerDiscountPercentage.text),
+                    discounted_price: int.parse(controllerDiscountedPrice.text)));
 
                 Navigator.of(context).pop();
               },

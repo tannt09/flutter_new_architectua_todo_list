@@ -11,5 +11,5 @@ class GetAllProducts extends ProductsEvent with _$GetAllProducts {
 
 @freezed
 class EditProduct extends ProductsEvent with _$EditProduct {
-  const factory EditProduct({required String id}) = _EditProduct;
+  const factory EditProduct({required Product product}) = _EditProduct;
 }

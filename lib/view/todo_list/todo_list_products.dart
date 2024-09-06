@@ -43,7 +43,7 @@ class _ProductsState extends State<Products> {
             Future<void> editProductFromList(Product newProduct) async {
               final id = newProduct.id;
               if (id != null) {
-                bloc.add(EditProduct(id: id));
+                bloc.add(EditProduct(product: newProduct));
               }
             }
 
@@ -83,7 +83,7 @@ class _ProductsState extends State<Products> {
                                         padding:
                                             const EdgeInsets.only(left: 10),
                                         child: Text(
-                                          "${item.discount_percentage}",
+                                          "${item.discount_percentage}%",
                                           style: const TextStyle(
                                               color: Colors.grey,
                                               decoration:

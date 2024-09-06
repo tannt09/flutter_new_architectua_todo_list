@@ -32,7 +32,7 @@ class ProductsBloc extends BaseBloc<ProductsEvent, ProductsState> {
 
   Future<void> _editProduct(
       EditProduct event, Emitter<ProductsState> emit) async {
-    await fetchEditProduct(event.id);
+    await fetchEditProduct(event.product);
     add(const GetAllProducts());
   }
 }
