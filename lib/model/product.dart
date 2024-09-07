@@ -2,17 +2,17 @@ class Product {
   final String? id;
   final String title;
   final String description;
-  final int discount_percentage;
-  final int original_price;
-  final int discounted_price;
+  final int discountPercentage;
+  final int originalPrice;
+  final int discountedPrice;
 
   const Product({
     this.id,
     required this.title,
     required this.description,
-    required this.discount_percentage,
-    required this.original_price,
-    required this.discounted_price,
+    required this.discountPercentage,
+    required this.originalPrice,
+    required this.discountedPrice,
   });
 
   factory Product.fromJson(Map<String, dynamic> json) {
@@ -20,9 +20,9 @@ class Product {
       id: json['id'],
       title: json['title'],
       description: json['description'],
-      discount_percentage: json['discount_percentage'],
-      original_price: json['original_price'],
-      discounted_price: json['discounted_price'],
+      discountPercentage: json['discount_percentage'],
+      originalPrice: json['original_price'],
+      discountedPrice: json['discounted_price'],
     );
   }
 
@@ -31,9 +31,9 @@ class Product {
       'id': id,
       'title': title,
       'description': description,
-      'discount_percentage': discount_percentage,
-      'original_price': original_price,
-      'discounted_price': discounted_price,
+      'discount_percentage': discountPercentage,
+      'original_price': originalPrice,
+      'discounted_price': discountedPrice,
     };
   }
 }

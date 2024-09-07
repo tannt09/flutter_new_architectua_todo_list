@@ -31,27 +31,27 @@ class Dog {
   }
 
   static Future<void> insertDog(Dog dog) async {
-    final db = await database;
+    final db = database;
 
     await db.insert('dogs', dog.toMap(),
         conflictAlgorithm: ConflictAlgorithm.replace);
   }
 
   static Future<void> updateDog(Dog dog) async {
-    final db = await database;
+    final db = database;
 
     await db.update('dogs', dog.toMap(), where: 'id = ?', whereArgs: [dog.id]);
   }
 
   static Future<void> deleteDog(int id) async {
-    final db = await database;
+    final db = database;
 
     await db.delete('dogs', where: 'id = ?', whereArgs: [id]);
   }
 
   static Future<List<Dog>> dogs() async {
     // Get a reference to the database.
-    final db = await database;
+    final db = database;
 
     // Query the table for all the dogs.
     final List<Map<String, Object?>> dogMaps = await db.query('dogs');

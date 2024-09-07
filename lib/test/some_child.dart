@@ -1,13 +1,20 @@
+import 'package:logging/logging.dart';
+
 class SomeParent {
+  final _logger = Logger('SomeParent');
+
   void doSomeWork() {
-    print('parent working');
+    _logger.info('parent working');
   }
 }
 
 class SomeChild extends SomeParent {
   @override
+  Logger get _logger => Logger('SomeChild');
+
+  @override
   void doSomeWork() {
     super.doSomeWork();
-    print('child doing some other work');
+    _logger.info('child doing some other work');
   }
 }

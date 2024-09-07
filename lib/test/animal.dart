@@ -1,3 +1,5 @@
+import 'package:logging/logging.dart';
+
 abstract class Animal {
   bool isAlive = true;
   void eat();
@@ -10,34 +12,40 @@ abstract class Animal {
 }
 
 class Dog extends Animal {
+  final _logger = Logger('Dog');
+
   @override
   void eat() {
-    print("eat");
+    _logger.info('Dog is eating');
   }
 
   @override
   void move() {
-    print("move");
+    _logger.info('Dog is moving');
   }
 
   void say() {
-    print("Gâu Gâu");
+    _logger.info('Dog says: Gâu Gâu');
   }
 }
 
 class Husky implements Dog {
   @override
+  final _logger = Logger('Husky');
+  @override
   late bool isAlive;
   @override
   void eat() {
-    // TODO: implement eat
+    _logger.info('Husky is eating');
   }
+
   @override
   void move() {
-    // TODO: implement move
+    _logger.info('Husky is moving');
   }
+
   @override
   void say() {
-    // TODO: implement say
+    _logger.info('Husky is saying');
   }
 }

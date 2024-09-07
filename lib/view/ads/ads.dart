@@ -6,6 +6,7 @@ import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'package:logging/logging.dart';
 
 const int maxFailedLoadAttempts = 3;
 
@@ -20,6 +21,8 @@ class AdsPage extends StatefulWidget {
 }
 
 class _AdsPageState extends State<AdsPage> {
+  final Logger _logger = Logger('AdsPage');
+
   static const _androidIdPlugin = AndroidId();
   Future<String?> _getDeviceId() async {
     String androidId;
@@ -36,7 +39,7 @@ class _AdsPageState extends State<AdsPage> {
   void _setupAds() async {
     final String? deviceId = await _getDeviceId();
 
-    print('----1111 $deviceId');
+    _logger.info('Device ID: $deviceId');
     MobileAds.instance.updateRequestConfiguration(
         RequestConfiguration(testDeviceIds: [deviceId ?? '']));
     _createInterstitialAd();
@@ -71,6 +74,11 @@ class _AdsPageState extends State<AdsPage> {
   @override
   void initState() {
     super.initState();
+    Logger.root.level = Level.ALL; // Set the root logger level
+    Logger.root.onRecord.listen((record) {
+      // You can customize the log output format here
+      log('${record.level.name}: ${record.time}: ${record.message}');
+    });
     _setupAds();
   }
 
@@ -82,13 +90,13 @@ class _AdsPageState extends State<AdsPage> {
         request: request,
         adLoadCallback: InterstitialAdLoadCallback(
           onAdLoaded: (InterstitialAd ad) {
-            print('$ad loaded');
+            _logger.info('$ad loaded');
             _interstitialAd = ad;
             _numInterstitialLoadAttempts = 0;
             _interstitialAd!.setImmersiveMode(true);
           },
           onAdFailedToLoad: (LoadAdError error) {
-            print('InterstitialAd failed to load: $error.');
+            _logger.warning('InterstitialAd failed to load: $error.');
             _numInterstitialLoadAttempts += 1;
             _interstitialAd = null;
             if (_numInterstitialLoadAttempts < maxFailedLoadAttempts) {
@@ -100,19 +108,19 @@ class _AdsPageState extends State<AdsPage> {
 
   void _showInterstitialAd() {
     if (_interstitialAd == null) {
-      print('Warning: attempt to show interstitial before loaded.');
+      _logger.warning('Warning: attempt to show interstitial before loaded.');
       return;
     }
     _interstitialAd!.fullScreenContentCallback = FullScreenContentCallback(
       onAdShowedFullScreenContent: (InterstitialAd ad) =>
-          print('ad onAdShowedFullScreenContent.'),
+          _logger.info('ad onAdShowedFullScreenContent.'),
       onAdDismissedFullScreenContent: (InterstitialAd ad) {
-        print('$ad onAdDismissedFullScreenContent.');
+        _logger.info('$ad onAdDismissedFullScreenContent.');
         ad.dispose();
         _createInterstitialAd();
       },
       onAdFailedToShowFullScreenContent: (InterstitialAd ad, AdError error) {
-        print('$ad onAdFailedToShowFullScreenContent: $error');
+        _logger.warning('$ad onAdFailedToShowFullScreenContent: $error');
         ad.dispose();
         _createInterstitialAd();
       },
@@ -129,12 +137,12 @@ class _AdsPageState extends State<AdsPage> {
         request: request,
         rewardedAdLoadCallback: RewardedAdLoadCallback(
           onAdLoaded: (RewardedAd ad) {
-            print('$ad loaded.');
+            _logger.info('$ad loaded.');
             _rewardedAd = ad;
             _numRewardedLoadAttempts = 0;
           },
           onAdFailedToLoad: (LoadAdError error) {
-            print('RewardedAd failed to load: $error');
+            _logger.warning('RewardedAd failed to load: $error');
             _rewardedAd = null;
             _numRewardedLoadAttempts += 1;
             if (_numRewardedLoadAttempts < maxFailedLoadAttempts) {
@@ -146,19 +154,19 @@ class _AdsPageState extends State<AdsPage> {
 
   void _showRewardedAd() {
     if (_rewardedAd == null) {
-      print('Warning: attempt to show rewarded before loaded.');
+      _logger.warning('Warning: attempt to show rewarded before loaded.');
       return;
     }
     _rewardedAd!.fullScreenContentCallback = FullScreenContentCallback(
       onAdShowedFullScreenContent: (RewardedAd ad) =>
-          print('ad onAdShowedFullScreenContent.'),
+          _logger.info('ad onAdShowedFullScreenContent.'),
       onAdDismissedFullScreenContent: (RewardedAd ad) {
-        print('$ad onAdDismissedFullScreenContent.');
+        _logger.info('$ad onAdDismissedFullScreenContent.');
         ad.dispose();
         _createRewardedAd();
       },
       onAdFailedToShowFullScreenContent: (RewardedAd ad, AdError error) {
-        print('$ad onAdFailedToShowFullScreenContent: $error');
+        _logger.warning('$ad onAdFailedToShowFullScreenContent: $error');
         ad.dispose();
         _createRewardedAd();
       },
@@ -167,7 +175,7 @@ class _AdsPageState extends State<AdsPage> {
     _rewardedAd!.setImmersiveMode(true);
     _rewardedAd!.show(
         onUserEarnedReward: (AdWithoutView ad, RewardItem reward) {
-      print('$ad with reward $RewardItem(${reward.amount}, ${reward.type})');
+      _logger.info('$ad with reward $RewardItem(${reward.amount}, ${reward.type})');
     });
     _rewardedAd = null;
   }
@@ -180,12 +188,12 @@ class _AdsPageState extends State<AdsPage> {
         request: request,
         rewardedInterstitialAdLoadCallback: RewardedInterstitialAdLoadCallback(
           onAdLoaded: (RewardedInterstitialAd ad) {
-            print('$ad loaded.');
+            _logger.info('$ad loaded.');
             _rewardedInterstitialAd = ad;
             _numRewardedInterstitialLoadAttempts = 0;
           },
           onAdFailedToLoad: (LoadAdError error) {
-            print('RewardedInterstitialAd failed to load: $error');
+            _logger.warning('RewardedInterstitialAd failed to load: $error');
             _rewardedInterstitialAd = null;
             _numRewardedInterstitialLoadAttempts += 1;
             if (_numRewardedInterstitialLoadAttempts < maxFailedLoadAttempts) {
@@ -197,21 +205,21 @@ class _AdsPageState extends State<AdsPage> {
 
   void _showRewardedInterstitialAd() {
     if (_rewardedInterstitialAd == null) {
-      print('Warning: attempt to show rewarded interstitial before loaded.');
+      _logger.warning('Warning: attempt to show rewarded interstitial before loaded.');
       return;
     }
     _rewardedInterstitialAd!.fullScreenContentCallback =
         FullScreenContentCallback(
       onAdShowedFullScreenContent: (RewardedInterstitialAd ad) =>
-          print('$ad onAdShowedFullScreenContent.'),
+          _logger.info('$ad onAdShowedFullScreenContent.'),
       onAdDismissedFullScreenContent: (RewardedInterstitialAd ad) {
-        print('$ad onAdDismissedFullScreenContent.');
+        _logger.info('$ad onAdDismissedFullScreenContent.');
         ad.dispose();
         _createRewardedInterstitialAd();
       },
       onAdFailedToShowFullScreenContent:
           (RewardedInterstitialAd ad, AdError error) {
-        print('$ad onAdFailedToShowFullScreenContent: $error');
+        _logger.warning('$ad onAdFailedToShowFullScreenContent: $error');
         ad.dispose();
         _createRewardedInterstitialAd();
       },
@@ -220,7 +228,7 @@ class _AdsPageState extends State<AdsPage> {
     _rewardedInterstitialAd!.setImmersiveMode(true);
     _rewardedInterstitialAd!.show(
         onUserEarnedReward: (AdWithoutView ad, RewardItem reward) {
-      print('$ad with reward $RewardItem(${reward.amount}, ${reward.type})');
+      _logger.info('$ad with reward $RewardItem(${reward.amount}, ${reward.type})');
     });
     _rewardedInterstitialAd = null;
   }
@@ -289,7 +297,7 @@ class _AdsPageState extends State<AdsPage> {
                                   const Text("WebViewExample")));
                       break;
                     case adInspectorButtonText:
-                      MobileAds.instance.openAdInspector((error) => log(
+                      MobileAds.instance.openAdInspector((error) => _logger.info(
                           'Ad Inspector ${error == null ? 'opened.' : 'error: ${error.message ?? ''}'}'));
                       break;
                     default:

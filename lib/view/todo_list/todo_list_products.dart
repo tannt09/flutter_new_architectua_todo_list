@@ -73,7 +73,7 @@ class _ProductsState extends State<Products> {
                                   Row(
                                     children: [
                                       Text(
-                                        "${item.discounted_price}",
+                                        "${item.discountedPrice}",
                                         style: const TextStyle(
                                             color: Colors.grey,
                                             decoration:
@@ -83,7 +83,7 @@ class _ProductsState extends State<Products> {
                                         padding:
                                             const EdgeInsets.only(left: 10),
                                         child: Text(
-                                          "${item.discount_percentage}%",
+                                          "${item.discountPercentage}%",
                                           style: const TextStyle(
                                               color: Colors.grey,
                                               decoration:
@@ -92,7 +92,7 @@ class _ProductsState extends State<Products> {
                                       ),
                                     ],
                                   ),
-                                  Text("${item.original_price}"),
+                                  Text("${item.originalPrice}"),
                                 ],
                               ),
                             ),
