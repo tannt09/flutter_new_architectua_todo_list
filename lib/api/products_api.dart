@@ -23,21 +23,19 @@ Future<List<Product>> fetchAllProduct() async {
 }
 
 Future<String> fetchEditProduct(Product product) async {
-  final url =
-      Uri.parse('http://192.168.1.5:3000/products/update?id=${product.id}');
-  final Map<String, dynamic> updatedData = {
-    'original_price': product.originalPrice,
-    'title': product.title
-  };
-  final response = await http.put(url,
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: jsonEncode(updatedData));
+  final url = Uri.parse('http://192.168.1.5:3000/products/update?id=${product.id}');
+  final updatedData = product.toJson()..remove('id');
+  
+  try {
+    final response = await http.put(
+      url,
+      headers: {'Content-Type': 'application/json'},
+      body: jsonEncode(updatedData),
+    );
 
-  if (response.statusCode == 200) {
-    return 'Update Success';
-  } else {
+    return response.statusCode == 200 ? 'Update Success' : 'Update Failure';
+  } catch (e) {
+    _logger.severe('Error updating product: $e');
     return 'Update Failure';
   }
 }
