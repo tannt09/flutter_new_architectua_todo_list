@@ -121,11 +121,11 @@ class CustomDialog {
               onPressed: () {
                 handleList(Product(
                     title: controllerTitle.text,
-                    originalPrice: int.parse(controllerOriginalPrice.text),
+                    originalPrice: int.tryParse(controllerOriginalPrice.text),
                     id: id,
                     description: controllerDescription.text,
-                    discountPercentage: int.parse(controllerDiscountPercentage.text),
-                    discountedPrice: int.parse(controllerDiscountedPrice.text)));
+                    discountPercentage: int.tryParse(controllerDiscountPercentage.text),
+                    discountedPrice: int.tryParse(controllerDiscountedPrice.text)));
 
                 Navigator.of(context).pop();
               },

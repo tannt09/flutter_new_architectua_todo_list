@@ -69,7 +69,7 @@ class _ProductsState extends State<Products> {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text(item.title),
+                                  Text(item.title ?? ''),
                                   Row(
                                     children: [
                                       Text(

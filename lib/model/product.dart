@@ -1,18 +1,18 @@
 class Product {
   final String? id;
-  final String title;
-  final String description;
-  final int discountPercentage;
-  final int originalPrice;
-  final int discountedPrice;
+  final String? title;
+  final String? description;
+  final int? discountPercentage;
+  final int? originalPrice;
+  final int? discountedPrice;
 
   const Product({
     this.id,
-    required this.title,
-    required this.description,
-    required this.discountPercentage,
-    required this.originalPrice,
-    required this.discountedPrice,
+    this.title,
+    this.description,
+    this.discountPercentage,
+    this.originalPrice,
+    this.discountedPrice,
   });
 
   factory Product.fromJson(Map<String, dynamic> json) {
