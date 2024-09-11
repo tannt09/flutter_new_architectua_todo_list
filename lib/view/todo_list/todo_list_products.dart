@@ -47,6 +47,10 @@ class _ProductsState extends State<Products> {
               }
             }
 
+            Future<void> addProductToList(Product newProduct) async {
+              bloc.add(AddProduct(product: newProduct));
+            }
+
             return Column(
               children: [
                 Expanded(
@@ -114,7 +118,10 @@ class _ProductsState extends State<Products> {
                 Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: ElevatedButton(
-                    onPressed: () => {},
+                    onPressed: () => {
+                      CustomDialog.showAddProductDialog(
+                          context, addProductToList)
+                    },
                     child: const Text("Add new product"),
                   ),
                 ),
