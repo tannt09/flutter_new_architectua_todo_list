@@ -194,6 +194,124 @@ abstract class _EditProduct implements EditProduct {
 }
 
 /// @nodoc
+mixin _$AddProduct {
+  Product get product => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $AddProductCopyWith<AddProduct> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $AddProductCopyWith<$Res> {
+  factory $AddProductCopyWith(
+          AddProduct value, $Res Function(AddProduct) then) =
+      _$AddProductCopyWithImpl<$Res, AddProduct>;
+  @useResult
+  $Res call({Product product});
+}
+
+/// @nodoc
+class _$AddProductCopyWithImpl<$Res, $Val extends AddProduct>
+    implements $AddProductCopyWith<$Res> {
+  _$AddProductCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? product = null,
+  }) {
+    return _then(_value.copyWith(
+      product: null == product
+          ? _value.product
+          : product // ignore: cast_nullable_to_non_nullable
+              as Product,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$AddProductImplCopyWith<$Res>
+    implements $AddProductCopyWith<$Res> {
+  factory _$$AddProductImplCopyWith(
+          _$AddProductImpl value, $Res Function(_$AddProductImpl) then) =
+      __$$AddProductImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({Product product});
+}
+
+/// @nodoc
+class __$$AddProductImplCopyWithImpl<$Res>
+    extends _$AddProductCopyWithImpl<$Res, _$AddProductImpl>
+    implements _$$AddProductImplCopyWith<$Res> {
+  __$$AddProductImplCopyWithImpl(
+      _$AddProductImpl _value, $Res Function(_$AddProductImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? product = null,
+  }) {
+    return _then(_$AddProductImpl(
+      product: null == product
+          ? _value.product
+          : product // ignore: cast_nullable_to_non_nullable
+              as Product,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$AddProductImpl implements _AddProduct {
+  const _$AddProductImpl({required this.product});
+
+  @override
+  final Product product;
+
+  @override
+  String toString() {
+    return 'AddProduct(product: $product)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AddProductImpl &&
+            (identical(other.product, product) || other.product == product));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, product);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AddProductImplCopyWith<_$AddProductImpl> get copyWith =>
+      __$$AddProductImplCopyWithImpl<_$AddProductImpl>(this, _$identity);
+}
+
+abstract class _AddProduct implements AddProduct {
+  const factory _AddProduct({required final Product product}) =
+      _$AddProductImpl;
+
+  @override
+  Product get product;
+  @override
+  @JsonKey(ignore: true)
+  _$$AddProductImplCopyWith<_$AddProductImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$ProductsState {
   List<Product> get products => throw _privateConstructorUsedError;
 
