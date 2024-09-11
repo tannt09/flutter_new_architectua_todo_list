@@ -54,6 +54,27 @@ Future<String> fetchEditProduct(Product product) async {
   }
 }
 
+Future<String> fetchAddNewProduct(Product product) async {
+  final url =
+      Uri.parse('http://192.168.1.5:3000/products/add');
+  final newProductData = product.toJson()..remove('id');
+  
+  try {
+    final response = await http.put(
+      url,
+      headers: {'Content-Type': 'application/json'},
+      body: jsonEncode(newProductData),
+    );
+
+    return response.statusCode == 200 ? 'Add product Success' : 'Add product Failure';
+  } catch (e) {
+    _logger.severe('Error Adding product: $e');
+    return 'Add product Failure';
+  }
+}
+
+
+
 Future<String> fetchDeleteProduct(String id) async {
   final url = Uri.parse('http://192.168.1.5:3000/products/delete?id=$id');
 
