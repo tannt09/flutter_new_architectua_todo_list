@@ -312,6 +312,124 @@ abstract class _AddProduct implements AddProduct {
 }
 
 /// @nodoc
+mixin _$DeleteProduct {
+  String get id => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $DeleteProductCopyWith<DeleteProduct> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $DeleteProductCopyWith<$Res> {
+  factory $DeleteProductCopyWith(
+          DeleteProduct value, $Res Function(DeleteProduct) then) =
+      _$DeleteProductCopyWithImpl<$Res, DeleteProduct>;
+  @useResult
+  $Res call({String id});
+}
+
+/// @nodoc
+class _$DeleteProductCopyWithImpl<$Res, $Val extends DeleteProduct>
+    implements $DeleteProductCopyWith<$Res> {
+  _$DeleteProductCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+  }) {
+    return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$DeleteProductImplCopyWith<$Res>
+    implements $DeleteProductCopyWith<$Res> {
+  factory _$$DeleteProductImplCopyWith(
+          _$DeleteProductImpl value, $Res Function(_$DeleteProductImpl) then) =
+      __$$DeleteProductImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String id});
+}
+
+/// @nodoc
+class __$$DeleteProductImplCopyWithImpl<$Res>
+    extends _$DeleteProductCopyWithImpl<$Res, _$DeleteProductImpl>
+    implements _$$DeleteProductImplCopyWith<$Res> {
+  __$$DeleteProductImplCopyWithImpl(
+      _$DeleteProductImpl _value, $Res Function(_$DeleteProductImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+  }) {
+    return _then(_$DeleteProductImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$DeleteProductImpl implements _DeleteProduct {
+  const _$DeleteProductImpl({required this.id});
+
+  @override
+  final String id;
+
+  @override
+  String toString() {
+    return 'DeleteProduct(id: $id)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DeleteProductImpl &&
+            (identical(other.id, id) || other.id == id));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, id);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$DeleteProductImplCopyWith<_$DeleteProductImpl> get copyWith =>
+      __$$DeleteProductImplCopyWithImpl<_$DeleteProductImpl>(this, _$identity);
+}
+
+abstract class _DeleteProduct implements DeleteProduct {
+  const factory _DeleteProduct({required final String id}) =
+      _$DeleteProductImpl;
+
+  @override
+  String get id;
+  @override
+  @JsonKey(ignore: true)
+  _$$DeleteProductImplCopyWith<_$DeleteProductImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$ProductsState {
   List<Product> get products => throw _privateConstructorUsedError;
 

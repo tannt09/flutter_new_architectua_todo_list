@@ -18,3 +18,8 @@ class EditProduct extends ProductsEvent with _$EditProduct {
 class AddProduct extends ProductsEvent with _$AddProduct {
   const factory AddProduct({required Product product}) = _AddProduct;
 }
+
+@freezed
+class DeleteProduct extends ProductsEvent with _$DeleteProduct {
+  const factory DeleteProduct({required String id}) = _DeleteProduct;
+}
