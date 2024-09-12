@@ -51,6 +51,12 @@ class _ProductsState extends State<Products> {
               bloc.add(AddProduct(product: newProduct));
             }
 
+            Future<void> deleteProductFromList(String? id) async {
+              if (id != null) {
+                bloc.add(DeleteProduct(id: id));
+              }
+            }
+
             return Column(
               children: [
                 Expanded(
@@ -101,7 +107,8 @@ class _ProductsState extends State<Products> {
                               ),
                             ),
                             ElevatedButton(
-                                onPressed: () => {},
+                                onPressed: () =>
+                                    {deleteProductFromList(item.id)},
                                 child: const Icon(Icons.delete)),
                             ElevatedButton(
                                 onPressed: () => {
