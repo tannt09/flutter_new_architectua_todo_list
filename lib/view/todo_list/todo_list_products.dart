@@ -79,7 +79,20 @@ class _ProductsState extends State<Products> {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text(item.title ?? ''),
+                                  Text(
+                                    item.title ?? '',
+                                    style: const TextStyle(
+                                        fontSize: 18,
+                                        fontFamily: 'Cormorant',
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  Text(
+                                    item.description ?? '',
+                                    style: const TextStyle(
+                                        fontSize: 18,
+                                        fontFamily: 'Cormorant',
+                                        fontStyle: FontStyle.italic),
+                                  ),
                                   Row(
                                     children: [
                                       Text(

@@ -17,22 +17,24 @@ class CustomDialog {
       builder: (BuildContext context) {
         return AlertDialog(
           title: const Text('Add new item'),
-          content: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              TextField(
-                controller: controllerName,
-                decoration: const InputDecoration(hintText: "New Name"),
-              ),
-              TextField(
-                controller: controllerAge,
-                decoration: const InputDecoration(hintText: "New Age"),
-                keyboardType: TextInputType.number,
-                inputFormatters: <TextInputFormatter>[
-                  FilteringTextInputFormatter.digitsOnly
-                ],
-              )
-            ],
+          content: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                TextField(
+                  controller: controllerName,
+                  decoration: const InputDecoration(hintText: "New Name"),
+                ),
+                TextField(
+                  controller: controllerAge,
+                  decoration: const InputDecoration(hintText: "New Age"),
+                  keyboardType: TextInputType.number,
+                  inputFormatters: <TextInputFormatter>[
+                    FilteringTextInputFormatter.digitsOnly
+                  ],
+                )
+              ],
+            ),
           ),
           actions: <Widget>[
             ElevatedButton(
@@ -78,42 +80,44 @@ class CustomDialog {
       builder: (BuildContext context) {
         return AlertDialog(
           title: const Text('Add new item'),
-          content: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              TextField(
-                controller: controllerTitle,
-                decoration: const InputDecoration(hintText: "New Title"),
-              ),
-              TextField(
-                controller: controllerDescription,
-                decoration: const InputDecoration(hintText: "New Description"),
-              ),
-              TextField(
-                controller: controllerOriginalPrice,
-                decoration: const InputDecoration(hintText: "New Original Price"),
-                keyboardType: TextInputType.number,
-                inputFormatters: <TextInputFormatter>[
-                  FilteringTextInputFormatter.digitsOnly
-                ],
-              ),
-              TextField(
-                controller: controllerDiscountPercentage,
-                decoration: const InputDecoration(hintText: "New Discount Percentage"),
-                keyboardType: TextInputType.number,
-                inputFormatters: <TextInputFormatter>[
-                  FilteringTextInputFormatter.digitsOnly
-                ],
-              ),
-              TextField(
-                controller: controllerDiscountedPrice,
-                decoration: const InputDecoration(hintText: "New Discounted Price"),
-                keyboardType: TextInputType.number,
-                inputFormatters: <TextInputFormatter>[
-                  FilteringTextInputFormatter.digitsOnly
-                ],
-              ),
-            ],
+          content: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                TextField(
+                  controller: controllerTitle,
+                  decoration: const InputDecoration(hintText: "New Title"),
+                ),
+                TextField(
+                  controller: controllerDescription,
+                  decoration: const InputDecoration(hintText: "New Description"),
+                ),
+                TextField(
+                  controller: controllerOriginalPrice,
+                  decoration: const InputDecoration(hintText: "New Original Price"),
+                  keyboardType: TextInputType.number,
+                  inputFormatters: <TextInputFormatter>[
+                    FilteringTextInputFormatter.digitsOnly
+                  ],
+                ),
+                TextField(
+                  controller: controllerDiscountPercentage,
+                  decoration: const InputDecoration(hintText: "New Discount Percentage"),
+                  keyboardType: TextInputType.number,
+                  inputFormatters: <TextInputFormatter>[
+                    FilteringTextInputFormatter.digitsOnly
+                  ],
+                ),
+                TextField(
+                  controller: controllerDiscountedPrice,
+                  decoration: const InputDecoration(hintText: "New Discounted Price"),
+                  keyboardType: TextInputType.number,
+                  inputFormatters: <TextInputFormatter>[
+                    FilteringTextInputFormatter.digitsOnly
+                  ],
+                ),
+              ],
+            ),
           ),
           actions: <Widget>[
             ElevatedButton(
