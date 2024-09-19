@@ -8,24 +8,25 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:auto_route/auto_route.dart' as _i6;
-import 'package:flutter/material.dart' as _i7;
+import 'package:auto_route/auto_route.dart' as _i7;
+import 'package:flutter/material.dart' as _i8;
 import 'package:flutter_new_architectua/view/ads/ads.dart' as _i1;
 import 'package:flutter_new_architectua/view/count/count.dart' as _i2;
-import 'package:flutter_new_architectua/view/todo_list/todo_list.dart' as _i5;
+import 'package:flutter_new_architectua/view/register/register.dart' as _i4;
+import 'package:flutter_new_architectua/view/todo_list/todo_list.dart' as _i6;
 import 'package:flutter_new_architectua/view/todo_list/todo_list_graphql.dart'
-    as _i4;
+    as _i5;
 import 'package:flutter_new_architectua/view/todo_list/todo_list_products.dart'
     as _i3;
 
-abstract class $AppRouter extends _i6.RootStackRouter {
+abstract class $AppRouter extends _i7.RootStackRouter {
   $AppRouter({super.navigatorKey});
 
   @override
-  final Map<String, _i6.PageFactory> pagesMap = {
+  final Map<String, _i7.PageFactory> pagesMap = {
     AdsRoute.name: (routeData) {
       final args = routeData.argsAs<AdsRouteArgs>();
-      return _i6.AutoRoutePage<dynamic>(
+      return _i7.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: _i1.AdsPage(
           key: args.key,
@@ -35,7 +36,7 @@ abstract class $AppRouter extends _i6.RootStackRouter {
     },
     CountRoute.name: (routeData) {
       final args = routeData.argsAs<CountRouteArgs>();
-      return _i6.AutoRoutePage<dynamic>(
+      return _i7.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: _i2.CountPage(
           key: args.key,
@@ -46,7 +47,7 @@ abstract class $AppRouter extends _i6.RootStackRouter {
     Products.name: (routeData) {
       final args =
           routeData.argsAs<ProductsArgs>(orElse: () => const ProductsArgs());
-      return _i6.AutoRoutePage<dynamic>(
+      return _i7.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: _i3.Products(
           key: args.key,
@@ -54,12 +55,18 @@ abstract class $AppRouter extends _i6.RootStackRouter {
         ),
       );
     },
+    RegisterRoute.name: (routeData) {
+      return _i7.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const _i4.RegisterPage(),
+      );
+    },
     TodoListGraphQLRoute.name: (routeData) {
       final args = routeData.argsAs<TodoListGraphQLRouteArgs>(
           orElse: () => const TodoListGraphQLRouteArgs());
-      return _i6.AutoRoutePage<dynamic>(
+      return _i7.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i4.TodoListGraphQLPage(
+        child: _i5.TodoListGraphQLPage(
           key: args.key,
           title: args.title,
         ),
@@ -68,9 +75,9 @@ abstract class $AppRouter extends _i6.RootStackRouter {
     TodoListRoute.name: (routeData) {
       final args = routeData.argsAs<TodoListRouteArgs>(
           orElse: () => const TodoListRouteArgs());
-      return _i6.AutoRoutePage<dynamic>(
+      return _i7.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i5.TodoListPage(
+        child: _i6.TodoListPage(
           key: args.key,
           title: args.title,
         ),
@@ -81,11 +88,11 @@ abstract class $AppRouter extends _i6.RootStackRouter {
 
 /// generated route for
 /// [_i1.AdsPage]
-class AdsRoute extends _i6.PageRouteInfo<AdsRouteArgs> {
+class AdsRoute extends _i7.PageRouteInfo<AdsRouteArgs> {
   AdsRoute({
-    _i7.Key? key,
+    _i8.Key? key,
     required String title,
-    List<_i6.PageRouteInfo>? children,
+    List<_i7.PageRouteInfo>? children,
   }) : super(
           AdsRoute.name,
           args: AdsRouteArgs(
@@ -97,8 +104,8 @@ class AdsRoute extends _i6.PageRouteInfo<AdsRouteArgs> {
 
   static const String name = 'AdsRoute';
 
-  static const _i6.PageInfo<AdsRouteArgs> page =
-      _i6.PageInfo<AdsRouteArgs>(name);
+  static const _i7.PageInfo<AdsRouteArgs> page =
+      _i7.PageInfo<AdsRouteArgs>(name);
 }
 
 class AdsRouteArgs {
@@ -107,7 +114,7 @@ class AdsRouteArgs {
     required this.title,
   });
 
-  final _i7.Key? key;
+  final _i8.Key? key;
 
   final String title;
 
@@ -119,11 +126,11 @@ class AdsRouteArgs {
 
 /// generated route for
 /// [_i2.CountPage]
-class CountRoute extends _i6.PageRouteInfo<CountRouteArgs> {
+class CountRoute extends _i7.PageRouteInfo<CountRouteArgs> {
   CountRoute({
-    _i7.Key? key,
+    _i8.Key? key,
     required String title,
-    List<_i6.PageRouteInfo>? children,
+    List<_i7.PageRouteInfo>? children,
   }) : super(
           CountRoute.name,
           args: CountRouteArgs(
@@ -135,8 +142,8 @@ class CountRoute extends _i6.PageRouteInfo<CountRouteArgs> {
 
   static const String name = 'CountRoute';
 
-  static const _i6.PageInfo<CountRouteArgs> page =
-      _i6.PageInfo<CountRouteArgs>(name);
+  static const _i7.PageInfo<CountRouteArgs> page =
+      _i7.PageInfo<CountRouteArgs>(name);
 }
 
 class CountRouteArgs {
@@ -145,7 +152,7 @@ class CountRouteArgs {
     required this.title,
   });
 
-  final _i7.Key? key;
+  final _i8.Key? key;
 
   final String title;
 
@@ -157,11 +164,11 @@ class CountRouteArgs {
 
 /// generated route for
 /// [_i3.Products]
-class Products extends _i6.PageRouteInfo<ProductsArgs> {
+class Products extends _i7.PageRouteInfo<ProductsArgs> {
   Products({
-    _i7.Key? key,
+    _i8.Key? key,
     String title = "Products",
-    List<_i6.PageRouteInfo>? children,
+    List<_i7.PageRouteInfo>? children,
   }) : super(
           Products.name,
           args: ProductsArgs(
@@ -173,8 +180,8 @@ class Products extends _i6.PageRouteInfo<ProductsArgs> {
 
   static const String name = 'Products';
 
-  static const _i6.PageInfo<ProductsArgs> page =
-      _i6.PageInfo<ProductsArgs>(name);
+  static const _i7.PageInfo<ProductsArgs> page =
+      _i7.PageInfo<ProductsArgs>(name);
 }
 
 class ProductsArgs {
@@ -183,7 +190,7 @@ class ProductsArgs {
     this.title = "Products",
   });
 
-  final _i7.Key? key;
+  final _i8.Key? key;
 
   final String title;
 
@@ -194,12 +201,26 @@ class ProductsArgs {
 }
 
 /// generated route for
-/// [_i4.TodoListGraphQLPage]
-class TodoListGraphQLRoute extends _i6.PageRouteInfo<TodoListGraphQLRouteArgs> {
+/// [_i4.RegisterPage]
+class RegisterRoute extends _i7.PageRouteInfo<void> {
+  const RegisterRoute({List<_i7.PageRouteInfo>? children})
+      : super(
+          RegisterRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'RegisterRoute';
+
+  static const _i7.PageInfo<void> page = _i7.PageInfo<void>(name);
+}
+
+/// generated route for
+/// [_i5.TodoListGraphQLPage]
+class TodoListGraphQLRoute extends _i7.PageRouteInfo<TodoListGraphQLRouteArgs> {
   TodoListGraphQLRoute({
-    _i7.Key? key,
+    _i8.Key? key,
     String title = "TodoList Screen",
-    List<_i6.PageRouteInfo>? children,
+    List<_i7.PageRouteInfo>? children,
   }) : super(
           TodoListGraphQLRoute.name,
           args: TodoListGraphQLRouteArgs(
@@ -211,8 +232,8 @@ class TodoListGraphQLRoute extends _i6.PageRouteInfo<TodoListGraphQLRouteArgs> {
 
   static const String name = 'TodoListGraphQLRoute';
 
-  static const _i6.PageInfo<TodoListGraphQLRouteArgs> page =
-      _i6.PageInfo<TodoListGraphQLRouteArgs>(name);
+  static const _i7.PageInfo<TodoListGraphQLRouteArgs> page =
+      _i7.PageInfo<TodoListGraphQLRouteArgs>(name);
 }
 
 class TodoListGraphQLRouteArgs {
@@ -221,7 +242,7 @@ class TodoListGraphQLRouteArgs {
     this.title = "TodoList Screen",
   });
 
-  final _i7.Key? key;
+  final _i8.Key? key;
 
   final String title;
 
@@ -232,12 +253,12 @@ class TodoListGraphQLRouteArgs {
 }
 
 /// generated route for
-/// [_i5.TodoListPage]
-class TodoListRoute extends _i6.PageRouteInfo<TodoListRouteArgs> {
+/// [_i6.TodoListPage]
+class TodoListRoute extends _i7.PageRouteInfo<TodoListRouteArgs> {
   TodoListRoute({
-    _i7.Key? key,
+    _i8.Key? key,
     String title = "TodoList Screen",
-    List<_i6.PageRouteInfo>? children,
+    List<_i7.PageRouteInfo>? children,
   }) : super(
           TodoListRoute.name,
           args: TodoListRouteArgs(
@@ -249,8 +270,8 @@ class TodoListRoute extends _i6.PageRouteInfo<TodoListRouteArgs> {
 
   static const String name = 'TodoListRoute';
 
-  static const _i6.PageInfo<TodoListRouteArgs> page =
-      _i6.PageInfo<TodoListRouteArgs>(name);
+  static const _i7.PageInfo<TodoListRouteArgs> page =
+      _i7.PageInfo<TodoListRouteArgs>(name);
 }
 
 class TodoListRouteArgs {
@@ -259,7 +280,7 @@ class TodoListRouteArgs {
     this.title = "TodoList Screen",
   });
 
-  final _i7.Key? key;
+  final _i8.Key? key;
 
   final String title;
 
