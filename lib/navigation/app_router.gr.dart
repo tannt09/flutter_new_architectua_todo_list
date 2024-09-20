@@ -56,9 +56,14 @@ abstract class $AppRouter extends _i7.RootStackRouter {
       );
     },
     RegisterRoute.name: (routeData) {
+      final args = routeData.argsAs<RegisterRouteArgs>(
+          orElse: () => const RegisterRouteArgs());
       return _i7.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i4.RegisterPage(),
+        child: _i4.RegisterPage(
+          key: args.key,
+          title: args.title,
+        ),
       );
     },
     TodoListGraphQLRoute.name: (routeData) {
@@ -202,16 +207,40 @@ class ProductsArgs {
 
 /// generated route for
 /// [_i4.RegisterPage]
-class RegisterRoute extends _i7.PageRouteInfo<void> {
-  const RegisterRoute({List<_i7.PageRouteInfo>? children})
-      : super(
+class RegisterRoute extends _i7.PageRouteInfo<RegisterRouteArgs> {
+  RegisterRoute({
+    _i8.Key? key,
+    String title = "Login",
+    List<_i7.PageRouteInfo>? children,
+  }) : super(
           RegisterRoute.name,
+          args: RegisterRouteArgs(
+            key: key,
+            title: title,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'RegisterRoute';
 
-  static const _i7.PageInfo<void> page = _i7.PageInfo<void>(name);
+  static const _i7.PageInfo<RegisterRouteArgs> page =
+      _i7.PageInfo<RegisterRouteArgs>(name);
+}
+
+class RegisterRouteArgs {
+  const RegisterRouteArgs({
+    this.key,
+    this.title = "Login",
+  });
+
+  final _i8.Key? key;
+
+  final String title;
+
+  @override
+  String toString() {
+    return 'RegisterRouteArgs{key: $key, title: $title}';
+  }
 }
 
 /// generated route for

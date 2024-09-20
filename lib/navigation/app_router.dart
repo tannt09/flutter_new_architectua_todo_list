@@ -16,6 +16,9 @@ class AppRouter extends $AppRouter {
         AutoRoute(page: TodoListGraphQLRoute.page),
         AutoRoute(page: CountRoute.page),
         AutoRoute(page: AdsRoute.page),
-        AutoRoute(page: RegisterRoute.page, initial: true),
+        AutoRoute(
+          page: RegisterRoute.page,
+          initial: true,
+        ),
       ];
 }
