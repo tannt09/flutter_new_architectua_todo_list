@@ -15,7 +15,7 @@ Future<String?> registerUser(
     log('${record.level.name}: ${record.time}: ${record.message}');
   });
 
-  final url = Uri.parse('http://192.168.1.4:3000/customers/register');
+  final url = Uri.parse('http://192.168.1.9:3000/customers/register');
   final data = {'username': username, 'password': password, "email": email};
 
   try {

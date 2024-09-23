@@ -18,6 +18,10 @@ class RegisterBloc extends BaseBloc<RegisterEvent, RegisterState> {
 
   Future<void> _registerUser(
       RegisterUser events, Emitter<RegisterState> emit) async {
-    await registerUser(events.username, events.password, events.email);
+    final String result =
+        await registerUser(events.username, events.password, events.email) ??
+            "Error register customer";
+
+    emit(state.copyWith(result: result));
   }
 }

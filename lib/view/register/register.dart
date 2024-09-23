@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -5,6 +7,7 @@ import 'package:flutter_new_architectua/bloc/register/register_bloc.dart';
 import 'package:flutter_new_architectua/navigation/app_navigator.dart';
 import 'package:flutter_new_architectua/navigation/app_router.gr.dart';
 import 'package:get_it/get_it.dart';
+import 'package:logging/logging.dart';
 
 @RoutePage()
 class RegisterPage extends StatefulWidget {
@@ -21,8 +24,26 @@ class _RegisterState extends State<RegisterPage> {
   TextEditingController passwordController = TextEditingController();
   TextEditingController emailController = TextEditingController();
 
+  final Logger _logger = Logger('RegisterPage');
+
   late final AppNavigator navigator = GetIt.instance.get<AppNavigator>();
   late final RegisterBloc bloc = GetIt.instance.get<RegisterBloc>();
+
+  @override
+  void initState() {
+    super.initState();
+    Logger.root.level = Level.ALL; // Set the root logger level
+    Logger.root.onRecord.listen((record) {
+      // You can customize the log output format here
+      log('${record.level.name}: ${record.time}: ${record.message}');
+    });
+  }
+
+  Future<void> handleRegister(
+      String username, String password, String email) async {
+    bloc.add(
+        RegisterUser(username: username, password: password, email: email));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,75 +53,98 @@ class _RegisterState extends State<RegisterPage> {
         appBar: AppBar(
           title: Text(widget.title),
         ),
-        body: BlocBuilder<RegisterBloc, RegisterState>(
-          builder: (context, state) {
-            return GestureDetector(
-              onTap: () => FocusScope.of(context).unfocus(),
-              child: SizedBox(
-                height: MediaQuery.of(context).size.height,
-                child: SingleChildScrollView(
-                  child: Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: Column(
-                      children: [
-                        TextField(
-                          controller: usernameController,
-                          decoration: const InputDecoration(
-                            labelText: 'Username',
-                            border: OutlineInputBorder(),
-                          ),
-                        ),
-                        const SizedBox(height: 16),
-                        TextField(
-                          controller: passwordController,
-                          decoration: const InputDecoration(
-                            labelText: 'Password',
-                            border: OutlineInputBorder(),
-                          ),
-                          obscureText: true,
-                        ),
-                        const SizedBox(height: 16),
-                        TextField(
-                          controller: emailController,
-                          decoration: const InputDecoration(
-                            labelText: 'Email',
-                            border: OutlineInputBorder(),
-                          ),
-                        ),
-                        const SizedBox(height: 24),
-                        ElevatedButton(
-                          onPressed: () {
-                            // Implement register functionality
-                            bloc.add(RegisterUser(
-                              username: usernameController.text,
-                              password: passwordController.text,
-                              email: emailController.text,
-                            ));
-                          },
-                          child: Text(widget.title),
-                        ),
-                        const SizedBox(height: 16),
-                        if (widget.title == "Login") // Add this condition
-                          GestureDetector(
-                            onTap: () {
-                              navigator.push(RegisterRoute(title: "Register"));
-                            },
-                            child: const Text(
-                              'Go to Register',
-                              style: TextStyle(
-                                color: Colors.blue,
-                                decoration: TextDecoration.underline,
-                                decorationColor: Colors.blue,
-                              ),
+        body: BlocListener<RegisterBloc, RegisterState>( // Keep BlocListener
+          listener: (context, state) {
+            if (state.result.isNotEmpty) { // Check if result is not empty
+              showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return AlertDialog(
+                    title: const Text('Result'),
+                    content: Text(state.result), // Display the result
+                    actions: [
+                      TextButton(
+                        onPressed: () {
+                          Navigator.of(context).pop(); // Close the dialog
+                        },
+                        child: const Text('OK'),
+                      ),
+                    ],
+                  );
+                },
+              );
+            }
+          },
+          child: BlocBuilder<RegisterBloc, RegisterState>( // Unchanged
+            builder: (context, state) {
+              return GestureDetector(
+                onTap: () => FocusScope.of(context).unfocus(),
+                child: SizedBox(
+                  height: MediaQuery.of(context).size.height,
+                  child: SingleChildScrollView(
+                    child: Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Column(
+                        children: [
+                          TextField(
+                            controller: usernameController,
+                            decoration: const InputDecoration(
+                              labelText: 'Username',
+                              border: OutlineInputBorder(),
                             ),
                           ),
-                      ],
+                          const SizedBox(height: 16),
+                          TextField(
+                            controller: passwordController,
+                            decoration: const InputDecoration(
+                              labelText: 'Password',
+                              border: OutlineInputBorder(),
+                            ),
+                            obscureText: true,
+                          ),
+                          const SizedBox(height: 16),
+                          TextField(
+                            controller: emailController,
+                            decoration: const InputDecoration(
+                              labelText: 'Email',
+                              border: OutlineInputBorder(),
+                            ),
+                          ),
+                          const SizedBox(height: 24),
+                          ElevatedButton(
+                            onPressed: () {
+                              // Implement register functionality
+                              handleRegister(
+                                usernameController.text,
+                                passwordController.text,
+                                emailController.text,
+                              );
+                            },
+                            child: Text(widget.title),
+                          ),
+                          const SizedBox(height: 16),
+                          if (widget.title == "Login") // Add this condition
+                            GestureDetector(
+                              onTap: () {
+                                navigator.push(RegisterRoute(title: "Register"));
+                              },
+                              child: const Text(
+                                'Go to Register',
+                                style: TextStyle(
+                                  color: Colors.blue,
+                                  decoration: TextDecoration.underline,
+                                  decorationColor: Colors.blue,
+                                ),
+                              ),
+                            ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
-              ),
-            );
-          },
+              );
+            },
+          ),
         ),
       ),
     );
