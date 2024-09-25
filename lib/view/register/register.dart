@@ -20,9 +20,9 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterState extends State<RegisterPage> {
-  TextEditingController usernameController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
-  TextEditingController emailController = TextEditingController();
+  final TextEditingController usernameController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
 
   final Logger _logger = Logger('RegisterPage');
 
@@ -45,6 +45,10 @@ class _RegisterState extends State<RegisterPage> {
         RegisterUser(username: username, password: password, email: email));
   }
 
+  Future<void> handleLogin(String username, String password) async {
+    _logger.info("----1111 $username");
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -53,29 +57,26 @@ class _RegisterState extends State<RegisterPage> {
         appBar: AppBar(
           title: Text(widget.title),
         ),
-        body: BlocListener<RegisterBloc, RegisterState>( // Keep BlocListener
+        body: BlocListener<RegisterBloc, RegisterState>(
           listener: (context, state) {
-            if (state.result.isNotEmpty) { // Check if result is not empty
+            if (state.result.isNotEmpty) {
+              // Display the result in a dialog
               showDialog(
                 context: context,
-                builder: (BuildContext context) {
-                  return AlertDialog(
-                    title: const Text('Result'),
-                    content: Text(state.result), // Display the result
-                    actions: [
-                      TextButton(
-                        onPressed: () {
-                          Navigator.of(context).pop(); // Close the dialog
-                        },
-                        child: const Text('OK'),
-                      ),
-                    ],
-                  );
-                },
+                builder: (context) => AlertDialog(
+                  title: const Text('Result'),
+                  content: Text(state.result),
+                  actions: [
+                    TextButton(
+                      onPressed: () => Navigator.of(context).pop(),
+                      child: const Text('OK'),
+                    ),
+                  ],
+                ),
               );
             }
           },
-          child: BlocBuilder<RegisterBloc, RegisterState>( // Unchanged
+          child: BlocBuilder<RegisterBloc, RegisterState>(
             builder: (context, state) {
               return GestureDetector(
                 onTap: () => FocusScope.of(context).unfocus(),
@@ -103,30 +104,39 @@ class _RegisterState extends State<RegisterPage> {
                             obscureText: true,
                           ),
                           const SizedBox(height: 16),
-                          TextField(
-                            controller: emailController,
-                            decoration: const InputDecoration(
-                              labelText: 'Email',
-                              border: OutlineInputBorder(),
+                          if (widget.title != "Login")
+                            TextField(
+                              controller: emailController,
+                              decoration: const InputDecoration(
+                                labelText: 'Email',
+                                border: OutlineInputBorder(),
+                              ),
                             ),
-                          ),
                           const SizedBox(height: 24),
                           ElevatedButton(
                             onPressed: () {
-                              // Implement register functionality
-                              handleRegister(
-                                usernameController.text,
-                                passwordController.text,
-                                emailController.text,
-                              );
+                              // Check if the title is "Login" to determine the action
+                              if (widget.title == "Login") {
+                                handleLogin(
+                                  usernameController.text,
+                                  passwordController.text,
+                                );
+                              } else {
+                                handleRegister(
+                                  usernameController.text,
+                                  passwordController.text,
+                                  emailController.text,
+                                );
+                              }
                             },
                             child: Text(widget.title),
                           ),
                           const SizedBox(height: 16),
-                          if (widget.title == "Login") // Add this condition
+                          if (widget.title == "Login")
                             GestureDetector(
                               onTap: () {
-                                navigator.push(RegisterRoute(title: "Register"));
+                                navigator
+                                    .push(RegisterRoute(title: "Register"));
                               },
                               child: const Text(
                                 'Go to Register',
