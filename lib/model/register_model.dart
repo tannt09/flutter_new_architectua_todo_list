@@ -1,12 +1,12 @@
-class BaseResponse {
+class RegisterModel {
   final String? message;
   final String? error;
   final String? customer;
 
-  const BaseResponse({this.message, this.customer, this.error});
+  const RegisterModel({this.message, this.customer, this.error});
 
-  factory BaseResponse.fromJson(Map<String, dynamic> json) {
-    return BaseResponse(
+  factory RegisterModel.fromJson(Map<String, dynamic> json) {
+    return RegisterModel(
         message: json['message'],
         error: json['error'],
         customer: json['customer']);
