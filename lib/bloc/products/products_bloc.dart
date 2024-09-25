@@ -3,7 +3,7 @@ import 'package:flutter_new_architectua/api/products_api.dart';
 import 'package:flutter_new_architectua/base/bloc/base_bloc.dart';
 import 'package:flutter_new_architectua/base/bloc/base_bloc_event.dart';
 import 'package:flutter_new_architectua/base/bloc/base_bloc_state.dart';
-import 'package:flutter_new_architectua/model/product.dart';
+import 'package:flutter_new_architectua/model/product_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 

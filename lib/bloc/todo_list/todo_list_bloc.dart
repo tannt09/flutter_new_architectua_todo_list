@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_new_architectua/base/bloc/base_bloc_event.dart';
-import 'package:flutter_new_architectua/model/user.dart';
+import 'package:flutter_new_architectua/model/user_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 

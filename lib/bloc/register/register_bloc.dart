@@ -1,5 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_new_architectua/api/register_api.dart';
+import 'package:flutter_new_architectua/api/auth_api.dart';
 import 'package:flutter_new_architectua/base/bloc/base_bloc.dart';
 import 'package:flutter_new_architectua/base/bloc/base_bloc_event.dart';
 import 'package:flutter_new_architectua/base/bloc/base_bloc_state.dart';

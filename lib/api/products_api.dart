@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:developer';
 
-import 'package:flutter_new_architectua/model/product.dart';
+import 'package:flutter_new_architectua/model/product_model.dart';
 import 'package:http/http.dart' as http;
 import 'package:logging/logging.dart';
 

@@ -2,8 +2,8 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_new_architectua/model/product.dart';
-import 'package:flutter_new_architectua/model/user.dart';
+import 'package:flutter_new_architectua/model/product_model.dart';
+import 'package:flutter_new_architectua/model/user_model.dart';
 
 class CustomDialog {
   static Future<void> showAddUserDialog(
