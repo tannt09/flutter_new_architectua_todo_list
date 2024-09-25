@@ -32,8 +32,7 @@ Future<String?> registerUser(
   }
 }
 
-Future<String?> loginUser(
-    String username, String password) async {
+Future<LoginModel?> loginUser(String username, String password) async {
   // Configure logger to print to console
   Logger.root.level = Level.ALL;
   Logger.root.onRecord.listen((record) {
@@ -49,9 +48,11 @@ Future<String?> loginUser(
     final Map<String, dynamic> parsed = jsonDecode(response.body);
     final LoginModel result = LoginModel.fromJson(parsed);
     _logger.severe('Response login: ${result.error}');
-    return response.statusCode == 200 ? result.message : result.error;
+    return result;
   } catch (e) {
     _logger.severe('Error login: $e');
-    return "$e";
+    final LoginModel result = LoginModel.fromJson(
+        {"code": 404, "message": "", "data": null, "error": e});
+    return result;
   }
 }
