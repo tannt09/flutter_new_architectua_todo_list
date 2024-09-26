@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_new_architectua/bloc/auth/auth_bloc.dart';
 import 'package:flutter_new_architectua/navigation/app_navigator.dart';
 import 'package:flutter_new_architectua/navigation/app_router.gr.dart';
+import 'package:flutter_new_architectua/widget/custom_textfield.dart';
 import 'package:get_it/get_it.dart';
 import 'package:logging/logging.dart';
 
@@ -24,7 +25,7 @@ class _AuthState extends State<AuthPage> {
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
 
-  final Logger _logger = Logger('AuthPage');
+  // final Logger _logger = Logger('AuthPage');
 
   late final AppNavigator navigator = GetIt.instance.get<AppNavigator>();
   late final AuthBloc bloc = GetIt.instance.get<AuthBloc>();
@@ -46,7 +47,7 @@ class _AuthState extends State<AuthPage> {
   }
 
   Future<void> handleLogin(String username, String password) async {
-    _logger.info("----1111 $username");
+    bloc.add(LoginUser(username: username, password: password));
   }
 
   @override
@@ -59,13 +60,15 @@ class _AuthState extends State<AuthPage> {
         ),
         body: BlocListener<AuthBloc, AuthState>(
           listener: (context, state) {
-            if (state.result.message != null && state.result.message!.isNotEmpty) {
+            if (state.result.message != null &&
+                state.result.message!.isNotEmpty) {
               // Display the result in a dialog
               showDialog(
                 context: context,
                 builder: (context) => AlertDialog(
                   title: const Text('Result'),
-                  content: Text(state.result.message ?? 'Error Register'), // Ensure non-null value
+                  content: Text(state.result.message ??
+                      'Error Register'), // Ensure non-null value
                   actions: [
                     TextButton(
                       onPressed: () => Navigator.of(context).pop(),
@@ -87,32 +90,18 @@ class _AuthState extends State<AuthPage> {
                       padding: const EdgeInsets.all(16.0),
                       child: Column(
                         children: [
-                          TextField(
-                            controller: usernameController,
-                            decoration: const InputDecoration(
-                              labelText: 'Username',
-                              border: OutlineInputBorder(),
-                            ),
-                          ),
-                          const SizedBox(height: 16),
-                          TextField(
-                            controller: passwordController,
-                            decoration: const InputDecoration(
-                              labelText: 'Password',
-                              border: OutlineInputBorder(),
-                            ),
-                            obscureText: true,
-                          ),
-                          const SizedBox(height: 16),
+                          CustomTextfield(
+                              controller: usernameController,
+                              labelText: "Username"),
+                          CustomTextfield(
+                              controller: passwordController,
+                              labelText: "Password",
+                              obscureText: true),
                           if (widget.title != "Login")
-                            TextField(
-                              controller: emailController,
-                              decoration: const InputDecoration(
-                                labelText: 'Email',
-                                border: OutlineInputBorder(),
-                              ),
-                            ),
-                          const SizedBox(height: 24),
+                            CustomTextfield(
+                                controller: emailController,
+                                labelText: "Email"),
+                          const SizedBox(height: 8),
                           ElevatedButton(
                             onPressed: () {
                               // Check if the title is "Login" to determine the action
@@ -135,8 +124,7 @@ class _AuthState extends State<AuthPage> {
                           if (widget.title == "Login")
                             GestureDetector(
                               onTap: () {
-                                navigator
-                                    .push(AuthRoute(title: "Register"));
+                                navigator.push(AuthRoute(title: "Register"));
                               },
                               child: const Text(
                                 'Go to Register',
