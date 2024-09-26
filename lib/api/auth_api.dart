@@ -1,14 +1,13 @@
 import 'dart:convert';
 import 'dart:developer';
 
-import 'package:flutter_new_architectua/model/login_model.dart';
-import 'package:flutter_new_architectua/model/register_model.dart';
+import 'package:flutter_new_architectua/model/auth_model.dart';
 import 'package:http/http.dart' as http;
 import 'package:logging/logging.dart';
 
 final _logger = Logger('ProductsApi');
 
-Future<String?> registerUser(
+Future<AuthModel> registerUser(
     String username, String password, String email) async {
   // Configure logger to print to console
   Logger.root.level = Level.ALL;
@@ -23,16 +22,18 @@ Future<String?> registerUser(
     final response = await http.post(url,
         headers: {'Content-Type': 'application/json'}, body: jsonEncode(data));
     final Map<String, dynamic> parsed = jsonDecode(response.body);
-    final RegisterModel result = RegisterModel.fromJson(parsed);
+    final AuthModel result = AuthModel.fromJson(parsed);
     _logger.severe('Response registering user: ${result.error}');
-    return response.statusCode == 200 ? result.message : result.error;
+    return result;
   } catch (e) {
     _logger.severe('Error registering user: $e');
-    return "$e";
+    final AuthModel result =
+        AuthModel(code: 404, message: "", data: null, error: "$e");
+    return result;
   }
 }
 
-Future<LoginModel> loginUser(String username, String password) async {
+Future<AuthModel> loginUser(String username, String password) async {
   // Configure logger to print to console
   Logger.root.level = Level.ALL;
   Logger.root.onRecord.listen((record) {
@@ -46,13 +47,13 @@ Future<LoginModel> loginUser(String username, String password) async {
     final response = await http.post(url,
         headers: {'Content-Type': 'application/json'}, body: jsonEncode(data));
     final Map<String, dynamic> parsed = jsonDecode(response.body);
-    final LoginModel result = LoginModel.fromJson(parsed);
+    final AuthModel result = AuthModel.fromJson(parsed);
     _logger.severe('Response login: ${result.error}');
     return result;
   } catch (e) {
     _logger.severe('Error login: $e');
-    final LoginModel result =
-        LoginModel(code: 404, message: "", data: null, error: "$e");
+    final AuthModel result =
+        AuthModel(code: 404, message: "", data: null, error: "$e");
     return result;
   }
 }

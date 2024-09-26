@@ -3,31 +3,31 @@ import 'dart:developer';
 import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_new_architectua/bloc/register/register_bloc.dart';
+import 'package:flutter_new_architectua/bloc/auth/auth_bloc.dart';
 import 'package:flutter_new_architectua/navigation/app_navigator.dart';
 import 'package:flutter_new_architectua/navigation/app_router.gr.dart';
 import 'package:get_it/get_it.dart';
 import 'package:logging/logging.dart';
 
 @RoutePage()
-class RegisterPage extends StatefulWidget {
+class AuthPage extends StatefulWidget {
   final String title;
 
-  const RegisterPage({super.key, this.title = "Login"});
+  const AuthPage({super.key, this.title = "Login"});
 
   @override
-  State<RegisterPage> createState() => _RegisterState();
+  State<AuthPage> createState() => _AuthState();
 }
 
-class _RegisterState extends State<RegisterPage> {
+class _AuthState extends State<AuthPage> {
   final TextEditingController usernameController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
 
-  final Logger _logger = Logger('RegisterPage');
+  final Logger _logger = Logger('AuthPage');
 
   late final AppNavigator navigator = GetIt.instance.get<AppNavigator>();
-  late final RegisterBloc bloc = GetIt.instance.get<RegisterBloc>();
+  late final AuthBloc bloc = GetIt.instance.get<AuthBloc>();
 
   @override
   void initState() {
@@ -57,15 +57,15 @@ class _RegisterState extends State<RegisterPage> {
         appBar: AppBar(
           title: Text(widget.title),
         ),
-        body: BlocListener<RegisterBloc, RegisterState>(
+        body: BlocListener<AuthBloc, AuthState>(
           listener: (context, state) {
-            if (state.result.isNotEmpty) {
+            if (state.result.message != null && state.result.message!.isNotEmpty) {
               // Display the result in a dialog
               showDialog(
                 context: context,
                 builder: (context) => AlertDialog(
                   title: const Text('Result'),
-                  content: Text(state.result),
+                  content: Text(state.result.message ?? 'Error Register'), // Ensure non-null value
                   actions: [
                     TextButton(
                       onPressed: () => Navigator.of(context).pop(),
@@ -76,7 +76,7 @@ class _RegisterState extends State<RegisterPage> {
               );
             }
           },
-          child: BlocBuilder<RegisterBloc, RegisterState>(
+          child: BlocBuilder<AuthBloc, AuthState>(
             builder: (context, state) {
               return GestureDetector(
                 onTap: () => FocusScope.of(context).unfocus(),
@@ -136,7 +136,7 @@ class _RegisterState extends State<RegisterPage> {
                             GestureDetector(
                               onTap: () {
                                 navigator
-                                    .push(RegisterRoute(title: "Register"));
+                                    .push(AuthRoute(title: "Register"));
                               },
                               child: const Text(
                                 'Go to Register',

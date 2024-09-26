@@ -17,7 +17,7 @@ class AppRouter extends $AppRouter {
         AutoRoute(page: CountRoute.page),
         AutoRoute(page: AdsRoute.page),
         AutoRoute(
-          page: RegisterRoute.page,
+          page: AuthRoute.page,
           initial: true,
         ),
       ];

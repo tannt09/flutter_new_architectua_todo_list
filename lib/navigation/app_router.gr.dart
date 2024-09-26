@@ -11,13 +11,13 @@
 import 'package:auto_route/auto_route.dart' as _i7;
 import 'package:flutter/material.dart' as _i8;
 import 'package:flutter_new_architectua/view/ads/ads.dart' as _i1;
-import 'package:flutter_new_architectua/view/count/count.dart' as _i2;
-import 'package:flutter_new_architectua/view/register/register.dart' as _i4;
+import 'package:flutter_new_architectua/view/auth/auth.dart' as _i2;
+import 'package:flutter_new_architectua/view/count/count.dart' as _i3;
 import 'package:flutter_new_architectua/view/todo_list/todo_list.dart' as _i6;
 import 'package:flutter_new_architectua/view/todo_list/todo_list_graphql.dart'
     as _i5;
 import 'package:flutter_new_architectua/view/todo_list/todo_list_products.dart'
-    as _i3;
+    as _i4;
 
 abstract class $AppRouter extends _i7.RootStackRouter {
   $AppRouter({super.navigatorKey});
@@ -34,11 +34,22 @@ abstract class $AppRouter extends _i7.RootStackRouter {
         ),
       );
     },
+    AuthRoute.name: (routeData) {
+      final args =
+          routeData.argsAs<AuthRouteArgs>(orElse: () => const AuthRouteArgs());
+      return _i7.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: _i2.AuthPage(
+          key: args.key,
+          title: args.title,
+        ),
+      );
+    },
     CountRoute.name: (routeData) {
       final args = routeData.argsAs<CountRouteArgs>();
       return _i7.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i2.CountPage(
+        child: _i3.CountPage(
           key: args.key,
           title: args.title,
         ),
@@ -49,18 +60,7 @@ abstract class $AppRouter extends _i7.RootStackRouter {
           routeData.argsAs<ProductsArgs>(orElse: () => const ProductsArgs());
       return _i7.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i3.Products(
-          key: args.key,
-          title: args.title,
-        ),
-      );
-    },
-    RegisterRoute.name: (routeData) {
-      final args = routeData.argsAs<RegisterRouteArgs>(
-          orElse: () => const RegisterRouteArgs());
-      return _i7.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: _i4.RegisterPage(
+        child: _i4.Products(
           key: args.key,
           title: args.title,
         ),
@@ -130,7 +130,45 @@ class AdsRouteArgs {
 }
 
 /// generated route for
-/// [_i2.CountPage]
+/// [_i2.AuthPage]
+class AuthRoute extends _i7.PageRouteInfo<AuthRouteArgs> {
+  AuthRoute({
+    _i8.Key? key,
+    String title = "Login",
+    List<_i7.PageRouteInfo>? children,
+  }) : super(
+          AuthRoute.name,
+          args: AuthRouteArgs(
+            key: key,
+            title: title,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'AuthRoute';
+
+  static const _i7.PageInfo<AuthRouteArgs> page =
+      _i7.PageInfo<AuthRouteArgs>(name);
+}
+
+class AuthRouteArgs {
+  const AuthRouteArgs({
+    this.key,
+    this.title = "Login",
+  });
+
+  final _i8.Key? key;
+
+  final String title;
+
+  @override
+  String toString() {
+    return 'AuthRouteArgs{key: $key, title: $title}';
+  }
+}
+
+/// generated route for
+/// [_i3.CountPage]
 class CountRoute extends _i7.PageRouteInfo<CountRouteArgs> {
   CountRoute({
     _i8.Key? key,
@@ -168,7 +206,7 @@ class CountRouteArgs {
 }
 
 /// generated route for
-/// [_i3.Products]
+/// [_i4.Products]
 class Products extends _i7.PageRouteInfo<ProductsArgs> {
   Products({
     _i8.Key? key,
@@ -202,44 +240,6 @@ class ProductsArgs {
   @override
   String toString() {
     return 'ProductsArgs{key: $key, title: $title}';
-  }
-}
-
-/// generated route for
-/// [_i4.RegisterPage]
-class RegisterRoute extends _i7.PageRouteInfo<RegisterRouteArgs> {
-  RegisterRoute({
-    _i8.Key? key,
-    String title = "Login",
-    List<_i7.PageRouteInfo>? children,
-  }) : super(
-          RegisterRoute.name,
-          args: RegisterRouteArgs(
-            key: key,
-            title: title,
-          ),
-          initialChildren: children,
-        );
-
-  static const String name = 'RegisterRoute';
-
-  static const _i7.PageInfo<RegisterRouteArgs> page =
-      _i7.PageInfo<RegisterRouteArgs>(name);
-}
-
-class RegisterRouteArgs {
-  const RegisterRouteArgs({
-    this.key,
-    this.title = "Login",
-  });
-
-  final _i8.Key? key;
-
-  final String title;
-
-  @override
-  String toString() {
-    return 'RegisterRouteArgs{key: $key, title: $title}';
   }
 }
 

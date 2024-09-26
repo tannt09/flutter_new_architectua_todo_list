@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'register_bloc.dart';
+part of 'auth_bloc.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -13,6 +13,142 @@ T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+
+/// @nodoc
+mixin _$LoginUser {
+  String get username => throw _privateConstructorUsedError;
+  String get password => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $LoginUserCopyWith<LoginUser> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $LoginUserCopyWith<$Res> {
+  factory $LoginUserCopyWith(LoginUser value, $Res Function(LoginUser) then) =
+      _$LoginUserCopyWithImpl<$Res, LoginUser>;
+  @useResult
+  $Res call({String username, String password});
+}
+
+/// @nodoc
+class _$LoginUserCopyWithImpl<$Res, $Val extends LoginUser>
+    implements $LoginUserCopyWith<$Res> {
+  _$LoginUserCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? username = null,
+    Object? password = null,
+  }) {
+    return _then(_value.copyWith(
+      username: null == username
+          ? _value.username
+          : username // ignore: cast_nullable_to_non_nullable
+              as String,
+      password: null == password
+          ? _value.password
+          : password // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$LoginUserImplCopyWith<$Res>
+    implements $LoginUserCopyWith<$Res> {
+  factory _$$LoginUserImplCopyWith(
+          _$LoginUserImpl value, $Res Function(_$LoginUserImpl) then) =
+      __$$LoginUserImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String username, String password});
+}
+
+/// @nodoc
+class __$$LoginUserImplCopyWithImpl<$Res>
+    extends _$LoginUserCopyWithImpl<$Res, _$LoginUserImpl>
+    implements _$$LoginUserImplCopyWith<$Res> {
+  __$$LoginUserImplCopyWithImpl(
+      _$LoginUserImpl _value, $Res Function(_$LoginUserImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? username = null,
+    Object? password = null,
+  }) {
+    return _then(_$LoginUserImpl(
+      username: null == username
+          ? _value.username
+          : username // ignore: cast_nullable_to_non_nullable
+              as String,
+      password: null == password
+          ? _value.password
+          : password // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$LoginUserImpl implements _LoginUser {
+  const _$LoginUserImpl({required this.username, required this.password});
+
+  @override
+  final String username;
+  @override
+  final String password;
+
+  @override
+  String toString() {
+    return 'LoginUser(username: $username, password: $password)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$LoginUserImpl &&
+            (identical(other.username, username) ||
+                other.username == username) &&
+            (identical(other.password, password) ||
+                other.password == password));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, username, password);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$LoginUserImplCopyWith<_$LoginUserImpl> get copyWith =>
+      __$$LoginUserImplCopyWithImpl<_$LoginUserImpl>(this, _$identity);
+}
+
+abstract class _LoginUser implements LoginUser {
+  const factory _LoginUser(
+      {required final String username,
+      required final String password}) = _$LoginUserImpl;
+
+  @override
+  String get username;
+  @override
+  String get password;
+  @override
+  @JsonKey(ignore: true)
+  _$$LoginUserImplCopyWith<_$LoginUserImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
 
 /// @nodoc
 mixin _$RegisterUser {
@@ -170,27 +306,26 @@ abstract class _RegisterUser implements RegisterUser {
 }
 
 /// @nodoc
-mixin _$RegisterState {
-  String get result => throw _privateConstructorUsedError;
+mixin _$AuthState {
+  AuthModel get result => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $RegisterStateCopyWith<RegisterState> get copyWith =>
+  $AuthStateCopyWith<AuthState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $RegisterStateCopyWith<$Res> {
-  factory $RegisterStateCopyWith(
-          RegisterState value, $Res Function(RegisterState) then) =
-      _$RegisterStateCopyWithImpl<$Res, RegisterState>;
+abstract class $AuthStateCopyWith<$Res> {
+  factory $AuthStateCopyWith(AuthState value, $Res Function(AuthState) then) =
+      _$AuthStateCopyWithImpl<$Res, AuthState>;
   @useResult
-  $Res call({String result});
+  $Res call({AuthModel result});
 }
 
 /// @nodoc
-class _$RegisterStateCopyWithImpl<$Res, $Val extends RegisterState>
-    implements $RegisterStateCopyWith<$Res> {
-  _$RegisterStateCopyWithImpl(this._value, this._then);
+class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
+    implements $AuthStateCopyWith<$Res> {
+  _$AuthStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -206,28 +341,28 @@ class _$RegisterStateCopyWithImpl<$Res, $Val extends RegisterState>
       result: null == result
           ? _value.result
           : result // ignore: cast_nullable_to_non_nullable
-              as String,
+              as AuthModel,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$RegisterStateImplCopyWith<$Res>
-    implements $RegisterStateCopyWith<$Res> {
-  factory _$$RegisterStateImplCopyWith(
-          _$RegisterStateImpl value, $Res Function(_$RegisterStateImpl) then) =
-      __$$RegisterStateImplCopyWithImpl<$Res>;
+abstract class _$$AuthStateImplCopyWith<$Res>
+    implements $AuthStateCopyWith<$Res> {
+  factory _$$AuthStateImplCopyWith(
+          _$AuthStateImpl value, $Res Function(_$AuthStateImpl) then) =
+      __$$AuthStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String result});
+  $Res call({AuthModel result});
 }
 
 /// @nodoc
-class __$$RegisterStateImplCopyWithImpl<$Res>
-    extends _$RegisterStateCopyWithImpl<$Res, _$RegisterStateImpl>
-    implements _$$RegisterStateImplCopyWith<$Res> {
-  __$$RegisterStateImplCopyWithImpl(
-      _$RegisterStateImpl _value, $Res Function(_$RegisterStateImpl) _then)
+class __$$AuthStateImplCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res, _$AuthStateImpl>
+    implements _$$AuthStateImplCopyWith<$Res> {
+  __$$AuthStateImplCopyWithImpl(
+      _$AuthStateImpl _value, $Res Function(_$AuthStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -235,34 +370,36 @@ class __$$RegisterStateImplCopyWithImpl<$Res>
   $Res call({
     Object? result = null,
   }) {
-    return _then(_$RegisterStateImpl(
+    return _then(_$AuthStateImpl(
       result: null == result
           ? _value.result
           : result // ignore: cast_nullable_to_non_nullable
-              as String,
+              as AuthModel,
     ));
   }
 }
 
 /// @nodoc
 
-class _$RegisterStateImpl implements _RegisterState {
-  const _$RegisterStateImpl({this.result = ""});
+class _$AuthStateImpl implements _AuthState {
+  const _$AuthStateImpl(
+      {this.result =
+          const AuthModel(code: 0, message: "", data: null, error: "")});
 
   @override
   @JsonKey()
-  final String result;
+  final AuthModel result;
 
   @override
   String toString() {
-    return 'RegisterState(result: $result)';
+    return 'AuthState(result: $result)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$RegisterStateImpl &&
+            other is _$AuthStateImpl &&
             (identical(other.result, result) || other.result == result));
   }
 
@@ -272,17 +409,17 @@ class _$RegisterStateImpl implements _RegisterState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$RegisterStateImplCopyWith<_$RegisterStateImpl> get copyWith =>
-      __$$RegisterStateImplCopyWithImpl<_$RegisterStateImpl>(this, _$identity);
+  _$$AuthStateImplCopyWith<_$AuthStateImpl> get copyWith =>
+      __$$AuthStateImplCopyWithImpl<_$AuthStateImpl>(this, _$identity);
 }
 
-abstract class _RegisterState implements RegisterState {
-  const factory _RegisterState({final String result}) = _$RegisterStateImpl;
+abstract class _AuthState implements AuthState {
+  const factory _AuthState({final AuthModel result}) = _$AuthStateImpl;
 
   @override
-  String get result;
+  AuthModel get result;
   @override
   @JsonKey(ignore: true)
-  _$$RegisterStateImplCopyWith<_$RegisterStateImpl> get copyWith =>
+  _$$AuthStateImplCopyWith<_$AuthStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
