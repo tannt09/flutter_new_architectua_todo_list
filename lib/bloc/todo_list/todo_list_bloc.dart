@@ -1,6 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_new_architectua/base/bloc/base_bloc_event.dart';
 import 'package:flutter_new_architectua/model/user_model.dart';
+import 'package:flutter_new_architectua/utils/bloc_extensions.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
@@ -26,12 +27,15 @@ class TodoListBloc extends BaseBloc<TodoListEvent, TodoListState> {
     add(const UpdateTodoList());
   }
 
-  Future<void> _updateTodoList(UpdateTodoList event, Emitter<TodoListState> emit) async {
+  Future<void> _updateTodoList(
+      UpdateTodoList event, Emitter<TodoListState> emit) async {
     final List<User> newList = await User.users();
-    emit(state.copyWith(userList: newList));
+
+    emitSafety(state.copyWith(userList: newList));
   }
 
-  Future<void> _addElement(AddTodoList event, Emitter<TodoListState> emit) async {
+  Future<void> _addElement(
+      AddTodoList event, Emitter<TodoListState> emit) async {
     var fido = event.item;
     await User.insertUser(fido);
 
@@ -41,7 +45,8 @@ class TodoListBloc extends BaseBloc<TodoListEvent, TodoListState> {
     // emit(state.copyWith(userList: newList));
   }
 
-  Future<void> _deleteElement(DeleteTodoList event, Emitter<TodoListState> emit) async {
+  Future<void> _deleteElement(
+      DeleteTodoList event, Emitter<TodoListState> emit) async {
     await User.deleteUser(event.id);
 
     add(const UpdateTodoList());
@@ -50,7 +55,8 @@ class TodoListBloc extends BaseBloc<TodoListEvent, TodoListState> {
     // emit(state.copyWith(userList: newList));
   }
 
-  Future<void> _editElement(EditTodoList event, Emitter<TodoListState> emit) async {
+  Future<void> _editElement(
+      EditTodoList event, Emitter<TodoListState> emit) async {
     var fido = event.item;
     await User.editUser(fido);
 

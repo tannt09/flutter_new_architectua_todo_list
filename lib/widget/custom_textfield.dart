@@ -18,8 +18,9 @@ class CustomTextfield extends StatelessWidget {
       children: [
         TextField(
           controller: controller,
-          decoration: const InputDecoration(
-            border: OutlineInputBorder(),
+          decoration: InputDecoration(
+            labelText: labelText,
+            border: const OutlineInputBorder(),
           ),
           obscureText: obscureText,
         ),

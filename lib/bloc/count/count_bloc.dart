@@ -1,3 +1,4 @@
+import 'package:flutter_new_architectua/utils/bloc_extensions.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -17,6 +18,6 @@ class CountBloc extends BaseBloc<CountEvent, CountState> {
   }
 
   void _onCount(Count event, Emitter<CountState> emit) {
-    emit(state.copyWith(count: state.count + 1));
+    emitSafety(state.copyWith(count: state.count + 1));
   }
 }

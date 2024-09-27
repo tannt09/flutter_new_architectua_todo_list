@@ -4,13 +4,16 @@ import 'package:flutter_new_architectua/base/bloc/base_bloc.dart';
 import 'package:flutter_new_architectua/base/bloc/base_bloc_event.dart';
 import 'package:flutter_new_architectua/base/bloc/base_bloc_state.dart';
 import 'package:flutter_new_architectua/model/auth_model.dart';
+import 'package:flutter_new_architectua/utils/bloc_extensions.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:injectable/injectable.dart';
 
 part 'auth_event.dart';
 part 'auth_state.dart';
 
 part 'auth_bloc.freezed.dart';
 
+@injectable
 class AuthBloc extends BaseBloc<AuthEvent, AuthState> {
   AuthBloc() : super(const AuthState()) {
     on<LoginUser>(_loginUser);
@@ -19,7 +22,8 @@ class AuthBloc extends BaseBloc<AuthEvent, AuthState> {
 
   Future<void> _loginUser(LoginUser events, Emitter<AuthState> emit) async {
     final AuthModel result = await loginUser(events.username, events.password);
-    emit(state.copyWith(result: result));
+
+    emitSafety(state.copyWith(result: result));
   }
 
   Future<void> _registerUser(
@@ -27,6 +31,6 @@ class AuthBloc extends BaseBloc<AuthEvent, AuthState> {
     final AuthModel result =
         await registerUser(events.username, events.password, events.email);
 
-    emit(state.copyWith(result: result));
+    emitSafety(state.copyWith(result: result));
   }
 }
