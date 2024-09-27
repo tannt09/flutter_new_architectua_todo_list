@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_new_architectua/bloc/auth/auth_bloc.dart';
 import 'package:flutter_new_architectua/navigation/app_navigator.dart';
 import 'package:flutter_new_architectua/navigation/app_router.gr.dart';
+import 'package:flutter_new_architectua/view/auth/auth_logic.dart';
 import 'package:flutter_new_architectua/widget/custom_textfield.dart';
 import 'package:get_it/get_it.dart';
 import 'package:logging/logging.dart';
@@ -59,26 +60,7 @@ class _AuthState extends State<AuthPage> {
           title: Text(widget.title),
         ),
         body: BlocListener<AuthBloc, AuthState>(
-          listener: (context, state) {
-            if (state.result.message != null &&
-                state.result.message!.isNotEmpty) {
-              // Display the result in a dialog
-              showDialog(
-                context: context,
-                builder: (context) => AlertDialog(
-                  title: const Text('Result'),
-                  content: Text(state.result.message ??
-                      'Error Register'), // Ensure non-null value
-                  actions: [
-                    TextButton(
-                      onPressed: () => Navigator.of(context).pop(),
-                      child: const Text('OK'),
-                    ),
-                  ],
-                ),
-              );
-            }
-          },
+          listener: (AuthLogic.showResultDialog),
           child: BlocBuilder<AuthBloc, AuthState>(
             builder: (context, state) {
               return GestureDetector(
@@ -104,19 +86,11 @@ class _AuthState extends State<AuthPage> {
                           const SizedBox(height: 8),
                           ElevatedButton(
                             onPressed: () {
-                              // Check if the title is "Login" to determine the action
-                              if (widget.title == "Login") {
-                                handleLogin(
-                                  usernameController.text,
-                                  passwordController.text,
-                                );
-                              } else {
-                                handleRegister(
-                                  usernameController.text,
-                                  passwordController.text,
-                                  emailController.text,
-                                );
-                              }
+                              AuthLogic.handleAuth(bloc, widget.title, [
+                                usernameController,
+                                passwordController,
+                                emailController
+                              ]);
                             },
                             child: Text(widget.title),
                           ),
