@@ -14,7 +14,7 @@ Future<List<Product>> fetchAllProduct() async {
     log('${record.level.name}: ${record.time}: ${record.message}');
   });
 
-  final url = Uri.parse('http://192.168.1.5:3000/products/getAll');
+  final url = Uri.parse('http://192.168.1.9:3000/products/getAll');
 
   try {
     _logger.info('Fetching products from: $url');
@@ -37,7 +37,7 @@ Future<List<Product>> fetchAllProduct() async {
 
 Future<String> fetchEditProduct(Product product) async {
   final url =
-      Uri.parse('http://192.168.1.5:3000/products/update?id=${product.id}');
+      Uri.parse('http://192.168.1.9:3000/products/update?id=${product.id}');
   final updatedData = product.toJson()..remove('id');
 
   try {
@@ -55,7 +55,7 @@ Future<String> fetchEditProduct(Product product) async {
 }
 
 Future<String> fetchAddNewProduct(Product product) async {
-  final url = Uri.parse('http://192.168.1.5:3000/products/add');
+  final url = Uri.parse('http://192.168.1.9:3000/products/add');
   final newProductData = product.toJson()..remove('id');
 
   try {
@@ -75,7 +75,7 @@ Future<String> fetchAddNewProduct(Product product) async {
 }
 
 Future<String> fetchDeleteProduct(String id) async {
-  final url = Uri.parse('http://192.168.1.5:3000/products/delete?id=$id');
+  final url = Uri.parse('http://192.168.1.9:3000/products/delete?id=$id');
 
   try {
     final response = await http.delete(url);

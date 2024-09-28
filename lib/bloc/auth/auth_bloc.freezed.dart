@@ -383,8 +383,7 @@ class __$$AuthStateImplCopyWithImpl<$Res>
 
 class _$AuthStateImpl implements _AuthState {
   const _$AuthStateImpl(
-      {this.result =
-          const AuthModel(code: 0, message: "", data: null, error: "")});
+      {this.result = const AuthModel(code: 0, message: "", data: null)});
 
   @override
   @JsonKey()

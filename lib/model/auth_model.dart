@@ -1,16 +1,14 @@
 class AuthModel {
   final int? code;
   final String? message;
-  final String? error;
   final AuthData? data;
 
-  const AuthModel({this.code, this.message, this.data, this.error});
+  const AuthModel({this.code, this.message, this.data});
 
   factory AuthModel.fromJson(Map<String, dynamic> json) {
     return AuthModel(
         code: json['code'],
         message: json['message'],
-        error: json['error'],
         data: json['data'] != null ? AuthData.fromJson(json['data']) : null);
   }
 }

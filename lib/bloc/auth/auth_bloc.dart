@@ -4,8 +4,11 @@ import 'package:flutter_new_architectua/base/bloc/base_bloc.dart';
 import 'package:flutter_new_architectua/base/bloc/base_bloc_event.dart';
 import 'package:flutter_new_architectua/base/bloc/base_bloc_state.dart';
 import 'package:flutter_new_architectua/model/auth_model.dart';
+import 'package:flutter_new_architectua/navigation/app_navigator.dart';
+import 'package:flutter_new_architectua/navigation/app_router.gr.dart';
 import 'package:flutter_new_architectua/utils/bloc_extensions.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
 
 part 'auth_event.dart';
@@ -21,7 +24,12 @@ class AuthBloc extends BaseBloc<AuthEvent, AuthState> {
   }
 
   Future<void> _loginUser(LoginUser events, Emitter<AuthState> emit) async {
+    late final AppNavigator navigator = GetIt.instance.get<AppNavigator>();
     final AuthModel result = await loginUser(events.username, events.password);
+
+    if (result.code == 200) {
+      navigator.push(Products());
+    }
 
     emitSafety(state.copyWith(result: result));
   }

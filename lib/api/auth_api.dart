@@ -23,12 +23,12 @@ Future<AuthModel> registerUser(
         headers: {'Content-Type': 'application/json'}, body: jsonEncode(data));
     final Map<String, dynamic> parsed = jsonDecode(response.body);
     final AuthModel result = AuthModel.fromJson(parsed);
-    _logger.severe('Response registering user: ${result.error}');
+    _logger.severe('Response registering user: ${result.message}');
     return result;
   } catch (e) {
     _logger.severe('Error registering user: $e');
     final AuthModel result =
-        AuthModel(code: 404, message: "", data: null, error: "$e");
+        AuthModel(code: 404, message: "$e", data: null);
     return result;
   }
 }
@@ -48,12 +48,12 @@ Future<AuthModel> loginUser(String username, String password) async {
         headers: {'Content-Type': 'application/json'}, body: jsonEncode(data));
     final Map<String, dynamic> parsed = jsonDecode(response.body);
     final AuthModel result = AuthModel.fromJson(parsed);
-    _logger.severe('Response login: ${result.error}');
+    _logger.severe('Response login: ${result.message}');
     return result;
   } catch (e) {
     _logger.severe('Error login: $e');
     final AuthModel result =
-        AuthModel(code: 404, message: "", data: null, error: "$e");
+        AuthModel(code: 404, message: "$e", data: null);
     return result;
   }
 }
