@@ -14,9 +14,8 @@ class AuthLogic {
   }
 
   static void handleAuth(
-      AuthBloc bloc,
-      String title,
-      List<TextEditingController> controllers) { // Changed to List
+      AuthBloc bloc, String title, List<TextEditingController> controllers) {
+    // Changed to List
     String username = controllers[0].text; // Access username
     String password = controllers[1].text; // Access password
     String email = controllers[2].text; // Access email if exists
@@ -43,8 +42,8 @@ class AuthLogic {
         context: context,
         builder: (context) => AlertDialog(
           title: const Text('Result'),
-          content: Text(state.result.message ??
-              'Error Register'), // Ensure non-null value
+          content:
+              Text(state.result.message ?? 'Error'), // Ensure non-null value
           actions: [
             TextButton(
               onPressed: () => Navigator.of(context).pop(),

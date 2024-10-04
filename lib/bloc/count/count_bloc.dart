@@ -3,9 +3,9 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../base/bloc/base_bloc.dart';
-import '../../base/bloc/base_bloc_event.dart';
-import '../../base/bloc/base_bloc_state.dart';
+import '../base/bloc/base_bloc.dart';
+import '../base/bloc/base_bloc_event.dart';
+import '../base/bloc/base_bloc_state.dart';
 
 part 'count_bloc.freezed.dart';
 part 'count_event.dart';

@@ -1,12 +1,12 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_new_architectua/base/bloc/base_bloc_event.dart';
+import 'package:flutter_new_architectua/bloc/base/bloc/base_bloc_event.dart';
 import 'package:flutter_new_architectua/model/user_model.dart';
 import 'package:flutter_new_architectua/utils/bloc_extensions.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
-import '../../base/bloc/base_bloc.dart';
-import '../../base/bloc/base_bloc_state.dart';
+import '../base/bloc/base_bloc.dart';
+import '../base/bloc/base_bloc_state.dart';
 
 part 'todo_list_bloc.freezed.dart';
 part 'todo_list_event.dart';
