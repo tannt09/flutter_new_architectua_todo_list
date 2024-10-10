@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:developer';
 
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_new_architectua/model/auth_model.dart';
 import 'package:http/http.dart' as http;
 import 'package:logging/logging.dart';
@@ -15,7 +16,9 @@ Future<AuthModel> registerUser(
     log('${record.level.name}: ${record.time}: ${record.message}');
   });
 
-  final url = Uri.parse('http://192.168.1.9:3000/customers/register');
+  await dotenv.load();
+
+  final url = Uri.parse('${dotenv.env['BASE_URL']}/customers/register');
   final data = {'username': username, 'password': password, "email": email};
 
   try {
@@ -27,8 +30,7 @@ Future<AuthModel> registerUser(
     return result;
   } catch (e) {
     _logger.severe('Error registering user: $e');
-    final AuthModel result =
-        AuthModel(code: 404, message: "$e", data: null);
+    final AuthModel result = AuthModel(code: 404, message: "$e", data: null);
     return result;
   }
 }
@@ -40,7 +42,9 @@ Future<AuthModel> loginUser(String username, String password) async {
     log('${record.level.name}: ${record.time}: ${record.message}');
   });
 
-  final url = Uri.parse('http://192.168.1.9:3000/customers/login');
+  await dotenv.load();
+
+  final url = Uri.parse('${dotenv.env['BASE_URL']}/customers/login');
   final data = {'username': username, 'password': password};
 
   try {
@@ -52,8 +56,7 @@ Future<AuthModel> loginUser(String username, String password) async {
     return result;
   } catch (e) {
     _logger.severe('Error login: $e');
-    final AuthModel result =
-        AuthModel(code: 404, message: "$e", data: null);
+    final AuthModel result = AuthModel(code: 404, message: "$e", data: null);
     return result;
   }
 }

@@ -1,5 +1,6 @@
 import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_new_architectua/view/todo_list/todo_list_products.dart';
 
 @RoutePage()
 class BottomNavigation extends StatefulWidget {
@@ -13,7 +14,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
   int _selectedIndex = 0;
 
   static const List<Widget> _widgetOptions = <Widget>[
-    Text('Home Page'),
+    Products(),
     Text('Search Page'),
     Text('Profile Page'),
   ];
@@ -27,9 +28,6 @@ class _BottomNavigationState extends State<BottomNavigation> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Bottom Navigation Bar Demo'),
-      ),
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
       ),

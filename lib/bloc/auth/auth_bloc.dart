@@ -28,7 +28,7 @@ class AuthBloc extends BaseBloc<AuthEvent, AuthState> {
     final AuthModel result = await loginUser(events.username, events.password);
 
     if (result.code == 200) {
-      navigator.push(Products());
+      navigator.push(const BottomNavigation());
     }
 
     emitSafety(state.copyWith(result: result));

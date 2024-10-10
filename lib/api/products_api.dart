@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:developer';
 
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_new_architectua/model/product_model.dart';
 import 'package:http/http.dart' as http;
 import 'package:logging/logging.dart';
@@ -14,7 +15,9 @@ Future<List<Product>> fetchAllProduct() async {
     log('${record.level.name}: ${record.time}: ${record.message}');
   });
 
-  final url = Uri.parse('http://192.168.1.9:3000/products/getAll');
+  await dotenv.load();
+
+  final url = Uri.parse('${dotenv.env['BASE_URL']}/products/getAll');
 
   try {
     _logger.info('Fetching products from: $url');

@@ -49,6 +49,7 @@ dependencies:
   graphql_flutter: ^5.2.0-beta.7
   http: ^1.2.2
   logging: ^1.2.0
+  flutter_dotenv: ^5.1.0
 
 dev_dependencies:
   flutter_test:
@@ -104,6 +105,8 @@ flutter:
           weight: 700
         - asset: assets/fonts/Cormorant-Italic.ttf
           style: italic
+  assets:
+    - .env
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
