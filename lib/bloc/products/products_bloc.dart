@@ -30,7 +30,7 @@ class ProductsBloc extends BaseBloc<ProductsEvent, ProductsState> {
   Future<void> _getAllProducts(
       GetAllProducts event, Emitter<ProductsState> emit) async {
     final List<Product> newProducts = await fetchAllProduct();
-    
+
     emitSafety(state.copyWith(products: newProducts));
   }
 

@@ -10,6 +10,7 @@ import 'package:flutter_new_architectua/utils/bloc_extensions.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 part 'auth_event.dart';
 part 'auth_state.dart';
@@ -28,6 +29,11 @@ class AuthBloc extends BaseBloc<AuthEvent, AuthState> {
     final AuthModel result = await loginUser(events.username, events.password);
 
     if (result.code == 200) {
+      // Save the current token to SharedPreferences
+      final prefs = await SharedPreferences.getInstance();
+      if (result.data != null && result.data!.token != null) {
+        await prefs.setString('CURRENT_TOKEN', result.data!.token!);
+      }
       navigator.push(const BottomNavigation());
     }
 

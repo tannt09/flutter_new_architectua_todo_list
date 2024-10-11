@@ -5,6 +5,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_new_architectua/model/product_model.dart';
 import 'package:http/http.dart' as http;
 import 'package:logging/logging.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 final _logger = Logger('ProductsApi');
 
@@ -18,10 +19,17 @@ Future<List<Product>> fetchAllProduct() async {
   await dotenv.load();
 
   final url = Uri.parse('${dotenv.env['BASE_URL']}/products/getAll');
+  final prefs = await SharedPreferences.getInstance();
+  final token = prefs.getString("CURRENT_TOKEN");
 
   try {
     _logger.info('Fetching products from: $url');
-    final response = await http.get(url);
+    final response = await http.get(
+      url,
+      headers: {
+        'Authorization': 'Bearer $token', // Use the token here
+      },
+    );
     _logger.info('Status code: ${response.statusCode}');
 
     if (response.statusCode == 200) {
