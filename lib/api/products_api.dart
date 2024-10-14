@@ -9,6 +9,12 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 final _logger = Logger('ProductsApi');
 
+// Function to retrieve the token
+Future<String?> _getToken() async {
+  final prefs = await SharedPreferences.getInstance();
+  return prefs.getString("CURRENT_TOKEN");
+}
+
 Future<List<Product>> fetchAllProduct() async {
   // Configure logger to print to console
   Logger.root.level = Level.ALL;
@@ -19,15 +25,14 @@ Future<List<Product>> fetchAllProduct() async {
   await dotenv.load();
 
   final url = Uri.parse('${dotenv.env['BASE_URL']}/products/getAll');
-  final prefs = await SharedPreferences.getInstance();
-  final token = prefs.getString("CURRENT_TOKEN");
+  final token = await _getToken(); // Use the new function to get the token
 
   try {
     _logger.info('Fetching products from: $url');
     final response = await http.get(
       url,
       headers: {
-        'Authorization': 'Bearer $token', // Use the token here
+        'Authorization': 'Bearer $token',
       },
     );
     _logger.info('Status code: ${response.statusCode}');
@@ -47,14 +52,20 @@ Future<List<Product>> fetchAllProduct() async {
 }
 
 Future<String> fetchEditProduct(Product product) async {
+  await dotenv.load();
+
   final url =
-      Uri.parse('http://192.168.1.9:3000/products/update?id=${product.id}');
+      Uri.parse('${dotenv.env['BASE_URL']}/products/update?id=${product.id}');
   final updatedData = product.toJson()..remove('id');
+  final token = await _getToken(); // Use the new function to get the token
 
   try {
     final response = await http.put(
       url,
-      headers: {'Content-Type': 'application/json'},
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer $token',
+      },
       body: jsonEncode(updatedData),
     );
 
@@ -66,13 +77,17 @@ Future<String> fetchEditProduct(Product product) async {
 }
 
 Future<String> fetchAddNewProduct(Product product) async {
-  final url = Uri.parse('http://192.168.1.9:3000/products/add');
+  final url = Uri.parse('${dotenv.env['BASE_URL']}/products/add');
   final newProductData = product.toJson()..remove('id');
+  final token = await _getToken(); // Use the new function to get the token
 
   try {
     final response = await http.post(
       url,
-      headers: {'Content-Type': 'application/json'},
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer $token',
+      },
       body: jsonEncode(newProductData),
     );
 
@@ -86,10 +101,13 @@ Future<String> fetchAddNewProduct(Product product) async {
 }
 
 Future<String> fetchDeleteProduct(String id) async {
-  final url = Uri.parse('http://192.168.1.9:3000/products/delete?id=$id');
+  final url = Uri.parse('${dotenv.env['BASE_URL']}/products/delete?id=$id');
+  final token = await _getToken(); // Use the new function to get the token
 
   try {
-    final response = await http.delete(url);
+    final response = await http.delete(url, headers: {
+      'Authorization': 'Bearer $token',
+    });
     _logger.info('Delete product status code: ${response.statusCode}');
 
     if (response.statusCode == 200) {
