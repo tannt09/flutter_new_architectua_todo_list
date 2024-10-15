@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_new_architectua/navigation/app_router.dart';
 import 'package:flutter_new_architectua/store/config_store.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:path/path.dart';
 import 'package:get_it/get_it.dart';
 import 'package:sqflite/sqflite.dart';
@@ -11,15 +12,16 @@ late Database database;
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   MobileAds.instance.initialize();
-  database = await openDatabase(
-    join(await getDatabasesPath(), 'users_database.db'),
-    onCreate: (db, version) {
-      return db.execute(
-        'CREATE TABLE users(id INTEGER PRIMARY KEY, name TEXT, age INTEGER)',
-      );
-    },
-    version: 1
-  );
+
+  database =
+      await openDatabase(join(await getDatabasesPath(), 'users_database.db'),
+          onCreate: (db, version) {
+    return db.execute(
+      'CREATE TABLE users(id INTEGER PRIMARY KEY, name TEXT, age INTEGER)',
+    );
+  }, version: 1);
+
+  Stripe.publishableKey = Stripe.publishableKey;
   configureInjection();
   runApp(MyApp());
 }

@@ -51,6 +51,7 @@ dependencies:
   logging: ^1.2.0
   flutter_dotenv: ^5.1.0
   shared_preferences: ^2.3.2
+  flutter_stripe: ^11.2.0
 
 dev_dependencies:
   flutter_test:
