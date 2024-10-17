@@ -66,9 +66,14 @@ abstract class $AppRouter extends _i9.RootStackRouter {
       );
     },
     PaymentCreditCardRoute.name: (routeData) {
+      final args = routeData.argsAs<PaymentCreditCardRouteArgs>(
+          orElse: () => const PaymentCreditCardRouteArgs());
       return _i9.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i5.PaymentCreditCardPage(),
+        child: _i5.PaymentCreditCardPage(
+          key: args.key,
+          title: args.title,
+        ),
       );
     },
     Products.name: (routeData) {
@@ -102,6 +107,12 @@ abstract class $AppRouter extends _i9.RootStackRouter {
           key: args.key,
           title: args.title,
         ),
+      );
+    },
+    _PaymentCreditCardRouteState.name: (routeData) {
+      return _i9.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: _PaymentCreditCardPageState(),
       );
     },
   };
@@ -237,16 +248,41 @@ class CountRouteArgs {
 
 /// generated route for
 /// [_i5.PaymentCreditCardPage]
-class PaymentCreditCardRoute extends _i9.PageRouteInfo<void> {
-  const PaymentCreditCardRoute({List<_i9.PageRouteInfo>? children})
-      : super(
+class PaymentCreditCardRoute
+    extends _i9.PageRouteInfo<PaymentCreditCardRouteArgs> {
+  PaymentCreditCardRoute({
+    _i10.Key? key,
+    String title = "Payment Credit Card",
+    List<_i9.PageRouteInfo>? children,
+  }) : super(
           PaymentCreditCardRoute.name,
+          args: PaymentCreditCardRouteArgs(
+            key: key,
+            title: title,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'PaymentCreditCardRoute';
 
-  static const _i9.PageInfo<void> page = _i9.PageInfo<void>(name);
+  static const _i9.PageInfo<PaymentCreditCardRouteArgs> page =
+      _i9.PageInfo<PaymentCreditCardRouteArgs>(name);
+}
+
+class PaymentCreditCardRouteArgs {
+  const PaymentCreditCardRouteArgs({
+    this.key,
+    this.title = "Payment Credit Card",
+  });
+
+  final _i10.Key? key;
+
+  final String title;
+
+  @override
+  String toString() {
+    return 'PaymentCreditCardRouteArgs{key: $key, title: $title}';
+  }
 }
 
 /// generated route for
@@ -361,4 +397,18 @@ class TodoListRouteArgs {
   String toString() {
     return 'TodoListRouteArgs{key: $key, title: $title}';
   }
+}
+
+/// generated route for
+/// [_PaymentCreditCardPageState]
+class _PaymentCreditCardRouteState extends _i9.PageRouteInfo<void> {
+  const _PaymentCreditCardRouteState({List<_i9.PageRouteInfo>? children})
+      : super(
+          _PaymentCreditCardRouteState.name,
+          initialChildren: children,
+        );
+
+  static const String name = '_PaymentCreditCardRouteState';
+
+  static const _i9.PageInfo<void> page = _i9.PageInfo<void>(name);
 }
