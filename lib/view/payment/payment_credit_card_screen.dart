@@ -14,7 +14,6 @@ class PaymentCreditCardPage extends StatefulWidget {
   State<PaymentCreditCardPage> createState() => _PaymentCreditCardPageState();
 }
 
-@RoutePage()
 class _PaymentCreditCardPageState extends State<PaymentCreditCardPage> {
   final Logger _logger = Logger('PaymentCreditCardPage');
 

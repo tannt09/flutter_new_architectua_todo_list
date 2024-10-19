@@ -109,12 +109,6 @@ abstract class $AppRouter extends _i9.RootStackRouter {
         ),
       );
     },
-    _PaymentCreditCardRouteState.name: (routeData) {
-      return _i9.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: _PaymentCreditCardPageState(),
-      );
-    },
   };
 }
 
@@ -397,18 +391,4 @@ class TodoListRouteArgs {
   String toString() {
     return 'TodoListRouteArgs{key: $key, title: $title}';
   }
-}
-
-/// generated route for
-/// [_PaymentCreditCardPageState]
-class _PaymentCreditCardRouteState extends _i9.PageRouteInfo<void> {
-  const _PaymentCreditCardRouteState({List<_i9.PageRouteInfo>? children})
-      : super(
-          _PaymentCreditCardRouteState.name,
-          initialChildren: children,
-        );
-
-  static const String name = '_PaymentCreditCardRouteState';
-
-  static const _i9.PageInfo<void> page = _i9.PageInfo<void>(name);
 }
