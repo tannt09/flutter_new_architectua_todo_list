@@ -21,7 +21,7 @@ Future<void> main() async {
     );
   }, version: 1);
 
-  Stripe.publishableKey = Stripe.publishableKey;
+  Stripe.publishableKey = "pk_test_51QCZ0XFY945TtdO6oyFGuepcvs8MN2uX4zDBeVbtTy9DWSI9xf9bXYphyzSytKE18el6QUud6BYh0ZOBplSNQB2k00f5LHYMP0";
   configureInjection();
   runApp(MyApp());
 }
