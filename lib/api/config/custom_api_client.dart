@@ -18,9 +18,11 @@ class ApiClient {
       headers['Authorization'] = 'Bearer $accessToken';
     }
 
-    var response = await http.Request(method, Uri.parse('$baseUrl/$endpoint'))
+    var response = http.Request(method, Uri.parse('$baseUrl/$endpoint'))
       ..headers.addAll(headers)
       ..body = jsonEncode(body);
+    // final result = await http.post(Uri.parse('$baseUrl/$endpoint'),
+    //     headers: {'Content-Type': 'application/json'}, body: jsonEncode(body));
 
     var streamedResponse = await response.send();
     var result = await http.Response.fromStream(streamedResponse);
@@ -31,12 +33,11 @@ class ApiClient {
       if (refreshed) {
         accessToken = await getAccessToken();
         headers['Authorization'] = 'Bearer $accessToken';
-
-         response = http.Request(method, Uri.parse('$baseUrl/$endpoint'))
+        response = http.Request(method, Uri.parse('$baseUrl/$endpoint'))
           ..headers.addAll(headers)
           ..body = jsonEncode(body);
 
-          streamedResponse = await response.send();
+        streamedResponse = await response.send();
         result = await http.Response.fromStream(streamedResponse);
       } else {
         await deleteTokens();
