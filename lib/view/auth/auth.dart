@@ -26,10 +26,7 @@ class _AuthState extends State<AuthPage> {
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
 
-  // final Logger _logger = Logger('AuthPage');
-
-  late final AppNavigator navigator = GetIt.instance.get<AppNavigator>();
-  late final AuthBloc bloc = GetIt.instance.get<AuthBloc>();
+  bool isValidInput = true;
 
   @override
   void initState() {
@@ -41,15 +38,23 @@ class _AuthState extends State<AuthPage> {
     });
   }
 
-  Future<void> handleRegister(
-      String username, String password, String email) async {
-    bloc.add(
-        RegisterUser(username: username, password: password, email: email));
+  void _updateIsValidInput() {
+    setState(() {
+      if (widget.title == "Login") {
+        isValidInput = usernameController.text.isNotEmpty &&
+            passwordController.text.isNotEmpty;
+      } else {
+        isValidInput = usernameController.text.isNotEmpty &&
+            passwordController.text.isNotEmpty &&
+            emailController.text.isNotEmpty;
+      }
+    });
   }
 
-  Future<void> handleLogin(String username, String password) async {
-    bloc.add(LoginUser(username: username, password: password));
-  }
+  // final Logger _logger = Logger('AuthPage');
+
+  late final AppNavigator navigator = GetIt.instance.get<AppNavigator>();
+  late final AuthBloc bloc = GetIt.instance.get<AuthBloc>();
 
   @override
   Widget build(BuildContext context) {
@@ -60,7 +65,13 @@ class _AuthState extends State<AuthPage> {
           title: Text(widget.title),
         ),
         body: BlocListener<AuthBloc, AuthState>(
-          listener: (AuthLogic.showResultDialog),
+          listener: (context, state) {
+            if (widget.title == "Login") {
+              AuthLogic.showResultLoginDialog(context, state);
+            } else {
+              AuthLogic.showResultRegisterDialog(context, state);
+            }
+          },
           child: BlocBuilder<AuthBloc, AuthState>(
             builder: (context, state) {
               return GestureDetector(
@@ -74,23 +85,29 @@ class _AuthState extends State<AuthPage> {
                         children: [
                           CustomTextfield(
                               controller: usernameController,
-                              labelText: "Username"),
+                              labelText: "Username",
+                              isValidInput: isValidInput),
                           CustomTextfield(
                               controller: passwordController,
                               labelText: "Password",
-                              obscureText: true),
+                              obscureText: true,
+                              isValidInput: isValidInput),
                           if (widget.title != "Login")
                             CustomTextfield(
                                 controller: emailController,
-                                labelText: "Email"),
+                                labelText: "Email",
+                                isValidInput: isValidInput),
                           const SizedBox(height: 8),
                           ElevatedButton(
                             onPressed: () {
-                              AuthLogic.handleAuth(bloc, widget.title, [
-                                usernameController,
-                                passwordController,
-                                emailController
-                              ]);
+                              _updateIsValidInput();
+                              if (isValidInput) {
+                                AuthLogic.handleAuth(bloc, widget.title, [
+                                  usernameController,
+                                  passwordController,
+                                  emailController
+                                ]);
+                              }
                             },
                             child: Text(widget.title),
                           ),

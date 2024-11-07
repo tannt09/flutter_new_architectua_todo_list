@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_new_architectua/bloc/auth/auth_bloc.dart';
+import 'package:flutter_new_architectua/navigation/app_navigator.dart';
+import 'package:flutter_new_architectua/navigation/app_router.gr.dart';
+import 'package:get_it/get_it.dart';
 
 class AuthLogic {
+  late final AppNavigator navigator = GetIt.instance.get<AppNavigator>();
+
   Future<void> handleRegister(
       AuthBloc bloc, String username, String password, String email) async {
     bloc.add(
@@ -36,7 +41,30 @@ class AuthLogic {
     }
   }
 
-  static void showResultDialog(BuildContext context, AuthState state) {
+  static void showResultLoginDialog(BuildContext context, AuthState state) {
+    if (state.result.code != 200) {
+      if (state.result.message != null && state.result.message!.isNotEmpty) {
+        showDialog(
+          context: context,
+          builder: (context) => AlertDialog(
+            title: const Text('Result'),
+            content:
+                Text(state.result.message ?? 'Error'), // Ensure non-null value
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.of(context).pop(),
+                child: const Text('OK'),
+              ),
+            ],
+          ),
+        );
+      }
+    } else {
+      AuthLogic().navigator.replace(const BottomNavigation());
+    }
+  }
+
+  static void showResultRegisterDialog(BuildContext context, AuthState state) {
     if (state.result.message != null && state.result.message!.isNotEmpty) {
       showDialog(
         context: context,
@@ -46,7 +74,13 @@ class AuthLogic {
               Text(state.result.message ?? 'Error'), // Ensure non-null value
           actions: [
             TextButton(
-              onPressed: () => Navigator.of(context).pop(),
+              onPressed: () => {
+                Navigator.of(context).pop(),
+                if (state.result.code == 200)
+                  {
+                    AuthLogic().navigator.replace(AuthRoute(title: 'Login')),
+                  }
+              },
               child: const Text('OK'),
             ),
           ],
