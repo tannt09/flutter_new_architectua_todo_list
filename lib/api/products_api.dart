@@ -6,17 +6,10 @@ import 'package:flutter_new_architectua/api/config/custom_api_client.dart';
 import 'package:flutter_new_architectua/model/product_model.dart';
 import 'package:flutter_new_architectua/utils/flutter_secure_storage.dart';
 import 'package:logging/logging.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 final _logger = Logger('ProductsApi');
 ApiClient apiClient =
     ApiClient(baseUrl: '${dotenv.env['BASE_URL']}', storage: storage);
-
-// Function to retrieve the token
-Future<String?> _getToken() async {
-  final prefs = await SharedPreferences.getInstance();
-  return prefs.getString("CURRENT_TOKEN");
-}
 
 Future<List<Product>> fetchAllProduct() async {
   // Configure logger to print to console
@@ -28,7 +21,7 @@ Future<List<Product>> fetchAllProduct() async {
   await dotenv.load();
 
   final url = Uri.parse('${dotenv.env['BASE_URL']}/products/getAll');
-  final token = await _getToken(); // Use the new function to get the token
+  final token = await getAccessToken(); // Use the new function to get the token
 
   try {
     _logger.info('Fetching products from: $url');
@@ -56,7 +49,7 @@ Future<String> fetchEditProduct(Product product) async {
   await dotenv.load();
 
   final updatedData = product.toJson()..remove('id');
-  final token = await _getToken(); // Use the new function to get the token
+  final token = await getAccessToken(); // Use the new function to get the token
 
   try {
     final response =
@@ -76,7 +69,7 @@ Future<String> fetchEditProduct(Product product) async {
 
 Future<String> fetchAddNewProduct(Product product) async {
   final newProductData = product.toJson()..remove('id');
-  final token = await _getToken(); // Use the new function to get the token
+  final token = await getAccessToken(); // Use the new function to get the token
 
   try {
     final response = await apiClient.sendRequest('products/add', 'POST',
@@ -96,7 +89,7 @@ Future<String> fetchAddNewProduct(Product product) async {
 }
 
 Future<String> fetchDeleteProduct(String id) async {
-  final token = await _getToken(); // Use the new function to get the token
+  final token = await getAccessToken(); // Use the new function to get the token
 
   try {
     final response = await apiClient
