@@ -2,12 +2,15 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:flutter_new_architectua/api/config/custom_api_client.dart';
 import 'package:flutter_new_architectua/model/product_model.dart';
-import 'package:http/http.dart' as http;
+import 'package:flutter_new_architectua/utils/flutter_secure_storage.dart';
 import 'package:logging/logging.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 final _logger = Logger('ProductsApi');
+ApiClient apiClient =
+    ApiClient(baseUrl: '${dotenv.env['BASE_URL']}', storage: storage);
 
 // Function to retrieve the token
 Future<String?> _getToken() async {
@@ -29,12 +32,10 @@ Future<List<Product>> fetchAllProduct() async {
 
   try {
     _logger.info('Fetching products from: $url');
-    final response = await http.get(
-      url,
-      headers: {
-        'Authorization': 'Bearer $token',
-      },
-    );
+    final response =
+        await apiClient.sendRequest('products/getAll', 'GET', headers: {
+      'Authorization': 'Bearer $token',
+    });
     _logger.info('Status code: ${response.statusCode}');
 
     if (response.statusCode == 200) {
@@ -54,20 +55,17 @@ Future<List<Product>> fetchAllProduct() async {
 Future<String> fetchEditProduct(Product product) async {
   await dotenv.load();
 
-  final url =
-      Uri.parse('${dotenv.env['BASE_URL']}/products/update?id=${product.id}');
   final updatedData = product.toJson()..remove('id');
   final token = await _getToken(); // Use the new function to get the token
 
   try {
-    final response = await http.put(
-      url,
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer $token',
-      },
-      body: jsonEncode(updatedData),
-    );
+    final response =
+        await apiClient.sendRequest('products/update?id=${product.id}', 'PUT',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': 'Bearer $token',
+            },
+            body: updatedData);
 
     return response.statusCode == 200 ? 'Update Success' : 'Update Failure';
   } catch (e) {
@@ -77,19 +75,16 @@ Future<String> fetchEditProduct(Product product) async {
 }
 
 Future<String> fetchAddNewProduct(Product product) async {
-  final url = Uri.parse('${dotenv.env['BASE_URL']}/products/add');
   final newProductData = product.toJson()..remove('id');
   final token = await _getToken(); // Use the new function to get the token
 
   try {
-    final response = await http.post(
-      url,
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer $token',
-      },
-      body: jsonEncode(newProductData),
-    );
+    final response = await apiClient.sendRequest('products/add', 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer $token',
+        },
+        body: newProductData);
 
     return response.statusCode == 200
         ? 'Add product Success'
@@ -101,11 +96,11 @@ Future<String> fetchAddNewProduct(Product product) async {
 }
 
 Future<String> fetchDeleteProduct(String id) async {
-  final url = Uri.parse('${dotenv.env['BASE_URL']}/products/delete?id=$id');
   final token = await _getToken(); // Use the new function to get the token
 
   try {
-    final response = await http.delete(url, headers: {
+    final response = await apiClient
+        .sendRequest('products/delete?id=$id', 'DELETE', headers: {
       'Authorization': 'Bearer $token',
     });
     _logger.info('Delete product status code: ${response.statusCode}');

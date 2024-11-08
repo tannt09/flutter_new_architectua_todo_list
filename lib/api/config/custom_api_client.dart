@@ -21,8 +21,6 @@ class ApiClient {
     var response = http.Request(method, Uri.parse('$baseUrl/$endpoint'))
       ..headers.addAll(headers)
       ..body = jsonEncode(body);
-    // final result = await http.post(Uri.parse('$baseUrl/$endpoint'),
-    //     headers: {'Content-Type': 'application/json'}, body: jsonEncode(body));
 
     var streamedResponse = await response.send();
     var result = await http.Response.fromStream(streamedResponse);

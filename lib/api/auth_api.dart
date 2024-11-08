@@ -2,9 +2,7 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:flutter_new_architectua/api/config/custom_api_client.dart';
 import 'package:flutter_new_architectua/model/auth_model.dart';
-import 'package:flutter_new_architectua/utils/flutter_secure_storage.dart';
 import 'package:http/http.dart' as http;
 import 'package:logging/logging.dart';
 
@@ -46,14 +44,12 @@ Future<AuthModel> loginUser(String username, String password) async {
 
   await dotenv.load();
 
+  final url = Uri.parse('${dotenv.env['BASE_URL']}/customers/login');
   final data = {'username': username, 'password': password};
 
-  ApiClient apiClient =
-      ApiClient(baseUrl: '${dotenv.env['BASE_URL']}', storage: storage);
-
   try {
-    final response = await apiClient.sendRequest('customers/login', 'POST',
-        body: data, headers: {'Content-Type': 'application/json'});
+    final response = await http.post(url,
+        headers: {'Content-Type': 'application/json'}, body: jsonEncode(data));
     final Map<String, dynamic> parsed = jsonDecode(response.body);
     final AuthModel result = AuthModel.fromJson(parsed);
 
