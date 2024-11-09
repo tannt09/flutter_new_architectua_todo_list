@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:flutter_new_architectua/model/auth_model.dart';
-import 'package:flutter_new_architectua/utils/flutter_secure_storage.dart';
+import 'package:flutter_new_architectua/core/storage/token_secure_storage.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 

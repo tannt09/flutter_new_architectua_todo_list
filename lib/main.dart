@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_new_architectua/navigation/app_router.dart';
-import 'package:flutter_new_architectua/store/config_store.dart';
+import 'package:flutter_new_architectua/core/navigation/app_router.dart';
+import 'package:flutter_new_architectua/core/storage/config_store.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:path/path.dart';
 import 'package:get_it/get_it.dart';

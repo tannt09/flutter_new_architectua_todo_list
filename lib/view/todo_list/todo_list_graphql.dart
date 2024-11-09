@@ -2,8 +2,8 @@ import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 
-import '../../bloc/todo_list/todo_list_bloc.dart';
-import '../../navigation/app_navigator.dart';
+import '../../core/bloc/todo_list/todo_list_bloc.dart';
+import '../../core/navigation/app_navigator.dart';
 
 @RoutePage()
 class TodoListGraphQLPage extends StatefulWidget {

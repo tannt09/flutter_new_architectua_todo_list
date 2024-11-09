@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_new_architectua/bloc/base/bloc/base_bloc.dart';
+import 'package:flutter_new_architectua/core/bloc/base/bloc/base_bloc.dart';
 import 'package:get_it/get_it.dart';
 
 import '../../navigation/app_navigator.dart';

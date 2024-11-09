@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_new_architectua/bloc/auth/auth_bloc.dart';
-import 'package:flutter_new_architectua/navigation/app_navigator.dart';
-import 'package:flutter_new_architectua/navigation/app_router.gr.dart';
+import 'package:flutter_new_architectua/core/bloc/auth/auth_bloc.dart';
+import 'package:flutter_new_architectua/core/navigation/app_navigator.dart';
+import 'package:flutter_new_architectua/core/navigation/app_router.gr.dart';
 import 'package:get_it/get_it.dart';
 
 class AuthLogic {

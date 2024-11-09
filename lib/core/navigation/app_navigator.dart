@@ -1,5 +1,5 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:flutter_new_architectua/navigation/app_router.dart';
+import 'package:flutter_new_architectua/core/navigation/app_router.dart';
 import 'package:injectable/injectable.dart';
 
 @LazySingleton()

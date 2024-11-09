@@ -1,5 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_new_architectua/bloc/base/bloc/base_bloc_event.dart';
+import 'package:flutter_new_architectua/core/bloc/base/bloc/base_bloc_event.dart';
 import 'package:flutter_new_architectua/model/user_model.dart';
 import 'package:flutter_new_architectua/utils/bloc_extensions.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';

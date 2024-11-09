@@ -4,7 +4,7 @@ import 'dart:developer';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_new_architectua/api/config/custom_api_client.dart';
 import 'package:flutter_new_architectua/model/product_model.dart';
-import 'package:flutter_new_architectua/utils/flutter_secure_storage.dart';
+import 'package:flutter_new_architectua/core/storage/token_secure_storage.dart';
 import 'package:logging/logging.dart';
 
 final _logger = Logger('ProductsApi');

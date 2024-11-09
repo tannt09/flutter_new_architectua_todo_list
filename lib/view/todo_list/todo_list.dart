@@ -2,11 +2,11 @@ import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_new_architectua/model/user_model.dart';
-import 'package:flutter_new_architectua/navigation/app_router.gr.dart';
+import 'package:flutter_new_architectua/core/navigation/app_router.gr.dart';
 import 'package:get_it/get_it.dart';
 
-import '../../bloc/todo_list/todo_list_bloc.dart';
-import '../../navigation/app_navigator.dart';
+import '../../core/bloc/todo_list/todo_list_bloc.dart';
+import '../../core/navigation/app_navigator.dart';
 import '../../widget/custom_dialog.dart';
 
 @RoutePage()
