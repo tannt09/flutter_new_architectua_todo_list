@@ -37,7 +37,9 @@ class _ProductsState extends State<Products> {
         body: BlocBuilder<ProductsBloc, ProductsState>(
           builder: (context, state) {
             if (!state.products.isNotEmpty) {
-              return const Text("Is empty");
+              return const Center(
+                child: Text("Is empty"),
+              );
             }
 
             Future<void> editProductFromList(Product newProduct) async {

@@ -25,8 +25,11 @@ class AuthBloc extends BaseBloc<AuthEvent, AuthState> {
     final AuthModel result = await loginUser(events.username, events.password);
 
     if (result.code == 200) {
-      if (result.data != null && result.data!.token != null) {
-        await storage.write(key: 'access_token', value: result.data!.token!);
+      if (result.data != null &&
+          result.data!.accessToken != null &&
+          result.data!.refreshToken != null) {
+        // await storage.write(key: 'access_token', value: result.data!.accessToken!);
+        await saveToken(result.data!.accessToken!, result.data!.refreshToken!);
       }
     }
 

@@ -18,7 +18,7 @@ Future<AuthModel> registerUser(
 
   await dotenv.load();
 
-  final url = Uri.parse('${dotenv.env['BASE_URL']}/customers/register');
+  final url = Uri.parse('${dotenv.env['BASE_URL']}/auth/register');
   final data = {'username': username, 'password': password, "email": email};
 
   try {
@@ -44,7 +44,7 @@ Future<AuthModel> loginUser(String username, String password) async {
 
   await dotenv.load();
 
-  final url = Uri.parse('${dotenv.env['BASE_URL']}/customers/login');
+  final url = Uri.parse('${dotenv.env['BASE_URL']}/auth/login');
   final data = {'username': username, 'password': password};
 
   try {

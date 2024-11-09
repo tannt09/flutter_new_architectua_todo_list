@@ -14,12 +14,13 @@ class AuthModel {
 }
 
 class AuthData {
-  final String? token;
+  final String? accessToken;
+  final String? refreshToken;
   final String? customer;
 
-  const AuthData({this.token, this.customer});
+  const AuthData({this.accessToken, this.refreshToken, this.customer});
 
   factory AuthData.fromJson(Map<String, dynamic> json) {
-    return AuthData(token: json['token'], customer: json['customer']);
+    return AuthData(accessToken: json['access_token'], refreshToken: json['refresh_token'], customer: json['customer']);
   }
 }
