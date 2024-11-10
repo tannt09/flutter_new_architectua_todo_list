@@ -1,4 +1,6 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_new_architectua/core/services/overlay_service.dart';
 import 'package:injectable/injectable.dart';
 
 import 'app_router.gr.dart';
@@ -20,4 +22,7 @@ class AppRouter extends $AppRouter {
         AutoRoute(page: TodoListRoute.page),
         AutoRoute(page: TodoListGraphQLRoute.page),
       ];
+
+  @override
+  GlobalKey<NavigatorState> get navigatorKey => OverlayService.navigatorKey;
 }

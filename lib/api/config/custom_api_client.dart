@@ -1,6 +1,10 @@
 import 'dart:convert';
+import 'package:flutter_new_architectua/core/navigation/app_navigator.dart';
+import 'package:flutter_new_architectua/core/navigation/app_router.gr.dart';
+import 'package:flutter_new_architectua/core/services/overlay_service.dart';
 import 'package:flutter_new_architectua/model/auth_model.dart';
 import 'package:flutter_new_architectua/core/storage/token_secure_storage.dart';
+import 'package:get_it/get_it.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
@@ -12,6 +16,7 @@ class ApiClient {
 
   Future<http.Response> sendRequest(String endpoint, String method,
       {Map<String, String>? headers, dynamic body}) async {
+    late final AppNavigator navigator = GetIt.instance.get<AppNavigator>();
     String? accessToken = await getAccessToken();
     headers = headers ?? {};
 
@@ -40,6 +45,12 @@ class ApiClient {
         result = await http.Response.fromStream(streamedResponse);
       } else {
         await deleteTokens();
+        OverlayService().showAlert(
+            title: 'Session Expired',
+            message: 'Please login again',
+            onConfirm: () {
+              navigator.replace(AuthRoute(title: 'Login'));
+            });
       }
     }
 

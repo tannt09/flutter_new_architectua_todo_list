@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_new_architectua/core/navigation/app_router.dart';
-import 'package:flutter_new_architectua/core/storage/config_store.dart';
+import 'package:flutter_new_architectua/core/storage/config_storage.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:path/path.dart';
 import 'package:get_it/get_it.dart';
@@ -44,6 +44,17 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
+      builder: (context, child) {
+        return Material(
+          child: Overlay(
+            initialEntries: [
+              OverlayEntry(
+                builder: (context) => child ?? const SizedBox(),
+              ),
+            ],
+          ),
+        );
+      },
     );
   }
 }

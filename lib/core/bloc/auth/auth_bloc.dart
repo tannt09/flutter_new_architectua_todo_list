@@ -28,7 +28,6 @@ class AuthBloc extends BaseBloc<AuthEvent, AuthState> {
       if (result.data != null &&
           result.data!.accessToken != null &&
           result.data!.refreshToken != null) {
-        // await storage.write(key: 'access_token', value: result.data!.accessToken!);
         await saveToken(result.data!.accessToken!, result.data!.refreshToken!);
       }
     }
