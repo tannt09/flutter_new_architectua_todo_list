@@ -108,7 +108,9 @@ flutter:
           weight: 700
         - asset: assets/fonts/Cormorant-Italic.ttf
           style: italic
+
   assets:
+    - assets/images/splash.jpg
     - .env
   #
   # For details regarding fonts from package dependencies,
