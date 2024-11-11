@@ -21,7 +21,6 @@ class AppRouter extends $AppRouter {
         AutoRoute(page: Products.page),
         AutoRoute(page: SplashRoute.page, initial: true),
         AutoRoute(page: TodoListRoute.page),
-        AutoRoute(page: TodoListGraphQLRoute.page),
       ];
 
   @override
