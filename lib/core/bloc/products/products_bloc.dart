@@ -20,12 +20,12 @@ class ProductsBloc extends BaseBloc<ProductsEvent, ProductsState> {
     on<AddProduct>(_addProduct);
     on<DeleteProduct>(_deleteProduct);
 
-    _initializeState();
+    // _initializeState();
   }
 
-  Future<void> _initializeState() async {
-    add(const GetAllProducts());
-  }
+  // Future<void> _initializeState() async {
+  //   add(const GetAllProducts());
+  // }
 
   Future<void> _getAllProducts(
       GetAllProducts event, Emitter<ProductsState> emit) async {

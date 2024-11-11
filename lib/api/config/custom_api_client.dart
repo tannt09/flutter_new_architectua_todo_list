@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:flutter_new_architectua/core/navigation/app_navigator.dart';
 import 'package:flutter_new_architectua/core/navigation/app_router.gr.dart';
 import 'package:flutter_new_architectua/core/services/overlay_service.dart';
+import 'package:flutter_new_architectua/core/storage/account_secure_storage.dart';
 import 'package:flutter_new_architectua/model/auth_model.dart';
 import 'package:flutter_new_architectua/core/storage/token_secure_storage.dart';
 import 'package:get_it/get_it.dart';
@@ -45,6 +46,7 @@ class ApiClient {
         result = await http.Response.fromStream(streamedResponse);
       } else {
         await deleteTokens();
+        await deleteAccount();
         OverlayService().showAlert(
             title: 'Session Expired',
             message: 'Please login again',

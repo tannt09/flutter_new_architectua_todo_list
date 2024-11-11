@@ -23,7 +23,9 @@ class _SplashPageState extends State<SplashPage>
   @override
   void initState() {
     super.initState();
-    handleLogin();
+    Future.delayed(const Duration(seconds: 2), () {
+      handleLogin();
+    });
   }
 
   Future<void> handleLogin() async {
