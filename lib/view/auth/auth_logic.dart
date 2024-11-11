@@ -59,8 +59,6 @@ class AuthLogic {
           ),
         );
       }
-    } else {
-      AuthLogic().navigator.replace(const BottomNavigation());
     }
   }
 
