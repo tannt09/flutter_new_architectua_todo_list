@@ -8,15 +8,15 @@ import 'package:flutter_new_architectua/widget/custom_dialog.dart';
 import 'package:get_it/get_it.dart';
 
 @RoutePage()
-class Products extends StatefulWidget {
+class ProductsPage extends StatefulWidget {
   final String title;
-  const Products({super.key, this.title = "Products"});
+  const ProductsPage({super.key, this.title = "Products"});
 
   @override
-  State<Products> createState() => _ProductsState();
+  State<ProductsPage> createState() => _ProductsPageState();
 }
 
-class _ProductsState extends State<Products> {
+class _ProductsPageState extends State<ProductsPage> {
   late final AppNavigator navigator = GetIt.instance.get<AppNavigator>();
   late final ProductsBloc bloc = GetIt.instance.get<ProductsBloc>();
 

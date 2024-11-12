@@ -17,7 +17,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
   int _selectedIndex = 1;
 
   static const List<Widget> _widgetOptions = <Widget>[
-    Products(),
+    ProductsPage(),
     CountPage(title: "Count Screen"),
     TodoListPage(title: "User"),
     ProfilePage(),

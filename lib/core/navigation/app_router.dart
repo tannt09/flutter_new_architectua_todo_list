@@ -18,7 +18,7 @@ class AppRouter extends $AppRouter {
         AutoRoute(page: BottomNavigation.page),
         AutoRoute(page: CountRoute.page),
         AutoRoute(page: PaymentCreditCardRoute.page),
-        AutoRoute(page: Products.page),
+        AutoRoute(page: ProductsRoute.page),
         AutoRoute(page: SplashRoute.page, initial: true),
         AutoRoute(page: TodoListRoute.page),
       ];

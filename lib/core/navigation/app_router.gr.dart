@@ -75,12 +75,12 @@ abstract class $AppRouter extends _i9.RootStackRouter {
         ),
       );
     },
-    Products.name: (routeData) {
-      final args =
-          routeData.argsAs<ProductsArgs>(orElse: () => const ProductsArgs());
+    ProductsRoute.name: (routeData) {
+      final args = routeData.argsAs<ProductsRouteArgs>(
+          orElse: () => const ProductsRouteArgs());
       return _i9.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i6.Products(
+        child: _i6.ProductsPage(
           key: args.key,
           title: args.title,
         ),
@@ -274,29 +274,29 @@ class PaymentCreditCardRouteArgs {
 }
 
 /// generated route for
-/// [_i6.Products]
-class Products extends _i9.PageRouteInfo<ProductsArgs> {
-  Products({
+/// [_i6.ProductsPage]
+class ProductsRoute extends _i9.PageRouteInfo<ProductsRouteArgs> {
+  ProductsRoute({
     _i10.Key? key,
     String title = "Products",
     List<_i9.PageRouteInfo>? children,
   }) : super(
-          Products.name,
-          args: ProductsArgs(
+          ProductsRoute.name,
+          args: ProductsRouteArgs(
             key: key,
             title: title,
           ),
           initialChildren: children,
         );
 
-  static const String name = 'Products';
+  static const String name = 'ProductsRoute';
 
-  static const _i9.PageInfo<ProductsArgs> page =
-      _i9.PageInfo<ProductsArgs>(name);
+  static const _i9.PageInfo<ProductsRouteArgs> page =
+      _i9.PageInfo<ProductsRouteArgs>(name);
 }
 
-class ProductsArgs {
-  const ProductsArgs({
+class ProductsRouteArgs {
+  const ProductsRouteArgs({
     this.key,
     this.title = "Products",
   });
@@ -307,7 +307,7 @@ class ProductsArgs {
 
   @override
   String toString() {
-    return 'ProductsArgs{key: $key, title: $title}';
+    return 'ProductsRouteArgs{key: $key, title: $title}';
   }
 }
 
