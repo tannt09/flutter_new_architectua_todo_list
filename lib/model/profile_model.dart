@@ -42,4 +42,17 @@ class ProfileModel {
       'date_of_birth': dateOfBirth
     };
   }
+
+  static ProfileModel initState() {
+    return const ProfileModel(
+      id: 0,
+      userId: '',
+      fullName: '',
+      email: '',
+      phoneNumber: '000-000-0000',
+      username: '',
+      gender: 'Not Specified',
+      dateOfBirth: '2000-01-01',
+    );
+  }
 }
