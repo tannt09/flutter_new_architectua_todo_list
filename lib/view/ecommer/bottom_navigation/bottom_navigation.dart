@@ -1,10 +1,10 @@
 import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_new_architectua/constants/colors.dart';
-import 'package:flutter_new_architectua/view/count/count.dart';
-import 'package:flutter_new_architectua/view/profile/profile_screen.dart';
-import 'package:flutter_new_architectua/view/todo_list/todo_list.dart';
-import 'package:flutter_new_architectua/view/todo_list/todo_list_products.dart';
+import 'package:flutter_new_architectua/view/example/count/count.dart';
+import 'package:flutter_new_architectua/view/ecommer/profile/profile_screen.dart';
+import 'package:flutter_new_architectua/view/example/todo_list/todo_list.dart';
+import 'package:flutter_new_architectua/view/example/todo_list/todo_list_products.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 @RoutePage()

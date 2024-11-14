@@ -10,16 +10,16 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:auto_route/auto_route.dart' as _i9;
 import 'package:flutter/material.dart' as _i10;
-import 'package:flutter_new_architectua/view/ads/ads.dart' as _i1;
-import 'package:flutter_new_architectua/view/auth/auth.dart' as _i2;
-import 'package:flutter_new_architectua/view/bottom_navigation/bottom_navigation.dart'
+import 'package:flutter_new_architectua/view/example/ads/ads.dart' as _i1;
+import 'package:flutter_new_architectua/view/ecommer/auth/auth.dart' as _i2;
+import 'package:flutter_new_architectua/view/ecommer/bottom_navigation/bottom_navigation.dart'
     as _i3;
-import 'package:flutter_new_architectua/view/count/count.dart' as _i4;
-import 'package:flutter_new_architectua/view/payment/payment_credit_card_screen.dart'
+import 'package:flutter_new_architectua/view/example/count/count.dart' as _i4;
+import 'package:flutter_new_architectua/view/ecommer/payment/payment_credit_card_screen.dart'
     as _i5;
-import 'package:flutter_new_architectua/view/splash/splash.dart' as _i7;
-import 'package:flutter_new_architectua/view/todo_list/todo_list.dart' as _i8;
-import 'package:flutter_new_architectua/view/todo_list/todo_list_products.dart'
+import 'package:flutter_new_architectua/view/ecommer/splash/splash.dart' as _i7;
+import 'package:flutter_new_architectua/view/example/todo_list/todo_list.dart' as _i8;
+import 'package:flutter_new_architectua/view/example/todo_list/todo_list_products.dart'
     as _i6;
 
 abstract class $AppRouter extends _i9.RootStackRouter {
