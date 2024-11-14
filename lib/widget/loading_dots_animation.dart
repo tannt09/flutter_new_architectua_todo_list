@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_new_architectua/constants/colors.dart';
 
 class LoadingDotsAnimation extends StatefulWidget {
   const LoadingDotsAnimation({super.key});
@@ -83,7 +84,7 @@ class Dot extends StatelessWidget {
       width: 20.0,
       height: 20.0,
       decoration: const BoxDecoration(
-        color: Colors.black,
+        color: AppColors.orange,
         shape: BoxShape.circle,
       ),
     );

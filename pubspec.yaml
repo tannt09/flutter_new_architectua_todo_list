@@ -110,7 +110,7 @@ flutter:
           style: italic
 
   assets:
-    - assets/images/splash.jpg
+    - assets/images/splash.png
     - .env
   #
   # For details regarding fonts from package dependencies,

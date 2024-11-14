@@ -1,7 +1,7 @@
 import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_new_architectua/view/count/count.dart';
-import 'package:flutter_new_architectua/view/profile/profile.dart';
+import 'package:flutter_new_architectua/view/profile/profile_screen.dart';
 import 'package:flutter_new_architectua/view/todo_list/todo_list.dart';
 import 'package:flutter_new_architectua/view/todo_list/todo_list_products.dart';
 

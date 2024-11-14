@@ -1,5 +1,8 @@
+import 'dart:async';
+
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_new_architectua/core/bloc/auth/auth_bloc.dart';
 import 'package:flutter_new_architectua/core/navigation/app_navigator.dart';
 import 'package:flutter_new_architectua/core/navigation/app_router.gr.dart';
@@ -39,23 +42,37 @@ class _SplashPageState extends State<SplashPage>
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Container(
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage('assets/images/splash.jpg'),
-              fit: BoxFit.cover,
-            ),
-          ),
-          child: const Column(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              Padding(
-                padding: EdgeInsets.only(bottom: 20.0),
-                child: LoadingDotsAnimation(),
+    return BlocProvider(
+      create: (_) => bloc,
+      child: BlocListener<AuthBloc, AuthState>(
+        listener: (context, state) {
+          if (state.result.code != 200 && state.result.code != 400) {
+            Future.delayed(const Duration(seconds: 2), () {
+              handleLogin();
+            });
+          } else if (state.result.code == 400) {
+            navigator.replace(AuthRoute(title: 'Login'));
+          }
+        },
+        child: Scaffold(
+          body: Center(
+            child: Container(
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage('assets/images/splash.png'),
+                  fit: BoxFit.cover,
+                ),
               ),
-            ],
+              child: const Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(bottom: 20.0),
+                    child: LoadingDotsAnimation(),
+                  ),
+                ],
+              ),
+            ),
           ),
         ),
       ),
