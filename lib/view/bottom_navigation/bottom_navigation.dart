@@ -1,9 +1,11 @@
 import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_new_architectua/constants/colors.dart';
 import 'package:flutter_new_architectua/view/count/count.dart';
 import 'package:flutter_new_architectua/view/profile/profile_screen.dart';
 import 'package:flutter_new_architectua/view/todo_list/todo_list.dart';
 import 'package:flutter_new_architectua/view/todo_list/todo_list_products.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 @RoutePage()
 class BottomNavigation extends StatefulWidget {
@@ -21,7 +23,6 @@ class _BottomNavigationState extends State<BottomNavigation> {
     CountPage(title: "Count Screen"),
     TodoListPage(title: "User"),
     ProfilePage(),
-    ProfilePage(),
   ];
 
   void _onItemTapped(int index) {
@@ -37,20 +38,50 @@ class _BottomNavigationState extends State<BottomNavigation> {
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(icon: Icon(Icons.gif_box, size: 25), label: "Product"),
-          BottomNavigationBarItem(icon: Icon(Icons.calculate, size: 25), label: "Count"),
-          BottomNavigationBarItem(icon: Icon(Icons.people, size: 25), label: "User"),
-          BottomNavigationBarItem(icon: Icon(Icons.people, size: 25), label: "Profile"),
-          BottomNavigationBarItem(icon: Icon(Icons.people, size: 25), label: "Profile"),
+        items: <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+              icon: SvgPicture.asset('assets/icons/home_icon.svg',
+                  height: 25,
+                  width: 25,
+                  colorFilter: _selectedIndex == 0
+                      ? const ColorFilter.mode(AppColors.main, BlendMode.srcIn)
+                      : const ColorFilter.mode(
+                          AppColors.grey, BlendMode.srcIn)),
+              label: ''),
+          BottomNavigationBarItem(
+              icon: SvgPicture.asset('assets/icons/search_icon.svg',
+                  height: 25,
+                  width: 25,
+                  colorFilter: _selectedIndex == 1
+                      ? const ColorFilter.mode(AppColors.main, BlendMode.srcIn)
+                      : const ColorFilter.mode(
+                          AppColors.grey, BlendMode.srcIn)),
+              label: ''),
+          BottomNavigationBarItem(
+              icon: SvgPicture.asset('assets/icons/cart_icon.svg',
+                  height: 25,
+                  width: 25,
+                  colorFilter: _selectedIndex == 2
+                      ? const ColorFilter.mode(AppColors.main, BlendMode.srcIn)
+                      : const ColorFilter.mode(
+                          AppColors.grey, BlendMode.srcIn)),
+              label: ''),
+          BottomNavigationBarItem(
+              icon: SvgPicture.asset('assets/icons/profile_icon.svg',
+                  height: 25,
+                  width: 25,
+                  colorFilter: _selectedIndex == 3
+                      ? const ColorFilter.mode(AppColors.main, BlendMode.srcIn)
+                      : const ColorFilter.mode(
+                          AppColors.grey, BlendMode.srcIn)),
+              label: ''),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.amber[800],
-        unselectedItemColor: Colors.grey,
         onTap: _onItemTapped,
         type: BottomNavigationBarType.fixed,
-        selectedFontSize: 12,
-        unselectedFontSize: 12,
+        showSelectedLabels: false,
+        showUnselectedLabels: false,
+        backgroundColor: AppColors.main2,
       ),
     );
   }

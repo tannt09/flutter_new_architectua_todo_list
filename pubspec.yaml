@@ -53,6 +53,7 @@ dependencies:
   shared_preferences: ^2.3.2
   flutter_stripe: ^11.2.0
   flutter_secure_storage: ^9.2.2
+  flutter_svg: ^2.0.14
 
 dev_dependencies:
   flutter_test:
@@ -111,6 +112,10 @@ flutter:
 
   assets:
     - assets/images/splash.png
+    - assets/icons/home_icon.svg
+    - assets/icons/search_icon.svg
+    - assets/icons/cart_icon.svg
+    - assets/icons/profile_icon.svg
     - .env
   #
   # For details regarding fonts from package dependencies,
