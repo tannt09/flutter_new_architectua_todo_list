@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_new_architectua/constants/colors.dart';
+import 'package:flutter_new_architectua/utils/change_image_link.dart';
 import 'package:flutter_svg/svg.dart';
 
 class ItemProductWidget extends StatelessWidget {
@@ -16,13 +17,13 @@ class ItemProductWidget extends StatelessWidget {
               Container(
                 width: 126,
                 height: 98,
-                decoration: const BoxDecoration(
+                decoration: BoxDecoration(
                   image: DecorationImage(
-                    image: NetworkImage(
-                        'https://images.unsplash.com/photo-1520342868574-5fa3804e551c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6ff92caffcdd63681a35134a6770ed3b&auto=format&fit=crop&w=1951&q=80'),
+                    image: NetworkImage(changeImageLink(
+                        'http://localhost:3000/images/1732000863903-watch.jpg')),
                     fit: BoxFit.cover,
                   ),
-                  borderRadius: BorderRadius.only(
+                  borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(10),
                     topRight: Radius.circular(10),
                   ),

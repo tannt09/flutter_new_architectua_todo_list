@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_new_architectua/constants/colors.dart';
-import 'package:flutter_new_architectua/widget/home/item_product_widget.dart';
+import 'package:flutter_new_architectua/widget/home/product_item_widget.dart';
 
 class ListProductWidget extends StatelessWidget {
   final String title;

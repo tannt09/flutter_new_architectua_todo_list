@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_new_architectua/core/navigation/app_navigator.dart';
 import 'package:flutter_new_architectua/core/navigation/app_router.gr.dart';
 import 'package:flutter_new_architectua/widget/home/carousel_slider_widget.dart';
-import 'package:flutter_new_architectua/widget/home/list_product_widget.dart';
+import 'package:flutter_new_architectua/widget/home/product_list_widget.dart';
 import 'package:flutter_new_architectua/widget/home/search_widget.dart';
 import 'package:flutter_new_architectua/widget/home/user_information_widget.dart';
 import 'package:get_it/get_it.dart';
@@ -23,7 +23,8 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          toolbarHeight: 25,
+          toolbarHeight: 70,
+          title: const UserInformationWidget(),
         ),
         body: GestureDetector(
           onTap: () {
@@ -36,19 +37,18 @@ class _HomePageState extends State<HomePage> {
                 decoration: const BoxDecoration(),
                 child: Column(
                   children: <Widget>[
-                    const UserInformationWidget(),
                     SearchWidget(controller: controllerSearch),
                     const CarouselSliderWidget(),
                     ListProductWidget(
                       title: 'Featured',
                       onTap: () {
-                        navigator.push(ProductsRoute());
+                        navigator.push(GoodsRoute());
                       },
                     ),
                     ListProductWidget(
                       title: 'Most Popular',
                       onTap: () {
-                        navigator.push(ProductsRoute());
+                        navigator.push(GoodsRoute());
                       },
                     ),
                     const SizedBox(
