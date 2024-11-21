@@ -2,8 +2,9 @@ import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_new_architectua/constants/colors.dart';
-import 'package:flutter_new_architectua/core/bloc/products/products_bloc.dart';
+import 'package:flutter_new_architectua/core/bloc/goods/goods_bloc.dart';
 import 'package:flutter_new_architectua/core/navigation/app_navigator.dart';
+import 'package:flutter_new_architectua/widget/home/product_item_widget.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get_it/get_it.dart';
 
@@ -18,7 +19,13 @@ class GoodsPage extends StatefulWidget {
 
 class _GoodsPageState extends State<GoodsPage> {
   late final AppNavigator navigator = GetIt.instance.get<AppNavigator>();
-  late final ProductsBloc bloc = GetIt.instance.get<ProductsBloc>();
+  late final GoodsBloc bloc = GetIt.instance.get<GoodsBloc>();
+
+  @override
+  void initState() {
+    super.initState();
+    bloc.add(const GetAllGoods());
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,16 +50,30 @@ class _GoodsPageState extends State<GoodsPage> {
             ),
           ),
         ),
-        body:
-            BlocBuilder<ProductsBloc, ProductsState>(builder: (context, state) {
-          if (!state.products.isNotEmpty) {
+        body: BlocBuilder<GoodsBloc, GoodsState>(builder: (context, state) {
+          if (!state.goods.isNotEmpty) {
             return const Center(
               child: Text("Is empty"),
             );
           }
-          return const Center(
-              child: Text("Goods List"),
-            );
+
+          return Column(
+            children: [
+              GridView.builder(
+                shrinkWrap: true,
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  mainAxisSpacing: 15,
+                  childAspectRatio: 155 / 155,
+                ),
+                itemCount: state.goods.length,
+                itemBuilder: (context, index) {
+                  final item = state.goods[index];
+                  return ItemProductWidget(goods: item);
+                },
+              ),
+            ],
+          );
         }),
       ),
     );

@@ -21,6 +21,6 @@ class GoodsBloc extends BaseBloc<GoodsEvent, GoodsState> {
   Future<void> _getAllGoods(GetAllGoods event, Emitter<GoodsState> emit) async {
     final List<GoodsModel> newGoods = await fetchAllGoods();
 
-    emitSafety(state.copyWith(products: newGoods));
+    emitSafety(state.copyWith(goods: newGoods));
   }
 }

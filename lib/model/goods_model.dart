@@ -22,7 +22,7 @@ class GoodsModel {
       imageUrl: json['image_url'],
       isFavorite: json['is_favorite'],
       name: json['name'],
-      price: json['price'],
+      price: double.parse(json['price']),
     );
   }
 
@@ -33,7 +33,7 @@ class GoodsModel {
       'image_url': imageUrl,
       'is_favorite': isFavorite,
       'name': name,
-      'price': price,
+      'price': price.toString(),
     };
   }
 }

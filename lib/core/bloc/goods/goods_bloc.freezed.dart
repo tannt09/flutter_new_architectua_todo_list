@@ -77,7 +77,7 @@ abstract class _GetAllGoods implements GetAllGoods {
 
 /// @nodoc
 mixin _$GoodsState {
-  List<GoodsModel> get products => throw _privateConstructorUsedError;
+  List<GoodsModel> get goods => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $GoodsStateCopyWith<GoodsState> get copyWith =>
@@ -90,7 +90,7 @@ abstract class $GoodsStateCopyWith<$Res> {
           GoodsState value, $Res Function(GoodsState) then) =
       _$GoodsStateCopyWithImpl<$Res, GoodsState>;
   @useResult
-  $Res call({List<GoodsModel> products});
+  $Res call({List<GoodsModel> goods});
 }
 
 /// @nodoc
@@ -106,12 +106,12 @@ class _$GoodsStateCopyWithImpl<$Res, $Val extends GoodsState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? products = null,
+    Object? goods = null,
   }) {
     return _then(_value.copyWith(
-      products: null == products
-          ? _value.products
-          : products // ignore: cast_nullable_to_non_nullable
+      goods: null == goods
+          ? _value.goods
+          : goods // ignore: cast_nullable_to_non_nullable
               as List<GoodsModel>,
     ) as $Val);
   }
@@ -125,7 +125,7 @@ abstract class _$$GoodsStateImplCopyWith<$Res>
       __$$GoodsStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<GoodsModel> products});
+  $Res call({List<GoodsModel> goods});
 }
 
 /// @nodoc
@@ -139,12 +139,12 @@ class __$$GoodsStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? products = null,
+    Object? goods = null,
   }) {
     return _then(_$GoodsStateImpl(
-      products: null == products
-          ? _value._products
-          : products // ignore: cast_nullable_to_non_nullable
+      goods: null == goods
+          ? _value._goods
+          : goods // ignore: cast_nullable_to_non_nullable
               as List<GoodsModel>,
     ));
   }
@@ -153,21 +153,21 @@ class __$$GoodsStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$GoodsStateImpl implements _GoodsState {
-  const _$GoodsStateImpl({final List<GoodsModel> products = const []})
-      : _products = products;
+  const _$GoodsStateImpl({final List<GoodsModel> goods = const []})
+      : _goods = goods;
 
-  final List<GoodsModel> _products;
+  final List<GoodsModel> _goods;
   @override
   @JsonKey()
-  List<GoodsModel> get products {
-    if (_products is EqualUnmodifiableListView) return _products;
+  List<GoodsModel> get goods {
+    if (_goods is EqualUnmodifiableListView) return _goods;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_products);
+    return EqualUnmodifiableListView(_goods);
   }
 
   @override
   String toString() {
-    return 'GoodsState(products: $products)';
+    return 'GoodsState(goods: $goods)';
   }
 
   @override
@@ -175,12 +175,12 @@ class _$GoodsStateImpl implements _GoodsState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GoodsStateImpl &&
-            const DeepCollectionEquality().equals(other._products, _products));
+            const DeepCollectionEquality().equals(other._goods, _goods));
   }
 
   @override
   int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_products));
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_goods));
 
   @JsonKey(ignore: true)
   @override
@@ -190,11 +190,10 @@ class _$GoodsStateImpl implements _GoodsState {
 }
 
 abstract class _GoodsState implements GoodsState {
-  const factory _GoodsState({final List<GoodsModel> products}) =
-      _$GoodsStateImpl;
+  const factory _GoodsState({final List<GoodsModel> goods}) = _$GoodsStateImpl;
 
   @override
-  List<GoodsModel> get products;
+  List<GoodsModel> get goods;
   @override
   @JsonKey(ignore: true)
   _$$GoodsStateImplCopyWith<_$GoodsStateImpl> get copyWith =>

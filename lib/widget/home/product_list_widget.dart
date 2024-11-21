@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_new_architectua/constants/colors.dart';
+import 'package:flutter_new_architectua/model/goods_model.dart';
 import 'package:flutter_new_architectua/widget/home/product_item_widget.dart';
 
 class ListProductWidget extends StatelessWidget {
   final String title;
   final VoidCallback onTap;
-  const ListProductWidget({super.key, required this.title, required this.onTap});
+  const ListProductWidget(
+      {super.key, required this.title, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -31,15 +33,27 @@ class ListProductWidget extends StatelessWidget {
               ],
             )),
         SizedBox(
-          height: 142,
-          child: ListView.builder(
-            scrollDirection: Axis.horizontal,
-            itemCount: 4,
-            itemBuilder: (context, index) {
-              return const ItemProductWidget();
-            },
-          ),
-        ),
+            height: 204,
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: 4,
+              itemBuilder: (context, index) {
+                return const Padding(
+                  padding: EdgeInsets.only(right: 14),
+                  child: ItemProductWidget(
+                    goods: GoodsModel(
+                      id: 0,
+                      productId: 'db3a22e2-f1d4-4e69-90f7-f9e18f3cb67b',
+                      imageUrl:
+                          'http://localhost:3000/images/1732000863903-watch.jpg',
+                      isFavorite: false,
+                      name: 'Watch',
+                      price: 40.00,
+                    ),
+                  ),
+                );
+              },
+            )),
       ],
     );
   }
