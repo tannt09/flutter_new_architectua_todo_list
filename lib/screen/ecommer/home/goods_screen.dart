@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_new_architectua/constants/colors.dart';
 import 'package:flutter_new_architectua/core/bloc/goods/goods_bloc.dart';
 import 'package:flutter_new_architectua/core/navigation/app_navigator.dart';
+import 'package:flutter_new_architectua/model/goods_model.dart';
 import 'package:flutter_new_architectua/widget/home/product_item_widget.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get_it/get_it.dart';
@@ -24,7 +25,7 @@ class _GoodsPageState extends State<GoodsPage> {
   @override
   void initState() {
     super.initState();
-    bloc.add(const GetAllGoods());
+    bloc.add(const GetAllGoodsEvent());
   }
 
   @override
@@ -57,6 +58,13 @@ class _GoodsPageState extends State<GoodsPage> {
             );
           }
 
+          Future<void> changeFavoriteState(GoodsModel item) async {
+            final id = item.productId;
+            if (id != null) {
+              bloc.add(ChangeFavoriteStateEvent(item: item));
+            }
+          }
+
           return GridView.builder(
             shrinkWrap: true,
             padding: const EdgeInsets.symmetric(vertical: 16.0),
@@ -68,7 +76,7 @@ class _GoodsPageState extends State<GoodsPage> {
             itemCount: state.goods.length,
             itemBuilder: (context, index) {
               final item = state.goods[index];
-              return ItemProductWidget(goods: item);
+              return ItemProductWidget(goods: item, changeFavoriteState: changeFavoriteState);
             },
           );
         }),

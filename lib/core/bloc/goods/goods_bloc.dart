@@ -15,12 +15,21 @@ part 'goods_bloc.freezed.dart';
 @injectable
 class GoodsBloc extends BaseBloc<GoodsEvent, GoodsState> {
   GoodsBloc() : super(const GoodsState()) {
-    on<GetAllGoods>(_getAllGoods);
+    on<GetAllGoodsEvent>(_getAllGoods);
+    on<ChangeFavoriteStateEvent>(_changeFavoriteState);
   }
 
-  Future<void> _getAllGoods(GetAllGoods event, Emitter<GoodsState> emit) async {
+  Future<void> _getAllGoods(
+      GetAllGoodsEvent event, Emitter<GoodsState> emit) async {
     final List<GoodsModel> newGoods = await fetchAllGoods();
 
     emitSafety(state.copyWith(goods: newGoods));
+  }
+
+  Future<void> _changeFavoriteState(
+      ChangeFavoriteStateEvent event, Emitter<GoodsState> emit) async {
+    await fetchChangeFavorite(event.item);
+
+    add(const GetAllGoodsEvent());
   }
 }

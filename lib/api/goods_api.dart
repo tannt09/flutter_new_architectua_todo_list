@@ -44,3 +44,33 @@ Future<List<GoodsModel>> fetchAllGoods() async {
     return [];
   }
 }
+
+Future<String> fetchChangeFavorite(GoodsModel item) async {
+  // Configure logger to print to console
+  Logger.root.level = Level.ALL;
+  Logger.root.onRecord.listen((record) {
+    log('${record.level.name}: ${record.time}: ${record.message}');
+  });
+
+  await dotenv.load();
+
+  final token = await getAccessToken();
+
+  try {
+    final response = await apiClient.sendRequest(
+        'goods/changeFavorite?user_id=${item.productId}', 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer $token',
+        },
+        body: {
+          'is_favorite': !item.isFavorite,
+        });
+    _logger.info('Status code: ${response.statusCode}');
+
+    return response.body;
+  } catch (e) {
+    _logger.severe('Error changing favorite state: $e');
+    return 'Error changing favorite state';
+  }
+}

@@ -5,6 +5,11 @@ abstract class GoodsEvent extends BaseBlocEvent {
 }
 
 @freezed
-class GetAllGoods extends GoodsEvent with _$GetAllGoods {
-  const factory GetAllGoods() = _GetAllGoods;
+class GetAllGoodsEvent extends GoodsEvent with _$GetAllGoodsEvent {
+  const factory GetAllGoodsEvent() = _GetAllGoodsEvent;
+}
+
+@freezed
+class ChangeFavoriteStateEvent extends GoodsEvent with _$ChangeFavoriteStateEvent {
+  const factory ChangeFavoriteStateEvent({required GoodsModel item}) = _ChangeFavoriteStateEvent;
 }

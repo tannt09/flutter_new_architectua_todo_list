@@ -6,7 +6,8 @@ import 'package:flutter_svg/svg.dart';
 
 class ItemProductWidget extends StatelessWidget {
   final GoodsModel goods;
-  const ItemProductWidget({super.key, required this.goods});
+  final Future<void> Function(GoodsModel item)? changeFavoriteState;
+  const ItemProductWidget({super.key, required this.goods, this.changeFavoriteState});
 
   @override
   Widget build(BuildContext context) {
@@ -35,9 +36,14 @@ class ItemProductWidget extends StatelessWidget {
               Positioned(
                 top: 6,
                 right: 6,
-                child: SvgPicture.asset(goods.isFavorite
-                    ? 'assets/icons/heart_ful_icon.svg'
-                    : 'assets/icons/heart_icon.svg'),
+                child: IconButton(
+                  icon: SvgPicture.asset(goods.isFavorite
+                      ? 'assets/icons/heart_ful_icon.svg'
+                      : 'assets/icons/heart_icon.svg'),
+                  onPressed: () {
+                    changeFavoriteState!(goods);
+                  },
+                ),
               ),
             ],
           ),

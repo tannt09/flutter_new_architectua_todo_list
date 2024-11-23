@@ -15,19 +15,19 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$GetAllGoods {}
+mixin _$GetAllGoodsEvent {}
 
 /// @nodoc
-abstract class $GetAllGoodsCopyWith<$Res> {
-  factory $GetAllGoodsCopyWith(
-          GetAllGoods value, $Res Function(GetAllGoods) then) =
-      _$GetAllGoodsCopyWithImpl<$Res, GetAllGoods>;
+abstract class $GetAllGoodsEventCopyWith<$Res> {
+  factory $GetAllGoodsEventCopyWith(
+          GetAllGoodsEvent value, $Res Function(GetAllGoodsEvent) then) =
+      _$GetAllGoodsEventCopyWithImpl<$Res, GetAllGoodsEvent>;
 }
 
 /// @nodoc
-class _$GetAllGoodsCopyWithImpl<$Res, $Val extends GetAllGoods>
-    implements $GetAllGoodsCopyWith<$Res> {
-  _$GetAllGoodsCopyWithImpl(this._value, this._then);
+class _$GetAllGoodsEventCopyWithImpl<$Res, $Val extends GetAllGoodsEvent>
+    implements $GetAllGoodsEventCopyWith<$Res> {
+  _$GetAllGoodsEventCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -36,43 +36,166 @@ class _$GetAllGoodsCopyWithImpl<$Res, $Val extends GetAllGoods>
 }
 
 /// @nodoc
-abstract class _$$GetAllGoodsImplCopyWith<$Res> {
-  factory _$$GetAllGoodsImplCopyWith(
-          _$GetAllGoodsImpl value, $Res Function(_$GetAllGoodsImpl) then) =
-      __$$GetAllGoodsImplCopyWithImpl<$Res>;
+abstract class _$$GetAllGoodsEventImplCopyWith<$Res> {
+  factory _$$GetAllGoodsEventImplCopyWith(_$GetAllGoodsEventImpl value,
+          $Res Function(_$GetAllGoodsEventImpl) then) =
+      __$$GetAllGoodsEventImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$GetAllGoodsImplCopyWithImpl<$Res>
-    extends _$GetAllGoodsCopyWithImpl<$Res, _$GetAllGoodsImpl>
-    implements _$$GetAllGoodsImplCopyWith<$Res> {
-  __$$GetAllGoodsImplCopyWithImpl(
-      _$GetAllGoodsImpl _value, $Res Function(_$GetAllGoodsImpl) _then)
+class __$$GetAllGoodsEventImplCopyWithImpl<$Res>
+    extends _$GetAllGoodsEventCopyWithImpl<$Res, _$GetAllGoodsEventImpl>
+    implements _$$GetAllGoodsEventImplCopyWith<$Res> {
+  __$$GetAllGoodsEventImplCopyWithImpl(_$GetAllGoodsEventImpl _value,
+      $Res Function(_$GetAllGoodsEventImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$GetAllGoodsImpl implements _GetAllGoods {
-  const _$GetAllGoodsImpl();
+class _$GetAllGoodsEventImpl implements _GetAllGoodsEvent {
+  const _$GetAllGoodsEventImpl();
 
   @override
   String toString() {
-    return 'GetAllGoods()';
+    return 'GetAllGoodsEvent()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$GetAllGoodsImpl);
+        (other.runtimeType == runtimeType && other is _$GetAllGoodsEventImpl);
   }
 
   @override
   int get hashCode => runtimeType.hashCode;
 }
 
-abstract class _GetAllGoods implements GetAllGoods {
-  const factory _GetAllGoods() = _$GetAllGoodsImpl;
+abstract class _GetAllGoodsEvent implements GetAllGoodsEvent {
+  const factory _GetAllGoodsEvent() = _$GetAllGoodsEventImpl;
+}
+
+/// @nodoc
+mixin _$ChangeFavoriteStateEvent {
+  GoodsModel get item => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $ChangeFavoriteStateEventCopyWith<ChangeFavoriteStateEvent> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ChangeFavoriteStateEventCopyWith<$Res> {
+  factory $ChangeFavoriteStateEventCopyWith(ChangeFavoriteStateEvent value,
+          $Res Function(ChangeFavoriteStateEvent) then) =
+      _$ChangeFavoriteStateEventCopyWithImpl<$Res, ChangeFavoriteStateEvent>;
+  @useResult
+  $Res call({GoodsModel item});
+}
+
+/// @nodoc
+class _$ChangeFavoriteStateEventCopyWithImpl<$Res,
+        $Val extends ChangeFavoriteStateEvent>
+    implements $ChangeFavoriteStateEventCopyWith<$Res> {
+  _$ChangeFavoriteStateEventCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? item = null,
+  }) {
+    return _then(_value.copyWith(
+      item: null == item
+          ? _value.item
+          : item // ignore: cast_nullable_to_non_nullable
+              as GoodsModel,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$ChangeFavoriteStateEventImplCopyWith<$Res>
+    implements $ChangeFavoriteStateEventCopyWith<$Res> {
+  factory _$$ChangeFavoriteStateEventImplCopyWith(
+          _$ChangeFavoriteStateEventImpl value,
+          $Res Function(_$ChangeFavoriteStateEventImpl) then) =
+      __$$ChangeFavoriteStateEventImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({GoodsModel item});
+}
+
+/// @nodoc
+class __$$ChangeFavoriteStateEventImplCopyWithImpl<$Res>
+    extends _$ChangeFavoriteStateEventCopyWithImpl<$Res,
+        _$ChangeFavoriteStateEventImpl>
+    implements _$$ChangeFavoriteStateEventImplCopyWith<$Res> {
+  __$$ChangeFavoriteStateEventImplCopyWithImpl(
+      _$ChangeFavoriteStateEventImpl _value,
+      $Res Function(_$ChangeFavoriteStateEventImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? item = null,
+  }) {
+    return _then(_$ChangeFavoriteStateEventImpl(
+      item: null == item
+          ? _value.item
+          : item // ignore: cast_nullable_to_non_nullable
+              as GoodsModel,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ChangeFavoriteStateEventImpl implements _ChangeFavoriteStateEvent {
+  const _$ChangeFavoriteStateEventImpl({required this.item});
+
+  @override
+  final GoodsModel item;
+
+  @override
+  String toString() {
+    return 'ChangeFavoriteStateEvent(item: $item)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ChangeFavoriteStateEventImpl &&
+            (identical(other.item, item) || other.item == item));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, item);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ChangeFavoriteStateEventImplCopyWith<_$ChangeFavoriteStateEventImpl>
+      get copyWith => __$$ChangeFavoriteStateEventImplCopyWithImpl<
+          _$ChangeFavoriteStateEventImpl>(this, _$identity);
+}
+
+abstract class _ChangeFavoriteStateEvent implements ChangeFavoriteStateEvent {
+  const factory _ChangeFavoriteStateEvent({required final GoodsModel item}) =
+      _$ChangeFavoriteStateEventImpl;
+
+  @override
+  GoodsModel get item;
+  @override
+  @JsonKey(ignore: true)
+  _$$ChangeFavoriteStateEventImplCopyWith<_$ChangeFavoriteStateEventImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
