@@ -1,18 +1,18 @@
 class GoodsModel {
   final int? id;
   final String? productId;
-  final String? imageUrl;
-  final bool? isFavorite;
-  final String? name;
-  final double? price;
+  final String imageUrl;
+  final bool isFavorite;
+  final String name;
+  final double price;
 
   const GoodsModel({
     this.id,
     this.productId,
-    this.imageUrl,
-    this.isFavorite,
-    this.name,
-    this.price,
+    this.imageUrl = '',
+    this.isFavorite = false,
+    this.name = '',
+    this.price = 0.00,
   });
 
   factory GoodsModel.fromJson(Map<String, dynamic> json) {

@@ -57,22 +57,19 @@ class _GoodsPageState extends State<GoodsPage> {
             );
           }
 
-          return Column(
-            children: [
-              GridView.builder(
-                shrinkWrap: true,
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  mainAxisSpacing: 15,
-                  childAspectRatio: 155 / 155,
-                ),
-                itemCount: state.goods.length,
-                itemBuilder: (context, index) {
-                  final item = state.goods[index];
-                  return ItemProductWidget(goods: item);
-                },
-              ),
-            ],
+          return GridView.builder(
+            shrinkWrap: true,
+            padding: const EdgeInsets.symmetric(vertical: 16.0),
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              mainAxisSpacing: 15,
+              childAspectRatio: 1,
+            ),
+            itemCount: state.goods.length,
+            itemBuilder: (context, index) {
+              final item = state.goods[index];
+              return ItemProductWidget(goods: item);
+            },
           );
         }),
       ),

@@ -23,7 +23,7 @@ class ItemProductWidget extends StatelessWidget {
                 height: 160,
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                    image: NetworkImage(changeImageLink(goods.imageUrl ?? '')),
+                    image: NetworkImage(changeImageLink(goods.imageUrl)),
                     fit: BoxFit.cover,
                   ),
                   borderRadius: const BorderRadius.only(
@@ -35,7 +35,9 @@ class ItemProductWidget extends StatelessWidget {
               Positioned(
                 top: 6,
                 right: 6,
-                child: SvgPicture.asset('assets/icons/heart_icon.svg'),
+                child: SvgPicture.asset(goods.isFavorite
+                    ? 'assets/icons/heart_ful_icon.svg'
+                    : 'assets/icons/heart_icon.svg'),
               ),
             ],
           ),
@@ -51,22 +53,31 @@ class ItemProductWidget extends StatelessWidget {
             ),
             child: Padding(
               padding: const EdgeInsets.only(left: 5),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
-                    goods.name ?? '',
-                    style: const TextStyle(
-                        fontWeight: FontWeight.bold, fontSize: 14),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        goods.name,
+                        style: const TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 14),
+                      ),
+                      Text(
+                        '\$${goods.price.toStringAsFixed(2)}',
+                        style: const TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.bold,
+                            color: AppColors.main),
+                      ),
+                    ],
                   ),
-                  Text(
-                    '\$${goods.price}',
-                    style: const TextStyle(
-                        fontSize: 12,
-                        fontWeight: FontWeight.bold,
-                        color: AppColors.main),
-                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 10),
+                    child: SvgPicture.asset('assets/icons/add_icon.svg'),
+                  )
                 ],
               ),
             ),

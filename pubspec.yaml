@@ -119,7 +119,9 @@ flutter:
     - assets/icons/profile_icon.svg
     - assets/icons/bell_icon.svg
     - assets/icons/heart_icon.svg
+    - assets/icons/heart_ful_icon.svg
     - assets/icons/left_arrow_icon.svg
+    - assets/icons/add_icon.svg
     - .env
   #
   # For details regarding fonts from package dependencies,
