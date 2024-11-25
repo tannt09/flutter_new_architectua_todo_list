@@ -11,20 +11,18 @@ final _logger = Logger('ProductsApi');
 ApiClient apiClient =
     ApiClient(baseUrl: '${dotenv.env['BASE_URL']}', storage: storage);
 
-Future<List<GoodsModel>> fetchAllGoods() async {
+Future<List<GoodsModel>> fetchAllGoods(String endpoint) async {
   // Configure logger to print to console
   Logger.root.level = Level.ALL;
   Logger.root.onRecord.listen((record) {
     log('${record.level.name}: ${record.time}: ${record.message}');
   });
 
-  await dotenv.load();
-
   final token = await getAccessToken();
 
   try {
     final response =
-        await apiClient.sendRequest('goods/getAll', 'GET', headers: {
+        await apiClient.sendRequest(endpoint, 'GET', headers: {
       'Authorization': 'Bearer $token',
     });
     _logger.info('Status code: ${response.statusCode}');
@@ -51,8 +49,6 @@ Future<String> fetchChangeFavorite(GoodsModel item) async {
   Logger.root.onRecord.listen((record) {
     log('${record.level.name}: ${record.time}: ${record.message}');
   });
-
-  await dotenv.load();
 
   final token = await getAccessToken();
 

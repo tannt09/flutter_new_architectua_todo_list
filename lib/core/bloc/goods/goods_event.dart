@@ -10,6 +10,18 @@ class GetAllGoodsEvent extends GoodsEvent with _$GetAllGoodsEvent {
 }
 
 @freezed
-class ChangeFavoriteStateEvent extends GoodsEvent with _$ChangeFavoriteStateEvent {
-  const factory ChangeFavoriteStateEvent({required GoodsModel item}) = _ChangeFavoriteStateEvent;
+class GetFeaturedEvent extends GoodsEvent with _$GetFeaturedEvent {
+  const factory GetFeaturedEvent() = _GetFeaturedEvent;
+}
+
+@freezed
+class GetMostPopularEvent extends GoodsEvent with _$GetMostPopularEvent {
+  const factory GetMostPopularEvent() = _GetMostPopularEvent;
+}
+
+@freezed
+class ChangeFavoriteStateEvent extends GoodsEvent
+    with _$ChangeFavoriteStateEvent {
+  const factory ChangeFavoriteStateEvent({required GoodsModel item}) =
+      _ChangeFavoriteStateEvent;
 }

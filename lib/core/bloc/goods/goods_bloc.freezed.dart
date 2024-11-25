@@ -76,6 +76,129 @@ abstract class _GetAllGoodsEvent implements GetAllGoodsEvent {
 }
 
 /// @nodoc
+mixin _$GetFeaturedEvent {}
+
+/// @nodoc
+abstract class $GetFeaturedEventCopyWith<$Res> {
+  factory $GetFeaturedEventCopyWith(
+          GetFeaturedEvent value, $Res Function(GetFeaturedEvent) then) =
+      _$GetFeaturedEventCopyWithImpl<$Res, GetFeaturedEvent>;
+}
+
+/// @nodoc
+class _$GetFeaturedEventCopyWithImpl<$Res, $Val extends GetFeaturedEvent>
+    implements $GetFeaturedEventCopyWith<$Res> {
+  _$GetFeaturedEventCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+}
+
+/// @nodoc
+abstract class _$$GetFeaturedEventImplCopyWith<$Res> {
+  factory _$$GetFeaturedEventImplCopyWith(_$GetFeaturedEventImpl value,
+          $Res Function(_$GetFeaturedEventImpl) then) =
+      __$$GetFeaturedEventImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$GetFeaturedEventImplCopyWithImpl<$Res>
+    extends _$GetFeaturedEventCopyWithImpl<$Res, _$GetFeaturedEventImpl>
+    implements _$$GetFeaturedEventImplCopyWith<$Res> {
+  __$$GetFeaturedEventImplCopyWithImpl(_$GetFeaturedEventImpl _value,
+      $Res Function(_$GetFeaturedEventImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$GetFeaturedEventImpl implements _GetFeaturedEvent {
+  const _$GetFeaturedEventImpl();
+
+  @override
+  String toString() {
+    return 'GetFeaturedEvent()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$GetFeaturedEventImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+}
+
+abstract class _GetFeaturedEvent implements GetFeaturedEvent {
+  const factory _GetFeaturedEvent() = _$GetFeaturedEventImpl;
+}
+
+/// @nodoc
+mixin _$GetMostPopularEvent {}
+
+/// @nodoc
+abstract class $GetMostPopularEventCopyWith<$Res> {
+  factory $GetMostPopularEventCopyWith(
+          GetMostPopularEvent value, $Res Function(GetMostPopularEvent) then) =
+      _$GetMostPopularEventCopyWithImpl<$Res, GetMostPopularEvent>;
+}
+
+/// @nodoc
+class _$GetMostPopularEventCopyWithImpl<$Res, $Val extends GetMostPopularEvent>
+    implements $GetMostPopularEventCopyWith<$Res> {
+  _$GetMostPopularEventCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+}
+
+/// @nodoc
+abstract class _$$GetMostPopularEventImplCopyWith<$Res> {
+  factory _$$GetMostPopularEventImplCopyWith(_$GetMostPopularEventImpl value,
+          $Res Function(_$GetMostPopularEventImpl) then) =
+      __$$GetMostPopularEventImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$GetMostPopularEventImplCopyWithImpl<$Res>
+    extends _$GetMostPopularEventCopyWithImpl<$Res, _$GetMostPopularEventImpl>
+    implements _$$GetMostPopularEventImplCopyWith<$Res> {
+  __$$GetMostPopularEventImplCopyWithImpl(_$GetMostPopularEventImpl _value,
+      $Res Function(_$GetMostPopularEventImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$GetMostPopularEventImpl implements _GetMostPopularEvent {
+  const _$GetMostPopularEventImpl();
+
+  @override
+  String toString() {
+    return 'GetMostPopularEvent()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GetMostPopularEventImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+}
+
+abstract class _GetMostPopularEvent implements GetMostPopularEvent {
+  const factory _GetMostPopularEvent() = _$GetMostPopularEventImpl;
+}
+
+/// @nodoc
 mixin _$ChangeFavoriteStateEvent {
   GoodsModel get item => throw _privateConstructorUsedError;
 

@@ -16,12 +16,28 @@ part 'goods_bloc.freezed.dart';
 class GoodsBloc extends BaseBloc<GoodsEvent, GoodsState> {
   GoodsBloc() : super(const GoodsState()) {
     on<GetAllGoodsEvent>(_getAllGoods);
+    on<GetFeaturedEvent>(_getFeaturedGoods);
+    on<GetMostPopularEvent>(_getMostPopularGoods);
     on<ChangeFavoriteStateEvent>(_changeFavoriteState);
   }
 
   Future<void> _getAllGoods(
       GetAllGoodsEvent event, Emitter<GoodsState> emit) async {
-    final List<GoodsModel> newGoods = await fetchAllGoods();
+    final List<GoodsModel> newGoods = await fetchAllGoods('goods/getAll');
+
+    emitSafety(state.copyWith(goods: newGoods));
+  }
+
+  Future<void> _getFeaturedGoods(
+      GetFeaturedEvent event, Emitter<GoodsState> emit) async {
+    final List<GoodsModel> newGoods = await fetchAllGoods('goods/getFeatured');
+
+    emitSafety(state.copyWith(goods: newGoods));
+  }
+
+  Future<void> _getMostPopularGoods(
+      GetMostPopularEvent event, Emitter<GoodsState> emit) async {
+    final List<GoodsModel> newGoods = await fetchAllGoods('goods/getMostPopular');
 
     emitSafety(state.copyWith(goods: newGoods));
   }
