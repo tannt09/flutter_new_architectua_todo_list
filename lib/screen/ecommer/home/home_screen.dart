@@ -7,7 +7,7 @@ import 'package:flutter_new_architectua/main.dart';
 import 'package:flutter_new_architectua/model/goods_model.dart';
 import 'package:flutter_new_architectua/widget/home/carousel_slider_widget.dart';
 import 'package:flutter_new_architectua/widget/home/product_list_widget.dart';
-import 'package:flutter_new_architectua/widget/home/search_widget.dart';
+import 'package:flutter_new_architectua/widget/search_widget.dart';
 import 'package:flutter_new_architectua/widget/home/user_information_widget.dart';
 import 'package:get_it/get_it.dart';
 
