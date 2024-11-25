@@ -5,9 +5,14 @@ import 'package:flutter_new_architectua/utils/change_image_link.dart';
 import 'package:flutter_svg/svg.dart';
 
 class ItemProductWidget extends StatelessWidget {
+  final bool isAddCart;
   final GoodsModel goods;
   final Future<void> Function(GoodsModel item)? changeFavoriteState;
-  const ItemProductWidget({super.key, required this.goods, this.changeFavoriteState});
+  const ItemProductWidget(
+      {super.key,
+      required this.goods,
+      this.changeFavoriteState,
+      this.isAddCart = true});
 
   @override
   Widget build(BuildContext context) {
@@ -80,10 +85,12 @@ class ItemProductWidget extends StatelessWidget {
                       ),
                     ],
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(right: 10),
-                    child: SvgPicture.asset('assets/icons/add_icon.svg'),
-                  )
+                  isAddCart
+                      ? Padding(
+                          padding: const EdgeInsets.only(right: 10),
+                          child: SvgPicture.asset('assets/icons/add_icon.svg'),
+                        )
+                      : const SizedBox.shrink()
                 ],
               ),
             ),

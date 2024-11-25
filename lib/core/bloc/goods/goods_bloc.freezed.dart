@@ -324,6 +324,8 @@ abstract class _ChangeFavoriteStateEvent implements ChangeFavoriteStateEvent {
 /// @nodoc
 mixin _$GoodsState {
   List<GoodsModel> get goods => throw _privateConstructorUsedError;
+  List<GoodsModel> get featuredList => throw _privateConstructorUsedError;
+  List<GoodsModel> get mostPopularList => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $GoodsStateCopyWith<GoodsState> get copyWith =>
@@ -336,7 +338,10 @@ abstract class $GoodsStateCopyWith<$Res> {
           GoodsState value, $Res Function(GoodsState) then) =
       _$GoodsStateCopyWithImpl<$Res, GoodsState>;
   @useResult
-  $Res call({List<GoodsModel> goods});
+  $Res call(
+      {List<GoodsModel> goods,
+      List<GoodsModel> featuredList,
+      List<GoodsModel> mostPopularList});
 }
 
 /// @nodoc
@@ -353,11 +358,21 @@ class _$GoodsStateCopyWithImpl<$Res, $Val extends GoodsState>
   @override
   $Res call({
     Object? goods = null,
+    Object? featuredList = null,
+    Object? mostPopularList = null,
   }) {
     return _then(_value.copyWith(
       goods: null == goods
           ? _value.goods
           : goods // ignore: cast_nullable_to_non_nullable
+              as List<GoodsModel>,
+      featuredList: null == featuredList
+          ? _value.featuredList
+          : featuredList // ignore: cast_nullable_to_non_nullable
+              as List<GoodsModel>,
+      mostPopularList: null == mostPopularList
+          ? _value.mostPopularList
+          : mostPopularList // ignore: cast_nullable_to_non_nullable
               as List<GoodsModel>,
     ) as $Val);
   }
@@ -371,7 +386,10 @@ abstract class _$$GoodsStateImplCopyWith<$Res>
       __$$GoodsStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<GoodsModel> goods});
+  $Res call(
+      {List<GoodsModel> goods,
+      List<GoodsModel> featuredList,
+      List<GoodsModel> mostPopularList});
 }
 
 /// @nodoc
@@ -386,11 +404,21 @@ class __$$GoodsStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? goods = null,
+    Object? featuredList = null,
+    Object? mostPopularList = null,
   }) {
     return _then(_$GoodsStateImpl(
       goods: null == goods
           ? _value._goods
           : goods // ignore: cast_nullable_to_non_nullable
+              as List<GoodsModel>,
+      featuredList: null == featuredList
+          ? _value._featuredList
+          : featuredList // ignore: cast_nullable_to_non_nullable
+              as List<GoodsModel>,
+      mostPopularList: null == mostPopularList
+          ? _value._mostPopularList
+          : mostPopularList // ignore: cast_nullable_to_non_nullable
               as List<GoodsModel>,
     ));
   }
@@ -399,8 +427,13 @@ class __$$GoodsStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$GoodsStateImpl implements _GoodsState {
-  const _$GoodsStateImpl({final List<GoodsModel> goods = const []})
-      : _goods = goods;
+  const _$GoodsStateImpl(
+      {final List<GoodsModel> goods = const [],
+      final List<GoodsModel> featuredList = const [],
+      final List<GoodsModel> mostPopularList = const []})
+      : _goods = goods,
+        _featuredList = featuredList,
+        _mostPopularList = mostPopularList;
 
   final List<GoodsModel> _goods;
   @override
@@ -411,9 +444,27 @@ class _$GoodsStateImpl implements _GoodsState {
     return EqualUnmodifiableListView(_goods);
   }
 
+  final List<GoodsModel> _featuredList;
+  @override
+  @JsonKey()
+  List<GoodsModel> get featuredList {
+    if (_featuredList is EqualUnmodifiableListView) return _featuredList;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_featuredList);
+  }
+
+  final List<GoodsModel> _mostPopularList;
+  @override
+  @JsonKey()
+  List<GoodsModel> get mostPopularList {
+    if (_mostPopularList is EqualUnmodifiableListView) return _mostPopularList;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_mostPopularList);
+  }
+
   @override
   String toString() {
-    return 'GoodsState(goods: $goods)';
+    return 'GoodsState(goods: $goods, featuredList: $featuredList, mostPopularList: $mostPopularList)';
   }
 
   @override
@@ -421,12 +472,19 @@ class _$GoodsStateImpl implements _GoodsState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GoodsStateImpl &&
-            const DeepCollectionEquality().equals(other._goods, _goods));
+            const DeepCollectionEquality().equals(other._goods, _goods) &&
+            const DeepCollectionEquality()
+                .equals(other._featuredList, _featuredList) &&
+            const DeepCollectionEquality()
+                .equals(other._mostPopularList, _mostPopularList));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_goods));
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_goods),
+      const DeepCollectionEquality().hash(_featuredList),
+      const DeepCollectionEquality().hash(_mostPopularList));
 
   @JsonKey(ignore: true)
   @override
@@ -436,10 +494,17 @@ class _$GoodsStateImpl implements _GoodsState {
 }
 
 abstract class _GoodsState implements GoodsState {
-  const factory _GoodsState({final List<GoodsModel> goods}) = _$GoodsStateImpl;
+  const factory _GoodsState(
+      {final List<GoodsModel> goods,
+      final List<GoodsModel> featuredList,
+      final List<GoodsModel> mostPopularList}) = _$GoodsStateImpl;
 
   @override
   List<GoodsModel> get goods;
+  @override
+  List<GoodsModel> get featuredList;
+  @override
+  List<GoodsModel> get mostPopularList;
   @override
   @JsonKey(ignore: true)
   _$$GoodsStateImplCopyWith<_$GoodsStateImpl> get copyWith =>

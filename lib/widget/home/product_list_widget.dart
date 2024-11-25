@@ -5,9 +5,16 @@ import 'package:flutter_new_architectua/widget/home/product_item_widget.dart';
 
 class ListProductWidget extends StatelessWidget {
   final String title;
+  final List<GoodsModel> goods;
   final VoidCallback onTap;
+  final Future<void> Function(GoodsModel item) changeFavoriteState;
+
   const ListProductWidget(
-      {super.key, required this.title, required this.onTap});
+      {super.key,
+      required this.title,
+      required this.goods,
+      required this.onTap,
+      required this.changeFavoriteState});
 
   @override
   Widget build(BuildContext context) {
@@ -36,20 +43,16 @@ class ListProductWidget extends StatelessWidget {
             height: 204,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
-              itemCount: 4,
+              itemCount: goods.length,
               itemBuilder: (context, index) {
-                return const Padding(
-                  padding: EdgeInsets.only(right: 14),
+                final item = goods[index];
+
+                return Padding(
+                  padding: const EdgeInsets.only(right: 14),
                   child: ItemProductWidget(
-                    goods: GoodsModel(
-                      id: 0,
-                      productId: 'db3a22e2-f1d4-4e69-90f7-f9e18f3cb67b',
-                      imageUrl:
-                          'http://localhost:3000/images/1732000863903-watch.jpg',
-                      isFavorite: false,
-                      name: 'Watch',
-                      price: 40.00,
-                    ),
+                    isAddCart: false,
+                    goods: item,
+                    changeFavoriteState: changeFavoriteState,
                   ),
                 );
               },

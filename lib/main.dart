@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_new_architectua/core/bloc/goods/goods_bloc.dart';
 import 'package:flutter_new_architectua/core/navigation/app_router.dart';
 import 'package:flutter_new_architectua/core/storage/config_storage.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
@@ -8,6 +10,7 @@ import 'package:sqflite/sqflite.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 late Database database;
+final GoodsBloc blocGoods = GetIt.instance.get<GoodsBloc>();
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,12 +24,16 @@ Future<void> main() async {
     );
   }, version: 1);
 
-  Stripe.publishableKey = "pk_test_51QCZ0XFY945TtdO6oyFGuepcvs8MN2uX4zDBeVbtTy9DWSI9xf9bXYphyzSytKE18el6QUud6BYh0ZOBplSNQB2k00f5LHYMP0";
+  Stripe.publishableKey =
+      "pk_test_51QCZ0XFY945TtdO6oyFGuepcvs8MN2uX4zDBeVbtTy9DWSI9xf9bXYphyzSytKE18el6QUud6BYh0ZOBplSNQB2k00f5LHYMP0";
   Stripe.merchantIdentifier = 'merchant.flutter.stripe.test';
   Stripe.urlScheme = 'flutterstripe';
   await Stripe.instance.applySettings();
   configureInjection();
-  runApp(MyApp());
+  runApp(BlocProvider(
+    create: (_) => blocGoods,
+    child: MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
