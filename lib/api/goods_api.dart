@@ -21,8 +21,39 @@ Future<List<GoodsModel>> fetchAllGoods(String endpoint) async {
   final token = await getAccessToken();
 
   try {
+    final response = await apiClient.sendRequest(endpoint, 'GET', headers: {
+      'Authorization': 'Bearer $token',
+    });
+    _logger.info('Status code: ${response.statusCode}');
+
+    if (response.statusCode == 200) {
+      final List<dynamic> parsed = jsonDecode(response.body);
+      return parsed
+          .map<GoodsModel>((json) => GoodsModel.fromJson(json))
+          .toList();
+    } else {
+      _logger.warning(
+          'Failed to fetch goods. Status code: ${response.statusCode}');
+      return [];
+    }
+  } catch (e) {
+    _logger.severe('Error fetching goods: $e');
+    return [];
+  }
+}
+
+Future<List<GoodsModel>> fetchSearchGoods(String endpoint, String name) async {
+  // Configure logger to print to console
+  Logger.root.level = Level.ALL;
+  Logger.root.onRecord.listen((record) {
+    log('${record.level.name}: ${record.time}: ${record.message}');
+  });
+
+  final token = await getAccessToken();
+
+  try {
     final response =
-        await apiClient.sendRequest(endpoint, 'GET', headers: {
+        await apiClient.sendRequest('$endpoint?name=$name', 'GET', headers: {
       'Authorization': 'Bearer $token',
     });
     _logger.info('Status code: ${response.statusCode}');

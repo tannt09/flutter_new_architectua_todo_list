@@ -20,7 +20,7 @@ class _SearchPageState extends State<SearchPage> {
   @override
   void initState() {
     super.initState();
-    blocGoods.add(const GetAllGoodsEvent());
+    blocGoods.add(const GetSearchGoodsEvent(name: ''));
   }
 
   @override
@@ -40,7 +40,7 @@ class _SearchPageState extends State<SearchPage> {
               final id = item.productId;
               if (id != null) {
                 blocGoods.add(ChangeFavoriteStateEvent(item: item));
-                blocGoods.add(const GetAllGoodsEvent());
+                blocGoods.add(GetSearchGoodsEvent(name: controllerSearch.text));
               }
             }
 
@@ -95,9 +95,9 @@ class _SearchPageState extends State<SearchPage> {
                           mainAxisSpacing: 15,
                           childAspectRatio: 1,
                         ),
-                        itemCount: state.goods.length,
+                        itemCount: state.searchGoodsList.length,
                         itemBuilder: (context, index) {
-                          final item = state.goods[index];
+                          final item = state.searchGoodsList[index];
                           return ItemProductWidget(
                               goods: item,
                               changeFavoriteState: changeFavoriteState);
