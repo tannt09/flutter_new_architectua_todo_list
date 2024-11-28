@@ -9,8 +9,8 @@ class CustomDialog {
   static Future<void> showAddUserDialog(
       BuildContext context, void Function(User, [int?]) handleList,
       [int? id]) async {
-    TextEditingController controllerName = TextEditingController();
-    TextEditingController controllerAge = TextEditingController();
+    TextEditingController nameController = TextEditingController();
+    TextEditingController ageController = TextEditingController();
 
     return showDialog(
       context: context,
@@ -22,11 +22,11 @@ class CustomDialog {
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
                 TextField(
-                  controller: controllerName,
+                  controller: nameController,
                   decoration: const InputDecoration(hintText: "New Name"),
                 ),
                 TextField(
-                  controller: controllerAge,
+                  controller: ageController,
                   decoration: const InputDecoration(hintText: "New Age"),
                   keyboardType: TextInputType.number,
                   inputFormatters: <TextInputFormatter>[
@@ -42,13 +42,13 @@ class CustomDialog {
               onPressed: () {
                 if (id != null) {
                   handleList(User(
-                      name: controllerName.text,
-                      age: int.parse(controllerAge.text),
+                      name: nameController.text,
+                      age: int.parse(ageController.text),
                       id: id));
                 } else {
                   handleList(User(
-                      name: controllerName.text,
-                      age: int.parse(controllerAge.text),
+                      name: nameController.text,
+                      age: int.parse(ageController.text),
                       id: Random().nextInt(100)));
                 }
                 Navigator.of(context).pop();
@@ -69,11 +69,11 @@ class CustomDialog {
   static Future<void> showAddProductDialog(
       BuildContext context, void Function(Product) handleList,
       [String? id]) async {
-    TextEditingController controllerTitle = TextEditingController();
-    TextEditingController controllerDescription = TextEditingController();
-    TextEditingController controllerOriginalPrice = TextEditingController();
-    TextEditingController controllerDiscountPercentage = TextEditingController();
-    TextEditingController controllerDiscountedPrice = TextEditingController();
+    TextEditingController titleController = TextEditingController();
+    TextEditingController descriptionController = TextEditingController();
+    TextEditingController originalPriceController = TextEditingController();
+    TextEditingController discountPercentageController = TextEditingController();
+    TextEditingController discountedPriceController = TextEditingController();
 
     return showDialog(
       context: context,
@@ -85,15 +85,15 @@ class CustomDialog {
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
                 TextField(
-                  controller: controllerTitle,
+                  controller: titleController,
                   decoration: const InputDecoration(hintText: "New Title"),
                 ),
                 TextField(
-                  controller: controllerDescription,
+                  controller: descriptionController,
                   decoration: const InputDecoration(hintText: "New Description"),
                 ),
                 TextField(
-                  controller: controllerOriginalPrice,
+                  controller: originalPriceController,
                   decoration: const InputDecoration(hintText: "New Original Price"),
                   keyboardType: TextInputType.number,
                   inputFormatters: <TextInputFormatter>[
@@ -101,7 +101,7 @@ class CustomDialog {
                   ],
                 ),
                 TextField(
-                  controller: controllerDiscountPercentage,
+                  controller: discountPercentageController,
                   decoration: const InputDecoration(hintText: "New Discount Percentage"),
                   keyboardType: TextInputType.number,
                   inputFormatters: <TextInputFormatter>[
@@ -109,7 +109,7 @@ class CustomDialog {
                   ],
                 ),
                 TextField(
-                  controller: controllerDiscountedPrice,
+                  controller: discountedPriceController,
                   decoration: const InputDecoration(hintText: "New Discounted Price"),
                   keyboardType: TextInputType.number,
                   inputFormatters: <TextInputFormatter>[
@@ -124,12 +124,12 @@ class CustomDialog {
               child: const Text('Save'),
               onPressed: () {
                 handleList(Product(
-                    title: controllerTitle.text,
-                    originalPrice: int.tryParse(controllerOriginalPrice.text),
+                    title: titleController.text,
+                    originalPrice: int.tryParse(originalPriceController.text),
                     id: id,
-                    description: controllerDescription.text,
-                    discountPercentage: int.tryParse(controllerDiscountPercentage.text),
-                    discountedPrice: int.tryParse(controllerDiscountedPrice.text)));
+                    description: descriptionController.text,
+                    discountPercentage: int.tryParse(discountPercentageController.text),
+                    discountedPrice: int.tryParse(discountedPriceController.text)));
 
                 Navigator.of(context).pop();
               },

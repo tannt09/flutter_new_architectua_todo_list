@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_new_architectua/constants/colors.dart';
+import 'package:flutter_new_architectua/core/bloc/goods/goods_bloc.dart';
+import 'package:flutter_new_architectua/main.dart';
 import 'package:flutter_svg/svg.dart';
 
 class SearchWidget extends StatelessWidget {
@@ -38,6 +40,9 @@ class SearchWidget extends StatelessWidget {
                   hintText: 'Search here',
                   hintStyle: TextStyle(color: AppColors.grey3, fontSize: 14),
                 ),
+                onSubmitted: (String value) {
+                  blocGoods.add(GetSearchGoodsEvent(name: value));
+                },
               ),
             ),
           ],

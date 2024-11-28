@@ -21,7 +21,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   late final AppNavigator navigator = GetIt.instance.get<AppNavigator>();
 
-  TextEditingController controllerSearch = TextEditingController();
+  TextEditingController searchController = TextEditingController();
 
   @override
   void initState() {
@@ -57,7 +57,7 @@ class _HomePageState extends State<HomePage> {
                   decoration: const BoxDecoration(),
                   child: Column(
                     children: <Widget>[
-                      SearchWidget(controller: controllerSearch),
+                      SearchWidget(controller: searchController),
                       const CarouselSliderWidget(),
                       ListProductWidget(
                         title: 'Featured',

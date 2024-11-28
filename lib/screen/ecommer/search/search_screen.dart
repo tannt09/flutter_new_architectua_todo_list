@@ -15,7 +15,7 @@ class SearchPage extends StatefulWidget {
 }
 
 class _SearchPageState extends State<SearchPage> {
-  TextEditingController controllerSearch = TextEditingController();
+  TextEditingController searchController = TextEditingController();
 
   @override
   void initState() {
@@ -28,7 +28,7 @@ class _SearchPageState extends State<SearchPage> {
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 70,
-        title: SearchWidget(controller: controllerSearch),
+        title: SearchWidget(controller: searchController),
       ),
       body: GestureDetector(
         onTap: () {
@@ -40,7 +40,7 @@ class _SearchPageState extends State<SearchPage> {
               final id = item.productId;
               if (id != null) {
                 blocGoods.add(ChangeFavoriteStateEvent(item: item));
-                blocGoods.add(GetSearchGoodsEvent(name: controllerSearch.text));
+                blocGoods.add(GetSearchGoodsEvent(name: searchController.text));
               }
             }
 
@@ -52,21 +52,21 @@ class _SearchPageState extends State<SearchPage> {
                   child: Column(
                     children: <Widget>[
                       Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 20),
+                        padding: const EdgeInsets.symmetric(horizontal: 20),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            const Text.rich(
+                            Text.rich(
                               TextSpan(
                                 text: 'Results for ',
-                                style: TextStyle(
+                                style: const TextStyle(
                                     color: AppColors.grey4,
                                     fontSize: 14,
                                     fontWeight: FontWeight.bold),
                                 children: <TextSpan>[
                                   TextSpan(
-                                    text: '“ Shoes “',
-                                    style: TextStyle(
+                                    text: '“ ${searchController.text} “',
+                                    style: const TextStyle(
                                         color: Colors.black,
                                         fontWeight: FontWeight.bold,
                                         fontSize: 14),
@@ -74,9 +74,9 @@ class _SearchPageState extends State<SearchPage> {
                                 ],
                               ),
                             ),
-                            const Text(
-                              "6 Results Found",
-                              style: TextStyle(
+                            Text(
+                              "${state.searchGoodsList.length} Results Found",
+                              style: const TextStyle(
                                 color: AppColors.main,
                                 fontSize: 14,
                                 fontWeight: FontWeight.bold,
@@ -112,5 +112,11 @@ class _SearchPageState extends State<SearchPage> {
         ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    searchController.dispose();
+    super.dispose();
   }
 }
