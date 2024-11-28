@@ -10,13 +10,18 @@ class GetAllGoodsEvent extends GoodsEvent with _$GetAllGoodsEvent {
 }
 
 @freezed
-class GetFeaturedEvent extends GoodsEvent with _$GetFeaturedEvent {
-  const factory GetFeaturedEvent() = _GetFeaturedEvent;
+class GetFeaturedGoodsEvent extends GoodsEvent with _$GetFeaturedGoodsEvent {
+  const factory GetFeaturedGoodsEvent() = _GetFeaturedGoodsEvent;
 }
 
 @freezed
-class GetMostPopularEvent extends GoodsEvent with _$GetMostPopularEvent {
-  const factory GetMostPopularEvent() = _GetMostPopularEvent;
+class GetMostPopularGoodsEvent extends GoodsEvent with _$GetMostPopularGoodsEvent {
+  const factory GetMostPopularGoodsEvent() = _GetMostPopularGoodsEvent;
+}
+
+@freezed
+class GetSearchGoodsEvent extends GoodsEvent with _$GetSearchGoodsEvent {
+  const factory GetSearchGoodsEvent({required String name}) = _GetSearchGoodsEvent;
 }
 
 @freezed

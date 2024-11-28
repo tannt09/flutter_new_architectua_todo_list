@@ -4,7 +4,8 @@ part of 'goods_bloc.dart';
 class GoodsState extends BaseBlocState with _$GoodsState {
   const factory GoodsState({
     @Default([]) List<GoodsModel> goods,
-    @Default([]) List<GoodsModel> featuredList,
-    @Default([]) List<GoodsModel> mostPopularList,
+    @Default([]) List<GoodsModel> featuredGoodsList,
+    @Default([]) List<GoodsModel> mostPopularGoodsList,
+    @Default([]) List<GoodsModel> searchGoodsList,
   }) = _GoodsState;
 }

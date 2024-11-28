@@ -26,8 +26,8 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    blocGoods.add(const GetFeaturedEvent());
-    blocGoods.add(const GetMostPopularEvent());
+    blocGoods.add(const GetFeaturedGoodsEvent());
+    blocGoods.add(const GetMostPopularGoodsEvent());
   }
 
   @override
@@ -45,8 +45,8 @@ class _HomePageState extends State<HomePage> {
               final id = item.productId;
               if (id != null) {
                 blocGoods.add(ChangeFavoriteStateEvent(item: item));
-                blocGoods.add(const GetFeaturedEvent());
-                blocGoods.add(const GetMostPopularEvent());
+                blocGoods.add(const GetFeaturedGoodsEvent());
+                blocGoods.add(const GetMostPopularGoodsEvent());
               }
             }
 
@@ -61,7 +61,7 @@ class _HomePageState extends State<HomePage> {
                       const CarouselSliderWidget(),
                       ListProductWidget(
                         title: 'Featured',
-                        goods: state.featuredList,
+                        goods: state.featuredGoodsList,
                         onTap: () {
                           navigator.push(GoodsRoute());
                         },
@@ -69,7 +69,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                       ListProductWidget(
                         title: 'Most Popular',
-                        goods: state.mostPopularList,
+                        goods: state.mostPopularGoodsList,
                         onTap: () {
                           navigator.push(GoodsRoute());
                         },
