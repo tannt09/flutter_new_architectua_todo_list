@@ -122,6 +122,7 @@ flutter:
     - assets/icons/heart_ful_icon.svg
     - assets/icons/left_arrow_icon.svg
     - assets/icons/add_icon.svg
+    - assets/icons/star_icon.svg
     - .env
   #
   # For details regarding fonts from package dependencies,

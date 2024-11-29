@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_new_architectua/constants/colors.dart';
+import 'package:flutter_new_architectua/core/navigation/app_navigator.dart';
+import 'package:flutter_new_architectua/core/navigation/app_router.gr.dart';
 import 'package:flutter_new_architectua/model/goods_model.dart';
 import 'package:flutter_new_architectua/utils/change_image_link.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get_it/get_it.dart';
 
 class ItemProductWidget extends StatelessWidget {
   final bool isAddCart;
@@ -17,6 +20,7 @@ class ItemProductWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final double itemWidth = (MediaQuery.of(context).size.width / 2) - 34;
+    late final AppNavigator navigator = GetIt.instance.get<AppNavigator>();
 
     return Center(
       child: Column(
@@ -24,17 +28,22 @@ class ItemProductWidget extends StatelessWidget {
         children: [
           Stack(
             children: <Widget>[
-              Container(
-                width: itemWidth,
-                height: 160,
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: NetworkImage(changeImageLink(goods.imageUrl)),
-                    fit: BoxFit.cover,
-                  ),
-                  borderRadius: const BorderRadius.only(
-                    topLeft: Radius.circular(10),
-                    topRight: Radius.circular(10),
+              GestureDetector(
+                onTap: () {
+                  navigator.push(GoodsDetailRoute(item: goods));
+                },
+                child: Container(
+                  width: itemWidth,
+                  height: 160,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: NetworkImage(changeImageLink(goods.imageUrl)),
+                      fit: BoxFit.cover,
+                    ),
+                    borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(10),
+                      topRight: Radius.circular(10),
+                    ),
                   ),
                 ),
               ),

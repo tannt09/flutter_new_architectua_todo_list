@@ -24,6 +24,13 @@ Future<void> main() async {
     );
   }, version: 1);
 
+  // database = await openDatabase(join(await getDatabasesPath(), 'goods_database.db'),
+  // onCreate: (db, version) {
+  //   return db.execute(
+  //     'CREATE TABLE goods()'
+  //   );
+  // }, version: 1);
+
   Stripe.publishableKey =
       "pk_test_51QCZ0XFY945TtdO6oyFGuepcvs8MN2uX4zDBeVbtTy9DWSI9xf9bXYphyzSytKE18el6QUud6BYh0ZOBplSNQB2k00f5LHYMP0";
   Stripe.merchantIdentifier = 'merchant.flutter.stripe.test';

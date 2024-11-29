@@ -5,6 +5,7 @@ class GoodsModel {
   final bool isFavorite;
   final String name;
   final double price;
+  final String star;
 
   const GoodsModel({
     this.id,
@@ -13,6 +14,7 @@ class GoodsModel {
     this.isFavorite = false,
     this.name = '',
     this.price = 0.00,
+    this.star = "0.00",
   });
 
   factory GoodsModel.fromJson(Map<String, dynamic> json) {
@@ -23,6 +25,7 @@ class GoodsModel {
       isFavorite: json['is_favorite'],
       name: json['name'],
       price: double.parse(json['price']),
+      star: json['star'],
     );
   }
 
@@ -34,6 +37,7 @@ class GoodsModel {
       'is_favorite': isFavorite,
       'name': name,
       'price': price.toString(),
+      'star': star,
     };
   }
 }
