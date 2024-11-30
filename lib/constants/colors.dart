@@ -10,4 +10,6 @@ class AppColors {
   static const Color main = Color(0xFF6055D8);
   static const Color main2 = Color(0xFFF8F7F7);
   static const Color yellow = Color(0xFFFFC107);
+  static const Color white = Color(0xFFD3D0D0);
+  static const Color pink = Color.fromARGB(255, 239, 59, 188);
 }

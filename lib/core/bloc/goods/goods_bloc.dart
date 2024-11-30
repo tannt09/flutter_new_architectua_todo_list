@@ -20,6 +20,7 @@ class GoodsBloc extends BaseBloc<GoodsEvent, GoodsState> {
     on<GetMostPopularGoodsEvent>(_getMostPopularGoods);
     on<GetSearchGoodsEvent>(_getSearchGoods);
     on<ChangeFavoriteStateEvent>(_changeFavoriteState);
+    on<GetItemDetailEvent>(_getItemDetail);
   }
 
   Future<void> _getAllGoods(
@@ -56,5 +57,12 @@ class GoodsBloc extends BaseBloc<GoodsEvent, GoodsState> {
   Future<void> _changeFavoriteState(
       ChangeFavoriteStateEvent event, Emitter<GoodsState> emit) async {
     await fetchChangeFavorite(event.item);
+  }
+
+  Future<void> _getItemDetail(
+      GetItemDetailEvent event, Emitter<GoodsState> emit) async {
+    final GoodsModel itemDetail = await fetchItemDetail(event.productId);
+
+    emitSafety(state.copyWith(itemDetail: itemDetail));
   }
 }

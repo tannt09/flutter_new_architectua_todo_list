@@ -85,7 +85,7 @@ Future<String> fetchChangeFavorite(GoodsModel item) async {
 
   try {
     final response = await apiClient.sendRequest(
-        'goods/changeFavorite?user_id=${item.productId}', 'PUT',
+        'goods/changeFavorite?product_id=${item.productId}', 'PUT',
         headers: {
           'Content-Type': 'application/json',
           'Authorization': 'Bearer $token',
@@ -99,5 +99,39 @@ Future<String> fetchChangeFavorite(GoodsModel item) async {
   } catch (e) {
     _logger.severe('Error changing favorite state: $e');
     return 'Error changing favorite state';
+  }
+}
+
+Future<GoodsModel> fetchItemDetail(String productId) async {
+  // Configure logger to print to console
+  Logger.root.level = Level.ALL;
+  Logger.root.onRecord.listen((record) {
+    log('${record.level.name}: ${record.time}: ${record.message}');
+  });
+
+  final token = await getAccessToken();
+
+  try {
+    final response = await apiClient.sendRequest(
+        'goods/getItemDetail?product_id=$productId', 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer $token',
+        });
+    _logger.info('Status code: ${response.statusCode}');
+
+    if (response.statusCode == 200) {
+      final List<dynamic> parsed = jsonDecode(response.body);
+      final result =
+          parsed.map<GoodsModel>((json) => GoodsModel.fromJson(json)).toList();
+      return result[0];
+    } else {
+      _logger.warning(
+          'Failed to get item detail. Status code: ${response.statusCode}');
+      return GoodsModel.initState();
+    }
+  } catch (e) {
+    _logger.severe('Error get item detail: $e');
+    return GoodsModel.initState();
   }
 }

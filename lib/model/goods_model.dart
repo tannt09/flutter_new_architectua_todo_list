@@ -40,4 +40,15 @@ class GoodsModel {
       'star': star,
     };
   }
+
+  static GoodsModel initState() {
+    return const GoodsModel(
+        id: null,
+        productId: null,
+        imageUrl: '',
+        isFavorite: false,
+        name: '',
+        price: 0.00,
+        star: "0.00");
+  }
 }

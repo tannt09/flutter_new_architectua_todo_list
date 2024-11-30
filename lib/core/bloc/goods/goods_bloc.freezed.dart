@@ -449,12 +449,133 @@ abstract class _ChangeFavoriteStateEvent implements ChangeFavoriteStateEvent {
 }
 
 /// @nodoc
+mixin _$GetItemDetailEvent {
+  String get productId => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $GetItemDetailEventCopyWith<GetItemDetailEvent> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $GetItemDetailEventCopyWith<$Res> {
+  factory $GetItemDetailEventCopyWith(
+          GetItemDetailEvent value, $Res Function(GetItemDetailEvent) then) =
+      _$GetItemDetailEventCopyWithImpl<$Res, GetItemDetailEvent>;
+  @useResult
+  $Res call({String productId});
+}
+
+/// @nodoc
+class _$GetItemDetailEventCopyWithImpl<$Res, $Val extends GetItemDetailEvent>
+    implements $GetItemDetailEventCopyWith<$Res> {
+  _$GetItemDetailEventCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? productId = null,
+  }) {
+    return _then(_value.copyWith(
+      productId: null == productId
+          ? _value.productId
+          : productId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$GetItemDetailEventImplCopyWith<$Res>
+    implements $GetItemDetailEventCopyWith<$Res> {
+  factory _$$GetItemDetailEventImplCopyWith(_$GetItemDetailEventImpl value,
+          $Res Function(_$GetItemDetailEventImpl) then) =
+      __$$GetItemDetailEventImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String productId});
+}
+
+/// @nodoc
+class __$$GetItemDetailEventImplCopyWithImpl<$Res>
+    extends _$GetItemDetailEventCopyWithImpl<$Res, _$GetItemDetailEventImpl>
+    implements _$$GetItemDetailEventImplCopyWith<$Res> {
+  __$$GetItemDetailEventImplCopyWithImpl(_$GetItemDetailEventImpl _value,
+      $Res Function(_$GetItemDetailEventImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? productId = null,
+  }) {
+    return _then(_$GetItemDetailEventImpl(
+      productId: null == productId
+          ? _value.productId
+          : productId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$GetItemDetailEventImpl implements _GetItemDetailEvent {
+  const _$GetItemDetailEventImpl({required this.productId});
+
+  @override
+  final String productId;
+
+  @override
+  String toString() {
+    return 'GetItemDetailEvent(productId: $productId)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GetItemDetailEventImpl &&
+            (identical(other.productId, productId) ||
+                other.productId == productId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, productId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetItemDetailEventImplCopyWith<_$GetItemDetailEventImpl> get copyWith =>
+      __$$GetItemDetailEventImplCopyWithImpl<_$GetItemDetailEventImpl>(
+          this, _$identity);
+}
+
+abstract class _GetItemDetailEvent implements GetItemDetailEvent {
+  const factory _GetItemDetailEvent({required final String productId}) =
+      _$GetItemDetailEventImpl;
+
+  @override
+  String get productId;
+  @override
+  @JsonKey(ignore: true)
+  _$$GetItemDetailEventImplCopyWith<_$GetItemDetailEventImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$GoodsState {
   List<GoodsModel> get goods => throw _privateConstructorUsedError;
   List<GoodsModel> get featuredGoodsList => throw _privateConstructorUsedError;
   List<GoodsModel> get mostPopularGoodsList =>
       throw _privateConstructorUsedError;
   List<GoodsModel> get searchGoodsList => throw _privateConstructorUsedError;
+  GoodsModel get itemDetail => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $GoodsStateCopyWith<GoodsState> get copyWith =>
@@ -471,7 +592,8 @@ abstract class $GoodsStateCopyWith<$Res> {
       {List<GoodsModel> goods,
       List<GoodsModel> featuredGoodsList,
       List<GoodsModel> mostPopularGoodsList,
-      List<GoodsModel> searchGoodsList});
+      List<GoodsModel> searchGoodsList,
+      GoodsModel itemDetail});
 }
 
 /// @nodoc
@@ -491,6 +613,7 @@ class _$GoodsStateCopyWithImpl<$Res, $Val extends GoodsState>
     Object? featuredGoodsList = null,
     Object? mostPopularGoodsList = null,
     Object? searchGoodsList = null,
+    Object? itemDetail = null,
   }) {
     return _then(_value.copyWith(
       goods: null == goods
@@ -509,6 +632,10 @@ class _$GoodsStateCopyWithImpl<$Res, $Val extends GoodsState>
           ? _value.searchGoodsList
           : searchGoodsList // ignore: cast_nullable_to_non_nullable
               as List<GoodsModel>,
+      itemDetail: null == itemDetail
+          ? _value.itemDetail
+          : itemDetail // ignore: cast_nullable_to_non_nullable
+              as GoodsModel,
     ) as $Val);
   }
 }
@@ -525,7 +652,8 @@ abstract class _$$GoodsStateImplCopyWith<$Res>
       {List<GoodsModel> goods,
       List<GoodsModel> featuredGoodsList,
       List<GoodsModel> mostPopularGoodsList,
-      List<GoodsModel> searchGoodsList});
+      List<GoodsModel> searchGoodsList,
+      GoodsModel itemDetail});
 }
 
 /// @nodoc
@@ -543,6 +671,7 @@ class __$$GoodsStateImplCopyWithImpl<$Res>
     Object? featuredGoodsList = null,
     Object? mostPopularGoodsList = null,
     Object? searchGoodsList = null,
+    Object? itemDetail = null,
   }) {
     return _then(_$GoodsStateImpl(
       goods: null == goods
@@ -561,6 +690,10 @@ class __$$GoodsStateImplCopyWithImpl<$Res>
           ? _value._searchGoodsList
           : searchGoodsList // ignore: cast_nullable_to_non_nullable
               as List<GoodsModel>,
+      itemDetail: null == itemDetail
+          ? _value.itemDetail
+          : itemDetail // ignore: cast_nullable_to_non_nullable
+              as GoodsModel,
     ));
   }
 }
@@ -572,7 +705,15 @@ class _$GoodsStateImpl implements _GoodsState {
       {final List<GoodsModel> goods = const [],
       final List<GoodsModel> featuredGoodsList = const [],
       final List<GoodsModel> mostPopularGoodsList = const [],
-      final List<GoodsModel> searchGoodsList = const []})
+      final List<GoodsModel> searchGoodsList = const [],
+      this.itemDetail = const GoodsModel(
+          id: null,
+          productId: null,
+          imageUrl: '',
+          isFavorite: false,
+          name: '',
+          price: 0.00,
+          star: "0.00")})
       : _goods = goods,
         _featuredGoodsList = featuredGoodsList,
         _mostPopularGoodsList = mostPopularGoodsList,
@@ -617,8 +758,12 @@ class _$GoodsStateImpl implements _GoodsState {
   }
 
   @override
+  @JsonKey()
+  final GoodsModel itemDetail;
+
+  @override
   String toString() {
-    return 'GoodsState(goods: $goods, featuredGoodsList: $featuredGoodsList, mostPopularGoodsList: $mostPopularGoodsList, searchGoodsList: $searchGoodsList)';
+    return 'GoodsState(goods: $goods, featuredGoodsList: $featuredGoodsList, mostPopularGoodsList: $mostPopularGoodsList, searchGoodsList: $searchGoodsList, itemDetail: $itemDetail)';
   }
 
   @override
@@ -632,7 +777,9 @@ class _$GoodsStateImpl implements _GoodsState {
             const DeepCollectionEquality()
                 .equals(other._mostPopularGoodsList, _mostPopularGoodsList) &&
             const DeepCollectionEquality()
-                .equals(other._searchGoodsList, _searchGoodsList));
+                .equals(other._searchGoodsList, _searchGoodsList) &&
+            (identical(other.itemDetail, itemDetail) ||
+                other.itemDetail == itemDetail));
   }
 
   @override
@@ -641,7 +788,8 @@ class _$GoodsStateImpl implements _GoodsState {
       const DeepCollectionEquality().hash(_goods),
       const DeepCollectionEquality().hash(_featuredGoodsList),
       const DeepCollectionEquality().hash(_mostPopularGoodsList),
-      const DeepCollectionEquality().hash(_searchGoodsList));
+      const DeepCollectionEquality().hash(_searchGoodsList),
+      itemDetail);
 
   @JsonKey(ignore: true)
   @override
@@ -655,7 +803,8 @@ abstract class _GoodsState implements GoodsState {
       {final List<GoodsModel> goods,
       final List<GoodsModel> featuredGoodsList,
       final List<GoodsModel> mostPopularGoodsList,
-      final List<GoodsModel> searchGoodsList}) = _$GoodsStateImpl;
+      final List<GoodsModel> searchGoodsList,
+      final GoodsModel itemDetail}) = _$GoodsStateImpl;
 
   @override
   List<GoodsModel> get goods;
@@ -665,6 +814,8 @@ abstract class _GoodsState implements GoodsState {
   List<GoodsModel> get mostPopularGoodsList;
   @override
   List<GoodsModel> get searchGoodsList;
+  @override
+  GoodsModel get itemDetail;
   @override
   @JsonKey(ignore: true)
   _$$GoodsStateImplCopyWith<_$GoodsStateImpl> get copyWith =>

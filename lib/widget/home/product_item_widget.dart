@@ -30,7 +30,8 @@ class ItemProductWidget extends StatelessWidget {
             children: <Widget>[
               GestureDetector(
                 onTap: () {
-                  navigator.push(GoodsDetailRoute(item: goods));
+                  navigator.push(GoodsDetailRoute(
+                      item: goods, changeFavoriteState: changeFavoriteState!));
                 },
                 child: Container(
                   width: itemWidth,

@@ -15,13 +15,15 @@ class GetFeaturedGoodsEvent extends GoodsEvent with _$GetFeaturedGoodsEvent {
 }
 
 @freezed
-class GetMostPopularGoodsEvent extends GoodsEvent with _$GetMostPopularGoodsEvent {
+class GetMostPopularGoodsEvent extends GoodsEvent
+    with _$GetMostPopularGoodsEvent {
   const factory GetMostPopularGoodsEvent() = _GetMostPopularGoodsEvent;
 }
 
 @freezed
 class GetSearchGoodsEvent extends GoodsEvent with _$GetSearchGoodsEvent {
-  const factory GetSearchGoodsEvent({required String name}) = _GetSearchGoodsEvent;
+  const factory GetSearchGoodsEvent({required String name}) =
+      _GetSearchGoodsEvent;
 }
 
 @freezed
@@ -29,4 +31,10 @@ class ChangeFavoriteStateEvent extends GoodsEvent
     with _$ChangeFavoriteStateEvent {
   const factory ChangeFavoriteStateEvent({required GoodsModel item}) =
       _ChangeFavoriteStateEvent;
+}
+
+@freezed
+class GetItemDetailEvent extends GoodsEvent with _$GetItemDetailEvent {
+  const factory GetItemDetailEvent({required String productId}) =
+      _GetItemDetailEvent;
 }

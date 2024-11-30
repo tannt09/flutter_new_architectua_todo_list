@@ -8,6 +8,8 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
+import 'dart:async' as _i14;
+
 import 'package:auto_route/auto_route.dart' as _i11;
 import 'package:flutter/material.dart' as _i12;
 import 'package:flutter_new_architectua/model/goods_model.dart' as _i13;
@@ -78,6 +80,7 @@ abstract class $AppRouter extends _i11.RootStackRouter {
         child: _i5.GoodsDetailPage(
           key: args.key,
           item: args.item,
+          changeFavoriteState: args.changeFavoriteState,
         ),
       );
     },
@@ -268,12 +271,14 @@ class GoodsDetailRoute extends _i11.PageRouteInfo<GoodsDetailRouteArgs> {
   GoodsDetailRoute({
     _i12.Key? key,
     required _i13.GoodsModel item,
+    _i14.Future<void> Function(_i13.GoodsModel)? changeFavoriteState,
     List<_i11.PageRouteInfo>? children,
   }) : super(
           GoodsDetailRoute.name,
           args: GoodsDetailRouteArgs(
             key: key,
             item: item,
+            changeFavoriteState: changeFavoriteState,
           ),
           initialChildren: children,
         );
@@ -288,15 +293,18 @@ class GoodsDetailRouteArgs {
   const GoodsDetailRouteArgs({
     this.key,
     required this.item,
+    this.changeFavoriteState,
   });
 
   final _i12.Key? key;
 
   final _i13.GoodsModel item;
 
+  final _i14.Future<void> Function(_i13.GoodsModel)? changeFavoriteState;
+
   @override
   String toString() {
-    return 'GoodsDetailRouteArgs{key: $key, item: $item}';
+    return 'GoodsDetailRouteArgs{key: $key, item: $item, changeFavoriteState: $changeFavoriteState}';
   }
 }
 

@@ -7,5 +7,14 @@ class GoodsState extends BaseBlocState with _$GoodsState {
     @Default([]) List<GoodsModel> featuredGoodsList,
     @Default([]) List<GoodsModel> mostPopularGoodsList,
     @Default([]) List<GoodsModel> searchGoodsList,
+    @Default(GoodsModel(
+        id: null,
+        productId: null,
+        imageUrl: '',
+        isFavorite: false,
+        name: '',
+        price: 0.00,
+        star: "0.00"))
+    GoodsModel itemDetail,
   }) = _GoodsState;
 }
