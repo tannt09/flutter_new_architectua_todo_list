@@ -115,7 +115,6 @@ Future<GoodsModel> fetchItemDetail(String productId) async {
     final response = await apiClient.sendRequest(
         'goods/getItemDetail?product_id=$productId', 'GET',
         headers: {
-          'Content-Type': 'application/json',
           'Authorization': 'Bearer $token',
         });
     _logger.info('Status code: ${response.statusCode}');

@@ -8,11 +8,8 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:async' as _i14;
-
 import 'package:auto_route/auto_route.dart' as _i11;
 import 'package:flutter/material.dart' as _i12;
-import 'package:flutter_new_architectua/model/goods_model.dart' as _i13;
 import 'package:flutter_new_architectua/screen/ecommer/auth/auth.dart' as _i2;
 import 'package:flutter_new_architectua/screen/ecommer/bottom_navigation/bottom_navigation.dart'
     as _i3;
@@ -79,8 +76,7 @@ abstract class $AppRouter extends _i11.RootStackRouter {
         routeData: routeData,
         child: _i5.GoodsDetailPage(
           key: args.key,
-          item: args.item,
-          changeFavoriteState: args.changeFavoriteState,
+          productId: args.productId,
         ),
       );
     },
@@ -270,15 +266,13 @@ class CountRouteArgs {
 class GoodsDetailRoute extends _i11.PageRouteInfo<GoodsDetailRouteArgs> {
   GoodsDetailRoute({
     _i12.Key? key,
-    required _i13.GoodsModel item,
-    _i14.Future<void> Function(_i13.GoodsModel)? changeFavoriteState,
+    required String productId,
     List<_i11.PageRouteInfo>? children,
   }) : super(
           GoodsDetailRoute.name,
           args: GoodsDetailRouteArgs(
             key: key,
-            item: item,
-            changeFavoriteState: changeFavoriteState,
+            productId: productId,
           ),
           initialChildren: children,
         );
@@ -292,19 +286,16 @@ class GoodsDetailRoute extends _i11.PageRouteInfo<GoodsDetailRouteArgs> {
 class GoodsDetailRouteArgs {
   const GoodsDetailRouteArgs({
     this.key,
-    required this.item,
-    this.changeFavoriteState,
+    required this.productId,
   });
 
   final _i12.Key? key;
 
-  final _i13.GoodsModel item;
-
-  final _i14.Future<void> Function(_i13.GoodsModel)? changeFavoriteState;
+  final String productId;
 
   @override
   String toString() {
-    return 'GoodsDetailRouteArgs{key: $key, item: $item, changeFavoriteState: $changeFavoriteState}';
+    return 'GoodsDetailRouteArgs{key: $key, productId: $productId}';
   }
 }
 
