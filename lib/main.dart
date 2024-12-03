@@ -16,20 +16,20 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   MobileAds.instance.initialize();
 
-  database =
-      await openDatabase(join(await getDatabasesPath(), 'users_database.db'),
-          onCreate: (db, version) {
-    return db.execute(
-      'CREATE TABLE users(id INTEGER PRIMARY KEY, name TEXT, age INTEGER)',
-    );
-  }, version: 1);
-
-  // database = await openDatabase(join(await getDatabasesPath(), 'goods_database.db'),
-  // onCreate: (db, version) {
+  // database =
+  //     await openDatabase(join(await getDatabasesPath(), 'users_database.db'),
+  //         onCreate: (db, version) {
   //   return db.execute(
-  //     'CREATE TABLE goods()'
+  //     'CREATE TABLE users(id INTEGER PRIMARY KEY, name TEXT, age INTEGER)',
   //   );
   // }, version: 1);
+
+  database =
+      await openDatabase(join(await getDatabasesPath(), 'goods_database.db'),
+          onCreate: (db, version) {
+    return db.execute(
+        'CREATE TABLE goods(id INTEGER PRIMARY KEY, product_id TEXT NOT NULL, image_url TEXT, is_favorite INTEGER, name TEXT NOT NULL, price TEXT)');
+  }, version: 1);
 
   Stripe.publishableKey =
       "pk_test_51QCZ0XFY945TtdO6oyFGuepcvs8MN2uX4zDBeVbtTy9DWSI9xf9bXYphyzSytKE18el6QUud6BYh0ZOBplSNQB2k00f5LHYMP0";
