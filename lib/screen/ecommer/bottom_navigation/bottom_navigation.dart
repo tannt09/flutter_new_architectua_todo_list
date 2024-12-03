@@ -1,10 +1,10 @@
 import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_new_architectua/constants/colors.dart';
+import 'package:flutter_new_architectua/screen/ecommer/cart/cart_screen.dart';
 import 'package:flutter_new_architectua/screen/ecommer/home/home_screen.dart';
 import 'package:flutter_new_architectua/screen/ecommer/search/search_screen.dart';
 import 'package:flutter_new_architectua/screen/ecommer/profile/profile_screen.dart';
-import 'package:flutter_new_architectua/screen/example/todo_list/todo_list.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 @RoutePage()
@@ -21,7 +21,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
   static const List<Widget> _widgetOptions = <Widget>[
     HomePage(),
     SearchPage(),
-    TodoListPage(title: "User"),
+    CartPage(),
     ProfilePage(),
   ];
 

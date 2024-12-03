@@ -15,7 +15,7 @@ class ButtonAddCartAndBuyWidget extends StatelessWidget {
         children: [
           GestureDetector(
             onTap: () {
-              print('Button Pressed!');
+              
             },
             child: Container(
               width: screenWidth * 0.66,
@@ -38,7 +38,7 @@ class ButtonAddCartAndBuyWidget extends StatelessWidget {
           Expanded(
             child: GestureDetector(
               onTap: () {
-                print('Add Cart Button Pressed!');
+                
               },
               child: Container(
                 height: 50,
