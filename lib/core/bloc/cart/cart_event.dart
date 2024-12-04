@@ -13,3 +13,9 @@ class GetCartEvent extends CartEvent with _$GetCartEvent {
 class AddToCartEvent extends CartEvent with _$AddToCartEvent {
   const factory AddToCartEvent({required ItemCartModel item}) = _AddToCartEvent;
 }
+
+@freezed
+class ChangeQuantityEvent extends CartEvent with _$ChangeQuantityEvent {
+  const factory ChangeQuantityEvent({required int newQuantity, required int id}) =
+      _ChangeQuantityEvent;
+}

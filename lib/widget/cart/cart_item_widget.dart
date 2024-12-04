@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_new_architectua/constants/colors.dart';
+import 'package:flutter_new_architectua/core/bloc/cart/cart_bloc.dart';
+import 'package:flutter_new_architectua/main.dart';
 import 'package:flutter_new_architectua/model/item_cart_model.dart';
 import 'package:flutter_new_architectua/utils/change_image_link.dart';
 import 'package:flutter_svg/svg.dart';
@@ -65,46 +67,47 @@ class CartItemWidget extends StatelessWidget {
             ),
           ),
           const Expanded(child: SizedBox()),
-          Container(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                GestureDetector(
-                  onTap: () {
-                    print('Press bin');
-                  },
-                  child: SvgPicture.asset('assets/icons/bin_icon.svg'),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    GestureDetector(
-                      onTap: () {
-                        print('Press -');
-                      },
-                      child: SvgPicture.asset('assets/icons/add_icon.svg'),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              GestureDetector(
+                onTap: () {
+                  print('Press bin');
+                },
+                child: SvgPicture.asset('assets/icons/bin_icon.svg'),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      if (item.quantity > 0) {
+                        blocCart.add(ChangeQuantityEvent(
+                            newQuantity: item.quantity - 1, id: item.id ?? 0));
+                      }
+                    },
+                    child:
+                        SvgPicture.asset('assets/icons/subtraction_icon.svg'),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 7),
+                    child: Text(
+                      item.quantity < 10
+                          ? '0${item.quantity}'
+                          : '${item.quantity}',
+                      style: const TextStyle(fontSize: 16),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 6),
-                      child: Text(
-                        item.quantity < 10
-                            ? '0${item.quantity}'
-                            : '${item.quantity}',
-                        style: const TextStyle(fontSize: 16),
-                      ),
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        print('Press +');
-                      },
-                      child: SvgPicture.asset('assets/icons/add_icon.svg'),
-                    ),
-                  ],
-                )
-              ],
-            ),
-          )
+                  ),
+                  GestureDetector(
+                    onTap: () => blocCart.add(ChangeQuantityEvent(
+                        newQuantity: item.quantity + 1, id: item.id ?? 0)),
+                    child: SvgPicture.asset('assets/icons/add_around_icon.svg'),
+                  ),
+                ],
+              )
+            ],
+          ),
         ],
       ),
     );

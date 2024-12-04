@@ -195,6 +195,144 @@ abstract class _AddToCartEvent implements AddToCartEvent {
 }
 
 /// @nodoc
+mixin _$ChangeQuantityEvent {
+  int get newQuantity => throw _privateConstructorUsedError;
+  int get id => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $ChangeQuantityEventCopyWith<ChangeQuantityEvent> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ChangeQuantityEventCopyWith<$Res> {
+  factory $ChangeQuantityEventCopyWith(
+          ChangeQuantityEvent value, $Res Function(ChangeQuantityEvent) then) =
+      _$ChangeQuantityEventCopyWithImpl<$Res, ChangeQuantityEvent>;
+  @useResult
+  $Res call({int newQuantity, int id});
+}
+
+/// @nodoc
+class _$ChangeQuantityEventCopyWithImpl<$Res, $Val extends ChangeQuantityEvent>
+    implements $ChangeQuantityEventCopyWith<$Res> {
+  _$ChangeQuantityEventCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? newQuantity = null,
+    Object? id = null,
+  }) {
+    return _then(_value.copyWith(
+      newQuantity: null == newQuantity
+          ? _value.newQuantity
+          : newQuantity // ignore: cast_nullable_to_non_nullable
+              as int,
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$ChangeQuantityEventImplCopyWith<$Res>
+    implements $ChangeQuantityEventCopyWith<$Res> {
+  factory _$$ChangeQuantityEventImplCopyWith(_$ChangeQuantityEventImpl value,
+          $Res Function(_$ChangeQuantityEventImpl) then) =
+      __$$ChangeQuantityEventImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({int newQuantity, int id});
+}
+
+/// @nodoc
+class __$$ChangeQuantityEventImplCopyWithImpl<$Res>
+    extends _$ChangeQuantityEventCopyWithImpl<$Res, _$ChangeQuantityEventImpl>
+    implements _$$ChangeQuantityEventImplCopyWith<$Res> {
+  __$$ChangeQuantityEventImplCopyWithImpl(_$ChangeQuantityEventImpl _value,
+      $Res Function(_$ChangeQuantityEventImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? newQuantity = null,
+    Object? id = null,
+  }) {
+    return _then(_$ChangeQuantityEventImpl(
+      newQuantity: null == newQuantity
+          ? _value.newQuantity
+          : newQuantity // ignore: cast_nullable_to_non_nullable
+              as int,
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ChangeQuantityEventImpl implements _ChangeQuantityEvent {
+  const _$ChangeQuantityEventImpl(
+      {required this.newQuantity, required this.id});
+
+  @override
+  final int newQuantity;
+  @override
+  final int id;
+
+  @override
+  String toString() {
+    return 'ChangeQuantityEvent(newQuantity: $newQuantity, id: $id)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ChangeQuantityEventImpl &&
+            (identical(other.newQuantity, newQuantity) ||
+                other.newQuantity == newQuantity) &&
+            (identical(other.id, id) || other.id == id));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, newQuantity, id);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ChangeQuantityEventImplCopyWith<_$ChangeQuantityEventImpl> get copyWith =>
+      __$$ChangeQuantityEventImplCopyWithImpl<_$ChangeQuantityEventImpl>(
+          this, _$identity);
+}
+
+abstract class _ChangeQuantityEvent implements ChangeQuantityEvent {
+  const factory _ChangeQuantityEvent(
+      {required final int newQuantity,
+      required final int id}) = _$ChangeQuantityEventImpl;
+
+  @override
+  int get newQuantity;
+  @override
+  int get id;
+  @override
+  @JsonKey(ignore: true)
+  _$$ChangeQuantityEventImplCopyWith<_$ChangeQuantityEventImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$CartState {
   List<ItemCartModel> get cart => throw _privateConstructorUsedError;
 

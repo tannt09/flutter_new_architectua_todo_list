@@ -20,6 +20,7 @@ class CartBloc extends Bloc<CartEvent, CartState> {
   CartBloc() : super(const CartState()) {
     on<GetCartEvent>(_getCart);
     on<AddToCartEvent>(_addToCart);
+    on<ChangeQuantityEvent>(_changeQuantity);
   }
 
   late final AppNavigator navigator = GetIt.instance.get<AppNavigator>();
@@ -34,11 +35,21 @@ class CartBloc extends Bloc<CartEvent, CartState> {
   }
 
   Future<void> _addToCart(AddToCartEvent event, Emitter<CartState> emit) async {
+    if (event.item.id == 0) return;
     await database.insert('goods', event.item.toJson(),
         conflictAlgorithm: ConflictAlgorithm.replace);
 
     add(const GetCartEvent());
 
     navigator.push(const CartRoute());
+  }
+
+  Future<void> _changeQuantity(
+      ChangeQuantityEvent event, Emitter<CartState> emit) async {
+    if (event.id == 0) return;
+    await database.rawUpdate('UPDATE goods SET quantity = ? WHERE id = ?',
+        [event.newQuantity, event.id]);
+
+    add(const GetCartEvent());
   }
 }
