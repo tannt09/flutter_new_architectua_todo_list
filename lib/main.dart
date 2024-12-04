@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_new_architectua/core/bloc/cart/cart_bloc.dart';
 import 'package:flutter_new_architectua/core/bloc/goods/goods_bloc.dart';
 import 'package:flutter_new_architectua/core/navigation/app_router.dart';
 import 'package:flutter_new_architectua/core/storage/config_storage.dart';
@@ -11,11 +12,13 @@ import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 late Database database;
 final GoodsBloc blocGoods = GetIt.instance.get<GoodsBloc>();
+final CartBloc blocCart = GetIt.instance.get<CartBloc>();
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   MobileAds.instance.initialize();
 
+  // Create table users
   // database =
   //     await openDatabase(join(await getDatabasesPath(), 'users_database.db'),
   //         onCreate: (db, version) {
@@ -24,11 +27,12 @@ Future<void> main() async {
   //   );
   // }, version: 1);
 
+  // Create table goods
   database =
       await openDatabase(join(await getDatabasesPath(), 'goods_database.db'),
           onCreate: (db, version) {
     return db.execute(
-        'CREATE TABLE goods(id INTEGER PRIMARY KEY, product_id TEXT NOT NULL, image_url TEXT, is_favorite INTEGER, name TEXT NOT NULL, price TEXT)');
+        'CREATE TABLE goods(id INTEGER PRIMARY KEY, product_id TEXT NOT NULL, image_url TEXT, name TEXT NOT NULL, price TEXT, quantity INTEGER)');
   }, version: 1);
 
   Stripe.publishableKey =
@@ -37,10 +41,19 @@ Future<void> main() async {
   Stripe.urlScheme = 'flutterstripe';
   await Stripe.instance.applySettings();
   configureInjection();
-  runApp(BlocProvider(
-    create: (_) => blocGoods,
-    child: MyApp(),
-  ));
+  runApp(
+    MultiBlocProvider(
+      providers: [
+        BlocProvider<GoodsBloc>(
+          create: (_) => blocGoods,
+        ),
+        BlocProvider<CartBloc>(
+          create: (_) => blocCart,
+        ),
+      ],
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {

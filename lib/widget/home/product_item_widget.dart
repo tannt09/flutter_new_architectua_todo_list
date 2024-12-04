@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_new_architectua/constants/colors.dart';
+import 'package:flutter_new_architectua/core/bloc/cart/cart_bloc.dart';
 import 'package:flutter_new_architectua/core/navigation/app_navigator.dart';
 import 'package:flutter_new_architectua/core/navigation/app_router.gr.dart';
+import 'package:flutter_new_architectua/main.dart';
 import 'package:flutter_new_architectua/model/goods_model.dart';
+import 'package:flutter_new_architectua/model/item_cart_model.dart';
 import 'package:flutter_new_architectua/utils/change_image_link.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get_it/get_it.dart';
@@ -98,7 +101,14 @@ class ItemProductWidget extends StatelessWidget {
                   isAddCart
                       ? Padding(
                           padding: const EdgeInsets.only(right: 10),
-                          child: SvgPicture.asset('assets/icons/add_icon.svg'),
+                          child: GestureDetector(
+                            onTap: () {
+                              blocCart.add(AddToCartEvent(
+                                  item: ItemCartModel.fromGoodsModel(goods)));
+                            },
+                            child:
+                                SvgPicture.asset('assets/icons/add_icon.svg'),
+                          ),
                         )
                       : const SizedBox.shrink()
                 ],

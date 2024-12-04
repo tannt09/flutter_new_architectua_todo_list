@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_new_architectua/constants/colors.dart';
+import 'package:flutter_new_architectua/core/bloc/cart/cart_bloc.dart';
+import 'package:flutter_new_architectua/main.dart';
+import 'package:flutter_new_architectua/model/goods_model.dart';
+import 'package:flutter_new_architectua/model/item_cart_model.dart';
 import 'package:flutter_svg/svg.dart';
 
 class ButtonAddCartAndBuyWidget extends StatelessWidget {
+  final GoodsModel item;
   final double screenWidth;
-  const ButtonAddCartAndBuyWidget({super.key, required this.screenWidth});
+  const ButtonAddCartAndBuyWidget(
+      {super.key, required this.screenWidth, required this.item});
 
   @override
   Widget build(BuildContext context) {
@@ -14,9 +20,7 @@ class ButtonAddCartAndBuyWidget extends StatelessWidget {
       child: Row(
         children: [
           GestureDetector(
-            onTap: () {
-              
-            },
+            onTap: () {},
             child: Container(
               width: screenWidth * 0.66,
               height: 50,
@@ -38,7 +42,8 @@ class ButtonAddCartAndBuyWidget extends StatelessWidget {
           Expanded(
             child: GestureDetector(
               onTap: () {
-                
+                blocCart.add(
+                    AddToCartEvent(item: ItemCartModel.fromGoodsModel(item)));
               },
               child: Container(
                 height: 50,

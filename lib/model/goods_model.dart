@@ -55,6 +55,17 @@ class GoodsModel {
     };
   }
 
+  Map<String, dynamic> toSaveStorageJson() {
+    return {
+      'id': id ?? 0,
+      'product_id': productId ?? '',
+      'image_url': imageUrl,
+      'is_favorite': isFavorite ? 1 : 0,
+      'name': name,
+      'price': price.toString(),
+    };
+  }
+
   static GoodsModel initState() {
     return const GoodsModel(
         id: null,
