@@ -713,7 +713,9 @@ class _$GoodsStateImpl implements _GoodsState {
           isFavorite: false,
           name: '',
           price: 0.00,
-          star: "0.00")})
+          star: "0.00",
+          sizeProduct: [],
+          company: '')})
       : _goods = goods,
         _featuredGoodsList = featuredGoodsList,
         _mostPopularGoodsList = mostPopularGoodsList,

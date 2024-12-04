@@ -6,10 +6,10 @@ import 'package:flutter_new_architectua/model/goods_model.dart';
 import 'package:flutter_new_architectua/model/item_cart_model.dart';
 import 'package:flutter_svg/svg.dart';
 
-class ButtonAddCartAndBuyWidget extends StatelessWidget {
+class AddCartAndBuyButtonWidget extends StatelessWidget {
   final GoodsModel item;
   final double screenWidth;
-  const ButtonAddCartAndBuyWidget(
+  const AddCartAndBuyButtonWidget(
       {super.key, required this.screenWidth, required this.item});
 
   @override

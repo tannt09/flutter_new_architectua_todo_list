@@ -15,6 +15,67 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
+mixin _$GetCartEvent {}
+
+/// @nodoc
+abstract class $GetCartEventCopyWith<$Res> {
+  factory $GetCartEventCopyWith(
+          GetCartEvent value, $Res Function(GetCartEvent) then) =
+      _$GetCartEventCopyWithImpl<$Res, GetCartEvent>;
+}
+
+/// @nodoc
+class _$GetCartEventCopyWithImpl<$Res, $Val extends GetCartEvent>
+    implements $GetCartEventCopyWith<$Res> {
+  _$GetCartEventCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+}
+
+/// @nodoc
+abstract class _$$GetCartEventImplCopyWith<$Res> {
+  factory _$$GetCartEventImplCopyWith(
+          _$GetCartEventImpl value, $Res Function(_$GetCartEventImpl) then) =
+      __$$GetCartEventImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$GetCartEventImplCopyWithImpl<$Res>
+    extends _$GetCartEventCopyWithImpl<$Res, _$GetCartEventImpl>
+    implements _$$GetCartEventImplCopyWith<$Res> {
+  __$$GetCartEventImplCopyWithImpl(
+      _$GetCartEventImpl _value, $Res Function(_$GetCartEventImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$GetCartEventImpl implements _GetCartEvent {
+  const _$GetCartEventImpl();
+
+  @override
+  String toString() {
+    return 'GetCartEvent()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$GetCartEventImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+}
+
+abstract class _GetCartEvent implements GetCartEvent {
+  const factory _GetCartEvent() = _$GetCartEventImpl;
+}
+
+/// @nodoc
 mixin _$AddToCartEvent {
   ItemCartModel get item => throw _privateConstructorUsedError;
 

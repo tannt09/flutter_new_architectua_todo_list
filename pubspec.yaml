@@ -124,6 +124,7 @@ flutter:
     - assets/icons/add_icon.svg
     - assets/icons/star_icon.svg
     - assets/icons/ellipsis_icon.svg
+    - assets/icons/bin_icon.svg
     - .env
   #
   # For details regarding fonts from package dependencies,

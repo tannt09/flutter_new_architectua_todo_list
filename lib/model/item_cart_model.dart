@@ -7,36 +7,37 @@ class ItemCartModel {
   final String imageUrl;
   final String name;
   final double price;
+  final String company;
 
-  const ItemCartModel({
-    this.id,
-    this.productId,
-    this.quantity = 0,
-    this.imageUrl = '',
-    this.name = '',
-    this.price = 0.00,
-  });
+  const ItemCartModel(
+      {this.id,
+      this.productId,
+      this.quantity = 0,
+      this.imageUrl = '',
+      this.name = '',
+      this.price = 0.00,
+      this.company = ''});
 
   factory ItemCartModel.fromJson(Map<String, dynamic> json) {
     return ItemCartModel(
-      id: json['id'],
-      productId: json['product_id'],
-      quantity: json['quantity'],
-      imageUrl: json['image_url'],
-      name: json['name'],
-      price: double.parse(json['price']),
-    );
+        id: json['id'],
+        productId: json['product_id'],
+        quantity: json['quantity'],
+        imageUrl: json['image_url'],
+        name: json['name'],
+        price: double.parse(json['price']),
+        company: json['company']);
   }
 
   factory ItemCartModel.fromGoodsModel(GoodsModel item) {
     return ItemCartModel(
-      id: item.id,
-      productId: item.productId,
-      quantity: 1,
-      imageUrl: item.imageUrl,
-      name: item.name,
-      price: item.price,
-    );
+        id: item.id,
+        productId: item.productId,
+        quantity: 1,
+        imageUrl: item.imageUrl,
+        name: item.name,
+        price: item.price,
+        company: item.company);
   }
 
   Map<String, dynamic> toJson() {
@@ -47,6 +48,7 @@ class ItemCartModel {
       'image_url': imageUrl,
       'name': name,
       'price': price.toString(),
+      'company': company,
     };
   }
 }

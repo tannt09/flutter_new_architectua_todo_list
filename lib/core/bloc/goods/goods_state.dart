@@ -14,7 +14,9 @@ class GoodsState extends BaseBlocState with _$GoodsState {
         isFavorite: false,
         name: '',
         price: 0.00,
-        star: "0.00"))
+        star: "0.00",
+        sizeProduct: [],
+        company: ''))
     GoodsModel itemDetail,
   }) = _GoodsState;
 }

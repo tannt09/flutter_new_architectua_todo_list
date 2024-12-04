@@ -1,6 +1,10 @@
 import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_new_architectua/constants/colors.dart';
+import 'package:flutter_new_architectua/core/bloc/cart/cart_bloc.dart';
+import 'package:flutter_new_architectua/main.dart';
+import 'package:flutter_new_architectua/widget/cart/cart_item_widget.dart';
 import 'package:flutter_svg/svg.dart';
 
 @RoutePage()
@@ -12,6 +16,12 @@ class CartPage extends StatefulWidget {
 }
 
 class _CartPageState extends State<CartPage> {
+  @override
+  void initState() {
+    super.initState();
+    blocCart.add(const GetCartEvent());
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,6 +56,21 @@ class _CartPageState extends State<CartPage> {
             ),
           )
         ],
+      ),
+      body: BlocBuilder<CartBloc, CartState>(
+        builder: (context, state) {
+          return Column(
+            children: [
+              Expanded(
+                  child: ListView.builder(
+                      itemCount: state.cart.length,
+                      itemBuilder: (context, index) {
+                        final item = state.cart[index];
+                        return CartItemWidget(item: item);
+                      }))
+            ],
+          );
+        },
       ),
     );
   }

@@ -5,6 +5,11 @@ abstract class CartEvent extends BaseBlocEvent {
 }
 
 @freezed
+class GetCartEvent extends CartEvent with _$GetCartEvent {
+  const factory GetCartEvent() = _GetCartEvent;
+}
+
+@freezed
 class AddToCartEvent extends CartEvent with _$AddToCartEvent {
   const factory AddToCartEvent({required ItemCartModel item}) = _AddToCartEvent;
 }

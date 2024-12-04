@@ -3,9 +3,9 @@ import 'package:flutter_new_architectua/constants/colors.dart';
 import 'package:flutter_new_architectua/model/goods_model.dart';
 import 'package:flutter_svg/svg.dart';
 
-class ItemStarNamePriceWidget extends StatelessWidget {
+class StarNamePriceItemWidget extends StatelessWidget {
   final GoodsModel itemDetail;
-  const ItemStarNamePriceWidget({super.key, required this.itemDetail});
+  const StarNamePriceItemWidget({super.key, required this.itemDetail});
 
   @override
   Widget build(BuildContext context) {

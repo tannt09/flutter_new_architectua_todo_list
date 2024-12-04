@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_new_architectua/constants/colors.dart';
 import 'package:flutter_new_architectua/model/goods_model.dart';
 
-class ItemSizeWidget extends StatelessWidget {
+class SizeItemWidget extends StatelessWidget {
   final GoodsModel itemDetail;
-  const ItemSizeWidget({super.key, required this.itemDetail});
+  const SizeItemWidget({super.key, required this.itemDetail});
 
   @override
   Widget build(BuildContext context) {

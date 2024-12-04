@@ -9,6 +9,7 @@ class GoodsModel {
   final int numberOfReview;
   final String description;
   final List<SizeModel> sizeProduct;
+  final String company;
 
   const GoodsModel(
       {this.id,
@@ -20,7 +21,8 @@ class GoodsModel {
       this.star = "0.00",
       this.numberOfReview = 0,
       this.description = '',
-      this.sizeProduct = const []});
+      this.sizeProduct = const [],
+      this.company = ''});
 
   factory GoodsModel.fromJson(Map<String, dynamic> json) {
     final List<SizeModel> sizeProduct = (json['size_product'] as List)
@@ -37,6 +39,7 @@ class GoodsModel {
       numberOfReview: json['number_of_review'],
       description: json['description'],
       sizeProduct: sizeProduct,
+      company: json['company'],
     );
   }
 
@@ -52,17 +55,7 @@ class GoodsModel {
       'number_of_review': numberOfReview,
       'description': description,
       'size_product': sizeProduct,
-    };
-  }
-
-  Map<String, dynamic> toSaveStorageJson() {
-    return {
-      'id': id ?? 0,
-      'product_id': productId ?? '',
-      'image_url': imageUrl,
-      'is_favorite': isFavorite ? 1 : 0,
-      'name': name,
-      'price': price.toString(),
+      'company': company,
     };
   }
 
@@ -77,7 +70,8 @@ class GoodsModel {
         star: "0.00",
         numberOfReview: 0,
         description: '',
-        sizeProduct: []);
+        sizeProduct: [],
+        company: '');
   }
 }
 

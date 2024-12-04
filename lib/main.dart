@@ -32,7 +32,7 @@ Future<void> main() async {
       await openDatabase(join(await getDatabasesPath(), 'goods_database.db'),
           onCreate: (db, version) {
     return db.execute(
-        'CREATE TABLE goods(id INTEGER PRIMARY KEY, product_id TEXT NOT NULL, image_url TEXT, name TEXT NOT NULL, price TEXT, quantity INTEGER)');
+        'CREATE TABLE goods(id INTEGER PRIMARY KEY, product_id TEXT NOT NULL, image_url TEXT, name TEXT NOT NULL, price TEXT, quantity INTEGER, company TEXT)');
   }, version: 1);
 
   Stripe.publishableKey =

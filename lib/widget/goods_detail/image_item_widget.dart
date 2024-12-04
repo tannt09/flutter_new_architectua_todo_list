@@ -4,10 +4,10 @@ import 'package:flutter_new_architectua/model/goods_model.dart';
 import 'package:flutter_new_architectua/utils/change_image_link.dart';
 import 'package:flutter_svg/svg.dart';
 
-class ItemImageWidget extends StatelessWidget {
+class ImageItemWidget extends StatelessWidget {
   final GoodsModel itemDetail;
   final Future<void> Function(GoodsModel item) onChangeFavorite;
-  const ItemImageWidget(
+  const ImageItemWidget(
       {super.key, required this.itemDetail, required this.onChangeFavorite});
 
   @override
