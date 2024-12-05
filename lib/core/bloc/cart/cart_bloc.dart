@@ -21,6 +21,7 @@ class CartBloc extends Bloc<CartEvent, CartState> {
     on<GetCartEvent>(_getCart);
     on<AddToCartEvent>(_addToCart);
     on<ChangeQuantityEvent>(_changeQuantity);
+    on<DeleteItemEvent>(_deleteItem);
   }
 
   late final AppNavigator navigator = GetIt.instance.get<AppNavigator>();
@@ -49,6 +50,14 @@ class CartBloc extends Bloc<CartEvent, CartState> {
     if (event.id == 0) return;
     await database.rawUpdate('UPDATE goods SET quantity = ? WHERE id = ?',
         [event.newQuantity, event.id]);
+
+    add(const GetCartEvent());
+  }
+
+  Future<void> _deleteItem(
+      DeleteItemEvent event, Emitter<CartState> emit) async {
+    if (event.id == 0) return;
+    await database.delete('goods', where: 'id = ?', whereArgs: [event.id]);
 
     add(const GetCartEvent());
   }

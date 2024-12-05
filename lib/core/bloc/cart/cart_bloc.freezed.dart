@@ -333,6 +333,125 @@ abstract class _ChangeQuantityEvent implements ChangeQuantityEvent {
 }
 
 /// @nodoc
+mixin _$DeleteItemEvent {
+  int get id => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $DeleteItemEventCopyWith<DeleteItemEvent> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $DeleteItemEventCopyWith<$Res> {
+  factory $DeleteItemEventCopyWith(
+          DeleteItemEvent value, $Res Function(DeleteItemEvent) then) =
+      _$DeleteItemEventCopyWithImpl<$Res, DeleteItemEvent>;
+  @useResult
+  $Res call({int id});
+}
+
+/// @nodoc
+class _$DeleteItemEventCopyWithImpl<$Res, $Val extends DeleteItemEvent>
+    implements $DeleteItemEventCopyWith<$Res> {
+  _$DeleteItemEventCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+  }) {
+    return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$DeleteItemEventImplCopyWith<$Res>
+    implements $DeleteItemEventCopyWith<$Res> {
+  factory _$$DeleteItemEventImplCopyWith(_$DeleteItemEventImpl value,
+          $Res Function(_$DeleteItemEventImpl) then) =
+      __$$DeleteItemEventImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({int id});
+}
+
+/// @nodoc
+class __$$DeleteItemEventImplCopyWithImpl<$Res>
+    extends _$DeleteItemEventCopyWithImpl<$Res, _$DeleteItemEventImpl>
+    implements _$$DeleteItemEventImplCopyWith<$Res> {
+  __$$DeleteItemEventImplCopyWithImpl(
+      _$DeleteItemEventImpl _value, $Res Function(_$DeleteItemEventImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+  }) {
+    return _then(_$DeleteItemEventImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$DeleteItemEventImpl implements _DeleteItemEvent {
+  const _$DeleteItemEventImpl({required this.id});
+
+  @override
+  final int id;
+
+  @override
+  String toString() {
+    return 'DeleteItemEvent(id: $id)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DeleteItemEventImpl &&
+            (identical(other.id, id) || other.id == id));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, id);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$DeleteItemEventImplCopyWith<_$DeleteItemEventImpl> get copyWith =>
+      __$$DeleteItemEventImplCopyWithImpl<_$DeleteItemEventImpl>(
+          this, _$identity);
+}
+
+abstract class _DeleteItemEvent implements DeleteItemEvent {
+  const factory _DeleteItemEvent({required final int id}) =
+      _$DeleteItemEventImpl;
+
+  @override
+  int get id;
+  @override
+  @JsonKey(ignore: true)
+  _$$DeleteItemEventImplCopyWith<_$DeleteItemEventImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$CartState {
   List<ItemCartModel> get cart => throw _privateConstructorUsedError;
 

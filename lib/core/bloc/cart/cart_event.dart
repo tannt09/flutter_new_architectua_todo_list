@@ -19,3 +19,9 @@ class ChangeQuantityEvent extends CartEvent with _$ChangeQuantityEvent {
   const factory ChangeQuantityEvent({required int newQuantity, required int id}) =
       _ChangeQuantityEvent;
 }
+
+@freezed
+class DeleteItemEvent extends CartEvent with _$DeleteItemEvent {
+  const factory DeleteItemEvent({required int id}) =
+      _DeleteItemEvent;
+}

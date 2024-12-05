@@ -72,9 +72,7 @@ class CartItemWidget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               GestureDetector(
-                onTap: () {
-                  print('Press bin');
-                },
+                onTap: () => blocCart.add(DeleteItemEvent(id: item.id ?? 0)),
                 child: SvgPicture.asset('assets/icons/bin_icon.svg'),
               ),
               Row(
