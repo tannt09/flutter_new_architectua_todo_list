@@ -13,7 +13,7 @@ class CartItemWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.fromLTRB(14, 14, 14, 0),
+      margin: const EdgeInsets.only(top: 14),
       padding: const EdgeInsets.fromLTRB(6, 6, 10, 6),
       height: 110,
       decoration: const BoxDecoration(

@@ -127,6 +127,8 @@ flutter:
     - assets/icons/bin_icon.svg
     - assets/icons/add_around_icon.svg
     - assets/icons/subtraction_icon.svg
+    - assets/icons/gps_icon.svg
+    - assets/icons/clock_icon.svg
     - .env
   #
   # For details regarding fonts from package dependencies,
