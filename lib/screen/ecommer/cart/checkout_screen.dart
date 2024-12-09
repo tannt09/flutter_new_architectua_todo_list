@@ -17,6 +17,37 @@ class CheckoutPage extends StatefulWidget {
 }
 
 class _CheckoutPageState extends State<CheckoutPage> {
+  List<CheckBoxModel> arrayCheckBoxValue = [
+    CheckBoxModel(
+        id: 0,
+        title: 'Paypal',
+        assetIcon: 'assets/icons/paypal_icon.svg',
+        isCheck: false),
+    CheckBoxModel(
+        id: 1,
+        title: 'Credit Card',
+        assetIcon: 'assets/icons/credit_card_icon.svg',
+        isCheck: false),
+    CheckBoxModel(
+        id: 2,
+        title: 'Cash',
+        assetIcon: 'assets/icons/cash_icon.svg',
+        isCheck: false)
+  ];
+
+  void changeCheckBoxValue(int index) {
+    if (arrayCheckBoxValue[index].isCheck == false) {
+      for (var item in arrayCheckBoxValue) {
+        if (item.id != index) {
+          item.isCheck = false;
+        }
+      }
+      setState(() {
+        arrayCheckBoxValue[index].isCheck = true;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -91,21 +122,18 @@ class _CheckoutPageState extends State<CheckoutPage> {
                   textAlign: TextAlign.start,
                   style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                 ),
-                const CustomCheckBoxWidget(
-                  title: 'Paypal',
-                  assetIcon: 'assets/icons/paypal_icon.svg',
-                  isCheck: false,
-                ),
-                const CustomCheckBoxWidget(
-                  title: 'Credit Card',
-                  assetIcon: 'assets/icons/credit_card_icon.svg',
-                  isCheck: true,
-                ),
-                const CustomCheckBoxWidget(
-                  title: 'Cash',
-                  assetIcon: 'assets/icons/cash_icon.svg',
-                  isCheck: false,
-                ),
+                ...arrayCheckBoxValue.map((CheckBoxModel item) {
+                  return GestureDetector(
+                    onTap: () {
+                      changeCheckBoxValue(item.id ?? 0);
+                    },
+                    child: CustomCheckBoxWidget(
+                      title: item.title ?? '',
+                      assetIcon: item.assetIcon ?? '',
+                      isCheck: item.isCheck ?? false,
+                    ),
+                  );
+                }).toList(),
                 Container(
                   margin: const EdgeInsets.only(top: 10, bottom: 40),
                   child: Row(
@@ -149,4 +177,18 @@ class _CheckoutPageState extends State<CheckoutPage> {
       ),
     );
   }
+}
+
+class CheckBoxModel {
+  final int? id;
+  final String? title;
+  final String? assetIcon;
+  bool? isCheck;
+
+  CheckBoxModel({
+    this.id,
+    this.title,
+    this.assetIcon,
+    this.isCheck,
+  });
 }
