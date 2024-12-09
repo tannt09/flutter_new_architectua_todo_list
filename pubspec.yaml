@@ -129,6 +129,12 @@ flutter:
     - assets/icons/subtraction_icon.svg
     - assets/icons/gps_icon.svg
     - assets/icons/clock_icon.svg
+    - assets/icons/check_box_off_icon.svg
+    - assets/icons/paypal_icon.svg
+    - assets/icons/credit_card_icon.svg
+    - assets/icons/check_box_on_icon.svg
+    - assets/icons/cash_icon.svg
+    - assets/icons/add_around_blue_icon.svg
     - .env
   #
   # For details regarding fonts from package dependencies,

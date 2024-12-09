@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_new_architectua/constants/colors.dart';
 import 'package:flutter_new_architectua/core/bloc/cart/cart_bloc.dart';
 import 'package:flutter_new_architectua/widget/cart/bill_widget.dart';
+import 'package:flutter_new_architectua/widget/cart/custom_check_box.dart';
 import 'package:flutter_new_architectua/widget/header_widget.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -89,6 +90,37 @@ class _CheckoutPageState extends State<CheckoutPage> {
                   'Choose payment method',
                   textAlign: TextAlign.start,
                   style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                ),
+                const CustomCheckBoxWidget(
+                  title: 'Paypal',
+                  assetIcon: 'assets/icons/paypal_icon.svg',
+                  isCheck: false,
+                ),
+                const CustomCheckBoxWidget(
+                  title: 'Credit Card',
+                  assetIcon: 'assets/icons/credit_card_icon.svg',
+                  isCheck: true,
+                ),
+                const CustomCheckBoxWidget(
+                  title: 'Cash',
+                  assetIcon: 'assets/icons/cash_icon.svg',
+                  isCheck: false,
+                ),
+                Container(
+                  margin: const EdgeInsets.only(top: 10, bottom: 40),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Text(
+                        'Add new payment method',
+                        style: TextStyle(fontSize: 16),
+                      ),
+                      SvgPicture.asset(
+                        'assets/icons/add_around_blue_icon.svg',
+                        fit: BoxFit.cover,
+                      )
+                    ],
+                  ),
                 ),
                 GestureDetector(
                   onTap: () {},
