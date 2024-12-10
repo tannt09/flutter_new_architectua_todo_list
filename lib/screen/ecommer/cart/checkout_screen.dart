@@ -3,10 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_new_architectua/constants/colors.dart';
 import 'package:flutter_new_architectua/core/bloc/cart/cart_bloc.dart';
+import 'package:flutter_new_architectua/core/navigation/app_navigator.dart';
+import 'package:flutter_new_architectua/core/navigation/app_router.gr.dart';
 import 'package:flutter_new_architectua/widget/cart/bill_widget.dart';
 import 'package:flutter_new_architectua/widget/cart/custom_check_box.dart';
 import 'package:flutter_new_architectua/widget/header_widget.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get_it/get_it.dart';
 
 @RoutePage()
 class CheckoutPage extends StatefulWidget {
@@ -17,6 +20,7 @@ class CheckoutPage extends StatefulWidget {
 }
 
 class _CheckoutPageState extends State<CheckoutPage> {
+  late final AppNavigator navigator = GetIt.instance.get<AppNavigator>();
   List<CheckBoxModel> arrayCheckBoxValue = [
     CheckBoxModel(
         id: 0,
@@ -151,7 +155,9 @@ class _CheckoutPageState extends State<CheckoutPage> {
                   ),
                 ),
                 GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    navigator.push(PaymentCreditCardRoute());
+                  },
                   child: Container(
                     width: double.infinity,
                     height: 50,
