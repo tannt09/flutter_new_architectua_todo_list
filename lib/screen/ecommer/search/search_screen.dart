@@ -88,12 +88,13 @@ class _SearchPageState extends State<SearchPage> {
                       GridView.builder(
                         shrinkWrap: true,
                         physics: const NeverScrollableScrollPhysics(),
-                        padding: const EdgeInsets.symmetric(vertical: 16.0),
+                        padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 20),
                         gridDelegate:
                             const SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 2,
                           mainAxisSpacing: 15,
-                          childAspectRatio: 1,
+                          crossAxisSpacing: 25,
+                          childAspectRatio: 155 / 178,
                         ),
                         itemCount: state.searchGoodsList.length,
                         itemBuilder: (context, index) {

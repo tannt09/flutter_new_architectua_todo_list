@@ -35,10 +35,9 @@ Future<void> main() async {
         'CREATE TABLE goods(id INTEGER PRIMARY KEY, product_id TEXT NOT NULL, image_url TEXT, name TEXT NOT NULL, price TEXT, quantity INTEGER, company TEXT)');
   }, version: 1);
 
-  Stripe.publishableKey =
-      "pk_test_51QCZ0XFY945TtdO6oyFGuepcvs8MN2uX4zDBeVbtTy9DWSI9xf9bXYphyzSytKE18el6QUud6BYh0ZOBplSNQB2k00f5LHYMP0";
-  Stripe.merchantIdentifier = 'merchant.flutter.stripe.test';
-  Stripe.urlScheme = 'flutterstripe';
+  Stripe.publishableKey = "pk_test_TYooMQauvdEDq54NiTphI7jx";
+  // Stripe.merchantIdentifier = 'merchant.flutter.stripe.test';
+  // Stripe.urlScheme = 'flutterstripe';
   await Stripe.instance.applySettings();
   configureInjection();
   runApp(

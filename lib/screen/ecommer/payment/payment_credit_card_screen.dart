@@ -149,7 +149,6 @@ class _PaymentCreditCardPageState extends State<PaymentCreditCardPage> {
           params: const PaymentMethodParams.card(
               paymentMethodData:
                   PaymentMethodData(billingDetails: billingDetails)));
-      _logger.info('----1111 ${paymentMethod.id}');
 
       // 3. call API to create PaymentIntent
       final paymentIntentResult = callNoWebhookPayEndpointMethodId(
@@ -221,7 +220,8 @@ class _PaymentCreditCardPageState extends State<PaymentCreditCardPage> {
       required String paymentMethodId,
       required String currency,
       List<String>? items}) async {
-    final url = Uri.parse('${dotenv.env['BASE_URL']}/pay-without-webhooks');
+    final url =
+        Uri.parse('${dotenv.env['BASE_URL']}/payment/pay-without-webhooks');
     final response = await http.post(url,
         headers: {
           'Content-Type': 'application/json',
@@ -232,6 +232,7 @@ class _PaymentCreditCardPageState extends State<PaymentCreditCardPage> {
           'currency': currency,
           'items': items
         }));
+    _logger.info('----Response ${response.body}');
     return json.decode(response.body);
   }
 }

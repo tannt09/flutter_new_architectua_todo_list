@@ -22,14 +22,13 @@ class ItemProductWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double itemWidth = (MediaQuery.of(context).size.width / 2) - 34;
     late final AppNavigator navigator = GetIt.instance.get<AppNavigator>();
 
-    return Center(
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Stack(
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Expanded(
+          child: Stack(
             children: <Widget>[
               GestureDetector(
                 onTap: () {
@@ -37,8 +36,6 @@ class ItemProductWidget extends StatelessWidget {
                       .push(GoodsDetailRoute(productId: goods.productId ?? ''));
                 },
                 child: Container(
-                  width: itemWidth,
-                  height: 160,
                   decoration: BoxDecoration(
                     image: DecorationImage(
                       image: NetworkImage(changeImageLink(goods.imageUrl)),
@@ -65,58 +62,56 @@ class ItemProductWidget extends StatelessWidget {
               ),
             ],
           ),
-          Container(
-            width: itemWidth,
-            height: 44,
-            decoration: const BoxDecoration(
-              color: AppColors.main2,
-              borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(10),
-                bottomRight: Radius.circular(10),
-              ),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.only(left: 5),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        goods.name,
-                        style: const TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 14),
-                      ),
-                      Text(
-                        '\$${goods.price.toStringAsFixed(2)}',
-                        style: const TextStyle(
-                            fontSize: 12,
-                            fontWeight: FontWeight.bold,
-                            color: AppColors.main),
-                      ),
-                    ],
-                  ),
-                  isAddCart
-                      ? Padding(
-                          padding: const EdgeInsets.only(right: 10),
-                          child: GestureDetector(
-                            onTap: () {
-                              blocCart.add(AddToCartEvent(
-                                  item: ItemCartModel.fromGoodsModel(goods)));
-                            },
-                            child:
-                                SvgPicture.asset('assets/icons/add_icon.svg'),
-                          ),
-                        )
-                      : const SizedBox.shrink()
-                ],
-              ),
+        ),
+        Container(
+          height: 44,
+          decoration: const BoxDecoration(
+            color: AppColors.main2,
+            borderRadius: BorderRadius.only(
+              bottomLeft: Radius.circular(10),
+              bottomRight: Radius.circular(10),
             ),
           ),
-        ],
-      ),
+          child: Padding(
+            padding: const EdgeInsets.only(left: 5),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      goods.name,
+                      style: const TextStyle(
+                          fontWeight: FontWeight.bold, fontSize: 14),
+                    ),
+                    Text(
+                      '\$${goods.price.toStringAsFixed(2)}',
+                      style: const TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.bold,
+                          color: AppColors.main),
+                    ),
+                  ],
+                ),
+                isAddCart
+                    ? Padding(
+                        padding: const EdgeInsets.only(right: 10),
+                        child: GestureDetector(
+                          onTap: () {
+                            blocCart.add(AddToCartEvent(
+                                item: ItemCartModel.fromGoodsModel(goods)));
+                          },
+                          child: SvgPicture.asset('assets/icons/add_icon.svg'),
+                        ),
+                      )
+                    : const SizedBox.shrink()
+              ],
+            ),
+          ),
+        ),
+      ],
     );
   }
 }

@@ -30,8 +30,10 @@ class _GoodsPageState extends State<GoodsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const HeaderWidget(
-          leftIcon: 'assets/icons/left_arrow_icon.svg', title: 'Check Out'),
+      appBar: HeaderWidget(
+        leftIcon: 'assets/icons/left_arrow_icon.svg',
+        title: widget.title,
+      ),
       body: BlocBuilder<GoodsBloc, GoodsState>(builder: (context, state) {
         if (!state.goods.isNotEmpty) {
           return const Center(
@@ -49,17 +51,20 @@ class _GoodsPageState extends State<GoodsPage> {
 
         return GridView.builder(
           shrinkWrap: true,
-          padding: const EdgeInsets.symmetric(vertical: 16.0),
+          padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 20),
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
             mainAxisSpacing: 15,
-            childAspectRatio: 1,
+            crossAxisSpacing: 25,
+            childAspectRatio: 155 / 178,
           ),
           itemCount: state.goods.length,
           itemBuilder: (context, index) {
             final item = state.goods[index];
             return ItemProductWidget(
-                goods: item, changeFavoriteState: changeFavoriteState);
+              goods: item,
+              changeFavoriteState: changeFavoriteState,
+            );
           },
         );
       }),

@@ -47,7 +47,8 @@ class ListProductWidget extends StatelessWidget {
               itemBuilder: (context, index) {
                 final item = goods[index];
 
-                return Padding(
+                return Container(
+                  width: 170,
                   padding: const EdgeInsets.only(right: 14),
                   child: ItemProductWidget(
                     isAddCart: false,
