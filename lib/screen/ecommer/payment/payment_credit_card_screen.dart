@@ -22,12 +22,7 @@ class PaymentCreditCardPage extends StatefulWidget {
 class _PaymentCreditCardPageState extends State<PaymentCreditCardPage> {
   final Logger _logger = Logger('PaymentCreditCardPage');
 
-  final CardDetails _card = CardDetails(
-    number: '4242 4242 4242 4242',
-    expirationYear: 34,
-    expirationMonth: 12,
-    cvc: '567',
-  );
+  CardDetails _card = CardDetails();
   bool? _saveCard = false;
 
   @override
@@ -63,51 +58,64 @@ class _PaymentCreditCardPageState extends State<PaymentCreditCardPage> {
                   'Please beware that this will potentially break PCI compliance: '
                   'https://stripe.com/docs/security/guide#validating-pci-compliance'),
             ),
-            // Padding(
-            //   padding: const EdgeInsets.all(16),
-            //   child: Row(
-            //     children: [
-            //       Expanded(
-            //           child: TextField(
-            //         decoration: const InputDecoration(hintText: 'Number'),
-            //         onChanged: (number) {
-            //           setState(() {
-            //             _card = _card.copyWith(
-            //                 expirationYear: int.tryParse(number));
-            //           });
-            //         },
-            //         keyboardType: TextInputType.number,
-            //       )),
-            //       Container(
-            //         padding: const EdgeInsets.symmetric(horizontal: 4),
-            //         width: 80,
-            //         child: TextField(
-            //           decoration: const InputDecoration(hintText: 'Exp. Month'),
-            //           onChanged: (number) {
-            //             setState(() {
-            //               _card = _card.copyWith(
-            //                   expirationMonth: int.tryParse(number));
-            //             });
-            //           },
-            //           keyboardType: TextInputType.number,
-            //         ),
-            //       ),
-            //       Container(
-            //         padding: const EdgeInsets.symmetric(horizontal: 4),
-            //         width: 80,
-            //         child: TextField(
-            //           decoration: const InputDecoration(hintText: 'CVC'),
-            //           onChanged: (number) {
-            //             setState(() {
-            //               _card = _card.copyWith(cvc: number);
-            //             });
-            //           },
-            //           keyboardType: TextInputType.number,
-            //         ),
-            //       )
-            //     ],
-            //   ),
-            // ),
+            Padding(
+              padding: const EdgeInsets.all(16),
+              child: Row(
+                children: [
+                  Expanded(
+                      child: TextField(
+                    decoration: const InputDecoration(hintText: 'Number'),
+                    onChanged: (number) {
+                      setState(() {
+                        _card = _card.copyWith(number: number);
+                      });
+                    },
+                    keyboardType: TextInputType.number,
+                  )),
+                  Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 4),
+                    width: 80,
+                    child: TextField(
+                      decoration: const InputDecoration(hintText: 'Exp. Month'),
+                      onChanged: (number) {
+                        setState(() {
+                          _card = _card.copyWith(
+                              expirationMonth: int.tryParse(number));
+                        });
+                      },
+                      keyboardType: TextInputType.number,
+                    ),
+                  ),
+                  Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 4),
+                    width: 80,
+                    child: TextField(
+                      decoration: const InputDecoration(hintText: 'Exp. Year'),
+                      onChanged: (number) {
+                        setState(() {
+                          _card = _card.copyWith(
+                              expirationYear: int.tryParse(number));
+                        });
+                      },
+                      keyboardType: TextInputType.number,
+                    ),
+                  ),
+                  Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 4),
+                    width: 80,
+                    child: TextField(
+                      decoration: const InputDecoration(hintText: 'CVC'),
+                      onChanged: (number) {
+                        setState(() {
+                          _card = _card.copyWith(cvc: number);
+                        });
+                      },
+                      keyboardType: TextInputType.number,
+                    ),
+                  )
+                ],
+              ),
+            ),
             CheckboxListTile(
               value: _saveCard,
               onChanged: (value) {
