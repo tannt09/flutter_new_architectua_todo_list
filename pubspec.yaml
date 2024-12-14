@@ -135,6 +135,11 @@ flutter:
     - assets/icons/check_box_on_icon.svg
     - assets/icons/cash_icon.svg
     - assets/icons/add_around_blue_icon.svg
+    - assets/icons/right_arrowhead_icon.svg
+    - assets/icons/setting_icon.svg
+    - assets/icons/contact_icon.svg
+    - assets/icons/share_icon.svg
+    - assets/icons/help_icon.svg
     - .env
   #
   # For details regarding fonts from package dependencies,

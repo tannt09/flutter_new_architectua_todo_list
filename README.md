@@ -2,6 +2,10 @@
 
 A e-commerce Flutter project. it encompasses all the essential functions of an e-commerce app, including product selection, quantity adjustment, order placement, payment processing, order tracking, transaction history, and more. Additionally, users are required to log in to access the app, ensuring comprehensive functionality, such as the ability to edit personal information like address, name, age, avatar, and registration.
 
+## BackEnd
+
+- <https://github.com/tannt09/nodejs-backend>
+
 ## Getting Started
 
 - Rebuild: flutter pub run build_runner watch

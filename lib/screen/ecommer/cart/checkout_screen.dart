@@ -31,7 +31,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
         id: 1,
         title: 'Credit Card',
         assetIcon: 'assets/icons/credit_card_icon.svg',
-        isCheck: false),
+        isCheck: true),
     CheckBoxModel(
         id: 2,
         title: 'Cash',

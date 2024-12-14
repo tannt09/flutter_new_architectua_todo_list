@@ -21,7 +21,7 @@ import 'package:flutter_new_architectua/screen/ecommer/goods_detail.dart'
     as _i7;
 import 'package:flutter_new_architectua/screen/ecommer/home/goods_screen.dart'
     as _i8;
-import 'package:flutter_new_architectua/screen/ecommer/payment/payment_credit_card_screen.dart'
+import 'package:flutter_new_architectua/screen/ecommer/cart/payment_credit_card_screen.dart'
     as _i9;
 import 'package:flutter_new_architectua/screen/ecommer/splash/splash.dart'
     as _i11;
