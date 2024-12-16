@@ -58,25 +58,32 @@ class _ProfilePageState extends State<ProfilePage> {
           const SizedBox(
             height: 26,
           ),
-          const CustomOptionWidget(
+          CustomOptionWidget(
             assetsIcon: 'assets/icons/profile_icon.svg',
             optionName: 'Profile',
+            onPress: () {},
           ),
-          const CustomOptionWidget(
+          CustomOptionWidget(
             assetsIcon: 'assets/icons/setting_icon.svg',
             optionName: 'Setting',
+            onPress: () {
+              navigator.push(const SettingRoute());
+            },
           ),
-          const CustomOptionWidget(
+          CustomOptionWidget(
             assetsIcon: 'assets/icons/contact_icon.svg',
             optionName: 'Contact',
+            onPress: () {},
           ),
-          const CustomOptionWidget(
+          CustomOptionWidget(
             assetsIcon: 'assets/icons/share_icon.svg',
             optionName: 'Share App',
+            onPress: () {},
           ),
-          const CustomOptionWidget(
+          CustomOptionWidget(
               assetsIcon: 'assets/icons/help_icon.svg',
               optionName: 'Help',
+              onPress: () {},
               isShowArrow: false),
           const Expanded(child: SizedBox()),
           GestureDetector(

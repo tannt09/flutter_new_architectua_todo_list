@@ -8,8 +8,8 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:auto_route/auto_route.dart' as _i13;
-import 'package:flutter/material.dart' as _i14;
+import 'package:auto_route/auto_route.dart' as _i14;
+import 'package:flutter/material.dart' as _i15;
 import 'package:flutter_new_architectua/screen/ecommer/auth/auth.dart' as _i2;
 import 'package:flutter_new_architectua/screen/ecommer/bottom_navigation/bottom_navigation.dart'
     as _i3;
@@ -17,29 +17,31 @@ import 'package:flutter_new_architectua/screen/ecommer/cart/cart_screen.dart'
     as _i4;
 import 'package:flutter_new_architectua/screen/ecommer/cart/checkout_screen.dart'
     as _i5;
+import 'package:flutter_new_architectua/screen/ecommer/cart/payment_credit_card_screen.dart'
+    as _i9;
 import 'package:flutter_new_architectua/screen/ecommer/goods_detail.dart'
     as _i7;
 import 'package:flutter_new_architectua/screen/ecommer/home/goods_screen.dart'
     as _i8;
-import 'package:flutter_new_architectua/screen/ecommer/cart/payment_credit_card_screen.dart'
-    as _i9;
-import 'package:flutter_new_architectua/screen/ecommer/splash/splash.dart'
+import 'package:flutter_new_architectua/screen/ecommer/profile/setting_screen.dart'
     as _i11;
+import 'package:flutter_new_architectua/screen/ecommer/splash/splash.dart'
+    as _i12;
 import 'package:flutter_new_architectua/screen/example/ads/ads.dart' as _i1;
 import 'package:flutter_new_architectua/screen/example/count/count.dart' as _i6;
 import 'package:flutter_new_architectua/screen/example/todo_list/todo_list.dart'
-    as _i12;
+    as _i13;
 import 'package:flutter_new_architectua/screen/example/todo_list/todo_list_products.dart'
     as _i10;
 
-abstract class $AppRouter extends _i13.RootStackRouter {
+abstract class $AppRouter extends _i14.RootStackRouter {
   $AppRouter({super.navigatorKey});
 
   @override
-  final Map<String, _i13.PageFactory> pagesMap = {
+  final Map<String, _i14.PageFactory> pagesMap = {
     AdsRoute.name: (routeData) {
       final args = routeData.argsAs<AdsRouteArgs>();
-      return _i13.AutoRoutePage<dynamic>(
+      return _i14.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: _i1.AdsPage(
           key: args.key,
@@ -50,7 +52,7 @@ abstract class $AppRouter extends _i13.RootStackRouter {
     AuthRoute.name: (routeData) {
       final args =
           routeData.argsAs<AuthRouteArgs>(orElse: () => const AuthRouteArgs());
-      return _i13.AutoRoutePage<dynamic>(
+      return _i14.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: _i2.AuthPage(
           key: args.key,
@@ -59,26 +61,26 @@ abstract class $AppRouter extends _i13.RootStackRouter {
       );
     },
     BottomNavigation.name: (routeData) {
-      return _i13.AutoRoutePage<dynamic>(
+      return _i14.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const _i3.BottomNavigation(),
       );
     },
     CartRoute.name: (routeData) {
-      return _i13.AutoRoutePage<dynamic>(
+      return _i14.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const _i4.CartPage(),
       );
     },
     CheckoutRoute.name: (routeData) {
-      return _i13.AutoRoutePage<dynamic>(
+      return _i14.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const _i5.CheckoutPage(),
       );
     },
     CountRoute.name: (routeData) {
       final args = routeData.argsAs<CountRouteArgs>();
-      return _i13.AutoRoutePage<dynamic>(
+      return _i14.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: _i6.CountPage(
           key: args.key,
@@ -88,7 +90,7 @@ abstract class $AppRouter extends _i13.RootStackRouter {
     },
     GoodsDetailRoute.name: (routeData) {
       final args = routeData.argsAs<GoodsDetailRouteArgs>();
-      return _i13.AutoRoutePage<dynamic>(
+      return _i14.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: _i7.GoodsDetailPage(
           key: args.key,
@@ -99,7 +101,7 @@ abstract class $AppRouter extends _i13.RootStackRouter {
     GoodsRoute.name: (routeData) {
       final args = routeData.argsAs<GoodsRouteArgs>(
           orElse: () => const GoodsRouteArgs());
-      return _i13.AutoRoutePage<dynamic>(
+      return _i14.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: _i8.GoodsPage(
           key: args.key,
@@ -110,7 +112,7 @@ abstract class $AppRouter extends _i13.RootStackRouter {
     PaymentCreditCardRoute.name: (routeData) {
       final args = routeData.argsAs<PaymentCreditCardRouteArgs>(
           orElse: () => const PaymentCreditCardRouteArgs());
-      return _i13.AutoRoutePage<dynamic>(
+      return _i14.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: _i9.PaymentCreditCardPage(
           key: args.key,
@@ -121,7 +123,7 @@ abstract class $AppRouter extends _i13.RootStackRouter {
     ProductsRoute.name: (routeData) {
       final args = routeData.argsAs<ProductsRouteArgs>(
           orElse: () => const ProductsRouteArgs());
-      return _i13.AutoRoutePage<dynamic>(
+      return _i14.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: _i10.ProductsPage(
           key: args.key,
@@ -129,18 +131,24 @@ abstract class $AppRouter extends _i13.RootStackRouter {
         ),
       );
     },
-    SplashRoute.name: (routeData) {
-      return _i13.AutoRoutePage<dynamic>(
+    SettingRoute.name: (routeData) {
+      return _i14.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i11.SplashPage(),
+        child: const _i11.SettingPage(),
+      );
+    },
+    SplashRoute.name: (routeData) {
+      return _i14.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const _i12.SplashPage(),
       );
     },
     TodoListRoute.name: (routeData) {
       final args = routeData.argsAs<TodoListRouteArgs>(
           orElse: () => const TodoListRouteArgs());
-      return _i13.AutoRoutePage<dynamic>(
+      return _i14.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i12.TodoListPage(
+        child: _i13.TodoListPage(
           key: args.key,
           title: args.title,
         ),
@@ -151,11 +159,11 @@ abstract class $AppRouter extends _i13.RootStackRouter {
 
 /// generated route for
 /// [_i1.AdsPage]
-class AdsRoute extends _i13.PageRouteInfo<AdsRouteArgs> {
+class AdsRoute extends _i14.PageRouteInfo<AdsRouteArgs> {
   AdsRoute({
-    _i14.Key? key,
+    _i15.Key? key,
     required String title,
-    List<_i13.PageRouteInfo>? children,
+    List<_i14.PageRouteInfo>? children,
   }) : super(
           AdsRoute.name,
           args: AdsRouteArgs(
@@ -167,8 +175,8 @@ class AdsRoute extends _i13.PageRouteInfo<AdsRouteArgs> {
 
   static const String name = 'AdsRoute';
 
-  static const _i13.PageInfo<AdsRouteArgs> page =
-      _i13.PageInfo<AdsRouteArgs>(name);
+  static const _i14.PageInfo<AdsRouteArgs> page =
+      _i14.PageInfo<AdsRouteArgs>(name);
 }
 
 class AdsRouteArgs {
@@ -177,7 +185,7 @@ class AdsRouteArgs {
     required this.title,
   });
 
-  final _i14.Key? key;
+  final _i15.Key? key;
 
   final String title;
 
@@ -189,11 +197,11 @@ class AdsRouteArgs {
 
 /// generated route for
 /// [_i2.AuthPage]
-class AuthRoute extends _i13.PageRouteInfo<AuthRouteArgs> {
+class AuthRoute extends _i14.PageRouteInfo<AuthRouteArgs> {
   AuthRoute({
-    _i14.Key? key,
+    _i15.Key? key,
     String title = "Login",
-    List<_i13.PageRouteInfo>? children,
+    List<_i14.PageRouteInfo>? children,
   }) : super(
           AuthRoute.name,
           args: AuthRouteArgs(
@@ -205,8 +213,8 @@ class AuthRoute extends _i13.PageRouteInfo<AuthRouteArgs> {
 
   static const String name = 'AuthRoute';
 
-  static const _i13.PageInfo<AuthRouteArgs> page =
-      _i13.PageInfo<AuthRouteArgs>(name);
+  static const _i14.PageInfo<AuthRouteArgs> page =
+      _i14.PageInfo<AuthRouteArgs>(name);
 }
 
 class AuthRouteArgs {
@@ -215,7 +223,7 @@ class AuthRouteArgs {
     this.title = "Login",
   });
 
-  final _i14.Key? key;
+  final _i15.Key? key;
 
   final String title;
 
@@ -227,8 +235,8 @@ class AuthRouteArgs {
 
 /// generated route for
 /// [_i3.BottomNavigation]
-class BottomNavigation extends _i13.PageRouteInfo<void> {
-  const BottomNavigation({List<_i13.PageRouteInfo>? children})
+class BottomNavigation extends _i14.PageRouteInfo<void> {
+  const BottomNavigation({List<_i14.PageRouteInfo>? children})
       : super(
           BottomNavigation.name,
           initialChildren: children,
@@ -236,13 +244,13 @@ class BottomNavigation extends _i13.PageRouteInfo<void> {
 
   static const String name = 'BottomNavigation';
 
-  static const _i13.PageInfo<void> page = _i13.PageInfo<void>(name);
+  static const _i14.PageInfo<void> page = _i14.PageInfo<void>(name);
 }
 
 /// generated route for
 /// [_i4.CartPage]
-class CartRoute extends _i13.PageRouteInfo<void> {
-  const CartRoute({List<_i13.PageRouteInfo>? children})
+class CartRoute extends _i14.PageRouteInfo<void> {
+  const CartRoute({List<_i14.PageRouteInfo>? children})
       : super(
           CartRoute.name,
           initialChildren: children,
@@ -250,13 +258,13 @@ class CartRoute extends _i13.PageRouteInfo<void> {
 
   static const String name = 'CartRoute';
 
-  static const _i13.PageInfo<void> page = _i13.PageInfo<void>(name);
+  static const _i14.PageInfo<void> page = _i14.PageInfo<void>(name);
 }
 
 /// generated route for
 /// [_i5.CheckoutPage]
-class CheckoutRoute extends _i13.PageRouteInfo<void> {
-  const CheckoutRoute({List<_i13.PageRouteInfo>? children})
+class CheckoutRoute extends _i14.PageRouteInfo<void> {
+  const CheckoutRoute({List<_i14.PageRouteInfo>? children})
       : super(
           CheckoutRoute.name,
           initialChildren: children,
@@ -264,16 +272,16 @@ class CheckoutRoute extends _i13.PageRouteInfo<void> {
 
   static const String name = 'CheckoutRoute';
 
-  static const _i13.PageInfo<void> page = _i13.PageInfo<void>(name);
+  static const _i14.PageInfo<void> page = _i14.PageInfo<void>(name);
 }
 
 /// generated route for
 /// [_i6.CountPage]
-class CountRoute extends _i13.PageRouteInfo<CountRouteArgs> {
+class CountRoute extends _i14.PageRouteInfo<CountRouteArgs> {
   CountRoute({
-    _i14.Key? key,
+    _i15.Key? key,
     required String title,
-    List<_i13.PageRouteInfo>? children,
+    List<_i14.PageRouteInfo>? children,
   }) : super(
           CountRoute.name,
           args: CountRouteArgs(
@@ -285,8 +293,8 @@ class CountRoute extends _i13.PageRouteInfo<CountRouteArgs> {
 
   static const String name = 'CountRoute';
 
-  static const _i13.PageInfo<CountRouteArgs> page =
-      _i13.PageInfo<CountRouteArgs>(name);
+  static const _i14.PageInfo<CountRouteArgs> page =
+      _i14.PageInfo<CountRouteArgs>(name);
 }
 
 class CountRouteArgs {
@@ -295,7 +303,7 @@ class CountRouteArgs {
     required this.title,
   });
 
-  final _i14.Key? key;
+  final _i15.Key? key;
 
   final String title;
 
@@ -307,11 +315,11 @@ class CountRouteArgs {
 
 /// generated route for
 /// [_i7.GoodsDetailPage]
-class GoodsDetailRoute extends _i13.PageRouteInfo<GoodsDetailRouteArgs> {
+class GoodsDetailRoute extends _i14.PageRouteInfo<GoodsDetailRouteArgs> {
   GoodsDetailRoute({
-    _i14.Key? key,
+    _i15.Key? key,
     required String productId,
-    List<_i13.PageRouteInfo>? children,
+    List<_i14.PageRouteInfo>? children,
   }) : super(
           GoodsDetailRoute.name,
           args: GoodsDetailRouteArgs(
@@ -323,8 +331,8 @@ class GoodsDetailRoute extends _i13.PageRouteInfo<GoodsDetailRouteArgs> {
 
   static const String name = 'GoodsDetailRoute';
 
-  static const _i13.PageInfo<GoodsDetailRouteArgs> page =
-      _i13.PageInfo<GoodsDetailRouteArgs>(name);
+  static const _i14.PageInfo<GoodsDetailRouteArgs> page =
+      _i14.PageInfo<GoodsDetailRouteArgs>(name);
 }
 
 class GoodsDetailRouteArgs {
@@ -333,7 +341,7 @@ class GoodsDetailRouteArgs {
     required this.productId,
   });
 
-  final _i14.Key? key;
+  final _i15.Key? key;
 
   final String productId;
 
@@ -345,11 +353,11 @@ class GoodsDetailRouteArgs {
 
 /// generated route for
 /// [_i8.GoodsPage]
-class GoodsRoute extends _i13.PageRouteInfo<GoodsRouteArgs> {
+class GoodsRoute extends _i14.PageRouteInfo<GoodsRouteArgs> {
   GoodsRoute({
-    _i14.Key? key,
+    _i15.Key? key,
     String title = "Products",
-    List<_i13.PageRouteInfo>? children,
+    List<_i14.PageRouteInfo>? children,
   }) : super(
           GoodsRoute.name,
           args: GoodsRouteArgs(
@@ -361,8 +369,8 @@ class GoodsRoute extends _i13.PageRouteInfo<GoodsRouteArgs> {
 
   static const String name = 'GoodsRoute';
 
-  static const _i13.PageInfo<GoodsRouteArgs> page =
-      _i13.PageInfo<GoodsRouteArgs>(name);
+  static const _i14.PageInfo<GoodsRouteArgs> page =
+      _i14.PageInfo<GoodsRouteArgs>(name);
 }
 
 class GoodsRouteArgs {
@@ -371,7 +379,7 @@ class GoodsRouteArgs {
     this.title = "Products",
   });
 
-  final _i14.Key? key;
+  final _i15.Key? key;
 
   final String title;
 
@@ -384,11 +392,11 @@ class GoodsRouteArgs {
 /// generated route for
 /// [_i9.PaymentCreditCardPage]
 class PaymentCreditCardRoute
-    extends _i13.PageRouteInfo<PaymentCreditCardRouteArgs> {
+    extends _i14.PageRouteInfo<PaymentCreditCardRouteArgs> {
   PaymentCreditCardRoute({
-    _i14.Key? key,
+    _i15.Key? key,
     String title = "Payment Credit Card",
-    List<_i13.PageRouteInfo>? children,
+    List<_i14.PageRouteInfo>? children,
   }) : super(
           PaymentCreditCardRoute.name,
           args: PaymentCreditCardRouteArgs(
@@ -400,8 +408,8 @@ class PaymentCreditCardRoute
 
   static const String name = 'PaymentCreditCardRoute';
 
-  static const _i13.PageInfo<PaymentCreditCardRouteArgs> page =
-      _i13.PageInfo<PaymentCreditCardRouteArgs>(name);
+  static const _i14.PageInfo<PaymentCreditCardRouteArgs> page =
+      _i14.PageInfo<PaymentCreditCardRouteArgs>(name);
 }
 
 class PaymentCreditCardRouteArgs {
@@ -410,7 +418,7 @@ class PaymentCreditCardRouteArgs {
     this.title = "Payment Credit Card",
   });
 
-  final _i14.Key? key;
+  final _i15.Key? key;
 
   final String title;
 
@@ -422,11 +430,11 @@ class PaymentCreditCardRouteArgs {
 
 /// generated route for
 /// [_i10.ProductsPage]
-class ProductsRoute extends _i13.PageRouteInfo<ProductsRouteArgs> {
+class ProductsRoute extends _i14.PageRouteInfo<ProductsRouteArgs> {
   ProductsRoute({
-    _i14.Key? key,
+    _i15.Key? key,
     String title = "Products",
-    List<_i13.PageRouteInfo>? children,
+    List<_i14.PageRouteInfo>? children,
   }) : super(
           ProductsRoute.name,
           args: ProductsRouteArgs(
@@ -438,8 +446,8 @@ class ProductsRoute extends _i13.PageRouteInfo<ProductsRouteArgs> {
 
   static const String name = 'ProductsRoute';
 
-  static const _i13.PageInfo<ProductsRouteArgs> page =
-      _i13.PageInfo<ProductsRouteArgs>(name);
+  static const _i14.PageInfo<ProductsRouteArgs> page =
+      _i14.PageInfo<ProductsRouteArgs>(name);
 }
 
 class ProductsRouteArgs {
@@ -448,7 +456,7 @@ class ProductsRouteArgs {
     this.title = "Products",
   });
 
-  final _i14.Key? key;
+  final _i15.Key? key;
 
   final String title;
 
@@ -459,9 +467,23 @@ class ProductsRouteArgs {
 }
 
 /// generated route for
-/// [_i11.SplashPage]
-class SplashRoute extends _i13.PageRouteInfo<void> {
-  const SplashRoute({List<_i13.PageRouteInfo>? children})
+/// [_i11.SettingPage]
+class SettingRoute extends _i14.PageRouteInfo<void> {
+  const SettingRoute({List<_i14.PageRouteInfo>? children})
+      : super(
+          SettingRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'SettingRoute';
+
+  static const _i14.PageInfo<void> page = _i14.PageInfo<void>(name);
+}
+
+/// generated route for
+/// [_i12.SplashPage]
+class SplashRoute extends _i14.PageRouteInfo<void> {
+  const SplashRoute({List<_i14.PageRouteInfo>? children})
       : super(
           SplashRoute.name,
           initialChildren: children,
@@ -469,16 +491,16 @@ class SplashRoute extends _i13.PageRouteInfo<void> {
 
   static const String name = 'SplashRoute';
 
-  static const _i13.PageInfo<void> page = _i13.PageInfo<void>(name);
+  static const _i14.PageInfo<void> page = _i14.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i12.TodoListPage]
-class TodoListRoute extends _i13.PageRouteInfo<TodoListRouteArgs> {
+/// [_i13.TodoListPage]
+class TodoListRoute extends _i14.PageRouteInfo<TodoListRouteArgs> {
   TodoListRoute({
-    _i14.Key? key,
+    _i15.Key? key,
     String title = "TodoList Screen",
-    List<_i13.PageRouteInfo>? children,
+    List<_i14.PageRouteInfo>? children,
   }) : super(
           TodoListRoute.name,
           args: TodoListRouteArgs(
@@ -490,8 +512,8 @@ class TodoListRoute extends _i13.PageRouteInfo<TodoListRouteArgs> {
 
   static const String name = 'TodoListRoute';
 
-  static const _i13.PageInfo<TodoListRouteArgs> page =
-      _i13.PageInfo<TodoListRouteArgs>(name);
+  static const _i14.PageInfo<TodoListRouteArgs> page =
+      _i14.PageInfo<TodoListRouteArgs>(name);
 }
 
 class TodoListRouteArgs {
@@ -500,7 +522,7 @@ class TodoListRouteArgs {
     this.title = "TodoList Screen",
   });
 
-  final _i14.Key? key;
+  final _i15.Key? key;
 
   final String title;
 

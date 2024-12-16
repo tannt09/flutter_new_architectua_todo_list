@@ -16,7 +16,7 @@ class HeaderWidget extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       leading: Container(
-        margin: const EdgeInsets.only(left: 20),
+        margin: const EdgeInsets.only(left: 16),
         child: CircleAvatar(
           backgroundColor: AppColors.main2,
           child: IconButton(
