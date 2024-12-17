@@ -6,11 +6,13 @@ class HeaderWidget extends StatelessWidget implements PreferredSizeWidget {
   final String leftIcon;
   final String title;
   final String rightIcon;
+  final bool isKeyboardOpen;
   const HeaderWidget(
       {super.key,
       required this.leftIcon,
       required this.title,
-      this.rightIcon = ''});
+      this.rightIcon = '',
+      this.isKeyboardOpen = false});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +23,7 @@ class HeaderWidget extends StatelessWidget implements PreferredSizeWidget {
           backgroundColor: AppColors.main2,
           child: IconButton(
             icon: SvgPicture.asset(leftIcon),
-            onPressed: () => Navigator.of(context).pop(),
+            onPressed: () => {isKeyboardOpen ? FocusScope.of(context).unfocus() : Navigator.of(context).pop()},
           ),
         ),
       ),

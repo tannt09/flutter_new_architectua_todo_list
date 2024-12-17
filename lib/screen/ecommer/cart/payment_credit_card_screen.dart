@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:developer';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:flutter_new_architectua/widget/header_widget.dart';
 import 'package:http/http.dart' as http;
 
 import 'package:auto_route/annotations.dart';
@@ -19,11 +20,13 @@ class PaymentCreditCardPage extends StatefulWidget {
   State<PaymentCreditCardPage> createState() => _PaymentCreditCardPageState();
 }
 
-class _PaymentCreditCardPageState extends State<PaymentCreditCardPage> {
+class _PaymentCreditCardPageState extends State<PaymentCreditCardPage>
+    with WidgetsBindingObserver {
   final Logger _logger = Logger('PaymentCreditCardPage');
 
   CardDetails _card = CardDetails();
   bool? _saveCard = false;
+  bool _isKeyboardOpen = false;
 
   @override
   void initState() {
@@ -32,14 +35,32 @@ class _PaymentCreditCardPageState extends State<PaymentCreditCardPage> {
     Logger.root.onRecord.listen((record) {
       log('${record.level.name}: ${record.time}: ${record.message}');
     });
+
+    WidgetsBinding.instance.addObserver(this); // Add Observer
+  }
+
+  @override
+  void didChangeMetrics() {
+    _checkKeyboardStatus();
+  }
+
+  void _checkKeyboardStatus() {
+    final bottomInset = View.of(context).viewInsets.bottom;
+    final isKeyboardOpen = bottomInset > 0;
+    if (_isKeyboardOpen != isKeyboardOpen) {
+      setState(() {
+        _isKeyboardOpen = isKeyboardOpen;
+      });
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
+      appBar: HeaderWidget(
+        leftIcon: 'assets/icons/left_arrow_icon.svg',
+        title: widget.title,
+        isKeyboardOpen: _isKeyboardOpen,
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -242,5 +263,11 @@ class _PaymentCreditCardPageState extends State<PaymentCreditCardPage> {
         }));
     _logger.info('----Response ${response.body}');
     return json.decode(response.body);
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this); // Remove Observer
+    super.dispose();
   }
 }
