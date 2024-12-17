@@ -1,9 +1,12 @@
 import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_new_architectua/constants/colors.dart';
+import 'package:flutter_new_architectua/core/navigation/app_navigator.dart';
+import 'package:flutter_new_architectua/core/navigation/app_router.gr.dart';
 import 'package:flutter_new_architectua/widget/header_widget.dart';
 import 'package:flutter_new_architectua/widget/profile/custom_option_widget.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get_it/get_it.dart';
 
 @RoutePage()
 class SettingPage extends StatefulWidget {
@@ -14,6 +17,8 @@ class SettingPage extends StatefulWidget {
 }
 
 class _SettingPageState extends State<SettingPage> {
+  late final AppNavigator navigator = GetIt.instance.get<AppNavigator>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,50 +33,55 @@ class _SettingPageState extends State<SettingPage> {
                 'Account',
                 style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
               ),
-              Container(
-                margin: const EdgeInsets.only(top: 5),
-                padding: const EdgeInsets.symmetric(vertical: 2),
-                decoration: const BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(8)),
-                    color: AppColors.main2),
-                child: Row(
-                  children: [
-                    const SizedBox(width: 2),
-                    const CircleAvatar(
-                      radius: 26,
-                      backgroundImage:
-                          NetworkImage('https://picsum.photos/id/237/200/300'),
-                    ),
-                    const SizedBox(width: 10),
-                    const Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Mark Adam',
-                          style: TextStyle(
-                              fontSize: 14, fontWeight: FontWeight.bold),
-                        ),
-                        Text(
-                          'Sunny_Koelpin45@hotmail.com',
-                          style: TextStyle(
-                              color: AppColors.grey3,
-                              fontSize: 12,
-                              fontWeight: FontWeight.bold),
-                        )
-                      ],
-                    ),
-                    const Expanded(child: SizedBox()),
-                    Padding(
-                      padding: const EdgeInsets.only(right: 14),
-                      child: SvgPicture.asset(
-                        'assets/icons/right_arrowhead_icon.svg',
-                        width: 10,
-                        height: 16,
-                        colorFilter: const ColorFilter.mode(
-                            AppColors.black, BlendMode.srcIn),
+              GestureDetector(
+                onTap: () {
+                  navigator.push(const EditProfileRoute());
+                },
+                child: Container(
+                  margin: const EdgeInsets.only(top: 5),
+                  padding: const EdgeInsets.symmetric(vertical: 2),
+                  decoration: const BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(8)),
+                      color: AppColors.main2),
+                  child: Row(
+                    children: [
+                      const SizedBox(width: 2),
+                      const CircleAvatar(
+                        radius: 26,
+                        backgroundImage: NetworkImage(
+                            'https://picsum.photos/id/237/200/300'),
                       ),
-                    )
-                  ],
+                      const SizedBox(width: 10),
+                      const Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Mark Adam',
+                            style: TextStyle(
+                                fontSize: 14, fontWeight: FontWeight.bold),
+                          ),
+                          Text(
+                            'Sunny_Koelpin45@hotmail.com',
+                            style: TextStyle(
+                                color: AppColors.grey3,
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold),
+                          )
+                        ],
+                      ),
+                      const Expanded(child: SizedBox()),
+                      Padding(
+                        padding: const EdgeInsets.only(right: 14),
+                        child: SvgPicture.asset(
+                          'assets/icons/right_arrowhead_icon.svg',
+                          width: 10,
+                          height: 16,
+                          colorFilter: const ColorFilter.mode(
+                              AppColors.black, BlendMode.srcIn),
+                        ),
+                      )
+                    ],
+                  ),
                 ),
               ),
               const Padding(

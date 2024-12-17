@@ -143,6 +143,7 @@ flutter:
     - assets/icons/help_center_icon.svg
     - assets/icons/language_icon.svg
     - assets/icons/privacy_icon.svg
+    - assets/icons/camera_icon.svg
     - .env
   #
   # For details regarding fonts from package dependencies,
