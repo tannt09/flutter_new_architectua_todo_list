@@ -1,5 +1,7 @@
 import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_new_architectua/widget/custom_dropdown.dart';
 import 'package:flutter_new_architectua/widget/header_widget.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -91,13 +93,22 @@ class _EditProfilePageState extends State<EditProfilePage> {
                         padding: const EdgeInsets.only(top: 4, bottom: 6),
                         child: TextField(
                           controller: phoneNumberController,
+                          // keyboardType: TextInputType.number,
+                          inputFormatters: <TextInputFormatter>[
+                            FilteringTextInputFormatter.digitsOnly
+                          ],
                           decoration: const InputDecoration(
                             labelText: 'Phone Number',
                             border: OutlineInputBorder(),
                           ),
                         ),
                       ),
-                      
+                      const Text(
+                        'Gender',
+                        style: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.bold),
+                      ),
+                      const CustomDropdown(),
                     ],
                   ),
                 ),

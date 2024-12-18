@@ -61,7 +61,9 @@ class _ProfilePageState extends State<ProfilePage> {
           CustomOptionWidget(
             assetsIcon: 'assets/icons/profile_icon.svg',
             optionName: 'Profile',
-            onPress: () {},
+            onPress: () {
+              navigator.push(const EditProfileRoute());
+            },
           ),
           CustomOptionWidget(
             assetsIcon: 'assets/icons/setting_icon.svg',
