@@ -2,7 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_new_architectua/constants/colors.dart';
 
 class CustomDropdown extends StatefulWidget {
-  const CustomDropdown({super.key});
+  final List<String> items;
+  final String dropdownValue;
+  final Function(int index) handleSelect;
+  const CustomDropdown(
+      {super.key,
+      required this.items,
+      required this.dropdownValue,
+      required this.handleSelect});
 
   @override
   State<CustomDropdown> createState() => _CustomDropdownState();
@@ -10,11 +17,8 @@ class CustomDropdown extends StatefulWidget {
 
 class _CustomDropdownState extends State<CustomDropdown> {
   final LayerLink _layerLink = LayerLink();
-  String dropdownValue = "Not Selected";
   bool isDropdownOpen = false;
   OverlayEntry? _overlayEntry;
-
-  final List<String> items = ["Not Selected", "Male", "Female", "Other"];
 
   void toggleDropdown() {
     if (isDropdownOpen) {
@@ -44,19 +48,20 @@ class _CustomDropdownState extends State<CustomDropdown> {
           child: ListView(
             padding: EdgeInsets.zero,
             shrinkWrap: true,
-            children: items.map((String value) {
+            children: widget.items.asMap().entries.map((entry) {
+              int index = entry.key;
+              String value = entry.value;
+
               return ListTile(
                 title: Text(value,
                     style: TextStyle(
-                      color: dropdownValue == value
+                      color: widget.dropdownValue == value
                           ? Colors.black
                           : AppColors.grey4,
                     )),
                 onTap: () {
-                  setState(() {
-                    dropdownValue = value;
-                    toggleDropdown();
-                  });
+                  widget.handleSelect(index);
+                  toggleDropdown();
                 },
               );
             }).toList(),
@@ -82,7 +87,7 @@ class _CustomDropdownState extends State<CustomDropdown> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                dropdownValue,
+                widget.dropdownValue,
                 style: const TextStyle(color: Colors.black, fontSize: 16),
               ),
               const Icon(Icons.arrow_drop_down),
