@@ -219,7 +219,7 @@ class _$ProfileStateImpl implements _ProfileState {
           email: '',
           phoneNumber: '000-000-0000',
           username: '',
-          gender: 'Not Specified',
+          gender: 0,
           dateOfBirth: '2000-01-01')});
 
   @override

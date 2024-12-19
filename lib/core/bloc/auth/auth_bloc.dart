@@ -36,6 +36,7 @@ class AuthBloc extends BaseBloc<AuthEvent, AuthState> {
           result.data!.accessToken != null &&
           result.data!.refreshToken != null) {
         await saveToken(result.data!.accessToken!, result.data!.refreshToken!);
+        await storage.write(key: 'user_id', value: result.data!.userId);
       }
       navigator.replace(const BottomNavigation());
     }

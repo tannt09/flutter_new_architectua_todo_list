@@ -7,7 +7,7 @@ import 'package:flutter_new_architectua/core/storage/token_secure_storage.dart';
 import 'package:flutter_new_architectua/model/profile_model.dart';
 import 'package:logging/logging.dart';
 
-final _logger = Logger('ProductsApi');
+final _logger = Logger('ProfileApi');
 ApiClient apiClient =
     ApiClient(baseUrl: '${dotenv.env['BASE_URL']}', storage: storage);
 
@@ -23,7 +23,7 @@ Future<ProfileModel> fetchUserProfile(String userId) async {
 
   try {
     final response = await apiClient.sendRequest(
-      'products/users/getProfile?user_id=$userId',
+      'users/getProfile?user_id=$userId',
       'GET',
       headers: {
         'Authorization': 'Bearer $token',
@@ -31,7 +31,7 @@ Future<ProfileModel> fetchUserProfile(String userId) async {
     );
 
     if (response.statusCode == 200) {
-      final parsed = jsonDecode(response.body);
+      final Map<String, dynamic> parsed = jsonDecode(response.body);
 
       return ProfileModel.fromJson(parsed);
     }

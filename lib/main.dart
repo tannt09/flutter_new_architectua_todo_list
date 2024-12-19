@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_new_architectua/core/bloc/cart/cart_bloc.dart';
 import 'package:flutter_new_architectua/core/bloc/goods/goods_bloc.dart';
+import 'package:flutter_new_architectua/core/bloc/profile/profile_bloc.dart';
 import 'package:flutter_new_architectua/core/navigation/app_router.dart';
 import 'package:flutter_new_architectua/core/storage/config_storage.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
@@ -13,6 +14,7 @@ import 'package:google_mobile_ads/google_mobile_ads.dart';
 late Database database;
 final GoodsBloc blocGoods = GetIt.instance.get<GoodsBloc>();
 final CartBloc blocCart = GetIt.instance.get<CartBloc>();
+final ProfileBloc blocProfile = GetIt.instance.get<ProfileBloc>();
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -48,6 +50,9 @@ Future<void> main() async {
         ),
         BlocProvider<CartBloc>(
           create: (_) => blocCart,
+        ),
+        BlocProvider<ProfileBloc>(
+          create: (_) => blocProfile,
         ),
       ],
       child: MyApp(),

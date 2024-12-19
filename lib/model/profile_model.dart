@@ -5,7 +5,7 @@ class ProfileModel {
   final String? email;
   final String? phoneNumber;
   final String? username;
-  final String? gender;
+  final int? gender;
   final String? dateOfBirth;
 
   const ProfileModel(
@@ -51,7 +51,7 @@ class ProfileModel {
       email: '',
       phoneNumber: '000-000-0000',
       username: '',
-      gender: 'Not Specified',
+      gender: 0,
       dateOfBirth: '2000-01-01',
     );
   }

@@ -17,10 +17,16 @@ class AuthData {
   final String? accessToken;
   final String? refreshToken;
   final String? customer;
+  final String? userId;
 
-  const AuthData({this.accessToken, this.refreshToken, this.customer});
+  const AuthData(
+      {this.accessToken, this.refreshToken, this.customer, this.userId});
 
   factory AuthData.fromJson(Map<String, dynamic> json) {
-    return AuthData(accessToken: json['access_token'], refreshToken: json['refresh_token'], customer: json['customer']);
+    return AuthData(
+        accessToken: json['access_token'],
+        refreshToken: json['refresh_token'],
+        customer: json['customer'],
+        userId: json['user_id']);
   }
 }
