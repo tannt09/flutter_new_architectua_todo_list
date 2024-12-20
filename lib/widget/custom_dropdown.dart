@@ -56,7 +56,7 @@ class _CustomDropdownState extends State<CustomDropdown> {
                 title: Text(value,
                     style: TextStyle(
                       color: widget.dropdownValue == value
-                          ? Colors.black
+                          ? AppColors.black
                           : AppColors.grey4,
                     )),
                 onTap: () {

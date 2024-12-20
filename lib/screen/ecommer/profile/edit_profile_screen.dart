@@ -1,11 +1,14 @@
+import 'package:intl/intl.dart';
 import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'package:flutter_new_architectua/constants/colors.dart';
 import 'package:flutter_new_architectua/core/bloc/profile/profile_bloc.dart';
 import 'package:flutter_new_architectua/widget/custom_dropdown.dart';
 import 'package:flutter_new_architectua/widget/header_widget.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 @RoutePage()
 class EditProfilePage extends StatefulWidget {
@@ -24,6 +27,8 @@ class _EditProfilePageState extends State<EditProfilePage> {
   int genderIndex = 0;
   bool isInitialized = true;
 
+  DateTime? _selectedDate;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,8 +38,23 @@ class _EditProfilePageState extends State<EditProfilePage> {
           builder: (context, state) {
             if (isInitialized) {
               genderIndex = state.profile.gender ?? 0;
+              _selectedDate = DateTime.parse(state.profile.dateOfBirth ?? '');
               isInitialized = false;
             }
+
+            Future<void> selectDate(BuildContext context) async {
+              final DateTime? picked = await showDatePicker(
+                  context: context,
+                  initialDate: DateTime.parse(state.profile.dateOfBirth ?? ''),
+                  firstDate: DateTime(2000),
+                  lastDate: DateTime(2100));
+              if (picked != null && picked != _selectedDate) {
+                setState(() {
+                  _selectedDate = picked;
+                });
+              }
+            }
+
             return GestureDetector(
               onTap: () => FocusScope.of(context).unfocus(),
               child: Padding(
@@ -129,6 +149,39 @@ class _EditProfilePageState extends State<EditProfilePage> {
                               });
                             },
                           ),
+                          const SizedBox(height: 4),
+                          const Text(
+                            'Birthday',
+                            style: TextStyle(
+                                fontSize: 16, fontWeight: FontWeight.bold),
+                          ),
+                          GestureDetector(
+                              onTap: () => selectDate(context),
+                              child: Container(
+                                  width: double.infinity,
+                                  margin: const EdgeInsets.only(top: 4),
+                                  padding: const EdgeInsets.symmetric(
+                                      vertical: 7, horizontal: 10),
+                                  decoration: BoxDecoration(
+                                    border: Border.all(color: Colors.grey),
+                                    borderRadius: BorderRadius.circular(4),
+                                  ),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text(
+                                        _selectedDate == null
+                                            ? "Chưa chọn ngày"
+                                            : DateFormat('dd/MM/yyyy')
+                                                .format(_selectedDate!),
+                                        style: const TextStyle(
+                                            fontSize: 16,
+                                            color: AppColors.black),
+                                      ),
+                                      const Icon(Icons.arrow_drop_down)
+                                    ],
+                                  )))
                         ],
                       ),
                     ),
