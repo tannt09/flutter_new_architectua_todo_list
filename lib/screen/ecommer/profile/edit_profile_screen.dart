@@ -1,3 +1,4 @@
+import 'package:flutter_new_architectua/widget/loading_button.dart';
 import 'package:intl/intl.dart';
 import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
@@ -56,6 +57,10 @@ class _EditProfilePageState extends State<EditProfilePage> {
                   _selectedDate = picked;
                 });
               }
+            }
+
+            Future<void> saveChanges() async {
+              
             }
 
             return GestureDetector(
@@ -256,6 +261,11 @@ class _EditProfilePageState extends State<EditProfilePage> {
                                     const Icon(Icons.arrow_drop_down),
                                   ],
                                 )),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(16),
+                            child: LoadingButtonWidget(
+                                onPressed: saveChanges, text: 'Save Changes'),
                           )
                         ],
                       ),

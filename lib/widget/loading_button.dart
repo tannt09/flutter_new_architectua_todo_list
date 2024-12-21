@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_new_architectua/constants/colors.dart';
 
 class LoadingButtonWidget extends StatefulWidget {
   final Future Function()? onPressed;
@@ -36,24 +37,31 @@ class _LoadingButtonWidgetState extends State<LoadingButtonWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisSize: MainAxisSize.max,
-      children: [
-        Expanded(
-            child: ElevatedButton(
-          onPressed:
-              (_isLoading || widget.onPressed == null) ? null : _loadFuture,
-          child: _isLoading
-              ? const SizedBox(
-                  height: 22,
-                  width: 22,
-                  child: CircularProgressIndicator(
-                    strokeWidth: 2,
-                  ),
-                )
-              : Text(widget.text),
-        ))
-      ],
+    return GestureDetector(
+      onTap: (_isLoading || widget.onPressed == null) ? null : _loadFuture,
+      child: Container(
+        width: double.infinity,
+        height: 50,
+        margin: const EdgeInsets.only(bottom: 20),
+        alignment: Alignment.center,
+        decoration: BoxDecoration(
+          color: AppColors.main,
+          borderRadius: BorderRadius.circular(30),
+        ),
+        child: _isLoading
+            ? const SizedBox(
+                height: 22,
+                width: 22,
+                child: CircularProgressIndicator(
+                  strokeWidth: 2,
+                  color: Colors.white,
+                ),
+              )
+            : Text(
+                widget.text,
+                style: const TextStyle(fontSize: 16, color: Colors.white),
+              ),
+      ),
     );
   }
 }
