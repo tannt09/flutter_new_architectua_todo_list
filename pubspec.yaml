@@ -55,6 +55,7 @@ dependencies:
   flutter_secure_storage: ^9.2.2
   flutter_svg: ^2.0.14
   carousel_slider: ^5.0.0
+  country_picker: ^2.0.27
 
 
 dev_dependencies:

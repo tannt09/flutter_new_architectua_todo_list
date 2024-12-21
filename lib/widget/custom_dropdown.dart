@@ -44,29 +44,38 @@ class _CustomDropdownState extends State<CustomDropdown> {
         top: offset.dy + size.height,
         left: offset.dx,
         child: Material(
-          elevation: 2,
-          child: ListView(
-            padding: EdgeInsets.zero,
-            shrinkWrap: true,
-            children: widget.items.asMap().entries.map((entry) {
-              int index = entry.key;
-              String value = entry.value;
+            elevation: 2,
+            child: Container(
+              constraints: const BoxConstraints(
+                maxHeight: 200,
+              ),
+              child: ListView(
+                padding: const EdgeInsets.only(bottom: 10),
+                shrinkWrap: true,
+                physics: const AlwaysScrollableScrollPhysics(),
+                children: widget.items.asMap().entries.map((entry) {
+                  int index = entry.key;
+                  String value = entry.value;
 
-              return ListTile(
-                title: Text(value,
-                    style: TextStyle(
-                      color: widget.dropdownValue == value
-                          ? AppColors.black
-                          : AppColors.grey4,
-                    )),
-                onTap: () {
-                  widget.handleSelect(index);
-                  toggleDropdown();
-                },
-              );
-            }).toList(),
-          ),
-        ),
+                  return GestureDetector(
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 10, left: 10),
+                      child: Text(value,
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: widget.dropdownValue == value
+                                ? AppColors.black
+                                : AppColors.grey4,
+                          )),
+                    ),
+                    onTap: () {
+                      widget.handleSelect(index);
+                      toggleDropdown();
+                    },
+                  );
+                }).toList(),
+              ),
+            )),
       ),
     );
   }

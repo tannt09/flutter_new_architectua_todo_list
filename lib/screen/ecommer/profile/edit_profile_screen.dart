@@ -4,11 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:country_picker/country_picker.dart';
 
 import 'package:flutter_new_architectua/constants/colors.dart';
 import 'package:flutter_new_architectua/core/bloc/profile/profile_bloc.dart';
-import 'package:flutter_new_architectua/widget/custom_dropdown.dart';
 import 'package:flutter_new_architectua/widget/header_widget.dart';
+
+final List<String> genderList = ["Not Selected", "Male", "Female", "Other"];
 
 @RoutePage()
 class EditProfilePage extends StatefulWidget {
@@ -19,15 +21,15 @@ class EditProfilePage extends StatefulWidget {
 }
 
 class _EditProfilePageState extends State<EditProfilePage> {
-  final TextEditingController nameController = TextEditingController();
-  final TextEditingController emailController = TextEditingController();
-  final TextEditingController phoneNumberController = TextEditingController();
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _phoneNumberController = TextEditingController();
 
-  final List<String> genderList = ["Not Selected", "Male", "Female", "Other"];
-  int genderIndex = 0;
-  bool isInitialized = true;
-
+  int _genderIndex = 0;
   DateTime? _selectedDate;
+  String _region = '';
+
+  bool isInitialized = true;
 
   @override
   Widget build(BuildContext context) {
@@ -37,8 +39,9 @@ class _EditProfilePageState extends State<EditProfilePage> {
         body: BlocBuilder<ProfileBloc, ProfileState>(
           builder: (context, state) {
             if (isInitialized) {
-              genderIndex = state.profile.gender ?? 0;
+              _genderIndex = state.profile.gender ?? 0;
               _selectedDate = DateTime.parse(state.profile.dateOfBirth ?? '');
+              _region = state.profile.region ?? '';
               isInitialized = false;
             }
 
@@ -92,7 +95,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                             height: 50,
                             padding: const EdgeInsets.only(top: 4, bottom: 6),
                             child: TextField(
-                              controller: nameController,
+                              controller: _nameController,
                               decoration: const InputDecoration(
                                 labelText: 'Name',
                                 border: OutlineInputBorder(),
@@ -108,7 +111,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                             height: 50,
                             padding: const EdgeInsets.only(top: 4, bottom: 6),
                             child: TextField(
-                              controller: emailController,
+                              controller: _emailController,
                               decoration: const InputDecoration(
                                 labelText: 'Email',
                                 border: OutlineInputBorder(),
@@ -124,14 +127,21 @@ class _EditProfilePageState extends State<EditProfilePage> {
                             height: 50,
                             padding: const EdgeInsets.only(top: 4, bottom: 6),
                             child: TextField(
-                              controller: phoneNumberController,
+                              controller: _phoneNumberController,
                               inputFormatters: <TextInputFormatter>[
                                 FilteringTextInputFormatter.digitsOnly
                               ],
                               decoration: const InputDecoration(
                                 labelText: 'Phone Number',
+                                labelStyle: TextStyle(color: AppColors.grey),
+                                enabledBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: AppColors.black,
+                                  ),
+                                ),
                                 border: OutlineInputBorder(),
                               ),
+                              style: const TextStyle(color: Colors.black),
                             ),
                           ),
                           const Text(
@@ -139,15 +149,40 @@ class _EditProfilePageState extends State<EditProfilePage> {
                             style: TextStyle(
                                 fontSize: 16, fontWeight: FontWeight.bold),
                           ),
-                          const SizedBox(height: 4),
-                          CustomDropdown(
-                            items: genderList,
-                            dropdownValue: genderList[genderIndex],
-                            handleSelect: (int index) {
-                              setState(() {
-                                genderIndex = index;
-                              });
-                            },
+                          Container(
+                            width: double.infinity,
+                            height: 40,
+                            margin: const EdgeInsets.only(top: 4),
+                            padding: const EdgeInsets.symmetric(horizontal: 12),
+                            decoration: BoxDecoration(
+                              border: Border.all(color: AppColors.black),
+                              borderRadius: BorderRadius.circular(4),
+                            ),
+                            child: DropdownButton<String>(
+                              value: genderList[_genderIndex],
+                              items: genderList.map((String value) {
+                                return DropdownMenuItem<String>(
+                                  value: value,
+                                  child: Text(
+                                    value,
+                                    style: TextStyle(
+                                        color: genderList[_genderIndex] == value
+                                            ? Colors.black
+                                            : AppColors.grey,
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w400),
+                                  ),
+                                );
+                              }).toList(),
+                              onChanged: (String? newValue) {
+                                setState(() {
+                                  _genderIndex = genderList.indexOf(newValue!);
+                                });
+                              },
+                              underline: Container(height: 0),
+                              isExpanded: true,
+                              menuMaxHeight: 200,
+                            ),
                           ),
                           const SizedBox(height: 4),
                           const Text(
@@ -163,7 +198,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                                   padding: const EdgeInsets.symmetric(
                                       vertical: 7, horizontal: 10),
                                   decoration: BoxDecoration(
-                                    border: Border.all(color: Colors.grey),
+                                    border: Border.all(color: AppColors.black),
                                     borderRadius: BorderRadius.circular(4),
                                   ),
                                   child: Row(
@@ -176,12 +211,52 @@ class _EditProfilePageState extends State<EditProfilePage> {
                                             : DateFormat('dd/MM/yyyy')
                                                 .format(_selectedDate!),
                                         style: const TextStyle(
-                                            fontSize: 16,
-                                            color: AppColors.black),
+                                            fontSize: 16, color: Colors.black),
                                       ),
                                       const Icon(Icons.arrow_drop_down)
                                     ],
-                                  )))
+                                  ))),
+                          const SizedBox(height: 4),
+                          const Text(
+                            'Country/Region',
+                            style: TextStyle(
+                                fontSize: 16, fontWeight: FontWeight.bold),
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              showCountryPicker(
+                                context: context,
+                                onSelect: (Country country) {
+                                  setState(() {
+                                    _region = country.displayNameNoCountryCode;
+                                  });
+                                },
+                                moveAlongWithKeyboard: false,
+                              );
+                            },
+                            child: Container(
+                                width: double.infinity,
+                                height: 40,
+                                margin: const EdgeInsets.only(top: 4),
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 12),
+                                decoration: BoxDecoration(
+                                  border: Border.all(color: AppColors.black),
+                                  borderRadius: BorderRadius.circular(4),
+                                ),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      _region,
+                                      style: const TextStyle(
+                                          fontSize: 16, color: Colors.black),
+                                    ),
+                                    const Icon(Icons.arrow_drop_down),
+                                  ],
+                                )),
+                          )
                         ],
                       ),
                     ),
@@ -194,8 +269,8 @@ class _EditProfilePageState extends State<EditProfilePage> {
   @override
   void dispose() {
     super.dispose();
-    nameController.dispose();
-    emailController.dispose();
-    phoneNumberController.dispose();
+    _nameController.dispose();
+    _emailController.dispose();
+    _phoneNumberController.dispose();
   }
 }
