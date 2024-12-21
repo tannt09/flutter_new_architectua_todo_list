@@ -7,6 +7,7 @@ import 'package:flutter_new_architectua/core/navigation/app_navigator.dart';
 import 'package:flutter_new_architectua/core/navigation/app_router.gr.dart';
 import 'package:flutter_new_architectua/widget/cart/bill_widget.dart';
 import 'package:flutter_new_architectua/widget/cart/custom_check_box.dart';
+import 'package:flutter_new_architectua/widget/custom_button.dart';
 import 'package:flutter_new_architectua/widget/header_widget.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get_it/get_it.dart';
@@ -154,28 +155,9 @@ class _CheckoutPageState extends State<CheckoutPage> {
                     ],
                   ),
                 ),
-                GestureDetector(
-                  onTap: () {
-                    navigator.push(PaymentCreditCardRoute());
-                  },
-                  child: Container(
-                    width: double.infinity,
-                    height: 50,
-                    margin: const EdgeInsets.only(bottom: 20),
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                      color: AppColors.main,
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-                    child: const Text(
-                      'Check Out',
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold),
-                    ),
-                  ),
-                )
+                CustomButton(
+                    title: 'Check Out',
+                    onTap: () => navigator.push(PaymentCreditCardRoute())),
               ],
             ),
           );

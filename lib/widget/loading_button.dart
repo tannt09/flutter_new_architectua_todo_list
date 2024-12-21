@@ -59,7 +59,10 @@ class _LoadingButtonWidgetState extends State<LoadingButtonWidget> {
               )
             : Text(
                 widget.text,
-                style: const TextStyle(fontSize: 16, color: Colors.white),
+                style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold),
               ),
       ),
     );
