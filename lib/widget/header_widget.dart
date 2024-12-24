@@ -9,8 +9,8 @@ class HeaderWidget extends StatelessWidget implements PreferredSizeWidget {
   final bool isKeyboardOpen;
   const HeaderWidget(
       {super.key,
-      required this.leftIcon,
       required this.title,
+      this.leftIcon = '',
       this.rightIcon = '',
       this.isKeyboardOpen = false});
 
@@ -19,13 +19,19 @@ class HeaderWidget extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       leading: Container(
         margin: const EdgeInsets.only(left: 16),
-        child: CircleAvatar(
-          backgroundColor: AppColors.main2,
-          child: IconButton(
-            icon: SvgPicture.asset(leftIcon),
-            onPressed: () => {isKeyboardOpen ? FocusScope.of(context).unfocus() : Navigator.of(context).pop()},
-          ),
-        ),
+        child: leftIcon.isNotEmpty
+            ? CircleAvatar(
+                backgroundColor: AppColors.main2,
+                child: IconButton(
+                  icon: SvgPicture.asset(leftIcon),
+                  onPressed: () => {
+                    isKeyboardOpen
+                        ? FocusScope.of(context).unfocus()
+                        : Navigator.of(context).pop()
+                  },
+                ),
+              )
+            : const SizedBox(),
       ),
       title: Text(
         title,

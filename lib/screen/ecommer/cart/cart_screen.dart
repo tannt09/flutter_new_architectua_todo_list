@@ -13,7 +13,8 @@ import 'package:get_it/get_it.dart';
 
 @RoutePage()
 class CartPage extends StatefulWidget {
-  const CartPage({super.key});
+  final bool showBackButton;
+  const CartPage({super.key, this.showBackButton = true});
 
   @override
   State<CartPage> createState() => _CartPageState();
@@ -31,8 +32,9 @@ class _CartPageState extends State<CartPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const HeaderWidget(
-          leftIcon: 'assets/icons/left_arrow_icon.svg',
+      appBar: HeaderWidget(
+          leftIcon:
+              widget.showBackButton ? 'assets/icons/left_arrow_icon.svg' : "",
           title: 'Cart',
           rightIcon: 'assets/icons/ellipsis_icon.svg'),
       body: BlocBuilder<CartBloc, CartState>(

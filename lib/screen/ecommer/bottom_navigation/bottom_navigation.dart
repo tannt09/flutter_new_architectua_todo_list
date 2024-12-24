@@ -21,7 +21,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
   static const List<Widget> _widgetOptions = <Widget>[
     HomePage(),
     SearchPage(),
-    CartPage(),
+    CartPage(showBackButton: false),
     ProfilePage(),
   ];
 
