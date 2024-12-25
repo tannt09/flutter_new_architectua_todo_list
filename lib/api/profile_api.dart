@@ -55,7 +55,7 @@ Future<String> editUserProfile(ProfileModel newProfile) async {
 
   try {
     final response = await apiClient.sendRequest(
-        'users/getProfile?user_id=${newProfile.userId}', 'PUT',
+        'users/updateProfile?user_id=${newProfile.userId}', 'PUT',
         headers: {
           'Content-Type': 'application/json',
           'Authorization': 'Bearer $token',

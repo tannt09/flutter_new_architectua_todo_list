@@ -27,8 +27,7 @@ class ProfileBloc extends BaseBloc<ProfileEvent, ProfileState> {
 
   Future<void> _editUserProfile(
       EditUserProfileEvent event, Emitter<ProfileState> emit) async {
-    final String? result = await editUserProfile(event.newProfile);
-    print('----1111 $result');
+    await editUserProfile(event.newProfile);
     if (event.newProfile.userId != null) {
       add(GetUserProfileEvent(userId: event.newProfile.userId!));
     }

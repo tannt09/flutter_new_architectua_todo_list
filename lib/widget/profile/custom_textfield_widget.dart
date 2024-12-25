@@ -5,11 +5,13 @@ import 'package:flutter_new_architectua/constants/colors.dart';
 class CustomTextFieldWidget extends StatelessWidget {
   final TextEditingController controller;
   final String label;
+  final String initialValue;
   final bool isEnterNumberOnly;
   const CustomTextFieldWidget(
       {super.key,
       required this.controller,
       required this.label,
+      required this.initialValue,
       this.isEnterNumberOnly = false});
 
   @override
@@ -26,6 +28,9 @@ class CustomTextFieldWidget extends StatelessWidget {
           padding: const EdgeInsets.only(top: 4, bottom: 6),
           child: TextField(
             controller: controller,
+            onChanged: (value) {
+              controller.text = value;
+            },
             inputFormatters: isEnterNumberOnly
                 ? <TextInputFormatter>[FilteringTextInputFormatter.digitsOnly]
                 : null,
