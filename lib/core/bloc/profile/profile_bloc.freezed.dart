@@ -134,6 +134,128 @@ abstract class _GetUserProfileEvent implements GetUserProfileEvent {
 }
 
 /// @nodoc
+mixin _$EditUserProfileEvent {
+  ProfileModel get newProfile => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $EditUserProfileEventCopyWith<EditUserProfileEvent> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $EditUserProfileEventCopyWith<$Res> {
+  factory $EditUserProfileEventCopyWith(EditUserProfileEvent value,
+          $Res Function(EditUserProfileEvent) then) =
+      _$EditUserProfileEventCopyWithImpl<$Res, EditUserProfileEvent>;
+  @useResult
+  $Res call({ProfileModel newProfile});
+}
+
+/// @nodoc
+class _$EditUserProfileEventCopyWithImpl<$Res,
+        $Val extends EditUserProfileEvent>
+    implements $EditUserProfileEventCopyWith<$Res> {
+  _$EditUserProfileEventCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? newProfile = null,
+  }) {
+    return _then(_value.copyWith(
+      newProfile: null == newProfile
+          ? _value.newProfile
+          : newProfile // ignore: cast_nullable_to_non_nullable
+              as ProfileModel,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$EditUserProfileEventImplCopyWith<$Res>
+    implements $EditUserProfileEventCopyWith<$Res> {
+  factory _$$EditUserProfileEventImplCopyWith(_$EditUserProfileEventImpl value,
+          $Res Function(_$EditUserProfileEventImpl) then) =
+      __$$EditUserProfileEventImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({ProfileModel newProfile});
+}
+
+/// @nodoc
+class __$$EditUserProfileEventImplCopyWithImpl<$Res>
+    extends _$EditUserProfileEventCopyWithImpl<$Res, _$EditUserProfileEventImpl>
+    implements _$$EditUserProfileEventImplCopyWith<$Res> {
+  __$$EditUserProfileEventImplCopyWithImpl(_$EditUserProfileEventImpl _value,
+      $Res Function(_$EditUserProfileEventImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? newProfile = null,
+  }) {
+    return _then(_$EditUserProfileEventImpl(
+      newProfile: null == newProfile
+          ? _value.newProfile
+          : newProfile // ignore: cast_nullable_to_non_nullable
+              as ProfileModel,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$EditUserProfileEventImpl implements _EditUserProfileEvent {
+  const _$EditUserProfileEventImpl({required this.newProfile});
+
+  @override
+  final ProfileModel newProfile;
+
+  @override
+  String toString() {
+    return 'EditUserProfileEvent(newProfile: $newProfile)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$EditUserProfileEventImpl &&
+            (identical(other.newProfile, newProfile) ||
+                other.newProfile == newProfile));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, newProfile);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$EditUserProfileEventImplCopyWith<_$EditUserProfileEventImpl>
+      get copyWith =>
+          __$$EditUserProfileEventImplCopyWithImpl<_$EditUserProfileEventImpl>(
+              this, _$identity);
+}
+
+abstract class _EditUserProfileEvent implements EditUserProfileEvent {
+  const factory _EditUserProfileEvent(
+      {required final ProfileModel newProfile}) = _$EditUserProfileEventImpl;
+
+  @override
+  ProfileModel get newProfile;
+  @override
+  @JsonKey(ignore: true)
+  _$$EditUserProfileEventImplCopyWith<_$EditUserProfileEventImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$ProfileState {
   ProfileModel get profile => throw _privateConstructorUsedError;
 

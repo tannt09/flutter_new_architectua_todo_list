@@ -1,11 +1,11 @@
 import 'dart:convert';
 import 'dart:developer';
-
+import 'package:logging/logging.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+
 import 'package:flutter_new_architectua/api/config/custom_api_client.dart';
 import 'package:flutter_new_architectua/core/storage/token_secure_storage.dart';
 import 'package:flutter_new_architectua/model/profile_model.dart';
-import 'package:logging/logging.dart';
 
 final _logger = Logger('ProfileApi');
 ApiClient apiClient =
@@ -42,5 +42,31 @@ Future<ProfileModel> fetchUserProfile(String userId) async {
   } catch (e) {
     _logger.severe('Error get user profile: $e');
     return ProfileModel.initState();
+  }
+}
+
+Future<String> editUserProfile(ProfileModel newProfile) async {
+  await dotenv.load();
+
+  final updatedData = newProfile.toJson()
+    ..remove('id')
+    ..remove('userId');
+  final token = await getAccessToken();
+
+  try {
+    final response = await apiClient.sendRequest(
+        'users/getProfile?user_id=${newProfile.userId}', 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer $token',
+        },
+        body: updatedData);
+
+    return response.statusCode == 200
+        ? 'Edit User Profile Success'
+        : 'Edit User Profile Failure';
+  } catch (e) {
+    _logger.severe('Error Editing User Profile: $e');
+    return 'Edit User Profile Failure';
   }
 }

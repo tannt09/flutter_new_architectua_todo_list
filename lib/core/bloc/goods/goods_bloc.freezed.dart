@@ -712,7 +712,7 @@ class _$GoodsStateImpl implements _GoodsState {
           imageUrl: '',
           isFavorite: false,
           name: '',
-          price: 0.00,
+          price: 0.0,
           star: "0.00",
           sizeProduct: [],
           company: '')})

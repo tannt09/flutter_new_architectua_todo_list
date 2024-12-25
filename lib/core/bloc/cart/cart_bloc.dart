@@ -42,7 +42,7 @@ class CartBloc extends Bloc<CartEvent, CartState> {
 
     add(const GetCartEvent());
 
-    navigator.push(const CartRoute());
+    navigator.push(CartRoute());
   }
 
   Future<void> _changeQuantity(

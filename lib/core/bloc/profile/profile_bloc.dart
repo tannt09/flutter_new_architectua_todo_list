@@ -16,11 +16,21 @@ part 'profile_bloc.freezed.dart';
 class ProfileBloc extends BaseBloc<ProfileEvent, ProfileState> {
   ProfileBloc() : super(const ProfileState()) {
     on<GetUserProfileEvent>(_getUserProfile);
+    on<EditUserProfileEvent>(_editUserProfile);
   }
 
   Future<void> _getUserProfile(
       GetUserProfileEvent event, Emitter<ProfileState> emit) async {
     final ProfileModel result = await fetchUserProfile(event.userId);
     emitSafety(state.copyWith(profile: result));
+  }
+
+  Future<void> _editUserProfile(
+      EditUserProfileEvent event, Emitter<ProfileState> emit) async {
+    final String? result = await editUserProfile(event.newProfile);
+    print('----1111 $result');
+    if (event.newProfile.userId != null) {
+      add(GetUserProfileEvent(userId: event.newProfile.userId!));
+    }
   }
 }

@@ -69,9 +69,14 @@ abstract class $AppRouter extends _i15.RootStackRouter {
       );
     },
     CartRoute.name: (routeData) {
+      final args =
+          routeData.argsAs<CartRouteArgs>(orElse: () => const CartRouteArgs());
       return _i15.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i4.CartPage(),
+        child: _i4.CartPage(
+          key: args.key,
+          showBackButton: args.showBackButton,
+        ),
       );
     },
     CheckoutRoute.name: (routeData) {
@@ -257,16 +262,40 @@ class BottomNavigation extends _i15.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i4.CartPage]
-class CartRoute extends _i15.PageRouteInfo<void> {
-  const CartRoute({List<_i15.PageRouteInfo>? children})
-      : super(
+class CartRoute extends _i15.PageRouteInfo<CartRouteArgs> {
+  CartRoute({
+    _i16.Key? key,
+    bool showBackButton = true,
+    List<_i15.PageRouteInfo>? children,
+  }) : super(
           CartRoute.name,
+          args: CartRouteArgs(
+            key: key,
+            showBackButton: showBackButton,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'CartRoute';
 
-  static const _i15.PageInfo<void> page = _i15.PageInfo<void>(name);
+  static const _i15.PageInfo<CartRouteArgs> page =
+      _i15.PageInfo<CartRouteArgs>(name);
+}
+
+class CartRouteArgs {
+  const CartRouteArgs({
+    this.key,
+    this.showBackButton = true,
+  });
+
+  final _i16.Key? key;
+
+  final bool showBackButton;
+
+  @override
+  String toString() {
+    return 'CartRouteArgs{key: $key, showBackButton: $showBackButton}';
+  }
 }
 
 /// generated route for
