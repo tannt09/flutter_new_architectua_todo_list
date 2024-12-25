@@ -1,15 +1,15 @@
 import 'dart:developer';
-
+import 'package:get_it/get_it.dart';
+import 'package:logging/logging.dart';
 import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:flutter_new_architectua/core/bloc/auth/auth_bloc.dart';
 import 'package:flutter_new_architectua/core/navigation/app_navigator.dart';
 import 'package:flutter_new_architectua/core/navigation/app_router.gr.dart';
 import 'package:flutter_new_architectua/screen/ecommer/auth/auth_logic.dart';
-import 'package:flutter_new_architectua/widget/custom_textfield.dart';
-import 'package:get_it/get_it.dart';
-import 'package:logging/logging.dart';
+import 'package:flutter_new_architectua/widget/auth/custom_textfield.dart';
 
 @RoutePage()
 class AuthPage extends StatefulWidget {
