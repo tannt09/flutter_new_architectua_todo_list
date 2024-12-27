@@ -82,4 +82,19 @@ class ApiClient {
 
     return false;
   }
+
+  Future<http.Response> sendRequestWithFile(
+      String endpoint, String method, String path,
+      {Map<String, String>? headers}) async {
+    headers = headers ?? {};
+
+    var request = http.MultipartRequest('POST', Uri.parse('$baseUrl/$endpoint'))
+      ..headers.addAll(headers);
+
+    request.files.add(await http.MultipartFile.fromPath('image', path));
+    var streamedResponse = await request.send();
+    var result = await http.Response.fromStream(streamedResponse);
+
+    return result;
+  }
 }

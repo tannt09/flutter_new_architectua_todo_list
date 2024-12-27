@@ -256,8 +256,247 @@ abstract class _EditUserProfileEvent implements EditUserProfileEvent {
 }
 
 /// @nodoc
+mixin _$SaveAvatarPathEvent {
+  String get path => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $SaveAvatarPathEventCopyWith<SaveAvatarPathEvent> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $SaveAvatarPathEventCopyWith<$Res> {
+  factory $SaveAvatarPathEventCopyWith(
+          SaveAvatarPathEvent value, $Res Function(SaveAvatarPathEvent) then) =
+      _$SaveAvatarPathEventCopyWithImpl<$Res, SaveAvatarPathEvent>;
+  @useResult
+  $Res call({String path});
+}
+
+/// @nodoc
+class _$SaveAvatarPathEventCopyWithImpl<$Res, $Val extends SaveAvatarPathEvent>
+    implements $SaveAvatarPathEventCopyWith<$Res> {
+  _$SaveAvatarPathEventCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? path = null,
+  }) {
+    return _then(_value.copyWith(
+      path: null == path
+          ? _value.path
+          : path // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$SaveAvatarPathEventImplCopyWith<$Res>
+    implements $SaveAvatarPathEventCopyWith<$Res> {
+  factory _$$SaveAvatarPathEventImplCopyWith(_$SaveAvatarPathEventImpl value,
+          $Res Function(_$SaveAvatarPathEventImpl) then) =
+      __$$SaveAvatarPathEventImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String path});
+}
+
+/// @nodoc
+class __$$SaveAvatarPathEventImplCopyWithImpl<$Res>
+    extends _$SaveAvatarPathEventCopyWithImpl<$Res, _$SaveAvatarPathEventImpl>
+    implements _$$SaveAvatarPathEventImplCopyWith<$Res> {
+  __$$SaveAvatarPathEventImplCopyWithImpl(_$SaveAvatarPathEventImpl _value,
+      $Res Function(_$SaveAvatarPathEventImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? path = null,
+  }) {
+    return _then(_$SaveAvatarPathEventImpl(
+      path: null == path
+          ? _value.path
+          : path // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SaveAvatarPathEventImpl implements _SaveAvatarPathEvent {
+  const _$SaveAvatarPathEventImpl({required this.path});
+
+  @override
+  final String path;
+
+  @override
+  String toString() {
+    return 'SaveAvatarPathEvent(path: $path)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SaveAvatarPathEventImpl &&
+            (identical(other.path, path) || other.path == path));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, path);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SaveAvatarPathEventImplCopyWith<_$SaveAvatarPathEventImpl> get copyWith =>
+      __$$SaveAvatarPathEventImplCopyWithImpl<_$SaveAvatarPathEventImpl>(
+          this, _$identity);
+}
+
+abstract class _SaveAvatarPathEvent implements SaveAvatarPathEvent {
+  const factory _SaveAvatarPathEvent({required final String path}) =
+      _$SaveAvatarPathEventImpl;
+
+  @override
+  String get path;
+  @override
+  @JsonKey(ignore: true)
+  _$$SaveAvatarPathEventImplCopyWith<_$SaveAvatarPathEventImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+mixin _$UploadAvatarEvent {
+  String get path => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $UploadAvatarEventCopyWith<UploadAvatarEvent> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $UploadAvatarEventCopyWith<$Res> {
+  factory $UploadAvatarEventCopyWith(
+          UploadAvatarEvent value, $Res Function(UploadAvatarEvent) then) =
+      _$UploadAvatarEventCopyWithImpl<$Res, UploadAvatarEvent>;
+  @useResult
+  $Res call({String path});
+}
+
+/// @nodoc
+class _$UploadAvatarEventCopyWithImpl<$Res, $Val extends UploadAvatarEvent>
+    implements $UploadAvatarEventCopyWith<$Res> {
+  _$UploadAvatarEventCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? path = null,
+  }) {
+    return _then(_value.copyWith(
+      path: null == path
+          ? _value.path
+          : path // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$UploadAvatarEventImplCopyWith<$Res>
+    implements $UploadAvatarEventCopyWith<$Res> {
+  factory _$$UploadAvatarEventImplCopyWith(_$UploadAvatarEventImpl value,
+          $Res Function(_$UploadAvatarEventImpl) then) =
+      __$$UploadAvatarEventImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String path});
+}
+
+/// @nodoc
+class __$$UploadAvatarEventImplCopyWithImpl<$Res>
+    extends _$UploadAvatarEventCopyWithImpl<$Res, _$UploadAvatarEventImpl>
+    implements _$$UploadAvatarEventImplCopyWith<$Res> {
+  __$$UploadAvatarEventImplCopyWithImpl(_$UploadAvatarEventImpl _value,
+      $Res Function(_$UploadAvatarEventImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? path = null,
+  }) {
+    return _then(_$UploadAvatarEventImpl(
+      path: null == path
+          ? _value.path
+          : path // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$UploadAvatarEventImpl implements _UploadAvatarEvent {
+  const _$UploadAvatarEventImpl({required this.path});
+
+  @override
+  final String path;
+
+  @override
+  String toString() {
+    return 'UploadAvatarEvent(path: $path)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UploadAvatarEventImpl &&
+            (identical(other.path, path) || other.path == path));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, path);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UploadAvatarEventImplCopyWith<_$UploadAvatarEventImpl> get copyWith =>
+      __$$UploadAvatarEventImplCopyWithImpl<_$UploadAvatarEventImpl>(
+          this, _$identity);
+}
+
+abstract class _UploadAvatarEvent implements UploadAvatarEvent {
+  const factory _UploadAvatarEvent({required final String path}) =
+      _$UploadAvatarEventImpl;
+
+  @override
+  String get path;
+  @override
+  @JsonKey(ignore: true)
+  _$$UploadAvatarEventImplCopyWith<_$UploadAvatarEventImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$ProfileState {
   ProfileModel get profile => throw _privateConstructorUsedError;
+  String get avatarPath => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ProfileStateCopyWith<ProfileState> get copyWith =>
@@ -270,7 +509,7 @@ abstract class $ProfileStateCopyWith<$Res> {
           ProfileState value, $Res Function(ProfileState) then) =
       _$ProfileStateCopyWithImpl<$Res, ProfileState>;
   @useResult
-  $Res call({ProfileModel profile});
+  $Res call({ProfileModel profile, String avatarPath});
 }
 
 /// @nodoc
@@ -287,12 +526,17 @@ class _$ProfileStateCopyWithImpl<$Res, $Val extends ProfileState>
   @override
   $Res call({
     Object? profile = null,
+    Object? avatarPath = null,
   }) {
     return _then(_value.copyWith(
       profile: null == profile
           ? _value.profile
           : profile // ignore: cast_nullable_to_non_nullable
               as ProfileModel,
+      avatarPath: null == avatarPath
+          ? _value.avatarPath
+          : avatarPath // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -305,7 +549,7 @@ abstract class _$$ProfileStateImplCopyWith<$Res>
       __$$ProfileStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({ProfileModel profile});
+  $Res call({ProfileModel profile, String avatarPath});
 }
 
 /// @nodoc
@@ -320,12 +564,17 @@ class __$$ProfileStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? profile = null,
+    Object? avatarPath = null,
   }) {
     return _then(_$ProfileStateImpl(
       profile: null == profile
           ? _value.profile
           : profile // ignore: cast_nullable_to_non_nullable
               as ProfileModel,
+      avatarPath: null == avatarPath
+          ? _value.avatarPath
+          : avatarPath // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -342,15 +591,19 @@ class _$ProfileStateImpl implements _ProfileState {
           phoneNumber: '000-000-0000',
           username: '',
           gender: 0,
-          dateOfBirth: '2000-01-01')});
+          dateOfBirth: '2000-01-01'),
+      this.avatarPath = ""});
 
   @override
   @JsonKey()
   final ProfileModel profile;
+  @override
+  @JsonKey()
+  final String avatarPath;
 
   @override
   String toString() {
-    return 'ProfileState(profile: $profile)';
+    return 'ProfileState(profile: $profile, avatarPath: $avatarPath)';
   }
 
   @override
@@ -358,11 +611,13 @@ class _$ProfileStateImpl implements _ProfileState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ProfileStateImpl &&
-            (identical(other.profile, profile) || other.profile == profile));
+            (identical(other.profile, profile) || other.profile == profile) &&
+            (identical(other.avatarPath, avatarPath) ||
+                other.avatarPath == avatarPath));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, profile);
+  int get hashCode => Object.hash(runtimeType, profile, avatarPath);
 
   @JsonKey(ignore: true)
   @override
@@ -372,11 +627,14 @@ class _$ProfileStateImpl implements _ProfileState {
 }
 
 abstract class _ProfileState implements ProfileState {
-  const factory _ProfileState({final ProfileModel profile}) =
-      _$ProfileStateImpl;
+  const factory _ProfileState(
+      {final ProfileModel profile,
+      final String avatarPath}) = _$ProfileStateImpl;
 
   @override
   ProfileModel get profile;
+  @override
+  String get avatarPath;
   @override
   @JsonKey(ignore: true)
   _$$ProfileStateImplCopyWith<_$ProfileStateImpl> get copyWith =>

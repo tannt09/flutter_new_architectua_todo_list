@@ -14,5 +14,6 @@ class ProfileState extends BaseBlocState with _$ProfileState {
       dateOfBirth: '2000-01-01',
     ))
     ProfileModel profile,
+    @Default("") String avatarPath,
   }) = _ProfileState;
 }

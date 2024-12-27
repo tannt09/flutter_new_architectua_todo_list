@@ -70,3 +70,30 @@ Future<String> editUserProfile(ProfileModel newProfile) async {
     return 'Edit User Profile Failure';
   }
 }
+
+Future<UploadAvatarResponseModel> uploadAvatar(String path) async {
+  await dotenv.load();
+
+  try {
+    final response = await apiClient.sendRequestWithFile(
+      'uploads/image',
+      'POST',
+      path,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    );
+
+    final Map<String, dynamic> parsed = jsonDecode(response.body);
+    final UploadAvatarResponseModel result =
+        UploadAvatarResponseModel.fromJson(parsed);
+
+    _logger.severe('Uploaded Avatar Status: ${response.statusCode}');
+    return result;
+  } catch (e) {
+    _logger.severe('Uploading Avatar Failure: $e');
+    const UploadAvatarResponseModel defaultResult =
+        UploadAvatarResponseModel(id: 0, imageUrl: '');
+    return defaultResult;
+  }
+}

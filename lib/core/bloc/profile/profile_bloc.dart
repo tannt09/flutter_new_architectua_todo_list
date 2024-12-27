@@ -17,6 +17,8 @@ class ProfileBloc extends BaseBloc<ProfileEvent, ProfileState> {
   ProfileBloc() : super(const ProfileState()) {
     on<GetUserProfileEvent>(_getUserProfile);
     on<EditUserProfileEvent>(_editUserProfile);
+    on<SaveAvatarPathEvent>(_saveAvatarPath);
+    on<UploadAvatarEvent>(_uploadAvatar);
   }
 
   Future<void> _getUserProfile(
@@ -31,5 +33,15 @@ class ProfileBloc extends BaseBloc<ProfileEvent, ProfileState> {
     if (event.newProfile.userId != null) {
       add(GetUserProfileEvent(userId: event.newProfile.userId!));
     }
+  }
+
+  Future<void> _saveAvatarPath(
+      SaveAvatarPathEvent event, Emitter<ProfileState> emit) async {
+    emitSafety(state.copyWith(avatarPath: event.path));
+  }
+
+  Future<void> _uploadAvatar(
+      UploadAvatarEvent event, Emitter<ProfileState> emit) async {
+    final UploadAvatarResponseModel result = await uploadAvatar(event.path);
   }
 }

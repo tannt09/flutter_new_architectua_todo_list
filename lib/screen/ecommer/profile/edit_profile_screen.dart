@@ -82,6 +82,9 @@ class _EditProfilePageState extends State<EditProfilePage> {
                   region: _region);
 
               blocProfile.add(EditUserProfileEvent(newProfile: newProfile));
+              if (state.avatarPath.isNotEmpty) {
+                blocProfile.add(UploadAvatarEvent(path: state.avatarPath));
+              }
             }
 
             return GestureDetector(

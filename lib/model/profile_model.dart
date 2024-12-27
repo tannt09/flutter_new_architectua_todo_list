@@ -60,3 +60,15 @@ class ProfileModel {
         region: '');
   }
 }
+
+class UploadAvatarResponseModel {
+  final int? id;
+  final String? imageUrl;
+
+  const UploadAvatarResponseModel({this.id, this.imageUrl});
+
+  factory UploadAvatarResponseModel.fromJson(Map<String, dynamic> json) {
+    return UploadAvatarResponseModel(
+        id: json['id'], imageUrl: json['image_url']);
+  }
+}
