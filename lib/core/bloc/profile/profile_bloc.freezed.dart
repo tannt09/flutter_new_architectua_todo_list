@@ -377,6 +377,7 @@ abstract class _SaveAvatarPathEvent implements SaveAvatarPathEvent {
 /// @nodoc
 mixin _$UploadAvatarEvent {
   String get path => throw _privateConstructorUsedError;
+  String? get userId => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $UploadAvatarEventCopyWith<UploadAvatarEvent> get copyWith =>
@@ -389,7 +390,7 @@ abstract class $UploadAvatarEventCopyWith<$Res> {
           UploadAvatarEvent value, $Res Function(UploadAvatarEvent) then) =
       _$UploadAvatarEventCopyWithImpl<$Res, UploadAvatarEvent>;
   @useResult
-  $Res call({String path});
+  $Res call({String path, String? userId});
 }
 
 /// @nodoc
@@ -406,12 +407,17 @@ class _$UploadAvatarEventCopyWithImpl<$Res, $Val extends UploadAvatarEvent>
   @override
   $Res call({
     Object? path = null,
+    Object? userId = freezed,
   }) {
     return _then(_value.copyWith(
       path: null == path
           ? _value.path
           : path // ignore: cast_nullable_to_non_nullable
               as String,
+      userId: freezed == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -424,7 +430,7 @@ abstract class _$$UploadAvatarEventImplCopyWith<$Res>
       __$$UploadAvatarEventImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String path});
+  $Res call({String path, String? userId});
 }
 
 /// @nodoc
@@ -439,12 +445,17 @@ class __$$UploadAvatarEventImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? path = null,
+    Object? userId = freezed,
   }) {
     return _then(_$UploadAvatarEventImpl(
       path: null == path
           ? _value.path
           : path // ignore: cast_nullable_to_non_nullable
               as String,
+      userId: freezed == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -452,14 +463,16 @@ class __$$UploadAvatarEventImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$UploadAvatarEventImpl implements _UploadAvatarEvent {
-  const _$UploadAvatarEventImpl({required this.path});
+  const _$UploadAvatarEventImpl({required this.path, required this.userId});
 
   @override
   final String path;
+  @override
+  final String? userId;
 
   @override
   String toString() {
-    return 'UploadAvatarEvent(path: $path)';
+    return 'UploadAvatarEvent(path: $path, userId: $userId)';
   }
 
   @override
@@ -467,11 +480,12 @@ class _$UploadAvatarEventImpl implements _UploadAvatarEvent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$UploadAvatarEventImpl &&
-            (identical(other.path, path) || other.path == path));
+            (identical(other.path, path) || other.path == path) &&
+            (identical(other.userId, userId) || other.userId == userId));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, path);
+  int get hashCode => Object.hash(runtimeType, path, userId);
 
   @JsonKey(ignore: true)
   @override
@@ -482,11 +496,14 @@ class _$UploadAvatarEventImpl implements _UploadAvatarEvent {
 }
 
 abstract class _UploadAvatarEvent implements UploadAvatarEvent {
-  const factory _UploadAvatarEvent({required final String path}) =
-      _$UploadAvatarEventImpl;
+  const factory _UploadAvatarEvent(
+      {required final String path,
+      required final String? userId}) = _$UploadAvatarEventImpl;
 
   @override
   String get path;
+  @override
+  String? get userId;
   @override
   @JsonKey(ignore: true)
   _$$UploadAvatarEventImplCopyWith<_$UploadAvatarEventImpl> get copyWith =>

@@ -71,6 +71,30 @@ Future<String> editUserProfile(ProfileModel newProfile) async {
   }
 }
 
+Future<String> editAvatarOfUserProfile(
+    String newAvatarUrl, String userId) async {
+  await dotenv.load();
+
+  final token = await getAccessToken();
+
+  try {
+    final response = await apiClient
+        .sendRequest('users/updateProfile?user_id=$userId', 'PUT', headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer $token',
+    }, body: {
+      'avatar_url': newAvatarUrl
+    });
+
+    return response.statusCode == 200
+        ? 'Edit Avatar URL Success'
+        : 'Edit Avatar URL Failure';
+  } catch (e) {
+    _logger.severe('Error Avatar URL: $e');
+    return 'Edit Avatar URL Failure';
+  }
+}
+
 Future<UploadAvatarResponseModel> uploadAvatar(String path) async {
   await dotenv.load();
 

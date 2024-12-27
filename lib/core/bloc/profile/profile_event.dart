@@ -24,5 +24,5 @@ class SaveAvatarPathEvent extends ProfileEvent with _$SaveAvatarPathEvent {
 
 @freezed
 class UploadAvatarEvent extends ProfileEvent with _$UploadAvatarEvent {
-  const factory UploadAvatarEvent({required String path}) = _UploadAvatarEvent;
+  const factory UploadAvatarEvent({required String path, required String? userId}) = _UploadAvatarEvent;
 }

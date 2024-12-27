@@ -43,5 +43,9 @@ class ProfileBloc extends BaseBloc<ProfileEvent, ProfileState> {
   Future<void> _uploadAvatar(
       UploadAvatarEvent event, Emitter<ProfileState> emit) async {
     final UploadAvatarResponseModel result = await uploadAvatar(event.path);
+    if (event.userId != null && result.imageUrl != null) {
+      await editAvatarOfUserProfile(result.imageUrl!, event.userId!);
+      add(GetUserProfileEvent(userId: event.userId!));
+    }
   }
 }

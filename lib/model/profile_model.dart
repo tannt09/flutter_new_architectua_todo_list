@@ -8,6 +8,7 @@ class ProfileModel {
   final int? gender;
   final String? dateOfBirth;
   final String? region;
+  final String avatarUrl;
 
   const ProfileModel(
       {this.id,
@@ -18,7 +19,8 @@ class ProfileModel {
       this.username,
       this.gender,
       this.dateOfBirth,
-      this.region});
+      this.region,
+      this.avatarUrl = ''});
 
   factory ProfileModel.fromJson(Map<String, dynamic> json) {
     return ProfileModel(
@@ -30,7 +32,8 @@ class ProfileModel {
         username: json['username'],
         gender: json['gender'],
         dateOfBirth: json['date_of_birth'],
-        region: json['region']);
+        region: json['region'],
+        avatarUrl: json['avatar_url'] ?? '');
   }
 
   Map<String, dynamic> toJson() {
@@ -43,7 +46,8 @@ class ProfileModel {
       'username': username,
       'gender': gender,
       'date_of_birth': dateOfBirth,
-      'region': region
+      'region': region,
+      'avatar_url': avatarUrl,
     };
   }
 
@@ -57,7 +61,8 @@ class ProfileModel {
         username: '',
         gender: 0,
         dateOfBirth: '2000-01-01',
-        region: '');
+        region: '',
+        avatarUrl: '');
   }
 }
 

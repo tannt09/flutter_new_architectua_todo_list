@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:country_picker/country_picker.dart';
 
 import 'package:flutter_new_architectua/core/bloc/profile/profile_bloc.dart';
+import 'package:flutter_new_architectua/utils/change_image_link.dart';
 import 'package:flutter_new_architectua/widget/header_widget.dart';
 import 'package:flutter_new_architectua/main.dart';
 import 'package:flutter_new_architectua/model/profile_model.dart';
@@ -83,7 +84,8 @@ class _EditProfilePageState extends State<EditProfilePage> {
 
               blocProfile.add(EditUserProfileEvent(newProfile: newProfile));
               if (state.avatarPath.isNotEmpty) {
-                blocProfile.add(UploadAvatarEvent(path: state.avatarPath));
+                blocProfile.add(UploadAvatarEvent(
+                    path: state.avatarPath, userId: state.profile.userId));
               }
             }
 
@@ -97,8 +99,11 @@ class _EditProfilePageState extends State<EditProfilePage> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const EditAvatarWidget(
-                            avatarUrl: 'https://picsum.photos/id/237/200/300',
+                          EditAvatarWidget(
+                            avatarUrl: changeImageLink(state
+                                    .profile.avatarUrl.isNotEmpty
+                                ? state.profile.avatarUrl
+                                : 'http://localhost:3000/images/1733114777827-default.png'),
                           ),
                           const SizedBox(height: 20),
                           CustomTextFieldWidget(
