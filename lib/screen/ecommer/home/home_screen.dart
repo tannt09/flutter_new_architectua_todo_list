@@ -34,64 +34,68 @@ class _HomePageState extends State<HomePage> {
   }
 
   Future<void> getUserProfile() async {
-    blocProfile.add(GetUserProfileEvent(
-        userId: await storage.read(key: 'user_id') ?? ''));
+    blocProfile.add(
+        GetUserProfileEvent(userId: await storage.read(key: 'user_id') ?? ''));
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          toolbarHeight: 70,
-          title: const UserInformationWidget(),
-        ),
-        body: GestureDetector(onTap: () {
-          FocusScope.of(context).requestFocus(FocusNode());
-        }, child: BlocBuilder<GoodsBloc, GoodsState>(
-          builder: (context, state) {
-            Future<void> changeFavoriteState(GoodsModel item) async {
-              final id = item.productId;
-              if (id != null) {
-                blocGoods.add(ChangeFavoriteStateEvent(item: item));
-                blocGoods.add(const GetFeaturedGoodsEvent());
-                blocGoods.add(const GetMostPopularGoodsEvent());
+    return BlocBuilder<ProfileBloc, ProfileState>(builder: (context, state) {
+      return Scaffold(
+          appBar: AppBar(
+            toolbarHeight: 70,
+            title: UserInformationWidget(
+              profile: state.profile,
+            ),
+          ),
+          body: GestureDetector(onTap: () {
+            FocusScope.of(context).requestFocus(FocusNode());
+          }, child: BlocBuilder<GoodsBloc, GoodsState>(
+            builder: (context, state) {
+              Future<void> changeFavoriteState(GoodsModel item) async {
+                final id = item.productId;
+                if (id != null) {
+                  blocGoods.add(ChangeFavoriteStateEvent(item: item));
+                  blocGoods.add(const GetFeaturedGoodsEvent());
+                  blocGoods.add(const GetMostPopularGoodsEvent());
+                }
               }
-            }
 
-            return SingleChildScrollView(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: Container(
-                  decoration: const BoxDecoration(),
-                  child: Column(
-                    children: <Widget>[
-                      SearchWidget(controller: searchController),
-                      const CarouselSliderWidget(),
-                      ListProductWidget(
-                        title: 'Featured',
-                        goods: state.featuredGoodsList,
-                        onTap: () {
-                          navigator.push(GoodsRoute());
-                        },
-                        changeFavoriteState: changeFavoriteState,
-                      ),
-                      ListProductWidget(
-                        title: 'Most Popular',
-                        goods: state.mostPopularGoodsList,
-                        onTap: () {
-                          navigator.push(GoodsRoute());
-                        },
-                        changeFavoriteState: changeFavoriteState,
-                      ),
-                      const SizedBox(
-                        height: 30,
-                      )
-                    ],
+              return SingleChildScrollView(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: Container(
+                    decoration: const BoxDecoration(),
+                    child: Column(
+                      children: <Widget>[
+                        SearchWidget(controller: searchController),
+                        const CarouselSliderWidget(),
+                        ListProductWidget(
+                          title: 'Featured',
+                          goods: state.featuredGoodsList,
+                          onTap: () {
+                            navigator.push(GoodsRoute());
+                          },
+                          changeFavoriteState: changeFavoriteState,
+                        ),
+                        ListProductWidget(
+                          title: 'Most Popular',
+                          goods: state.mostPopularGoodsList,
+                          onTap: () {
+                            navigator.push(GoodsRoute());
+                          },
+                          changeFavoriteState: changeFavoriteState,
+                        ),
+                        const SizedBox(
+                          height: 30,
+                        )
+                      ],
+                    ),
                   ),
                 ),
-              ),
-            );
-          },
-        )));
+              );
+            },
+          )));
+    });
   }
 }

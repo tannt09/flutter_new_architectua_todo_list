@@ -109,7 +109,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                           CustomTextFieldWidget(
                               controller: _nameController,
                               label: 'Name',
-                              initialValue: state.profile.fullName ?? ''),
+                              initialValue: state.profile.fullName),
                           CustomTextFieldWidget(
                               controller: _emailController,
                               label: 'Email',

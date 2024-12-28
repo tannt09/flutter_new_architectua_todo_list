@@ -1,7 +1,7 @@
 class ProfileModel {
   final int? id;
   final String? userId;
-  final String? fullName;
+  final String fullName;
   final String? email;
   final String? phoneNumber;
   final String? username;
@@ -13,7 +13,7 @@ class ProfileModel {
   const ProfileModel(
       {this.id,
       this.userId,
-      this.fullName,
+      this.fullName = 'NO NAME',
       this.email,
       this.phoneNumber,
       this.username,
@@ -26,7 +26,7 @@ class ProfileModel {
     return ProfileModel(
         id: json['id'],
         userId: json['user_id'],
-        fullName: json['full_name'],
+        fullName: json['full_name'] ?? 'NO NAME',
         email: json['email'],
         phoneNumber: json['phone_number'],
         username: json['username'],
@@ -55,7 +55,7 @@ class ProfileModel {
     return const ProfileModel(
         id: 0,
         userId: '',
-        fullName: '',
+        fullName: 'NO NAME',
         email: '',
         phoneNumber: '000-000-0000',
         username: '',

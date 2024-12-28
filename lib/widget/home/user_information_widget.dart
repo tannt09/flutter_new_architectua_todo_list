@@ -1,29 +1,35 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_new_architectua/constants/colors.dart';
+import 'package:flutter_new_architectua/model/profile_model.dart';
+import 'package:flutter_new_architectua/utils/change_image_link.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class UserInformationWidget extends StatelessWidget {
-  const UserInformationWidget({super.key});
+  final ProfileModel profile;
+  const UserInformationWidget({super.key, required this.profile});
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: <Widget>[
-        const Padding(
-          padding: EdgeInsets.only(right: 10),
+        Padding(
+          padding: const EdgeInsets.only(right: 10),
           child: CircleAvatar(
             radius: 26,
-            backgroundImage:
-                NetworkImage('https://picsum.photos/id/237/200/300'),
+            backgroundImage: NetworkImage(changeImageLink(profile
+                        .avatarUrl.isNotEmpty
+                    ? profile.avatarUrl
+                    : 'http://localhost:3000/images/1733114777827-default.png'))
+                as ImageProvider,
           ),
         ),
-        const Column(
+        Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Text('Hello!', style: TextStyle(fontSize: 12)),
-            Text('John William',
-                style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold)),
+            const Text('Hello!', style: TextStyle(fontSize: 12)),
+            Text(profile.fullName,
+                style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold)),
           ],
         ),
         const Expanded(child: SizedBox()),
