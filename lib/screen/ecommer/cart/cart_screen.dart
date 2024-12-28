@@ -1,6 +1,7 @@
 import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_new_architectua/constants/colors.dart';
 import 'package:flutter_new_architectua/core/bloc/cart/cart_bloc.dart';
 import 'package:flutter_new_architectua/core/navigation/app_navigator.dart';
 import 'package:flutter_new_architectua/core/navigation/app_router.gr.dart';
@@ -54,14 +55,25 @@ class _CartPageState extends State<CartPage> {
             child: Column(
               children: [
                 Flexible(
-                  flex: 4,
-                  child: ListView.builder(
-                      itemCount: state.cart.length,
-                      itemBuilder: (context, index) {
-                        final item = state.cart[index];
-                        return CartItemWidget(item: item);
-                      }),
-                ),
+                    flex: 4,
+                    child: state.cart.isNotEmpty
+                        ? ListView.builder(
+                            itemCount: state.cart.length,
+                            itemBuilder: (context, index) {
+                              final item = state.cart[index];
+                              return CartItemWidget(item: item);
+                            })
+                        : Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Image.asset('assets/images/shopping_cart.png', fit: BoxFit.cover, color: AppColors.grey, height: 100,),
+                              const Text(
+                                'Cart is empty',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 18),
+                              ),
+                            ],
+                          )),
                 BillWidget(
                     totalPrice: totalPrice, cartLength: state.cart.length),
                 CustomButton(

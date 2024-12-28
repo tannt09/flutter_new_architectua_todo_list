@@ -115,6 +115,7 @@ flutter:
 
   assets:
     - assets/images/splash.png
+    - assets/images/shopping_cart.png
     - assets/icons/home_icon.svg
     - assets/icons/search_icon.svg
     - assets/icons/cart_icon.svg

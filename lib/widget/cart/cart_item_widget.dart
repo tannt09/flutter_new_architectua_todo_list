@@ -24,7 +24,7 @@ class CartItemWidget extends StatelessWidget {
         children: [
           Container(
             margin: const EdgeInsets.only(right: 10),
-            width: 126,
+            width: 100,
             decoration: BoxDecoration(
               borderRadius: const BorderRadius.all(
                 Radius.circular(10),
@@ -48,6 +48,8 @@ class CartItemWidget extends StatelessWidget {
                   textAlign: TextAlign.start,
                   style: const TextStyle(
                       fontSize: 16, fontWeight: FontWeight.bold),
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 1,
                 ),
                 Text(
                   item.company,
@@ -80,7 +82,7 @@ class CartItemWidget extends StatelessWidget {
                 children: [
                   GestureDetector(
                     onTap: () {
-                      if (item.quantity > 0) {
+                      if (item.quantity > 1) {
                         blocCart.add(ChangeQuantityEvent(
                             newQuantity: item.quantity - 1, id: item.id ?? 0));
                       }
