@@ -1,4 +1,6 @@
 import 'dart:developer';
+import 'package:flutter_new_architectua/constants/colors.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get_it/get_it.dart';
 import 'package:logging/logging.dart';
 import 'package:auto_route/annotations.dart';
@@ -110,6 +112,36 @@ class _AuthState extends State<AuthPage> {
                               }
                             },
                             child: Text(widget.title),
+                          ),
+                          const SizedBox(height: 16),
+                          GestureDetector(
+                            onTap: () {
+                              print('----1111');
+                            },
+                            child: Container(
+                              width: 220,
+                              padding: const EdgeInsets.only(
+                                  left: 10, top: 12, bottom: 12),
+                              decoration: BoxDecoration(
+                                  border: Border.all(
+                                      color: AppColors.black, width: 1),
+                                  borderRadius: BorderRadius.circular(4),
+                                  color: Colors.white),
+                              child: Row(
+                                children: [
+                                  SvgPicture.asset(
+                                      'assets/icons/google_icon.svg',
+                                      width: 26),
+                                  const SizedBox(width: 24),
+                                  const Text(
+                                    "Sign in with Google",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 14),
+                                  )
+                                ],
+                              ),
+                            ),
                           ),
                           const SizedBox(height: 16),
                           if (widget.title == "Login")

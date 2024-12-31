@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -5,6 +6,7 @@ import 'package:flutter_new_architectua/core/bloc/profile/profile_bloc.dart';
 import 'package:flutter_new_architectua/main.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:logging/logging.dart';
 
 class EditAvatarWidget extends StatefulWidget {
   final String avatarUrl;
@@ -18,6 +20,17 @@ class _EditAvatarWidgetState extends State<EditAvatarWidget> {
   XFile? _mediaFile;
 
   final ImagePicker _picker = ImagePicker();
+  final Logger _logger = Logger('CartPage');
+
+  @override
+  void initState() {
+    super.initState();
+    Logger.root.level = Level.ALL; // Set the root logger level
+    Logger.root.onRecord.listen((record) {
+      // You can customize the log output format here
+      log('${record.level.name}: ${record.time}: ${record.message}');
+    });
+  }
 
   void _setImageFileFromFile(XFile? value) {
     if (value == null) return;
@@ -36,7 +49,7 @@ class _EditAvatarWidgetState extends State<EditAvatarWidget> {
           _setImageFileFromFile(pickedFile);
         });
       } catch (e) {
-        print('----Error $e');
+        _logger.severe('----Error $e');
       }
     }
   }

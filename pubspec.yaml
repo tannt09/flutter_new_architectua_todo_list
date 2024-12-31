@@ -57,6 +57,11 @@ dependencies:
   carousel_slider: ^5.0.0
   country_picker: ^2.0.27
   image_picker: ^1.1.2
+  
+  # Add firebase
+  firebase_core: ^2.14.0
+  firebase_auth: ^4.8.0
+  google_sign_in: ^6.1.0
 
 
 dev_dependencies:
@@ -149,6 +154,7 @@ flutter:
     - assets/icons/language_icon.svg
     - assets/icons/privacy_icon.svg
     - assets/icons/camera_icon.svg
+    - assets/icons/google_icon.svg
     - .env
   #
   # For details regarding fonts from package dependencies,

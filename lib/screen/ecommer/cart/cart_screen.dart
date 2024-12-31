@@ -1,6 +1,9 @@
+
+import 'package:get_it/get_it.dart';
 import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:flutter_new_architectua/constants/colors.dart';
 import 'package:flutter_new_architectua/core/bloc/cart/cart_bloc.dart';
 import 'package:flutter_new_architectua/core/navigation/app_navigator.dart';
@@ -10,7 +13,6 @@ import 'package:flutter_new_architectua/widget/cart/bill_widget.dart';
 import 'package:flutter_new_architectua/widget/cart/cart_item_widget.dart';
 import 'package:flutter_new_architectua/widget/custom_button.dart';
 import 'package:flutter_new_architectua/widget/header_widget.dart';
-import 'package:get_it/get_it.dart';
 
 @RoutePage()
 class CartPage extends StatefulWidget {
@@ -66,7 +68,12 @@ class _CartPageState extends State<CartPage> {
                         : Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Image.asset('assets/images/shopping_cart.png', fit: BoxFit.cover, color: AppColors.grey, height: 100,),
+                              Image.asset(
+                                'assets/images/shopping_cart.png',
+                                fit: BoxFit.cover,
+                                color: AppColors.grey,
+                                height: 100,
+                              ),
                               const Text(
                                 'Cart is empty',
                                 style: TextStyle(
