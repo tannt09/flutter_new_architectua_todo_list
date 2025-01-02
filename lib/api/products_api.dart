@@ -18,8 +18,6 @@ Future<List<Product>> fetchAllProduct() async {
     log('${record.level.name}: ${record.time}: ${record.message}');
   });
 
-  await dotenv.load();
-
   final url = Uri.parse('${dotenv.env['BASE_URL']}/products/getAll');
   final token = await getAccessToken(); // Use the new function to get the token
 
@@ -46,8 +44,6 @@ Future<List<Product>> fetchAllProduct() async {
 }
 
 Future<String> fetchEditProduct(Product product) async {
-  await dotenv.load();
-
   final updatedData = product.toJson()..remove('id');
   final token = await getAccessToken(); // Use the new function to get the token
 

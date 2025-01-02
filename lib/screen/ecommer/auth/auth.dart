@@ -115,8 +115,14 @@ class _AuthState extends State<AuthPage> {
                           ),
                           const SizedBox(height: 16),
                           GestureDetector(
-                            onTap: () {
-                              print('----1111');
+                            onTap: () async {
+                              final user =
+                                  await AuthLogic.handleLoginWithGoogle();
+                              if (user != null) {
+                                ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                                    content: Text(
+                                        'Login Success: ${user.displayName}')));
+                              }
                             },
                             child: Container(
                               width: 220,

@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
 import 'package:flutter_new_architectua/core/bloc/auth/auth_bloc.dart';
 import 'package:flutter_new_architectua/core/navigation/app_navigator.dart';
 import 'package:flutter_new_architectua/core/navigation/app_router.gr.dart';
-import 'package:get_it/get_it.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class AuthLogic {
   late final AppNavigator navigator = GetIt.instance.get<AppNavigator>();
@@ -38,6 +41,35 @@ class AuthLogic {
         password,
         email,
       );
+    }
+  }
+
+  static Future<User?> handleLoginWithGoogle() async {
+    final FirebaseAuth _auth = FirebaseAuth.instance;
+    final GoogleSignIn _googleSignIn = GoogleSignIn();
+
+    try {
+      // Login with Google
+      final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
+      if (googleUser == null) return null;
+
+      final GoogleSignInAuthentication googleAuth =
+          await googleUser.authentication;
+
+      // Create credential from Google
+      final AuthCredential credential = GoogleAuthProvider.credential(
+        accessToken: googleAuth.accessToken,
+        idToken: googleAuth.idToken,
+      );
+
+      // Login Firebase
+      final UserCredential userCredential =
+          await _auth.signInWithCredential(credential);
+
+      return userCredential.user;
+    } catch (e) {
+      print("----Login fail: $e");
+      return null;
     }
   }
 

@@ -16,8 +16,6 @@ Future<AuthModel> registerUser(
     log('${record.level.name}: ${record.time}: ${record.message}');
   });
 
-  await dotenv.load();
-
   final url = Uri.parse('${dotenv.env['BASE_URL']}/auth/register');
   final data = {'username': username, 'password': password, "email": email};
 
@@ -41,8 +39,6 @@ Future<AuthModel> loginUser(String username, String password) async {
   Logger.root.onRecord.listen((record) {
     log('${record.level.name}: ${record.time}: ${record.message}');
   });
-
-  await dotenv.load();
 
   final url = Uri.parse('${dotenv.env['BASE_URL']}/auth/login');
   final data = {'username': username, 'password': password};

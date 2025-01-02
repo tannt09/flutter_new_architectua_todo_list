@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_new_architectua/firebase_options.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:path/path.dart';
 import 'package:get_it/get_it.dart';
@@ -8,6 +8,7 @@ import 'package:sqflite/sqflite.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:firebase_core/firebase_core.dart';
 
+import 'package:flutter_new_architectua/firebase_options.dart';
 import 'package:flutter_new_architectua/core/bloc/cart/cart_bloc.dart';
 import 'package:flutter_new_architectua/core/bloc/goods/goods_bloc.dart';
 import 'package:flutter_new_architectua/core/bloc/profile/profile_bloc.dart';
@@ -22,7 +23,7 @@ final ProfileBloc blocProfile = GetIt.instance.get<ProfileBloc>();
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   MobileAds.instance.initialize();
-
+  await dotenv.load();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
@@ -49,7 +50,7 @@ Future<void> main() async {
   // Stripe.merchantIdentifier = 'merchant.flutter.stripe.test';
   // Stripe.urlScheme = 'flutterstripe';
   await Stripe.instance.applySettings();
-  
+
   configureInjection();
   runApp(
     MultiBlocProvider(

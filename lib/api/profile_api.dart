@@ -17,8 +17,6 @@ Future<ProfileModel> fetchUserProfile(String userId) async {
     log('${record.level.name}: ${record.time}: ${record.message}');
   });
 
-  await dotenv.load();
-
   final token = await getAccessToken();
 
   try {
@@ -46,8 +44,6 @@ Future<ProfileModel> fetchUserProfile(String userId) async {
 }
 
 Future<String> editUserProfile(ProfileModel newProfile) async {
-  await dotenv.load();
-
   final updatedData = newProfile.toJson()
     ..remove('id')
     ..remove('userId');
@@ -73,8 +69,6 @@ Future<String> editUserProfile(ProfileModel newProfile) async {
 
 Future<String> editAvatarOfUserProfile(
     String newAvatarUrl, String userId) async {
-  await dotenv.load();
-
   final token = await getAccessToken();
 
   try {
@@ -96,8 +90,6 @@ Future<String> editAvatarOfUserProfile(
 }
 
 Future<UploadAvatarResponseModel> uploadAvatar(String path) async {
-  await dotenv.load();
-
   try {
     final response = await apiClient.sendRequestWithFile(
       'uploads/image',
