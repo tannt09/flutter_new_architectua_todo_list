@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_new_architectua/core/bloc/cart/cart_bloc.dart';
-import 'package:flutter_new_architectua/core/bloc/goods/goods_bloc.dart';
-import 'package:flutter_new_architectua/core/bloc/profile/profile_bloc.dart';
-import 'package:flutter_new_architectua/core/navigation/app_router.dart';
-import 'package:flutter_new_architectua/core/storage/config_storage.dart';
+import 'package:flutter_new_architectua/firebase_options.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:path/path.dart';
 import 'package:get_it/get_it.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'package:firebase_core/firebase_core.dart';
+
+import 'package:flutter_new_architectua/core/bloc/cart/cart_bloc.dart';
+import 'package:flutter_new_architectua/core/bloc/goods/goods_bloc.dart';
+import 'package:flutter_new_architectua/core/bloc/profile/profile_bloc.dart';
+import 'package:flutter_new_architectua/core/navigation/app_router.dart';
+import 'package:flutter_new_architectua/core/storage/config_storage.dart';
 
 late Database database;
 final GoodsBloc blocGoods = GetIt.instance.get<GoodsBloc>();
@@ -19,6 +22,10 @@ final ProfileBloc blocProfile = GetIt.instance.get<ProfileBloc>();
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   MobileAds.instance.initialize();
+
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
 
   // Create table users
   // database =
@@ -37,10 +44,12 @@ Future<void> main() async {
         'CREATE TABLE goods(id INTEGER PRIMARY KEY, product_id TEXT NOT NULL, image_url TEXT, name TEXT NOT NULL, price TEXT, quantity INTEGER, company TEXT)');
   }, version: 1);
 
+  // Setting stripe
   Stripe.publishableKey = "pk_test_TYooMQauvdEDq54NiTphI7jx";
   // Stripe.merchantIdentifier = 'merchant.flutter.stripe.test';
   // Stripe.urlScheme = 'flutterstripe';
   await Stripe.instance.applySettings();
+  
   configureInjection();
   runApp(
     MultiBlocProvider(
