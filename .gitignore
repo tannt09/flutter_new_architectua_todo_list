@@ -48,3 +48,5 @@ google-services.json
 
 # Environment variables
 .env
+
+/lib/firebase_options.dart

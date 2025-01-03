@@ -66,7 +66,7 @@ class ApiClient {
       var response = await http.post(
         Uri.parse('$baseUrl/auth/refresh'),
         headers: {'Content-Type': 'application/json'},
-        body: jsonEncode({'refreshToken': refreshToken}),
+        body: jsonEncode({'refresh_token': refreshToken}),
       );
 
       if (response.statusCode == 200) {

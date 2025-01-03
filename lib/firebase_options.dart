@@ -3,7 +3,6 @@
 import 'package:firebase_core/firebase_core.dart' show FirebaseOptions;
 import 'package:flutter/foundation.dart'
     show defaultTargetPlatform, kIsWeb, TargetPlatform;
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 /// Default [FirebaseOptions] for use with your Firebase apps.
 ///
@@ -53,12 +52,12 @@ class DefaultFirebaseOptions {
     }
   }
 
-  static FirebaseOptions android = FirebaseOptions(
-    apiKey: '${dotenv.env['FIREBASE_API_KEY']}',
-    appId: '${dotenv.env['FIREBASE_APP_ID']}',
-    messagingSenderId: '${dotenv.env['FIREBASE_MESSAGING_SENDER_ID']}',
+  static const FirebaseOptions android = FirebaseOptions(
+    apiKey: 'AIzaSyCsEkXnIsk5rk6QWra2QYHnFd-fA-pQSjQ',
+    appId: '1:145527598412:android:06b517e83c0fb37302f3e9',
+    messagingSenderId: '145527598412',
     projectId: 'appflutter-ffa11',
-    databaseURL: '${dotenv.env['FIREBASE_DB_URL']}',
-    storageBucket: '${dotenv.env['FIREBASE_STORAGE_BUCKET']}',
+    databaseURL: 'https://appflutter-ffa11-default-rtdb.firebaseio.com',
+    storageBucket: 'appflutter-ffa11.firebasestorage.app',
   );
 }

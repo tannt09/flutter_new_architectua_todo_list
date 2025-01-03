@@ -43,7 +43,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
           builder: (context, state) {
             if (isInitialized) {
               _genderIndex = state.profile.gender ?? 0;
-              _selectedDate = DateTime.parse(state.profile.dateOfBirth ?? '');
+              _selectedDate = DateTime.parse(state.profile.dateOfBirth ?? '1970-01-01');
               _region = state.profile.region ?? '';
               _nameController =
                   TextEditingController(text: state.profile.fullName);
