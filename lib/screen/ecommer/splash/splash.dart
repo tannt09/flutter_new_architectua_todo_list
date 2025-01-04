@@ -34,7 +34,7 @@ class _SplashPageState extends State<SplashPage>
   Future<void> handleLogin() async {
     final [username, password] = await getAccount();
     if (username != null && password != null) {
-      bloc.add(LoginUser(username: username, password: password));
+      bloc.add(LoginUserEvent(username: username, password: password));
     } else {
       navigator.replace(AuthRoute(title: 'Login'));
     }

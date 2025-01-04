@@ -97,17 +97,21 @@ class _ProfilePageState extends State<ProfilePage> {
                   isShowArrow: false),
               const Expanded(child: SizedBox()),
               GestureDetector(
-                onTap: () {
-                  handleLogout();
-                },
-                child: const Text(
-                  'Sign Out',
-                  style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                      color: AppColors.orange2),
-                ),
-              ),
+                  onTap: () {
+                    handleLogout();
+                  },
+                  child: Container(
+                    height: 50,
+                    margin: const EdgeInsets.symmetric(horizontal: 100),
+                    alignment: Alignment.center,
+                    child: const Text(
+                      'Sign Out',
+                      style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          color: AppColors.orange2),
+                    ),
+                  )),
               const SizedBox(
                 height: 40,
               ),

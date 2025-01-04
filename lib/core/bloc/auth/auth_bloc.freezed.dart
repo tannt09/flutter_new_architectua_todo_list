@@ -15,27 +15,28 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$LoginUser {
+mixin _$LoginUserEvent {
   String get username => throw _privateConstructorUsedError;
   String get password => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $LoginUserCopyWith<LoginUser> get copyWith =>
+  $LoginUserEventCopyWith<LoginUserEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $LoginUserCopyWith<$Res> {
-  factory $LoginUserCopyWith(LoginUser value, $Res Function(LoginUser) then) =
-      _$LoginUserCopyWithImpl<$Res, LoginUser>;
+abstract class $LoginUserEventCopyWith<$Res> {
+  factory $LoginUserEventCopyWith(
+          LoginUserEvent value, $Res Function(LoginUserEvent) then) =
+      _$LoginUserEventCopyWithImpl<$Res, LoginUserEvent>;
   @useResult
   $Res call({String username, String password});
 }
 
 /// @nodoc
-class _$LoginUserCopyWithImpl<$Res, $Val extends LoginUser>
-    implements $LoginUserCopyWith<$Res> {
-  _$LoginUserCopyWithImpl(this._value, this._then);
+class _$LoginUserEventCopyWithImpl<$Res, $Val extends LoginUserEvent>
+    implements $LoginUserEventCopyWith<$Res> {
+  _$LoginUserEventCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -62,22 +63,22 @@ class _$LoginUserCopyWithImpl<$Res, $Val extends LoginUser>
 }
 
 /// @nodoc
-abstract class _$$LoginUserImplCopyWith<$Res>
-    implements $LoginUserCopyWith<$Res> {
-  factory _$$LoginUserImplCopyWith(
-          _$LoginUserImpl value, $Res Function(_$LoginUserImpl) then) =
-      __$$LoginUserImplCopyWithImpl<$Res>;
+abstract class _$$LoginUserEventImplCopyWith<$Res>
+    implements $LoginUserEventCopyWith<$Res> {
+  factory _$$LoginUserEventImplCopyWith(_$LoginUserEventImpl value,
+          $Res Function(_$LoginUserEventImpl) then) =
+      __$$LoginUserEventImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String username, String password});
 }
 
 /// @nodoc
-class __$$LoginUserImplCopyWithImpl<$Res>
-    extends _$LoginUserCopyWithImpl<$Res, _$LoginUserImpl>
-    implements _$$LoginUserImplCopyWith<$Res> {
-  __$$LoginUserImplCopyWithImpl(
-      _$LoginUserImpl _value, $Res Function(_$LoginUserImpl) _then)
+class __$$LoginUserEventImplCopyWithImpl<$Res>
+    extends _$LoginUserEventCopyWithImpl<$Res, _$LoginUserEventImpl>
+    implements _$$LoginUserEventImplCopyWith<$Res> {
+  __$$LoginUserEventImplCopyWithImpl(
+      _$LoginUserEventImpl _value, $Res Function(_$LoginUserEventImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -86,7 +87,7 @@ class __$$LoginUserImplCopyWithImpl<$Res>
     Object? username = null,
     Object? password = null,
   }) {
-    return _then(_$LoginUserImpl(
+    return _then(_$LoginUserEventImpl(
       username: null == username
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
@@ -101,8 +102,8 @@ class __$$LoginUserImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$LoginUserImpl implements _LoginUser {
-  const _$LoginUserImpl({required this.username, required this.password});
+class _$LoginUserEventImpl implements _LoginUserEvent {
+  const _$LoginUserEventImpl({required this.username, required this.password});
 
   @override
   final String username;
@@ -111,14 +112,14 @@ class _$LoginUserImpl implements _LoginUser {
 
   @override
   String toString() {
-    return 'LoginUser(username: $username, password: $password)';
+    return 'LoginUserEvent(username: $username, password: $password)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$LoginUserImpl &&
+            other is _$LoginUserEventImpl &&
             (identical(other.username, username) ||
                 other.username == username) &&
             (identical(other.password, password) ||
@@ -131,14 +132,15 @@ class _$LoginUserImpl implements _LoginUser {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$LoginUserImplCopyWith<_$LoginUserImpl> get copyWith =>
-      __$$LoginUserImplCopyWithImpl<_$LoginUserImpl>(this, _$identity);
+  _$$LoginUserEventImplCopyWith<_$LoginUserEventImpl> get copyWith =>
+      __$$LoginUserEventImplCopyWithImpl<_$LoginUserEventImpl>(
+          this, _$identity);
 }
 
-abstract class _LoginUser implements LoginUser {
-  const factory _LoginUser(
+abstract class _LoginUserEvent implements LoginUserEvent {
+  const factory _LoginUserEvent(
       {required final String username,
-      required final String password}) = _$LoginUserImpl;
+      required final String password}) = _$LoginUserEventImpl;
 
   @override
   String get username;
@@ -146,34 +148,34 @@ abstract class _LoginUser implements LoginUser {
   String get password;
   @override
   @JsonKey(ignore: true)
-  _$$LoginUserImplCopyWith<_$LoginUserImpl> get copyWith =>
+  _$$LoginUserEventImplCopyWith<_$LoginUserEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-mixin _$RegisterUser {
+mixin _$RegisterUserEvent {
   String get username => throw _privateConstructorUsedError;
   String get password => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $RegisterUserCopyWith<RegisterUser> get copyWith =>
+  $RegisterUserEventCopyWith<RegisterUserEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $RegisterUserCopyWith<$Res> {
-  factory $RegisterUserCopyWith(
-          RegisterUser value, $Res Function(RegisterUser) then) =
-      _$RegisterUserCopyWithImpl<$Res, RegisterUser>;
+abstract class $RegisterUserEventCopyWith<$Res> {
+  factory $RegisterUserEventCopyWith(
+          RegisterUserEvent value, $Res Function(RegisterUserEvent) then) =
+      _$RegisterUserEventCopyWithImpl<$Res, RegisterUserEvent>;
   @useResult
   $Res call({String username, String password, String email});
 }
 
 /// @nodoc
-class _$RegisterUserCopyWithImpl<$Res, $Val extends RegisterUser>
-    implements $RegisterUserCopyWith<$Res> {
-  _$RegisterUserCopyWithImpl(this._value, this._then);
+class _$RegisterUserEventCopyWithImpl<$Res, $Val extends RegisterUserEvent>
+    implements $RegisterUserEventCopyWith<$Res> {
+  _$RegisterUserEventCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -205,22 +207,22 @@ class _$RegisterUserCopyWithImpl<$Res, $Val extends RegisterUser>
 }
 
 /// @nodoc
-abstract class _$$RegisterUserImplCopyWith<$Res>
-    implements $RegisterUserCopyWith<$Res> {
-  factory _$$RegisterUserImplCopyWith(
-          _$RegisterUserImpl value, $Res Function(_$RegisterUserImpl) then) =
-      __$$RegisterUserImplCopyWithImpl<$Res>;
+abstract class _$$RegisterUserEventImplCopyWith<$Res>
+    implements $RegisterUserEventCopyWith<$Res> {
+  factory _$$RegisterUserEventImplCopyWith(_$RegisterUserEventImpl value,
+          $Res Function(_$RegisterUserEventImpl) then) =
+      __$$RegisterUserEventImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String username, String password, String email});
 }
 
 /// @nodoc
-class __$$RegisterUserImplCopyWithImpl<$Res>
-    extends _$RegisterUserCopyWithImpl<$Res, _$RegisterUserImpl>
-    implements _$$RegisterUserImplCopyWith<$Res> {
-  __$$RegisterUserImplCopyWithImpl(
-      _$RegisterUserImpl _value, $Res Function(_$RegisterUserImpl) _then)
+class __$$RegisterUserEventImplCopyWithImpl<$Res>
+    extends _$RegisterUserEventCopyWithImpl<$Res, _$RegisterUserEventImpl>
+    implements _$$RegisterUserEventImplCopyWith<$Res> {
+  __$$RegisterUserEventImplCopyWithImpl(_$RegisterUserEventImpl _value,
+      $Res Function(_$RegisterUserEventImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -230,7 +232,7 @@ class __$$RegisterUserImplCopyWithImpl<$Res>
     Object? password = null,
     Object? email = null,
   }) {
-    return _then(_$RegisterUserImpl(
+    return _then(_$RegisterUserEventImpl(
       username: null == username
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
@@ -249,8 +251,8 @@ class __$$RegisterUserImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$RegisterUserImpl implements _RegisterUser {
-  const _$RegisterUserImpl(
+class _$RegisterUserEventImpl implements _RegisterUserEvent {
+  const _$RegisterUserEventImpl(
       {required this.username, required this.password, required this.email});
 
   @override
@@ -262,14 +264,14 @@ class _$RegisterUserImpl implements _RegisterUser {
 
   @override
   String toString() {
-    return 'RegisterUser(username: $username, password: $password, email: $email)';
+    return 'RegisterUserEvent(username: $username, password: $password, email: $email)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$RegisterUserImpl &&
+            other is _$RegisterUserEventImpl &&
             (identical(other.username, username) ||
                 other.username == username) &&
             (identical(other.password, password) ||
@@ -283,15 +285,16 @@ class _$RegisterUserImpl implements _RegisterUser {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$RegisterUserImplCopyWith<_$RegisterUserImpl> get copyWith =>
-      __$$RegisterUserImplCopyWithImpl<_$RegisterUserImpl>(this, _$identity);
+  _$$RegisterUserEventImplCopyWith<_$RegisterUserEventImpl> get copyWith =>
+      __$$RegisterUserEventImplCopyWithImpl<_$RegisterUserEventImpl>(
+          this, _$identity);
 }
 
-abstract class _RegisterUser implements RegisterUser {
-  const factory _RegisterUser(
+abstract class _RegisterUserEvent implements RegisterUserEvent {
+  const factory _RegisterUserEvent(
       {required final String username,
       required final String password,
-      required final String email}) = _$RegisterUserImpl;
+      required final String email}) = _$RegisterUserEventImpl;
 
   @override
   String get username;
@@ -301,7 +304,126 @@ abstract class _RegisterUser implements RegisterUser {
   String get email;
   @override
   @JsonKey(ignore: true)
-  _$$RegisterUserImplCopyWith<_$RegisterUserImpl> get copyWith =>
+  _$$RegisterUserEventImplCopyWith<_$RegisterUserEventImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+mixin _$GoogleLoginEvent {
+  String get idToken => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $GoogleLoginEventCopyWith<GoogleLoginEvent> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $GoogleLoginEventCopyWith<$Res> {
+  factory $GoogleLoginEventCopyWith(
+          GoogleLoginEvent value, $Res Function(GoogleLoginEvent) then) =
+      _$GoogleLoginEventCopyWithImpl<$Res, GoogleLoginEvent>;
+  @useResult
+  $Res call({String idToken});
+}
+
+/// @nodoc
+class _$GoogleLoginEventCopyWithImpl<$Res, $Val extends GoogleLoginEvent>
+    implements $GoogleLoginEventCopyWith<$Res> {
+  _$GoogleLoginEventCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? idToken = null,
+  }) {
+    return _then(_value.copyWith(
+      idToken: null == idToken
+          ? _value.idToken
+          : idToken // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$GoogleLoginEventImplCopyWith<$Res>
+    implements $GoogleLoginEventCopyWith<$Res> {
+  factory _$$GoogleLoginEventImplCopyWith(_$GoogleLoginEventImpl value,
+          $Res Function(_$GoogleLoginEventImpl) then) =
+      __$$GoogleLoginEventImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String idToken});
+}
+
+/// @nodoc
+class __$$GoogleLoginEventImplCopyWithImpl<$Res>
+    extends _$GoogleLoginEventCopyWithImpl<$Res, _$GoogleLoginEventImpl>
+    implements _$$GoogleLoginEventImplCopyWith<$Res> {
+  __$$GoogleLoginEventImplCopyWithImpl(_$GoogleLoginEventImpl _value,
+      $Res Function(_$GoogleLoginEventImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? idToken = null,
+  }) {
+    return _then(_$GoogleLoginEventImpl(
+      idToken: null == idToken
+          ? _value.idToken
+          : idToken // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$GoogleLoginEventImpl implements _GoogleLoginEvent {
+  const _$GoogleLoginEventImpl({required this.idToken});
+
+  @override
+  final String idToken;
+
+  @override
+  String toString() {
+    return 'GoogleLoginEvent(idToken: $idToken)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GoogleLoginEventImpl &&
+            (identical(other.idToken, idToken) || other.idToken == idToken));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, idToken);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GoogleLoginEventImplCopyWith<_$GoogleLoginEventImpl> get copyWith =>
+      __$$GoogleLoginEventImplCopyWithImpl<_$GoogleLoginEventImpl>(
+          this, _$identity);
+}
+
+abstract class _GoogleLoginEvent implements GoogleLoginEvent {
+  const factory _GoogleLoginEvent({required final String idToken}) =
+      _$GoogleLoginEventImpl;
+
+  @override
+  String get idToken;
+  @override
+  @JsonKey(ignore: true)
+  _$$GoogleLoginEventImplCopyWith<_$GoogleLoginEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

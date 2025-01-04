@@ -9,6 +9,7 @@ A e-commerce Flutter project. it encompasses all the essential functions of an e
 ## Getting Started
 
 - Rebuild: flutter pub run build_runner watch
+
 - Create firebase_options.dart:
     dart pub global activate flutterfire_cli
     flutterfire configure --project=appflutter-ffa11

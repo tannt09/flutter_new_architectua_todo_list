@@ -6,19 +6,22 @@ import 'package:flutter_new_architectua/core/bloc/auth/auth_bloc.dart';
 import 'package:flutter_new_architectua/core/navigation/app_navigator.dart';
 import 'package:flutter_new_architectua/core/navigation/app_router.gr.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:logging/logging.dart';
+
+final Logger _logger = Logger('AuthLogic');
 
 class AuthLogic {
   late final AppNavigator navigator = GetIt.instance.get<AppNavigator>();
 
   Future<void> handleRegister(
       AuthBloc bloc, String username, String password, String email) async {
-    bloc.add(
-        RegisterUser(username: username, password: password, email: email));
+    bloc.add(RegisterUserEvent(
+        username: username, password: password, email: email));
   }
 
   Future<void> handleLogin(
       AuthBloc bloc, String username, String password) async {
-    bloc.add(LoginUser(username: username, password: password));
+    bloc.add(LoginUserEvent(username: username, password: password));
   }
 
   static void handleAuth(
@@ -44,14 +47,14 @@ class AuthLogic {
     }
   }
 
-  static Future<User?> handleLoginWithGoogle() async {
-    final FirebaseAuth _auth = FirebaseAuth.instance;
-    final GoogleSignIn _googleSignIn = GoogleSignIn();
+  static Future<void> handleLoginWithGoogle(AuthBloc bloc) async {
+    final FirebaseAuth auth = FirebaseAuth.instance;
+    final GoogleSignIn googleSignIn = GoogleSignIn();
 
     try {
       // Login with Google
-      final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
-      if (googleUser == null) return null;
+      final GoogleSignInAccount? googleUser = await googleSignIn.signIn();
+      if (googleUser == null) return;
 
       final GoogleSignInAuthentication googleAuth =
           await googleUser.authentication;
@@ -64,12 +67,16 @@ class AuthLogic {
 
       // Login Firebase
       final UserCredential userCredential =
-          await _auth.signInWithCredential(credential);
+          await auth.signInWithCredential(credential);
 
-      return userCredential.user;
+      final String? idTokenFirebase =
+          await userCredential.user?.getIdToken(true);
+
+      if (idTokenFirebase != null) {
+        bloc.add(GoogleLoginEvent(idToken: idTokenFirebase));
+      }
     } catch (e) {
-      print("----Login fail: $e");
-      return null;
+      _logger.info('----Login fail: $e');
     }
   }
 

@@ -5,15 +5,20 @@ abstract class AuthEvent extends BaseBlocEvent {
 }
 
 @freezed
-class LoginUser extends AuthEvent with _$LoginUser {
-  const factory LoginUser(
-      {required String username, required String password}) = _LoginUser;
+class LoginUserEvent extends AuthEvent with _$LoginUserEvent {
+  const factory LoginUserEvent(
+      {required String username, required String password}) = _LoginUserEvent;
 }
 
 @freezed
-class RegisterUser extends AuthEvent with _$RegisterUser {
-  const factory RegisterUser(
+class RegisterUserEvent extends AuthEvent with _$RegisterUserEvent {
+  const factory RegisterUserEvent(
       {required String username,
       required String password,
-      required String email}) = _RegisterUser;
+      required String email}) = _RegisterUserEvent;
+}
+
+@freezed
+class GoogleLoginEvent extends AuthEvent with _$GoogleLoginEvent {
+  const factory GoogleLoginEvent({required String idToken}) = _GoogleLoginEvent;
 }
