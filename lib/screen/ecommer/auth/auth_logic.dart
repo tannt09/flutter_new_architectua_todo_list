@@ -9,6 +9,8 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:logging/logging.dart';
 
 final Logger _logger = Logger('AuthLogic');
+final FirebaseAuth authFirebase = FirebaseAuth.instance;
+final GoogleSignIn googleSignIn = GoogleSignIn();
 
 class AuthLogic {
   late final AppNavigator navigator = GetIt.instance.get<AppNavigator>();
@@ -48,9 +50,6 @@ class AuthLogic {
   }
 
   static Future<void> handleLoginWithGoogle(AuthBloc bloc) async {
-    final FirebaseAuth auth = FirebaseAuth.instance;
-    final GoogleSignIn googleSignIn = GoogleSignIn();
-
     try {
       // Login with Google
       final GoogleSignInAccount? googleUser = await googleSignIn.signIn();
@@ -67,7 +66,7 @@ class AuthLogic {
 
       // Login Firebase
       final UserCredential userCredential =
-          await auth.signInWithCredential(credential);
+          await authFirebase.signInWithCredential(credential);
 
       final String? idTokenFirebase =
           await userCredential.user?.getIdToken(true);

@@ -7,6 +7,7 @@ import 'package:flutter_new_architectua/core/navigation/app_router.gr.dart';
 import 'package:flutter_new_architectua/core/storage/account_secure_storage.dart';
 import 'package:flutter_new_architectua/core/storage/token_secure_storage.dart';
 import 'package:flutter_new_architectua/main.dart';
+import 'package:flutter_new_architectua/screen/ecommer/auth/auth_logic.dart';
 import 'package:flutter_new_architectua/utils/change_image_link.dart';
 import 'package:flutter_new_architectua/widget/profile/custom_option_widget.dart';
 import 'package:get_it/get_it.dart';
@@ -26,6 +27,10 @@ class _ProfilePageState extends State<ProfilePage> {
     await deleteTokens();
     await deleteAccount();
     await database.delete('goods');
+
+    // SignOut Firebase and Google
+    await authFirebase.signOut();
+    await googleSignIn.signOut();
   }
 
   @override
