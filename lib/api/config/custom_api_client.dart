@@ -18,12 +18,9 @@ class ApiClient {
   Future<http.Response> sendRequest(String endpoint, String method,
       {Map<String, String>? headers, dynamic body}) async {
     late final AppNavigator navigator = GetIt.instance.get<AppNavigator>();
-    String? accessToken = await getAccessToken();
+    String accessToken = await getAccessToken();
     headers = headers ?? {};
-
-    if (accessToken != null) {
-      headers['Authorization'] = 'Bearer $accessToken';
-    }
+    headers['Authorization'] = 'Bearer $accessToken';
 
     var response = http.Request(method, Uri.parse('$baseUrl/$endpoint'))
       ..headers.addAll(headers)
@@ -60,9 +57,9 @@ class ApiClient {
   }
 
   Future<bool> refreshAccessToken() async {
-    String? refreshToken = await getRefreshToken();
+    String refreshToken = await getRefreshToken();
 
-    if (refreshToken != null) {
+    if (refreshToken.isNotEmpty) {
       var response = await http.post(
         Uri.parse('$baseUrl/auth/refresh'),
         headers: {'Content-Type': 'application/json'},

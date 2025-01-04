@@ -7,6 +7,7 @@ import 'package:flutter_new_architectua/core/bloc/auth/auth_bloc.dart';
 import 'package:flutter_new_architectua/core/navigation/app_navigator.dart';
 import 'package:flutter_new_architectua/core/navigation/app_router.gr.dart';
 import 'package:flutter_new_architectua/core/storage/account_secure_storage.dart';
+import 'package:flutter_new_architectua/core/storage/token_secure_storage.dart';
 import 'package:flutter_new_architectua/widget/loading_dots_animation.dart';
 import 'package:get_it/get_it.dart';
 
@@ -33,8 +34,14 @@ class _SplashPageState extends State<SplashPage>
 
   Future<void> handleLogin() async {
     final [username, password] = await getAccount();
+    final refreshToken = await getRefreshToken();
+
     if (username != null && password != null) {
       bloc.add(LoginUserEvent(username: username, password: password));
+    } else if (username == null &&
+        password == null &&
+        refreshToken.isNotEmpty) {
+      navigator.replace(const BottomNavigation());
     } else {
       navigator.replace(AuthRoute(title: 'Login'));
     }

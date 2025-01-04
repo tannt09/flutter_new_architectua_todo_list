@@ -49,7 +49,8 @@ class AuthLogic {
     }
   }
 
-  static Future<void> handleLoginWithGoogle(AuthBloc bloc) async {
+  static Future<void> handleLoginWithGoogle(
+      BuildContext context, AuthBloc bloc) async {
     try {
       // Login with Google
       final GoogleSignInAccount? googleUser = await googleSignIn.signIn();
@@ -75,7 +76,22 @@ class AuthLogic {
         bloc.add(GoogleLoginEvent(idToken: idTokenFirebase));
       }
     } catch (e) {
-      _logger.info('----Login fail: $e');
+      _logger.info('----Login failure: $e');
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: const Text('Result'),
+          content: Text('Google Login Failure $e'),
+          actions: [
+            TextButton(
+              onPressed: () => {
+                Navigator.of(context).pop(),
+              },
+              child: const Text('OK'),
+            ),
+          ],
+        ),
+      );
     }
   }
 

@@ -7,12 +7,14 @@ Future<void> saveToken(String accessToken, String refreshToken) async {
   await storage.write(key: 'refresh_token', value: refreshToken);
 }
 
-Future<String?> getAccessToken() async {
-  return await storage.read(key: 'access_token');
+Future<String> getAccessToken() async {
+  final accessToken = await storage.read(key: 'access_token');
+  return accessToken ?? '';
 }
 
-Future<String?> getRefreshToken() async {
-  return await storage.read(key: 'refresh_token');
+Future<String> getRefreshToken() async {
+  final refreshToken = await storage.read(key: 'refresh_token');
+  return refreshToken ?? '';
 }
 
 Future<void> deleteTokens() async {

@@ -115,7 +115,7 @@ class _AuthState extends State<AuthPage> {
                           ),
                           const SizedBox(height: 16),
                           GestureDetector(
-                            onTap: () => AuthLogic.handleLoginWithGoogle(bloc),
+                            onTap: () => AuthLogic.handleLoginWithGoogle(context, bloc),
                             child: Container(
                               width: 220,
                               padding: const EdgeInsets.only(
