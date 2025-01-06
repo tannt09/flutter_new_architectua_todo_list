@@ -155,6 +155,7 @@ flutter:
     - assets/icons/privacy_icon.svg
     - assets/icons/camera_icon.svg
     - assets/icons/google_icon.svg
+    - assets/icons/facebook_icon.svg
     - .env
   #
   # For details regarding fonts from package dependencies,
