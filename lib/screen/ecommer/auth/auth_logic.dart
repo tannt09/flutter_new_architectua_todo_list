@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:logging/logging.dart';
 
 import 'package:flutter_new_architectua/core/bloc/auth/auth_bloc.dart';
 import 'package:flutter_new_architectua/core/navigation/app_navigator.dart';
 import 'package:flutter_new_architectua/core/navigation/app_router.gr.dart';
-import 'package:google_sign_in/google_sign_in.dart';
-import 'package:logging/logging.dart';
 
 final Logger _logger = Logger('AuthLogic');
 final FirebaseAuth authFirebase = FirebaseAuth.instance;
@@ -76,12 +77,56 @@ class AuthLogic {
         bloc.add(GoogleLoginEvent(idToken: idTokenFirebase));
       }
     } catch (e) {
-      _logger.info('----Login failure: $e');
+      _logger.info('----Google Login failure: $e');
       showDialog(
         context: context,
         builder: (context) => AlertDialog(
-          title: const Text('Result'),
-          content: Text('Google Login Failure $e'),
+          title: const Text('Result Login'),
+          content: Text('Google Login Failure: $e'),
+          actions: [
+            TextButton(
+              onPressed: () => {
+                Navigator.of(context).pop(),
+              },
+              child: const Text('OK'),
+            ),
+          ],
+        ),
+      );
+    }
+  }
+
+  static Future<void> handleLoginWithFacebook(
+      BuildContext context, AuthBloc bloc) async {
+    try {
+      // Login with FaceBook
+      final LoginResult result = await FacebookAuth.instance.login();
+
+      if (result.status == LoginStatus.success) {
+        final AccessToken? accessToken = result.accessToken;
+
+        // Create credential from FaceBook
+        final OAuthCredential credential =
+            FacebookAuthProvider.credential(accessToken!.token);
+
+        // Login Firebase
+        final UserCredential userCredential =
+            await authFirebase.signInWithCredential(credential);
+
+        final String? idTokenFirebase =
+            await userCredential.user?.getIdToken(true);
+
+        if (idTokenFirebase != null) {
+          bloc.add(GoogleLoginEvent(idToken: idTokenFirebase));
+        }
+      }
+    }  catch (e) {
+      _logger.info('----FaceBook Login failure: $e');
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: const Text('Result Login'),
+          content: Text('FaceBook Login Failure: $e'),
           actions: [
             TextButton(
               onPressed: () => {

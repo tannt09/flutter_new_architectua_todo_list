@@ -144,9 +144,8 @@ class _AuthState extends State<AuthPage> {
                           ),
                           const SizedBox(height: 16),
                           GestureDetector(
-                            onTap: () {
-                              print('----Click login FB');
-                            },
+                            onTap: () => AuthLogic.handleLoginWithFacebook(
+                                context, bloc),
                             child: Container(
                               width: 220,
                               padding: const EdgeInsets.only(

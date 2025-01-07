@@ -3,6 +3,10 @@
         android:label="flutter_new_architectua"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
+        <activity 
+            android:name="com.facebook.FacebookActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:label="@string/app_name" />
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -32,5 +36,8 @@
         <meta-data
                 android:name="com.google.android.gms.ads.APPLICATION_ID"
                 android:value="@string/ads_app_id"/>
+        <meta-data android:name="com.facebook.sdk.ApplicationId"
+               android:value="@string/facebook_app_id"/>
+        <meta-data android:name="com.facebook.sdk.ClientToken" android:value="@string/facebook_client_token"/>
     </application>
 </manifest>

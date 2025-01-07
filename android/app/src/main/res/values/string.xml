@@ -1,3 +1,7 @@
 <resources>
     <string name="ads_app_id">ca-app-pub-8351982566476106~6714679017</string>
+    <string name="facebook_app_id">973503201353534</string>
+    <string name="fb_login_protocol_scheme">fb973503201353534</string>
+    <string name="facebook_client_token">3fcea08d16c007b95009b09f67b741c0</string>
+    <string name="app_name">E-commerce Flutter</string>
 </resources>
