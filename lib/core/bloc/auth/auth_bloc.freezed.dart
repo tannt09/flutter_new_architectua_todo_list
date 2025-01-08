@@ -309,27 +309,27 @@ abstract class _RegisterUserEvent implements RegisterUserEvent {
 }
 
 /// @nodoc
-mixin _$GoogleLoginEvent {
+mixin _$VerifyIdTokenEvent {
   String get idToken => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $GoogleLoginEventCopyWith<GoogleLoginEvent> get copyWith =>
+  $VerifyIdTokenEventCopyWith<VerifyIdTokenEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $GoogleLoginEventCopyWith<$Res> {
-  factory $GoogleLoginEventCopyWith(
-          GoogleLoginEvent value, $Res Function(GoogleLoginEvent) then) =
-      _$GoogleLoginEventCopyWithImpl<$Res, GoogleLoginEvent>;
+abstract class $VerifyIdTokenEventCopyWith<$Res> {
+  factory $VerifyIdTokenEventCopyWith(
+          VerifyIdTokenEvent value, $Res Function(VerifyIdTokenEvent) then) =
+      _$VerifyIdTokenEventCopyWithImpl<$Res, VerifyIdTokenEvent>;
   @useResult
   $Res call({String idToken});
 }
 
 /// @nodoc
-class _$GoogleLoginEventCopyWithImpl<$Res, $Val extends GoogleLoginEvent>
-    implements $GoogleLoginEventCopyWith<$Res> {
-  _$GoogleLoginEventCopyWithImpl(this._value, this._then);
+class _$VerifyIdTokenEventCopyWithImpl<$Res, $Val extends VerifyIdTokenEvent>
+    implements $VerifyIdTokenEventCopyWith<$Res> {
+  _$VerifyIdTokenEventCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -351,22 +351,22 @@ class _$GoogleLoginEventCopyWithImpl<$Res, $Val extends GoogleLoginEvent>
 }
 
 /// @nodoc
-abstract class _$$GoogleLoginEventImplCopyWith<$Res>
-    implements $GoogleLoginEventCopyWith<$Res> {
-  factory _$$GoogleLoginEventImplCopyWith(_$GoogleLoginEventImpl value,
-          $Res Function(_$GoogleLoginEventImpl) then) =
-      __$$GoogleLoginEventImplCopyWithImpl<$Res>;
+abstract class _$$VerifyIdTokenEventImplCopyWith<$Res>
+    implements $VerifyIdTokenEventCopyWith<$Res> {
+  factory _$$VerifyIdTokenEventImplCopyWith(_$VerifyIdTokenEventImpl value,
+          $Res Function(_$VerifyIdTokenEventImpl) then) =
+      __$$VerifyIdTokenEventImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String idToken});
 }
 
 /// @nodoc
-class __$$GoogleLoginEventImplCopyWithImpl<$Res>
-    extends _$GoogleLoginEventCopyWithImpl<$Res, _$GoogleLoginEventImpl>
-    implements _$$GoogleLoginEventImplCopyWith<$Res> {
-  __$$GoogleLoginEventImplCopyWithImpl(_$GoogleLoginEventImpl _value,
-      $Res Function(_$GoogleLoginEventImpl) _then)
+class __$$VerifyIdTokenEventImplCopyWithImpl<$Res>
+    extends _$VerifyIdTokenEventCopyWithImpl<$Res, _$VerifyIdTokenEventImpl>
+    implements _$$VerifyIdTokenEventImplCopyWith<$Res> {
+  __$$VerifyIdTokenEventImplCopyWithImpl(_$VerifyIdTokenEventImpl _value,
+      $Res Function(_$VerifyIdTokenEventImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -374,7 +374,7 @@ class __$$GoogleLoginEventImplCopyWithImpl<$Res>
   $Res call({
     Object? idToken = null,
   }) {
-    return _then(_$GoogleLoginEventImpl(
+    return _then(_$VerifyIdTokenEventImpl(
       idToken: null == idToken
           ? _value.idToken
           : idToken // ignore: cast_nullable_to_non_nullable
@@ -385,22 +385,22 @@ class __$$GoogleLoginEventImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$GoogleLoginEventImpl implements _GoogleLoginEvent {
-  const _$GoogleLoginEventImpl({required this.idToken});
+class _$VerifyIdTokenEventImpl implements _VerifyIdTokenEvent {
+  const _$VerifyIdTokenEventImpl({required this.idToken});
 
   @override
   final String idToken;
 
   @override
   String toString() {
-    return 'GoogleLoginEvent(idToken: $idToken)';
+    return 'VerifyIdTokenEvent(idToken: $idToken)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$GoogleLoginEventImpl &&
+            other is _$VerifyIdTokenEventImpl &&
             (identical(other.idToken, idToken) || other.idToken == idToken));
   }
 
@@ -410,20 +410,20 @@ class _$GoogleLoginEventImpl implements _GoogleLoginEvent {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$GoogleLoginEventImplCopyWith<_$GoogleLoginEventImpl> get copyWith =>
-      __$$GoogleLoginEventImplCopyWithImpl<_$GoogleLoginEventImpl>(
+  _$$VerifyIdTokenEventImplCopyWith<_$VerifyIdTokenEventImpl> get copyWith =>
+      __$$VerifyIdTokenEventImplCopyWithImpl<_$VerifyIdTokenEventImpl>(
           this, _$identity);
 }
 
-abstract class _GoogleLoginEvent implements GoogleLoginEvent {
-  const factory _GoogleLoginEvent({required final String idToken}) =
-      _$GoogleLoginEventImpl;
+abstract class _VerifyIdTokenEvent implements VerifyIdTokenEvent {
+  const factory _VerifyIdTokenEvent({required final String idToken}) =
+      _$VerifyIdTokenEventImpl;
 
   @override
   String get idToken;
   @override
   @JsonKey(ignore: true)
-  _$$GoogleLoginEventImplCopyWith<_$GoogleLoginEventImpl> get copyWith =>
+  _$$VerifyIdTokenEventImplCopyWith<_$VerifyIdTokenEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

@@ -50,8 +50,8 @@ class AuthLogic {
     }
   }
 
-  static Future<void> handleLoginWithGoogle(
-      BuildContext context, AuthBloc bloc) async {
+  static Future<void> handleLoginWithGoogle(BuildContext context, AuthBloc bloc,
+      [AuthCredential? pendingCredential]) async {
     try {
       // Login with Google
       final GoogleSignInAccount? googleUser = await googleSignIn.signIn();
@@ -70,11 +70,14 @@ class AuthLogic {
       final UserCredential userCredential =
           await authFirebase.signInWithCredential(credential);
 
+      if (pendingCredential != null) {
+        await userCredential.user?.linkWithCredential(pendingCredential);
+      }
       final String? idTokenFirebase =
           await userCredential.user?.getIdToken(true);
 
       if (idTokenFirebase != null) {
-        bloc.add(GoogleLoginEvent(idToken: idTokenFirebase));
+        bloc.add(VerifyIdTokenEvent(idToken: idTokenFirebase));
       }
     } catch (e) {
       _logger.info('----Google Login failure: $e');
@@ -117,10 +120,16 @@ class AuthLogic {
             await userCredential.user?.getIdToken(true);
 
         if (idTokenFirebase != null) {
-          bloc.add(GoogleLoginEvent(idToken: idTokenFirebase));
+          bloc.add(VerifyIdTokenEvent(idToken: idTokenFirebase));
         }
       }
-    }  catch (e) {
+    } on FirebaseAuthException catch (e) {
+      AuthCredential? pendingCredential = e.credential;
+      if (e.code == 'account-exists-with-different-credential' &&
+          pendingCredential != null) {
+        handleLoginWithGoogle(context, bloc, pendingCredential);
+      }
+    } catch (e) {
       _logger.info('----FaceBook Login failure: $e');
       showDialog(
         context: context,

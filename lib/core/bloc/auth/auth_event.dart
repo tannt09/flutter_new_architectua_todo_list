@@ -19,6 +19,6 @@ class RegisterUserEvent extends AuthEvent with _$RegisterUserEvent {
 }
 
 @freezed
-class GoogleLoginEvent extends AuthEvent with _$GoogleLoginEvent {
-  const factory GoogleLoginEvent({required String idToken}) = _GoogleLoginEvent;
+class VerifyIdTokenEvent extends AuthEvent with _$VerifyIdTokenEvent {
+  const factory VerifyIdTokenEvent({required String idToken}) = _VerifyIdTokenEvent;
 }

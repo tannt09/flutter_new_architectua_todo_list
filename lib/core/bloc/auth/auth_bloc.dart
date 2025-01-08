@@ -23,7 +23,7 @@ class AuthBloc extends BaseBloc<AuthEvent, AuthState> {
   AuthBloc() : super(const AuthState()) {
     on<LoginUserEvent>(_loginUser);
     on<RegisterUserEvent>(_registerUser);
-    on<GoogleLoginEvent>(_googleLogin);
+    on<VerifyIdTokenEvent>(_googleLogin);
   }
   @override
   AppNavigator get navigator => GetIt.instance.get<AppNavigator>();
@@ -47,7 +47,7 @@ class AuthBloc extends BaseBloc<AuthEvent, AuthState> {
   }
 
   Future<void> _googleLogin(
-      GoogleLoginEvent events, Emitter<AuthState> emit) async {
+      VerifyIdTokenEvent events, Emitter<AuthState> emit) async {
     final AuthModel result = await googleLogin(events.idToken);
 
     if (result.code == 200) {
