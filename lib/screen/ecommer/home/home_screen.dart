@@ -28,14 +28,20 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    getUserProfile();
+    _getUserProfile();
     blocGoods.add(const GetFeaturedGoodsEvent());
     blocGoods.add(const GetMostPopularGoodsEvent());
   }
 
-  Future<void> getUserProfile() async {
+  Future<void> _getUserProfile() async {
     blocProfile.add(
         GetUserProfileEvent(userId: await storage.read(key: 'user_id') ?? ''));
+  }
+
+  Future<void> _handleRefresh() async {
+    _getUserProfile();
+    blocGoods.add(const GetFeaturedGoodsEvent());
+    blocGoods.add(const GetMostPopularGoodsEvent());
   }
 
   @override
@@ -59,41 +65,44 @@ class _HomePageState extends State<HomePage> {
                 }
               }
 
-              return SingleChildScrollView(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                  child: Container(
-                    decoration: const BoxDecoration(),
-                    child: Column(
-                      children: <Widget>[
-                        SearchWidget(controller: searchController),
-                        const CarouselSliderWidget(),
-                        ListProductWidget(
-                          title: 'Featured',
-                          goods: stateGoods.featuredGoodsList,
-                          onTap: () {
-                            navigator.push(GoodsRoute());
-                          },
-                          isLoading: stateGoods.isLoadingFeature,
-                          changeFavoriteState: changeFavoriteState,
+              return RefreshIndicator(
+                  displacement: 80,
+                  onRefresh: () => _handleRefresh(),
+                  child: SingleChildScrollView(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      child: Container(
+                        decoration: const BoxDecoration(),
+                        child: Column(
+                          children: <Widget>[
+                            SearchWidget(controller: searchController),
+                            const CarouselSliderWidget(),
+                            ListProductWidget(
+                              title: 'Featured',
+                              goods: stateGoods.featuredGoodsList,
+                              onTap: () {
+                                navigator.push(GoodsRoute());
+                              },
+                              isLoading: stateGoods.isLoadingFeature,
+                              changeFavoriteState: changeFavoriteState,
+                            ),
+                            ListProductWidget(
+                              title: 'Most Popular',
+                              goods: stateGoods.mostPopularGoodsList,
+                              onTap: () {
+                                navigator.push(GoodsRoute());
+                              },
+                              isLoading: stateGoods.isLoadingMostPopular,
+                              changeFavoriteState: changeFavoriteState,
+                            ),
+                            const SizedBox(
+                              height: 30,
+                            )
+                          ],
                         ),
-                        ListProductWidget(
-                          title: 'Most Popular',
-                          goods: stateGoods.mostPopularGoodsList,
-                          onTap: () {
-                            navigator.push(GoodsRoute());
-                          },
-                          isLoading: stateGoods.isLoadingMostPopular,
-                          changeFavoriteState: changeFavoriteState,
-                        ),
-                        const SizedBox(
-                          height: 30,
-                        )
-                      ],
+                      ),
                     ),
-                  ),
-                ),
-              );
+                  ));
             },
           )));
     });
