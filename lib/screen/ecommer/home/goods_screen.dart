@@ -8,7 +8,7 @@ import 'package:flutter_new_architectua/core/navigation/app_navigator.dart';
 import 'package:flutter_new_architectua/main.dart';
 import 'package:flutter_new_architectua/model/goods_model.dart';
 import 'package:flutter_new_architectua/widget/header_widget.dart';
-import 'package:flutter_new_architectua/widget/home/goods_skeleton_widget.dart';
+import 'package:flutter_new_architectua/widget/goods_skeleton_widget.dart';
 import 'package:flutter_new_architectua/widget/home/product_item_widget.dart';
 
 Future<void> _changeFavoriteState(GoodsModel item) async {
@@ -49,11 +49,12 @@ class _GoodsPageState extends State<GoodsPage> {
         title: widget.title,
       ),
       body: BlocBuilder<GoodsBloc, GoodsState>(builder: (context, state) {
-        if (!state.goods.isNotEmpty) {
+        if (state.goods.isEmpty) {
           return const GoodsSkeletonWidget();
         }
 
         return RefreshIndicator(
+            displacement: 80,
             onRefresh: () => _handleRefresh(),
             child: state.isLoading
                 ? const GoodsSkeletonWidget()

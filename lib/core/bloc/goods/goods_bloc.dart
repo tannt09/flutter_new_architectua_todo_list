@@ -58,9 +58,12 @@ class GoodsBloc extends BaseBloc<GoodsEvent, GoodsState> {
 
   Future<void> _getSearchGoods(
       GetSearchGoodsEvent event, Emitter<GoodsState> emit) async {
+    emitSafety(state.copyWith(isLoading: true));
+    await Future.delayed(const Duration(seconds: 2));
     final List<GoodsModel> searchGoodsResultList =
         await fetchSearchGoods('goods/searchProduct', event.name);
 
+    emitSafety(state.copyWith(isLoading: false));
     emitSafety(state.copyWith(searchGoodsList: searchGoodsResultList));
   }
 
