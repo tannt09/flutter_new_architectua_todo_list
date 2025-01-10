@@ -57,7 +57,6 @@ class ListProductWidget extends StatelessWidget {
                           width: 170,
                           padding: const EdgeInsets.only(right: 14),
                           child: Column(
-                            mainAxisSize: MainAxisSize.min,
                             children: [
                               Expanded(
                                 child: Container(

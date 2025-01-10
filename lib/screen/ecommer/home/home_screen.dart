@@ -13,6 +13,17 @@ import 'package:flutter_new_architectua/widget/search_widget.dart';
 import 'package:flutter_new_architectua/widget/home/user_information_widget.dart';
 import 'package:get_it/get_it.dart';
 
+Future<void> _getUserProfile() async {
+  blocProfile.add(
+      GetUserProfileEvent(userId: await storage.read(key: 'user_id') ?? ''));
+}
+
+Future<void> _handleRefresh() async {
+  _getUserProfile();
+  blocGoods.add(const GetFeaturedGoodsEvent());
+  blocGoods.add(const GetMostPopularGoodsEvent());
+}
+
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -28,17 +39,6 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    _getUserProfile();
-    blocGoods.add(const GetFeaturedGoodsEvent());
-    blocGoods.add(const GetMostPopularGoodsEvent());
-  }
-
-  Future<void> _getUserProfile() async {
-    blocProfile.add(
-        GetUserProfileEvent(userId: await storage.read(key: 'user_id') ?? ''));
-  }
-
-  Future<void> _handleRefresh() async {
     _getUserProfile();
     blocGoods.add(const GetFeaturedGoodsEvent());
     blocGoods.add(const GetMostPopularGoodsEvent());

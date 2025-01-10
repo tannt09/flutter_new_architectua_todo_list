@@ -572,6 +572,7 @@ abstract class _GetItemDetailEvent implements GetItemDetailEvent {
 mixin _$GoodsState {
   bool get isLoadingFeature => throw _privateConstructorUsedError;
   bool get isLoadingMostPopular => throw _privateConstructorUsedError;
+  bool get isLoading => throw _privateConstructorUsedError;
   List<GoodsModel> get goods => throw _privateConstructorUsedError;
   List<GoodsModel> get featuredGoodsList => throw _privateConstructorUsedError;
   List<GoodsModel> get mostPopularGoodsList =>
@@ -593,6 +594,7 @@ abstract class $GoodsStateCopyWith<$Res> {
   $Res call(
       {bool isLoadingFeature,
       bool isLoadingMostPopular,
+      bool isLoading,
       List<GoodsModel> goods,
       List<GoodsModel> featuredGoodsList,
       List<GoodsModel> mostPopularGoodsList,
@@ -615,6 +617,7 @@ class _$GoodsStateCopyWithImpl<$Res, $Val extends GoodsState>
   $Res call({
     Object? isLoadingFeature = null,
     Object? isLoadingMostPopular = null,
+    Object? isLoading = null,
     Object? goods = null,
     Object? featuredGoodsList = null,
     Object? mostPopularGoodsList = null,
@@ -629,6 +632,10 @@ class _$GoodsStateCopyWithImpl<$Res, $Val extends GoodsState>
       isLoadingMostPopular: null == isLoadingMostPopular
           ? _value.isLoadingMostPopular
           : isLoadingMostPopular // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
       goods: null == goods
           ? _value.goods
@@ -665,6 +672,7 @@ abstract class _$$GoodsStateImplCopyWith<$Res>
   $Res call(
       {bool isLoadingFeature,
       bool isLoadingMostPopular,
+      bool isLoading,
       List<GoodsModel> goods,
       List<GoodsModel> featuredGoodsList,
       List<GoodsModel> mostPopularGoodsList,
@@ -685,6 +693,7 @@ class __$$GoodsStateImplCopyWithImpl<$Res>
   $Res call({
     Object? isLoadingFeature = null,
     Object? isLoadingMostPopular = null,
+    Object? isLoading = null,
     Object? goods = null,
     Object? featuredGoodsList = null,
     Object? mostPopularGoodsList = null,
@@ -699,6 +708,10 @@ class __$$GoodsStateImplCopyWithImpl<$Res>
       isLoadingMostPopular: null == isLoadingMostPopular
           ? _value.isLoadingMostPopular
           : isLoadingMostPopular // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
       goods: null == goods
           ? _value._goods
@@ -730,6 +743,7 @@ class _$GoodsStateImpl implements _GoodsState {
   const _$GoodsStateImpl(
       {this.isLoadingFeature = false,
       this.isLoadingMostPopular = false,
+      this.isLoading = false,
       final List<GoodsModel> goods = const [],
       final List<GoodsModel> featuredGoodsList = const [],
       final List<GoodsModel> mostPopularGoodsList = const [],
@@ -740,7 +754,7 @@ class _$GoodsStateImpl implements _GoodsState {
           imageUrl: '',
           isFavorite: false,
           name: '',
-          price: 0.0,
+          price: 0.00,
           star: "0.00",
           sizeProduct: [],
           company: '')})
@@ -755,6 +769,9 @@ class _$GoodsStateImpl implements _GoodsState {
   @override
   @JsonKey()
   final bool isLoadingMostPopular;
+  @override
+  @JsonKey()
+  final bool isLoading;
   final List<GoodsModel> _goods;
   @override
   @JsonKey()
@@ -799,7 +816,7 @@ class _$GoodsStateImpl implements _GoodsState {
 
   @override
   String toString() {
-    return 'GoodsState(isLoadingFeature: $isLoadingFeature, isLoadingMostPopular: $isLoadingMostPopular, goods: $goods, featuredGoodsList: $featuredGoodsList, mostPopularGoodsList: $mostPopularGoodsList, searchGoodsList: $searchGoodsList, itemDetail: $itemDetail)';
+    return 'GoodsState(isLoadingFeature: $isLoadingFeature, isLoadingMostPopular: $isLoadingMostPopular, isLoading: $isLoading, goods: $goods, featuredGoodsList: $featuredGoodsList, mostPopularGoodsList: $mostPopularGoodsList, searchGoodsList: $searchGoodsList, itemDetail: $itemDetail)';
   }
 
   @override
@@ -811,6 +828,8 @@ class _$GoodsStateImpl implements _GoodsState {
                 other.isLoadingFeature == isLoadingFeature) &&
             (identical(other.isLoadingMostPopular, isLoadingMostPopular) ||
                 other.isLoadingMostPopular == isLoadingMostPopular) &&
+            (identical(other.isLoading, isLoading) ||
+                other.isLoading == isLoading) &&
             const DeepCollectionEquality().equals(other._goods, _goods) &&
             const DeepCollectionEquality()
                 .equals(other._featuredGoodsList, _featuredGoodsList) &&
@@ -827,6 +846,7 @@ class _$GoodsStateImpl implements _GoodsState {
       runtimeType,
       isLoadingFeature,
       isLoadingMostPopular,
+      isLoading,
       const DeepCollectionEquality().hash(_goods),
       const DeepCollectionEquality().hash(_featuredGoodsList),
       const DeepCollectionEquality().hash(_mostPopularGoodsList),
@@ -844,6 +864,7 @@ abstract class _GoodsState implements GoodsState {
   const factory _GoodsState(
       {final bool isLoadingFeature,
       final bool isLoadingMostPopular,
+      final bool isLoading,
       final List<GoodsModel> goods,
       final List<GoodsModel> featuredGoodsList,
       final List<GoodsModel> mostPopularGoodsList,
@@ -854,6 +875,8 @@ abstract class _GoodsState implements GoodsState {
   bool get isLoadingFeature;
   @override
   bool get isLoadingMostPopular;
+  @override
+  bool get isLoading;
   @override
   List<GoodsModel> get goods;
   @override

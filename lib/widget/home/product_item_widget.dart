@@ -25,7 +25,6 @@ class ItemProductWidget extends StatelessWidget {
     late final AppNavigator navigator = GetIt.instance.get<AppNavigator>();
 
     return Column(
-      mainAxisSize: MainAxisSize.min,
       children: [
         Expanded(
           child: Stack(
