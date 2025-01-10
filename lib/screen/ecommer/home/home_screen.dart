@@ -51,13 +51,11 @@ class _HomePageState extends State<HomePage> {
           body: GestureDetector(onTap: () {
             FocusScope.of(context).requestFocus(FocusNode());
           }, child: BlocBuilder<GoodsBloc, GoodsState>(
-            builder: (context, state) {
+            builder: (context, stateGoods) {
               Future<void> changeFavoriteState(GoodsModel item) async {
                 final id = item.productId;
                 if (id != null) {
                   blocGoods.add(ChangeFavoriteStateEvent(item: item));
-                  blocGoods.add(const GetFeaturedGoodsEvent());
-                  blocGoods.add(const GetMostPopularGoodsEvent());
                 }
               }
 
@@ -72,18 +70,20 @@ class _HomePageState extends State<HomePage> {
                         const CarouselSliderWidget(),
                         ListProductWidget(
                           title: 'Featured',
-                          goods: state.featuredGoodsList,
+                          goods: stateGoods.featuredGoodsList,
                           onTap: () {
                             navigator.push(GoodsRoute());
                           },
+                          isLoading: stateGoods.isLoadingFeature,
                           changeFavoriteState: changeFavoriteState,
                         ),
                         ListProductWidget(
                           title: 'Most Popular',
-                          goods: state.mostPopularGoodsList,
+                          goods: stateGoods.mostPopularGoodsList,
                           onTap: () {
                             navigator.push(GoodsRoute());
                           },
+                          isLoading: stateGoods.isLoadingMostPopular,
                           changeFavoriteState: changeFavoriteState,
                         ),
                         const SizedBox(

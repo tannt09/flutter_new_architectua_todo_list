@@ -1,12 +1,13 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:injectable/injectable.dart';
+
 import 'package:flutter_new_architectua/api/goods_api.dart';
 import 'package:flutter_new_architectua/core/bloc/base/bloc/base_bloc.dart';
 import 'package:flutter_new_architectua/core/bloc/base/bloc/base_bloc_event.dart';
 import 'package:flutter_new_architectua/core/bloc/base/bloc/base_bloc_state.dart';
 import 'package:flutter_new_architectua/model/goods_model.dart';
 import 'package:flutter_new_architectua/utils/bloc_extensions.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:injectable/injectable.dart';
 
 part 'goods_event.dart';
 part 'goods_state.dart';
@@ -32,17 +33,23 @@ class GoodsBloc extends BaseBloc<GoodsEvent, GoodsState> {
 
   Future<void> _getFeaturedGoods(
       GetFeaturedGoodsEvent event, Emitter<GoodsState> emit) async {
+    emitSafety(state.copyWith(isLoadingFeature: true));
+    await Future.delayed(const Duration(seconds: 2));
     final List<GoodsModel> newFeaturedList =
         await fetchAllGoods('goods/getFeatured');
 
+    emitSafety(state.copyWith(isLoadingFeature: false));
     emitSafety(state.copyWith(featuredGoodsList: newFeaturedList));
   }
 
   Future<void> _getMostPopularGoods(
       GetMostPopularGoodsEvent event, Emitter<GoodsState> emit) async {
+    emitSafety(state.copyWith(isLoadingMostPopular: true));
+    await Future.delayed(const Duration(seconds: 3));
     final List<GoodsModel> newMostPopularList =
         await fetchAllGoods('goods/getMostPopular');
 
+    emitSafety(state.copyWith(isLoadingMostPopular: false));
     emitSafety(state.copyWith(mostPopularGoodsList: newMostPopularList));
   }
 
@@ -57,6 +64,8 @@ class GoodsBloc extends BaseBloc<GoodsEvent, GoodsState> {
   Future<void> _changeFavoriteState(
       ChangeFavoriteStateEvent event, Emitter<GoodsState> emit) async {
     await fetchChangeFavorite(event.item);
+    add(const GetFeaturedGoodsEvent());
+    add(const GetMostPopularGoodsEvent());
   }
 
   Future<void> _getItemDetail(

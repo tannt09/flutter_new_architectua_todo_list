@@ -570,6 +570,8 @@ abstract class _GetItemDetailEvent implements GetItemDetailEvent {
 
 /// @nodoc
 mixin _$GoodsState {
+  bool get isLoadingFeature => throw _privateConstructorUsedError;
+  bool get isLoadingMostPopular => throw _privateConstructorUsedError;
   List<GoodsModel> get goods => throw _privateConstructorUsedError;
   List<GoodsModel> get featuredGoodsList => throw _privateConstructorUsedError;
   List<GoodsModel> get mostPopularGoodsList =>
@@ -589,7 +591,9 @@ abstract class $GoodsStateCopyWith<$Res> {
       _$GoodsStateCopyWithImpl<$Res, GoodsState>;
   @useResult
   $Res call(
-      {List<GoodsModel> goods,
+      {bool isLoadingFeature,
+      bool isLoadingMostPopular,
+      List<GoodsModel> goods,
       List<GoodsModel> featuredGoodsList,
       List<GoodsModel> mostPopularGoodsList,
       List<GoodsModel> searchGoodsList,
@@ -609,6 +613,8 @@ class _$GoodsStateCopyWithImpl<$Res, $Val extends GoodsState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? isLoadingFeature = null,
+    Object? isLoadingMostPopular = null,
     Object? goods = null,
     Object? featuredGoodsList = null,
     Object? mostPopularGoodsList = null,
@@ -616,6 +622,14 @@ class _$GoodsStateCopyWithImpl<$Res, $Val extends GoodsState>
     Object? itemDetail = null,
   }) {
     return _then(_value.copyWith(
+      isLoadingFeature: null == isLoadingFeature
+          ? _value.isLoadingFeature
+          : isLoadingFeature // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isLoadingMostPopular: null == isLoadingMostPopular
+          ? _value.isLoadingMostPopular
+          : isLoadingMostPopular // ignore: cast_nullable_to_non_nullable
+              as bool,
       goods: null == goods
           ? _value.goods
           : goods // ignore: cast_nullable_to_non_nullable
@@ -649,7 +663,9 @@ abstract class _$$GoodsStateImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {List<GoodsModel> goods,
+      {bool isLoadingFeature,
+      bool isLoadingMostPopular,
+      List<GoodsModel> goods,
       List<GoodsModel> featuredGoodsList,
       List<GoodsModel> mostPopularGoodsList,
       List<GoodsModel> searchGoodsList,
@@ -667,6 +683,8 @@ class __$$GoodsStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? isLoadingFeature = null,
+    Object? isLoadingMostPopular = null,
     Object? goods = null,
     Object? featuredGoodsList = null,
     Object? mostPopularGoodsList = null,
@@ -674,6 +692,14 @@ class __$$GoodsStateImplCopyWithImpl<$Res>
     Object? itemDetail = null,
   }) {
     return _then(_$GoodsStateImpl(
+      isLoadingFeature: null == isLoadingFeature
+          ? _value.isLoadingFeature
+          : isLoadingFeature // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isLoadingMostPopular: null == isLoadingMostPopular
+          ? _value.isLoadingMostPopular
+          : isLoadingMostPopular // ignore: cast_nullable_to_non_nullable
+              as bool,
       goods: null == goods
           ? _value._goods
           : goods // ignore: cast_nullable_to_non_nullable
@@ -702,7 +728,9 @@ class __$$GoodsStateImplCopyWithImpl<$Res>
 
 class _$GoodsStateImpl implements _GoodsState {
   const _$GoodsStateImpl(
-      {final List<GoodsModel> goods = const [],
+      {this.isLoadingFeature = false,
+      this.isLoadingMostPopular = false,
+      final List<GoodsModel> goods = const [],
       final List<GoodsModel> featuredGoodsList = const [],
       final List<GoodsModel> mostPopularGoodsList = const [],
       final List<GoodsModel> searchGoodsList = const [],
@@ -721,6 +749,12 @@ class _$GoodsStateImpl implements _GoodsState {
         _mostPopularGoodsList = mostPopularGoodsList,
         _searchGoodsList = searchGoodsList;
 
+  @override
+  @JsonKey()
+  final bool isLoadingFeature;
+  @override
+  @JsonKey()
+  final bool isLoadingMostPopular;
   final List<GoodsModel> _goods;
   @override
   @JsonKey()
@@ -765,7 +799,7 @@ class _$GoodsStateImpl implements _GoodsState {
 
   @override
   String toString() {
-    return 'GoodsState(goods: $goods, featuredGoodsList: $featuredGoodsList, mostPopularGoodsList: $mostPopularGoodsList, searchGoodsList: $searchGoodsList, itemDetail: $itemDetail)';
+    return 'GoodsState(isLoadingFeature: $isLoadingFeature, isLoadingMostPopular: $isLoadingMostPopular, goods: $goods, featuredGoodsList: $featuredGoodsList, mostPopularGoodsList: $mostPopularGoodsList, searchGoodsList: $searchGoodsList, itemDetail: $itemDetail)';
   }
 
   @override
@@ -773,6 +807,10 @@ class _$GoodsStateImpl implements _GoodsState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GoodsStateImpl &&
+            (identical(other.isLoadingFeature, isLoadingFeature) ||
+                other.isLoadingFeature == isLoadingFeature) &&
+            (identical(other.isLoadingMostPopular, isLoadingMostPopular) ||
+                other.isLoadingMostPopular == isLoadingMostPopular) &&
             const DeepCollectionEquality().equals(other._goods, _goods) &&
             const DeepCollectionEquality()
                 .equals(other._featuredGoodsList, _featuredGoodsList) &&
@@ -787,6 +825,8 @@ class _$GoodsStateImpl implements _GoodsState {
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      isLoadingFeature,
+      isLoadingMostPopular,
       const DeepCollectionEquality().hash(_goods),
       const DeepCollectionEquality().hash(_featuredGoodsList),
       const DeepCollectionEquality().hash(_mostPopularGoodsList),
@@ -802,12 +842,18 @@ class _$GoodsStateImpl implements _GoodsState {
 
 abstract class _GoodsState implements GoodsState {
   const factory _GoodsState(
-      {final List<GoodsModel> goods,
+      {final bool isLoadingFeature,
+      final bool isLoadingMostPopular,
+      final List<GoodsModel> goods,
       final List<GoodsModel> featuredGoodsList,
       final List<GoodsModel> mostPopularGoodsList,
       final List<GoodsModel> searchGoodsList,
       final GoodsModel itemDetail}) = _$GoodsStateImpl;
 
+  @override
+  bool get isLoadingFeature;
+  @override
+  bool get isLoadingMostPopular;
   @override
   List<GoodsModel> get goods;
   @override
