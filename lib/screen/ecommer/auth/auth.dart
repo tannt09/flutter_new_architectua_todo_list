@@ -76,123 +76,127 @@ class _AuthState extends State<AuthPage> {
           },
           child: BlocBuilder<AuthBloc, AuthState>(
             builder: (context, state) {
-              return GestureDetector(
-                onTap: () => FocusScope.of(context).unfocus(),
-                child: SizedBox(
-                  height: MediaQuery.of(context).size.height,
-                  child: SingleChildScrollView(
-                    child: Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: Column(
-                        children: [
-                          CustomTextfield(
-                              controller: usernameController,
-                              labelText: "Username",
-                              isValidInput: isValidInput),
-                          CustomTextfield(
-                              controller: passwordController,
-                              labelText: "Password",
-                              obscureText: true,
-                              isValidInput: isValidInput),
-                          if (widget.title != "Login")
-                            CustomTextfield(
-                                controller: emailController,
-                                labelText: "Email",
-                                isValidInput: isValidInput),
-                          const SizedBox(height: 8),
-                          ElevatedButton(
-                            onPressed: () {
-                              _updateIsValidInput();
-                              if (isValidInput) {
-                                AuthLogic.handleAuth(bloc, widget.title, [
-                                  usernameController,
-                                  passwordController,
-                                  emailController
-                                ]);
-                              }
-                            },
-                            child: Text(widget.title),
-                          ),
-                          const SizedBox(height: 16),
-                          GestureDetector(
-                            onTap: () =>
-                                AuthLogic.handleLoginWithGoogle(context, bloc),
-                            child: Container(
-                              width: 220,
-                              padding: const EdgeInsets.only(
-                                  left: 10, top: 12, bottom: 12),
-                              decoration: BoxDecoration(
-                                  border: Border.all(
-                                      color: AppColors.black, width: 1),
-                                  borderRadius: BorderRadius.circular(4),
-                                  color: Colors.white),
-                              child: Row(
-                                children: [
-                                  SvgPicture.asset(
-                                      'assets/icons/google_icon.svg',
-                                      width: 26),
-                                  const SizedBox(width: 24),
-                                  const Text(
-                                    "Sign in with Google",
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 14),
-                                  )
-                                ],
-                              ),
-                            ),
-                          ),
-                          const SizedBox(height: 16),
-                          GestureDetector(
-                            onTap: () => AuthLogic.handleLoginWithFacebook(
-                                context, bloc),
-                            child: Container(
-                              width: 220,
-                              padding: const EdgeInsets.only(
-                                  left: 10, top: 12, bottom: 12),
-                              decoration: BoxDecoration(
-                                  border: Border.all(
-                                      color: AppColors.black, width: 1),
-                                  borderRadius: BorderRadius.circular(4),
-                                  color: const Color(0xFF3B5998)),
-                              child: Row(
-                                children: [
-                                  SvgPicture.asset(
-                                      'assets/icons/facebook_icon.svg',
-                                      width: 26),
-                                  const SizedBox(width: 24),
-                                  const Text(
-                                    "Sign in with Facebook",
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 14,
-                                        color: Colors.white),
-                                  )
-                                ],
-                              ),
-                            ),
-                          ),
-                          const SizedBox(height: 16),
-                          if (widget.title == "Login")
-                            GestureDetector(
-                              onTap: () {
-                                navigator.push(AuthRoute(title: "Register"));
-                              },
-                              child: const Text(
-                                'Go to Register',
-                                style: TextStyle(
-                                  color: Colors.blue,
-                                  decoration: TextDecoration.underline,
-                                  decorationColor: Colors.blue,
+              return state.isLoading
+                  ? const Center(child: CircularProgressIndicator())
+                  : GestureDetector(
+                      onTap: () => FocusScope.of(context).unfocus(),
+                      child: SizedBox(
+                        height: MediaQuery.of(context).size.height,
+                        child: SingleChildScrollView(
+                          child: Padding(
+                            padding: const EdgeInsets.all(16.0),
+                            child: Column(
+                              children: [
+                                CustomTextfield(
+                                    controller: usernameController,
+                                    labelText: "Username",
+                                    isValidInput: isValidInput),
+                                CustomTextfield(
+                                    controller: passwordController,
+                                    labelText: "Password",
+                                    obscureText: true,
+                                    isValidInput: isValidInput),
+                                if (widget.title != "Login")
+                                  CustomTextfield(
+                                      controller: emailController,
+                                      labelText: "Email",
+                                      isValidInput: isValidInput),
+                                const SizedBox(height: 8),
+                                ElevatedButton(
+                                  onPressed: () {
+                                    _updateIsValidInput();
+                                    if (isValidInput) {
+                                      AuthLogic.handleAuth(bloc, widget.title, [
+                                        usernameController,
+                                        passwordController,
+                                        emailController
+                                      ]);
+                                    }
+                                  },
+                                  child: Text(widget.title),
                                 ),
-                              ),
+                                const SizedBox(height: 16),
+                                GestureDetector(
+                                  onTap: () => AuthLogic.handleLoginWithGoogle(
+                                      context, bloc),
+                                  child: Container(
+                                    width: 220,
+                                    padding: const EdgeInsets.only(
+                                        left: 10, top: 12, bottom: 12),
+                                    decoration: BoxDecoration(
+                                        border: Border.all(
+                                            color: AppColors.black, width: 1),
+                                        borderRadius: BorderRadius.circular(4),
+                                        color: Colors.white),
+                                    child: Row(
+                                      children: [
+                                        SvgPicture.asset(
+                                            'assets/icons/google_icon.svg',
+                                            width: 26),
+                                        const SizedBox(width: 24),
+                                        const Text(
+                                          "Sign in with Google",
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 14),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                const SizedBox(height: 16),
+                                GestureDetector(
+                                  onTap: () =>
+                                      AuthLogic.handleLoginWithFacebook(
+                                          context, bloc),
+                                  child: Container(
+                                    width: 220,
+                                    padding: const EdgeInsets.only(
+                                        left: 10, top: 12, bottom: 12),
+                                    decoration: BoxDecoration(
+                                        border: Border.all(
+                                            color: AppColors.black, width: 1),
+                                        borderRadius: BorderRadius.circular(4),
+                                        color: const Color(0xFF3B5998)),
+                                    child: Row(
+                                      children: [
+                                        SvgPicture.asset(
+                                            'assets/icons/facebook_icon.svg',
+                                            width: 26),
+                                        const SizedBox(width: 24),
+                                        const Text(
+                                          "Sign in with Facebook",
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 14,
+                                              color: Colors.white),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                const SizedBox(height: 16),
+                                if (widget.title == "Login")
+                                  GestureDetector(
+                                    onTap: () {
+                                      navigator
+                                          .push(AuthRoute(title: "Register"));
+                                    },
+                                    child: const Text(
+                                      'Go to Register',
+                                      style: TextStyle(
+                                        color: Colors.blue,
+                                        decoration: TextDecoration.underline,
+                                        decorationColor: Colors.blue,
+                                      ),
+                                    ),
+                                  ),
+                              ],
                             ),
-                        ],
+                          ),
+                        ),
                       ),
-                    ),
-                  ),
-                ),
-              );
+                    );
             },
           ),
         ),

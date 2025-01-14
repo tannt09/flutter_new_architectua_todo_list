@@ -4,6 +4,6 @@ part of 'auth_bloc.dart';
 class AuthState extends BaseBlocState with _$AuthState {
   // Change initialResult to a non-const variable
   const factory AuthState(
-      {@Default(AuthModel(code: 0, message: "", data: null))
-      AuthModel result}) = _AuthState;
+      {@Default(AuthModel(code: 0, message: "", data: null)) AuthModel result,
+      @Default(false) bool isLoading}) = _AuthState;
 }

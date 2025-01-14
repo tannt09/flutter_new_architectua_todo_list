@@ -20,5 +20,11 @@ class RegisterUserEvent extends AuthEvent with _$RegisterUserEvent {
 
 @freezed
 class VerifyIdTokenEvent extends AuthEvent with _$VerifyIdTokenEvent {
-  const factory VerifyIdTokenEvent({required String idToken}) = _VerifyIdTokenEvent;
+  const factory VerifyIdTokenEvent({required String idToken}) =
+      _VerifyIdTokenEvent;
+}
+
+@freezed
+class SetLoadingEvent extends AuthEvent with _$SetLoadingEvent {
+  const factory SetLoadingEvent({required bool isLoading}) = _SetLoadingEvent;
 }

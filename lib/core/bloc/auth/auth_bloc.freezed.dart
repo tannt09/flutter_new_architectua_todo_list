@@ -428,8 +428,129 @@ abstract class _VerifyIdTokenEvent implements VerifyIdTokenEvent {
 }
 
 /// @nodoc
+mixin _$SetLoadingEvent {
+  bool get isLoading => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $SetLoadingEventCopyWith<SetLoadingEvent> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $SetLoadingEventCopyWith<$Res> {
+  factory $SetLoadingEventCopyWith(
+          SetLoadingEvent value, $Res Function(SetLoadingEvent) then) =
+      _$SetLoadingEventCopyWithImpl<$Res, SetLoadingEvent>;
+  @useResult
+  $Res call({bool isLoading});
+}
+
+/// @nodoc
+class _$SetLoadingEventCopyWithImpl<$Res, $Val extends SetLoadingEvent>
+    implements $SetLoadingEventCopyWith<$Res> {
+  _$SetLoadingEventCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? isLoading = null,
+  }) {
+    return _then(_value.copyWith(
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$SetLoadingEventImplCopyWith<$Res>
+    implements $SetLoadingEventCopyWith<$Res> {
+  factory _$$SetLoadingEventImplCopyWith(_$SetLoadingEventImpl value,
+          $Res Function(_$SetLoadingEventImpl) then) =
+      __$$SetLoadingEventImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({bool isLoading});
+}
+
+/// @nodoc
+class __$$SetLoadingEventImplCopyWithImpl<$Res>
+    extends _$SetLoadingEventCopyWithImpl<$Res, _$SetLoadingEventImpl>
+    implements _$$SetLoadingEventImplCopyWith<$Res> {
+  __$$SetLoadingEventImplCopyWithImpl(
+      _$SetLoadingEventImpl _value, $Res Function(_$SetLoadingEventImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? isLoading = null,
+  }) {
+    return _then(_$SetLoadingEventImpl(
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SetLoadingEventImpl implements _SetLoadingEvent {
+  const _$SetLoadingEventImpl({required this.isLoading});
+
+  @override
+  final bool isLoading;
+
+  @override
+  String toString() {
+    return 'SetLoadingEvent(isLoading: $isLoading)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SetLoadingEventImpl &&
+            (identical(other.isLoading, isLoading) ||
+                other.isLoading == isLoading));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, isLoading);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SetLoadingEventImplCopyWith<_$SetLoadingEventImpl> get copyWith =>
+      __$$SetLoadingEventImplCopyWithImpl<_$SetLoadingEventImpl>(
+          this, _$identity);
+}
+
+abstract class _SetLoadingEvent implements SetLoadingEvent {
+  const factory _SetLoadingEvent({required final bool isLoading}) =
+      _$SetLoadingEventImpl;
+
+  @override
+  bool get isLoading;
+  @override
+  @JsonKey(ignore: true)
+  _$$SetLoadingEventImplCopyWith<_$SetLoadingEventImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$AuthState {
   AuthModel get result => throw _privateConstructorUsedError;
+  bool get isLoading => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AuthStateCopyWith<AuthState> get copyWith =>
@@ -441,7 +562,7 @@ abstract class $AuthStateCopyWith<$Res> {
   factory $AuthStateCopyWith(AuthState value, $Res Function(AuthState) then) =
       _$AuthStateCopyWithImpl<$Res, AuthState>;
   @useResult
-  $Res call({AuthModel result});
+  $Res call({AuthModel result, bool isLoading});
 }
 
 /// @nodoc
@@ -458,12 +579,17 @@ class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
   @override
   $Res call({
     Object? result = null,
+    Object? isLoading = null,
   }) {
     return _then(_value.copyWith(
       result: null == result
           ? _value.result
           : result // ignore: cast_nullable_to_non_nullable
               as AuthModel,
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -476,7 +602,7 @@ abstract class _$$AuthStateImplCopyWith<$Res>
       __$$AuthStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({AuthModel result});
+  $Res call({AuthModel result, bool isLoading});
 }
 
 /// @nodoc
@@ -491,12 +617,17 @@ class __$$AuthStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? result = null,
+    Object? isLoading = null,
   }) {
     return _then(_$AuthStateImpl(
       result: null == result
           ? _value.result
           : result // ignore: cast_nullable_to_non_nullable
               as AuthModel,
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -505,15 +636,19 @@ class __$$AuthStateImplCopyWithImpl<$Res>
 
 class _$AuthStateImpl implements _AuthState {
   const _$AuthStateImpl(
-      {this.result = const AuthModel(code: 0, message: "", data: null)});
+      {this.result = const AuthModel(code: 0, message: "", data: null),
+      this.isLoading = false});
 
   @override
   @JsonKey()
   final AuthModel result;
+  @override
+  @JsonKey()
+  final bool isLoading;
 
   @override
   String toString() {
-    return 'AuthState(result: $result)';
+    return 'AuthState(result: $result, isLoading: $isLoading)';
   }
 
   @override
@@ -521,11 +656,13 @@ class _$AuthStateImpl implements _AuthState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AuthStateImpl &&
-            (identical(other.result, result) || other.result == result));
+            (identical(other.result, result) || other.result == result) &&
+            (identical(other.isLoading, isLoading) ||
+                other.isLoading == isLoading));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, result);
+  int get hashCode => Object.hash(runtimeType, result, isLoading);
 
   @JsonKey(ignore: true)
   @override
@@ -535,10 +672,13 @@ class _$AuthStateImpl implements _AuthState {
 }
 
 abstract class _AuthState implements AuthState {
-  const factory _AuthState({final AuthModel result}) = _$AuthStateImpl;
+  const factory _AuthState({final AuthModel result, final bool isLoading}) =
+      _$AuthStateImpl;
 
   @override
   AuthModel get result;
+  @override
+  bool get isLoading;
   @override
   @JsonKey(ignore: true)
   _$$AuthStateImplCopyWith<_$AuthStateImpl> get copyWith =>

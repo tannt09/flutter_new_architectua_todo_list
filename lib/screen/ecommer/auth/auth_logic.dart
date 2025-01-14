@@ -55,6 +55,8 @@ class AuthLogic {
     try {
       // Login with Google
       final GoogleSignInAccount? googleUser = await googleSignIn.signIn();
+      bloc.add(const SetLoadingEvent(isLoading: true));
+
       if (googleUser == null) return;
 
       final GoogleSignInAuthentication googleAuth =
@@ -78,9 +80,11 @@ class AuthLogic {
 
       if (idTokenFirebase != null) {
         bloc.add(VerifyIdTokenEvent(idToken: idTokenFirebase));
+      } else {
+        // bloc.add(const SetLoadingEvent(isLoading: false));
       }
     } catch (e) {
-      _logger.info('----Google Login failure: $e');
+      bloc.add(const SetLoadingEvent(isLoading: false));
       showDialog(
         context: context,
         builder: (context) => AlertDialog(
@@ -104,6 +108,7 @@ class AuthLogic {
     try {
       // Login with FaceBook
       final LoginResult result = await FacebookAuth.instance.login();
+      bloc.add(const SetLoadingEvent(isLoading: true));
 
       if (result.status == LoginStatus.success) {
         final AccessToken? accessToken = result.accessToken;
@@ -121,6 +126,8 @@ class AuthLogic {
 
         if (idTokenFirebase != null) {
           bloc.add(VerifyIdTokenEvent(idToken: idTokenFirebase));
+        } else {
+          bloc.add(const SetLoadingEvent(isLoading: false));
         }
       }
     } on FirebaseAuthException catch (e) {
@@ -128,9 +135,11 @@ class AuthLogic {
       if (e.code == 'account-exists-with-different-credential' &&
           pendingCredential != null) {
         handleLoginWithGoogle(context, bloc, pendingCredential);
+      } else {
+        bloc.add(const SetLoadingEvent(isLoading: false));
       }
     } catch (e) {
-      _logger.info('----FaceBook Login failure: $e');
+      bloc.add(const SetLoadingEvent(isLoading: false));
       showDialog(
         context: context,
         builder: (context) => AlertDialog(
@@ -156,8 +165,7 @@ class AuthLogic {
           context: context,
           builder: (context) => AlertDialog(
             title: const Text('Result'),
-            content:
-                Text(state.result.message ?? 'Error'), // Ensure non-null value
+            content: Text(state.result.message ?? 'Error'),
             actions: [
               TextButton(
                 onPressed: () => Navigator.of(context).pop(),
@@ -176,8 +184,7 @@ class AuthLogic {
         context: context,
         builder: (context) => AlertDialog(
           title: const Text('Result'),
-          content:
-              Text(state.result.message ?? 'Error'), // Ensure non-null value
+          content: Text(state.result.message ?? 'Error'),
           actions: [
             TextButton(
               onPressed: () => {
