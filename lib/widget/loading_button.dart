@@ -6,8 +6,12 @@ import 'package:flutter_new_architectua/constants/colors.dart';
 class LoadingButtonWidget extends StatefulWidget {
   final Future Function()? onPressed;
   final String text;
+  final bool canBePressed;
   const LoadingButtonWidget(
-      {super.key, required this.onPressed, required this.text});
+      {super.key,
+      required this.onPressed,
+      required this.text,
+      this.canBePressed = true});
 
   @override
   State<LoadingButtonWidget> createState() => _LoadingButtonWidgetState();
@@ -38,14 +42,14 @@ class _LoadingButtonWidgetState extends State<LoadingButtonWidget> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: (_isLoading || widget.onPressed == null) ? null : _loadFuture,
+      onTap: (_isLoading || widget.onPressed == null || !widget.canBePressed) ? null : _loadFuture,
       child: Container(
         width: double.infinity,
         height: 50,
         margin: const EdgeInsets.only(bottom: 20),
         alignment: Alignment.center,
         decoration: BoxDecoration(
-          color: AppColors.main,
+          color: widget.canBePressed ? AppColors.main : AppColors.grey,
           borderRadius: BorderRadius.circular(30),
         ),
         child: _isLoading

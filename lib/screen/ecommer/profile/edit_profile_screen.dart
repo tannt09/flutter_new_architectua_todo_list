@@ -15,6 +15,15 @@ import 'package:flutter_new_architectua/widget/profile/edit_birthday_widget.dart
 import 'package:flutter_new_architectua/widget/profile/edit_country_widget.dart';
 import 'package:flutter_new_architectua/widget/profile/edit_gender_widget.dart';
 
+bool _hasProfileChanged(ProfileModel newProfile, ProfileModel oldProfile) {
+  return newProfile.fullName != oldProfile.fullName ||
+      newProfile.email != oldProfile.email ||
+      newProfile.phoneNumber != oldProfile.phoneNumber ||
+      newProfile.gender != oldProfile.gender ||
+      newProfile.region != oldProfile.region ||
+      newProfile.dateOfBirth != oldProfile.dateOfBirth;
+}
+
 @RoutePage()
 class EditProfilePage extends StatefulWidget {
   const EditProfilePage({super.key});
@@ -43,7 +52,8 @@ class _EditProfilePageState extends State<EditProfilePage> {
           builder: (context, state) {
             if (isInitialized) {
               _genderIndex = state.profile.gender ?? 0;
-              _selectedDate = DateTime.parse(state.profile.dateOfBirth ?? '1970-01-01');
+              _selectedDate =
+                  DateTime.parse(state.profile.dateOfBirth ?? '2000-01-01');
               _region = state.profile.region ?? '';
               _nameController =
                   TextEditingController(text: state.profile.fullName);
@@ -55,11 +65,28 @@ class _EditProfilePageState extends State<EditProfilePage> {
               isInitialized = false;
             }
 
+            final String formattedSeDate =
+                '${_selectedDate?.year}-${_selectedDate?.month.toString().padLeft(2, '0')}-${_selectedDate?.day.toString().padLeft(2, '0')}';
+
+            final ProfileModel newProfile = ProfileModel(
+                id: state.profile.id,
+                userId: state.profile.userId,
+                fullName: _nameController.text,
+                email: _emailController.text,
+                phoneNumber: _phoneNumberController.text,
+                username: state.profile.username,
+                gender: _genderIndex,
+                dateOfBirth: formattedSeDate,
+                region: _region);
+
+            final bool isChanged =
+                _hasProfileChanged(newProfile, state.profile);
+
             Future<void> selectDate(BuildContext context) async {
               final DateTime? picked = await showDatePicker(
                   context: context,
-                  initialDate: DateTime.parse(state.profile.dateOfBirth ?? ''),
-                  firstDate: DateTime(2000),
+                  initialDate: _selectedDate,
+                  firstDate: DateTime(1900),
                   lastDate: DateTime(2100));
               if (picked != null && picked != _selectedDate) {
                 setState(() {
@@ -70,17 +97,6 @@ class _EditProfilePageState extends State<EditProfilePage> {
 
             Future<void> saveChanges() async {
               await Future.delayed(const Duration(seconds: 2));
-
-              ProfileModel newProfile = ProfileModel(
-                  id: state.profile.id,
-                  userId: state.profile.userId,
-                  fullName: _nameController.text,
-                  email: _emailController.text,
-                  phoneNumber: _phoneNumberController.text,
-                  username: state.profile.username,
-                  gender: _genderIndex,
-                  dateOfBirth: _selectedDate.toString(),
-                  region: _region);
 
               blocProfile.add(EditUserProfileEvent(newProfile: newProfile));
               if (state.avatarPath.isNotEmpty) {
@@ -143,7 +159,9 @@ class _EditProfilePageState extends State<EditProfilePage> {
                           Padding(
                             padding: const EdgeInsets.all(16),
                             child: LoadingButtonWidget(
-                                onPressed: saveChanges, text: 'Save Changes'),
+                                onPressed: saveChanges,
+                                text: 'Save Changes',
+                                canBePressed: isChanged),
                           )
                         ],
                       ),

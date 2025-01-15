@@ -28,11 +28,11 @@ class ProfileModel {
         userId: json['user_id'],
         fullName: json['full_name'] ?? 'NO NAME',
         email: json['email'],
-        phoneNumber: json['phone_number'],
+        phoneNumber: json['phone_number'] ?? '',
         username: json['username'],
         gender: json['gender'],
         dateOfBirth: json['date_of_birth'],
-        region: json['region'],
+        region: json['region'] ?? '',
         avatarUrl: json['avatar_url'] ?? '');
   }
 
