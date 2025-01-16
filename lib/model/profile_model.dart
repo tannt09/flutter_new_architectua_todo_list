@@ -30,8 +30,8 @@ class ProfileModel {
         email: json['email'],
         phoneNumber: json['phone_number'] ?? '',
         username: json['username'],
-        gender: json['gender'],
-        dateOfBirth: json['date_of_birth'],
+        gender: json['gender'] ?? 0,
+        dateOfBirth: json['date_of_birth'] ?? '2000-01-01',
         region: json['region'] ?? '',
         avatarUrl: json['avatar_url'] ?? '');
   }

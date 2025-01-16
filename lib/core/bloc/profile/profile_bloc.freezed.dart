@@ -375,6 +375,71 @@ abstract class _SaveAvatarPathEvent implements SaveAvatarPathEvent {
 }
 
 /// @nodoc
+mixin _$DeleteAvatarPathEvent {}
+
+/// @nodoc
+abstract class $DeleteAvatarPathEventCopyWith<$Res> {
+  factory $DeleteAvatarPathEventCopyWith(DeleteAvatarPathEvent value,
+          $Res Function(DeleteAvatarPathEvent) then) =
+      _$DeleteAvatarPathEventCopyWithImpl<$Res, DeleteAvatarPathEvent>;
+}
+
+/// @nodoc
+class _$DeleteAvatarPathEventCopyWithImpl<$Res,
+        $Val extends DeleteAvatarPathEvent>
+    implements $DeleteAvatarPathEventCopyWith<$Res> {
+  _$DeleteAvatarPathEventCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+}
+
+/// @nodoc
+abstract class _$$DeleteAvatarPathEventImplCopyWith<$Res> {
+  factory _$$DeleteAvatarPathEventImplCopyWith(
+          _$DeleteAvatarPathEventImpl value,
+          $Res Function(_$DeleteAvatarPathEventImpl) then) =
+      __$$DeleteAvatarPathEventImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$DeleteAvatarPathEventImplCopyWithImpl<$Res>
+    extends _$DeleteAvatarPathEventCopyWithImpl<$Res,
+        _$DeleteAvatarPathEventImpl>
+    implements _$$DeleteAvatarPathEventImplCopyWith<$Res> {
+  __$$DeleteAvatarPathEventImplCopyWithImpl(_$DeleteAvatarPathEventImpl _value,
+      $Res Function(_$DeleteAvatarPathEventImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$DeleteAvatarPathEventImpl implements _DeleteAvatarPathEvent {
+  const _$DeleteAvatarPathEventImpl();
+
+  @override
+  String toString() {
+    return 'DeleteAvatarPathEvent()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DeleteAvatarPathEventImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+}
+
+abstract class _DeleteAvatarPathEvent implements DeleteAvatarPathEvent {
+  const factory _DeleteAvatarPathEvent() = _$DeleteAvatarPathEventImpl;
+}
+
+/// @nodoc
 mixin _$UploadAvatarEvent {
   String get path => throw _privateConstructorUsedError;
   String? get userId => throw _privateConstructorUsedError;

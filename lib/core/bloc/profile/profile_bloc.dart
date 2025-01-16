@@ -18,6 +18,7 @@ class ProfileBloc extends BaseBloc<ProfileEvent, ProfileState> {
     on<GetUserProfileEvent>(_getUserProfile);
     on<EditUserProfileEvent>(_editUserProfile);
     on<SaveAvatarPathEvent>(_saveAvatarPath);
+    on<DeleteAvatarPathEvent>(_deleteAvatarPath);
     on<UploadAvatarEvent>(_uploadAvatar);
   }
 
@@ -47,5 +48,10 @@ class ProfileBloc extends BaseBloc<ProfileEvent, ProfileState> {
       await editAvatarOfUserProfile(result.imageUrl!, event.userId!);
       add(GetUserProfileEvent(userId: event.userId!));
     }
+  }
+
+  Future<void> _deleteAvatarPath(
+      DeleteAvatarPathEvent event, Emitter<ProfileState> emit) async {
+    emitSafety(state.copyWith(avatarPath: ''));
   }
 }

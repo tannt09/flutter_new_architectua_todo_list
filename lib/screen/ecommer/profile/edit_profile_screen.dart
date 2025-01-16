@@ -15,13 +15,15 @@ import 'package:flutter_new_architectua/widget/profile/edit_birthday_widget.dart
 import 'package:flutter_new_architectua/widget/profile/edit_country_widget.dart';
 import 'package:flutter_new_architectua/widget/profile/edit_gender_widget.dart';
 
-bool _hasProfileChanged(ProfileModel newProfile, ProfileModel oldProfile) {
+bool _hasProfileChanged(
+    ProfileModel newProfile, ProfileModel oldProfile, String avatarPath) {
   return newProfile.fullName != oldProfile.fullName ||
       newProfile.email != oldProfile.email ||
       newProfile.phoneNumber != oldProfile.phoneNumber ||
       newProfile.gender != oldProfile.gender ||
       newProfile.region != oldProfile.region ||
-      newProfile.dateOfBirth != oldProfile.dateOfBirth;
+      newProfile.dateOfBirth != oldProfile.dateOfBirth ||
+      avatarPath.isNotEmpty;
 }
 
 @RoutePage()
@@ -80,7 +82,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                 region: _region);
 
             final bool isChanged =
-                _hasProfileChanged(newProfile, state.profile);
+                _hasProfileChanged(newProfile, state.profile, state.avatarPath);
 
             Future<void> selectDate(BuildContext context) async {
               final DateTime? picked = await showDatePicker(
@@ -175,6 +177,8 @@ class _EditProfilePageState extends State<EditProfilePage> {
   @override
   void dispose() {
     super.dispose();
+    blocProfile.add(const DeleteAvatarPathEvent());
+
     _nameController.dispose();
     _emailController.dispose();
     _phoneNumberController.dispose();

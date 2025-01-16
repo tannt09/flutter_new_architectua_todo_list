@@ -23,6 +23,12 @@ class SaveAvatarPathEvent extends ProfileEvent with _$SaveAvatarPathEvent {
 }
 
 @freezed
+class DeleteAvatarPathEvent extends ProfileEvent with _$DeleteAvatarPathEvent {
+  const factory DeleteAvatarPathEvent() = _DeleteAvatarPathEvent;
+}
+
+@freezed
 class UploadAvatarEvent extends ProfileEvent with _$UploadAvatarEvent {
-  const factory UploadAvatarEvent({required String path, required String? userId}) = _UploadAvatarEvent;
+  const factory UploadAvatarEvent(
+      {required String path, required String? userId}) = _UploadAvatarEvent;
 }
